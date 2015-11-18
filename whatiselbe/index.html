@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ELBE in a nutshell • ELBE</title>
+    <meta name="description" content="This article describes why the ELBE project was born.
+
+">
+    <meta name="keywords" content="">
+    
+      
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="ELBE in a nutshell">
+	<meta name="twitter:description" content="This article describes why the ELBE project was born.
+
+">
+	
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="http://elbe-rfs.org/images/elbe-icon.png">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US.UTF-8">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="ELBE in a nutshell">
+	<meta property="og:description" content="This article describes why the ELBE project was born.
+
+">
+	<meta property="og:url" content="http://elbe-rfs.org/whatiselbe/">
+	<meta property="og:site_name" content="ELBE">
+
+    <link rel="canonical" href="http://elbe-rfs.org/whatiselbe/">
+
+    <link href="http://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
+    <link href="http://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="http://elbe-rfs.org/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="http://elbe-rfs.org/js/vendor/html5shiv.min.js"></script>
+      <script src="http://elbe-rfs.org/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="http://elbe-rfs.org/" class="site-title"><img src="http://elbe-rfs.org/images/elbe-logo-small.png"></a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">ELBE</a></li>
+	
+    
+        
+    
+    <li><a href="http://elbe-rfs.org/download" >Download</a></li>
+  
+    
+        
+    
+    <li><a href="http://elbe-rfs.org/docs" >Docs</a></li>
+  
+    
+        
+    
+    <li><a href="http://elbe-rfs.org/support" >Support</a></li>
+  
+    
+        
+    
+    <li><a href="http://elbe-rfs.org/devel" >Devel</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>ELBE <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="http://elbe-rfs.org/download">
+        
+        <div class="title">Download</div>
+        <p class="excerpt">Get Binary and Source packages</p>
+      </a>
+    </li><li>
+      <a href="http://elbe-rfs.org/docs">
+        
+        <div class="title">Docs</div>
+        <p class="excerpt">Documentation and man-pages</p>
+      </a>
+    </li><li>
+      <a href="http://elbe-rfs.org/support">
+        
+        <div class="title">Support</div>
+        <p class="excerpt">Community and commercial support</p>
+      </a>
+    </li><li>
+      <a href="http://elbe-rfs.org/devel">
+        
+        <div class="title">Devel</div>
+        <p class="excerpt">Development details</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+		<div class="page-title">
+			<h1>ELBE in a nutshell</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<p>This article describes why the ELBE project was born.</p>
+
+<h1 id="early-embedded-linux-devices">early embedded Linux devices</h1>
+<p>Well, first we should look at embedded devices to see what they used to look
+like and how some of them look like today.</p>
+
+<p>The first devices, that were initially called embedded Linux, had about 4MiB
+flash and around 16MiB of RAM. With these constrains in mind people started to
+hack a root file system for their devices. If they had bad luck you had to
+start with building a cross toolchain first.</p>
+
+<p>Once that part was over you could focus on the user land. Busybox is a good
+tool to start with since it contains most of the required programs in a small
+single binary. Those programs and a few configurations files on top and you
+were done. Maybe you had to compile your “added value” binary or something
+else that was not part of busybox but that was it.</p>
+
+<h1 id="cross-build-toolkits">Cross-build Toolkits</h1>
+<p>Now sum up the single steps which were required to create a root file from
+scratch and create a tool to ease your life. This is when tools like
+OpenEmbedded, EDLK were born. Those tools are still good as long as they are
+well maintained. They aren’t just projects that are that small these days.
+A lot of them are getting very complex. This includes hardware that has much
+more RAM and a GiBs of NAND flash if not replaced by a disk or mmc card and
+the software, that is used, is more extensive.</p>
+
+<h1 id="rootfilesystems-are-getting-bigger-and-bigger">Rootfilesystems are getting bigger and bigger</h1>
+<p>A lot of libraries are used to ease the development of a system.
+A toolkit for GUI development, several libraries for multimedia support just
+to name a few.</p>
+
+<p>Depending on the build environment that is used, it is more or less difficult
+to add a package that is not yet included. It depends on the scripting
+language that is used, the format keeping the build instructions and the
+user’s ability to understand it and make changes.</p>
+
+<h1 id="adding-debuging-tools-is-not-that-easy">Adding Debuging Tools is not that easy</h1>
+<p>Adding a debug version of a package to the root file system means a rebuild or
+restart of the build process to create this piece of the rootfile system
+assuming that a debug version can be selected (and not added to the build
+process). Even then the debug version isn’t installed in a jiffy.</p>
+
+<p>There is usually one person in charge of the root file system and a few others
+that are developing the application or a component of the application. One of
+the application developers has a problem and wants just to install a debug
+version of the library in question or replace it with a later version of it or
+a substitute library just to see if his problem goes away or not.
+He doesn’t necessarily know how to handle the build environment to make such
+changes. So he has to ask the person in charge of the root filesystem to make
+this change and send him the new filesystem.</p>
+
+<p>The application developer never did this kind of work because the Linux
+distribution on his desktop computer takes care of these things for him.
+The same distribution runs a test suite (if available) of the package after it
+has been built to spot problems in the compiled binaries which can’t be run if
+the package is cross compiled.</p>
+
+<h1 id="no-bugtracking-informations-available">No Bugtracking Informations available</h1>
+<p>Another missing feature is the bug tracking against all packages in the root
+file system including security updates. This can be a full time job for one
+person even just by looking after 10 packages with a reasonable size. So why
+try to do a lot of work alone while this work is already done by large
+communities around Linux distribution like Debian?</p>
+
+<h1 id="debian-for-embedded">Debian for embedded?</h1>
+<p>Instead of doing the work again we tried to figure out how Debian could be
+reused in a way that will fulfill our needs.</p>
+
+<p>Continue reading <a href="http://elbe-rfs.org/docs/elbeoverview-en.html">ELBE Overview</a>.</p>
+
+				<hr />
+				<footer class="page-footer">
+					
+	
+
+
+
+<div class="author-image">
+	<img src="http://www.gravatar.com/avatar/565400ba01d843cced55bdc159f310ad?s=150" alt="Manuel Traut">
+</div>
+
+
+<div class="author-content">
+	<div class="author-name">
+		Written by
+		
+			<span itemprop="author">Manuel Traut</span>
+		
+	</div>
+	<p class="author-bio"></p>
+</div>
+
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=ELBE%20in%20a%20nutshell&amp;url=http://elbe-rfs.org/whatiselbe/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://elbe-rfs.org/whatiselbe/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://elbe-rfs.org/whatiselbe/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+</div><!-- /.share-this -->
+					<div class="page-meta">
+	<p>Updated <time datetime="2015-11-16T00:00:00Z" itemprop="datePublished">November 16, 2015</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="http://elbe-rfs.org" ></a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">
+		&#169; 2015
+		<a href="http://elbe-rfs.org">ELBE</a> by
+		<a href="https://linutronix.de">Linutronix GmbH</a> -
+		ELBE is not affiliated with Debian, Debian is a registered trademark owned by SPI
+	</p>
+</footer>
+
+
+
+    </div>
+
+    <script src="http://elbe-rfs.org/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="http://elbe-rfs.org/js/main.js"></script>
+
+  </body>
+
+</html>

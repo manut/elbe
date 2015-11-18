@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ELBE</title>
+    
+    
+    
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="ELBE">
+	
+	
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="http://elbe-rfs.org/images/elbe-icon.png">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US.UTF-8">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="ELBE">
+	
+	<meta property="og:url" content="http://elbe-rfs.org/docs/quickstart.html">
+	<meta property="og:site_name" content="ELBE">
+
+    <link rel="canonical" href="http://elbe-rfs.org/docs/quickstart.html">
+
+    <link href="http://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
+    <link href="http://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="http://elbe-rfs.org/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="http://elbe-rfs.org/js/vendor/html5shiv.min.js"></script>
+      <script src="http://elbe-rfs.org/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="http://elbe-rfs.org/" class="site-title"><img src="http://elbe-rfs.org/images/elbe-logo-small.png"></a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">ELBE</a></li>
+	
+    
+        
+    
+    <li><a href="http://elbe-rfs.org/download" >Download</a></li>
+  
+    
+        
+    
+    <li><a href="http://elbe-rfs.org/docs" >Docs</a></li>
+  
+    
+        
+    
+    <li><a href="http://elbe-rfs.org/support" >Support</a></li>
+  
+    
+        
+    
+    <li><a href="http://elbe-rfs.org/devel" >Devel</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>ELBE <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="http://elbe-rfs.org/download">
+        
+        <div class="title">Download</div>
+        <p class="excerpt">Get Binary and Source packages</p>
+      </a>
+    </li><li>
+      <a href="http://elbe-rfs.org/docs">
+        
+        <div class="title">Docs</div>
+        <p class="excerpt">Documentation and man-pages</p>
+      </a>
+    </li><li>
+      <a href="http://elbe-rfs.org/support">
+        
+        <div class="title">Support</div>
+        <p class="excerpt">Community and commercial support</p>
+      </a>
+    </li><li>
+      <a href="http://elbe-rfs.org/devel">
+        
+        <div class="title">Devel</div>
+        <p class="excerpt">Development details</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>Embedded Linux Build Environment (ELBE) Quickstart Guide</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article" style="max-width:55em">
+<div id="header">
+<h1>Embedded Linux Build Environment (ELBE) Quickstart Guide</h1>
+<span id="author">ELBE is a Debian based system to generate root-filesystems for embedded devices.</span><br />
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>You have probably received a root-filesystem, which has been built with ELBE.
+Additionally you should have an XML file describing the root-filesystem.</p></div>
+<div class="paragraph"><p>This quickstart guide describes the steps necessary to rebuild the
+root-filesystem from the XML file and to simple modifications.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_steps_necessary">Steps necessary</h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+install Debian 8 (Jessie) on your Host
+</p>
+</li>
+<li>
+<p>
+install ELBE on Host Linux
+</p>
+</li>
+<li>
+<p>
+generate the <code>initvm</code> running the buildenvironment
+</p>
+</li>
+<li>
+<p>
+build the root-filesystem inside the initvm
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>Steps 1 and 2 need only be performed once.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img alt="Note" src="data:image/png;base64,
+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" />
+</td>
+<td class="content">When Debian is running inside a VM (vmware etc), you need to make sure,
+      that nested KVM is working.</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_customisation_of_the_build">Customisation of the build</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The ELBE XML can contain an archive, which can contain configuration files,
+and additional software. This archive is extracted onto the target-image
+during the buildprocess. It allows you to override any file, which needs to be
+different from the default Debian Install.</p></div>
+<div class="paragraph"><p>This guide also explains how the archive can be extracted from the XML file,
+and vice versa.</p></div>
+<div class="paragraph"><p>ELBE allows to manipulate the generated root-filesystem through a set of
+<code>&lt;finetuning&gt;</code> rules. We also describe, how these can be used to add a user,
+change directory permissions, and remove files from the root-filesystem.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_elbe">Installing ELBE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>There are several possibilities to install ELBE.
+The simplest method is by installing prebuilt binary packages
+via Linutronix package repository on a Debian 8 (Jessie) system.</p></div>
+<div class="paragraph"><p>But ELBE can also be installed from git.</p></div>
+<div class="sect2">
+<h3 id="_binary_debian_packages">Binary Debian packages</h3>
+<div class="paragraph"><p>The latest packages for elbe reside in the following repository</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>http://debian.linutronix.de/elbe-testing</code></pre>
+</div></div>
+<div class="paragraph"><p>Create the file <code>/etc/apt/sources.list.d/elbe-testing.list</code>
+with the following contents:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>deb http://debian.linutronix.de/elbe-testing jessie main</code></pre>
+</div></div>
+<div class="paragraph"><p>Then run (as root):</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ apt-get update
+$ apt-get install elbe</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_git_version">Git Version</h3>
+<div class="paragraph"><p>If you can not use Debian Jessie, you can also checkout the current
+ELBE source-code via git from github.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git clone https://github.com/Linutronix/elbe.git
+Cloning into 'elbe'...
+remote: Counting objects: 5435, done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 5435 (delta 1), reused 0 (delta 0), pack-reused 5427
+Receiving objects: 100% (5435/5435), 1.94 MiB | 1.92 MiB/s, done.
+Resolving deltas: 100% (3943/3943), done.
+Checking connectivity... done.
+$ cd elbe
+$ ls
+AUTHORS  ChangeLog  COPYING  debian  dockerfile  docs  elbe   elbepack
+examples INSTALL    Makefile README  setup.py    test  THANKS TODO</code></pre>
+</div></div>
+<div class="paragraph"><p>ELBE can run without being installed from the git checkout.
+Just note that file paths are different under this situation.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>elbe -&gt; ./elbe
+/usr/share/doc/elbe-doc/examples -&gt; examples/</code></pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_initvm_and_submit_xml_files">Create initvm and submit XML files</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The first thing you need to do is set up a virtual-machine for
+generating root-filesystems.</p></div>
+<div class="paragraph"><p>This virtual-machine is referred to as "initvm". You will want your
+initvm to be the same architecture as your workstation. This allows
+using hardware accelerated virtualization implemented by kvm.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ elbe initvm create --directory=initvm
+/home/torbenh/elbe/elbe/initvm
+gpg: keyring `/tmp/tmpPfPXt4/secring.gpg' created
+gpg: keyring `/tmp/tmpPfPXt4/etc/apt/trusted.gpg.d/linutronix-elbe.gpg' created
+gpg: key 22BB8F84: public key "ELBE Devel (Linutronix ELBE developers) &lt;elbe-devel@linutronix.de&gt;" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+--2015-08-17 15:26:26--  http://debian.linutronix.de/elbe-testing/elbe-repo.pub
+Resolving debian.linutronix.de (debian.linutronix.de)... 2001:470:1f0b:db:abcd:42:0:1, 62.245.132.108
+Connecting to debian.linutronix.de (debian.linutronix.de)|2001:470:1f0b:db:abcd:42:0:1|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1763 (1.7K)
+Saving to: ‘/tmp/tmpPfPXt4/tmpkey.gpg’
+
+/tmp/tmpPfPXt4/tmpkey.gpg             100%[========================================================================&gt;]   1.72K  --.-KB/s   in 0s
+
+2015-08-17 15:26:26 (346 MB/s) - ‘/tmp/tmpPfPXt4/tmpkey.gpg’ saved [1763/1763]
+
+...
+
+Installing the base system  ... 17%... 20%... 30%... 40%... 50%... 60%... 70%... 83%... 91%... 100%
+Configuring apt  ... 16%... 25%... 32%... 41%... 50%... 66%... 75%... 83%... 91%... 100%
+Select and install software  ... 10%... 26%... 31%... 40%... 50%... 61%... 70%... 80%... 90%... 100%
+Installing GRUB boot loader  ... 16%... 33%... 50%... 66%... 83%... 100%
+The system is going down NOW!.. 14%... 23%... 33%... 42%... 52%... 61%... 71%... 80%... 90%
+Sent SIGTERM to all processes
+Sent SIGKILL to all processes
+Requesting system reboot
+[  589.432092] Restarting system.
+mkdir -p .stamps
+touch .stamps/stamp-install-initial-image</code></pre>
+</div></div>
+<div class="paragraph"><p>This creates an "initvm" subdirectory and builds the initvm inside this directory.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submitting_an_xml_file">Submitting an XML file</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Submitting an XML file triggers an image build inside the initvm.
+Once the initvm has been created and is running, you can submit XML files using</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ elbe initvm submit --directory=initvm /usr/share/doc/elbe-doc/examples/rescue.xml
+Build started, waiting till it finishes
+project still busy, waiting
+project still busy, waiting
+
+...
+
+project still busy, waiting
+project still busy, waiting
+project still busy, waiting
+
+Build finished !
+
+
+ELBE Package validation
+=======================
+
+
+Package List validation
+ ----------------------
+
+No Errors found
+
+Getting generated Files
+
+Saving generated Files to /home/torbenh/elbe/elbe/elbe-build-20150817-155038
+source.xml      (Current source.xml of the project)
+rescue.cpio     (Image)
+validation.txt  (Package list validation result)
+elbe-report.txt         (Report)
+log.txt         (Log file)</code></pre>
+</div></div>
+<div class="paragraph"><p>The result of the build is stored in elbe-build-&lt;TIMESTAMP&gt; below your current
+working directory.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ports_opened_by_initvm">Ports opened by initvm</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The initvm will open port 7587 on localhost. This is used by the elbe tools
+on your host to communicate with the initvm.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_advanced_usage">Advanced usage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_elbe_archive">ELBE Archive</h3>
+<div class="paragraph"><p>The ELBE XML file contains an archive which is extracted into the
+root-filesystem during the image generation phase.</p></div>
+<div class="paragraph"><p>It is acessed with the following commands:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ elbe get_archive fun.xml archive.tar.bz2</code></pre>
+</div></div>
+<div class="paragraph"><p>It is a normal tar.bz2 which can be manipulated and reinjected into the XML:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ mkdir arch
+$ tar xvfj archive.tar.bz2 -C arch
+$ echo hello &gt; arch/hello
+$ elbe chg_archive fun.xml arch</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_adding_packages_to_the_list_of_packages_to_install">Adding packages to the "list of packages to install"</h3>
+<div class="paragraph"><p>The XML file contains a <em>list of packages to install</em> <code>&lt;pkg-list&gt;</code> in the
+<code>&lt;target&gt;</code> XML node. Inserting a line containing</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>util-linux<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span></tt></pre></div></div>
+<div class="paragraph"><p>will add the <code>util-linux</code> package to the target-rfs.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_using_the_finetuning_rules">Using the finetuning rules</h3>
+<div class="paragraph"><p>An ELBE XML file can contain a set of finetuning rules. Finetuning is used to
+customize the target-rfs, e.g. remove man-pages. Here is an example
+finetuning from <code>/usr/share/doc/elbe-doc/examples/elbe-desktop.xml</code>:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">&lt;finetuning&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>var/cache/apt/archives/*.deb<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;adduser</span></span> <span style="color: #009900">passwd</span><span style="color: #990000">=</span><span style="color: #FF0000">"elbe"</span> <span style="color: #009900">shell</span><span style="color: #990000">=</span><span style="color: #FF0000">"/bin/bash"</span><span style="font-weight: bold"><span style="color: #0000FF">&gt;</span></span>elbe<span style="font-weight: bold"><span style="color: #0000FF">&lt;/adduser&gt;</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">&lt;/finetuning&gt;</span></span></tt></pre></div></div>
+<div class="sect3">
+<h4 id="_rm">rm</h4>
+<div class="paragraph"><p>The <code>&lt;rm&gt;</code> node removes files from the target-rfs.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_adduser">adduser</h4>
+<div class="paragraph"><p>The adduser node allows to create a user.
+The following example creates the user <code>elbe</code> with the password <code>foo</code>.</p></div>
+<div class="paragraph"><p>It is also possible to specify groups the new user should be part of:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">&lt;adduser</span></span> <span style="color: #009900">passwd</span><span style="color: #990000">=</span><span style="color: #FF0000">"foo"</span> <span style="color: #009900">shell</span><span style="color: #990000">=</span><span style="color: #FF0000">"/bin/bash"</span> <span style="color: #009900">groups</span><span style="color: #990000">=</span><span style="color: #FF0000">"audio,video,dialout"</span><span style="font-weight: bold"><span style="color: #0000FF">&gt;</span></span>elbe<span style="font-weight: bold"><span style="color: #0000FF">&lt;/adduser&gt;</span></span></tt></pre></div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changing_ownership_of_directories_or_files">Changing ownership of directories or files</h3>
+<div class="paragraph"><p>There is currently no special finetuning node for <code>chmod</code> and <code>chown</code>.
+These commands needs to be specified via the command tag, which allows running
+any command that is available in the target-rfs.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">&lt;command&gt;</span></span>chown elbe:elbe /mnt<span style="font-weight: bold"><span style="color: #0000FF">&lt;/command&gt;</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">&lt;command&gt;</span></span>chmod 777 /mnt<span style="font-weight: bold"><span style="color: #0000FF">&lt;/command&gt;</span></span></tt></pre></div></div>
+<div class="sect3">
+<h4 id="_further_example">Further Example</h4>
+<div class="paragraph"><p>A more complete example can be found in the ELBE overview document that is
+installed at <code>/usr/share/doc/elbe-doc/elbeoverview-en.html</code></p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2015-11-16 15:04:20 CET
+</div>
+</div>
+</body>
+</html>
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="http://elbe-rfs.org" ></a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">
+		&#169; 2015
+		<a href="http://elbe-rfs.org">ELBE</a> by
+		<a href="https://linutronix.de">Linutronix GmbH</a> -
+		ELBE is not affiliated with Debian, Debian is a registered trademark owned by SPI
+	</p>
+</footer>
+
+
+
+    </div>
+
+    <script src="http://elbe-rfs.org/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="http://elbe-rfs.org/js/main.js"></script>
+
+  </body>
+
+</html>

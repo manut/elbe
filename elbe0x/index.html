@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>ELBE</title>
+<meta name="generator" content="Bluefish 2.2.3" >
+<meta name="author" content="Manuel Traut" >
+<meta name="date" content="2013-02-21T00:39:40+0100" >
+<meta name="copyright" content="">
+<meta name="keywords" content="elbe debian linux build system embedded">
+<meta name="description" content="debian based embedded root file system builder">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+</head>
+<body>
+<iframe name="Navigation" src="nav.html" width="100%" height="70px" border="0" frameborder="0" scrolling="no" marginheight="3px" marginwidth="0px" hspace="0" vspace="0">
+you need a browser with iframe support
+</iframe>
+<table border="0" style="margin-left:10px;margin-bottom:30px">
+<tr>
+<td>
+<h1>This website describes elbe v0.5.x</h1>
+If you're looking for informations about current elbe, have a look at
+<a href='http://elbe-rfs.org'>http://elbe-rfs.org</a>
+<h1>Features</h1>
+<ul>
+<li>Rootfilesystem is defined by a single XML File</li>
+<li>produces target images that can be flashed to the target without conversions</li>
+<li>a virtual Buildenvironment matching the target file system is generated</li>
+<li>well tested Debian Binary Packages can be used</li>
+<li>a License file is generated</li>
+<li>Target Image generation doesn't depend on the configuration of the host
+running ELBE</li>
+</ul>
+<h1>Supported Architectures</h1>
+ELBE supports the following target architectures:
+<ul>
+<li>amd64</li>
+<li>armel</li>
+<li>powerpc</li>
+<li>x86</li>
+</ul>
+<h1>Output Formats</h1>
+ELBE supports the following formats to distribute the root file system:
+<ul>
+<li>tar.gz</li>
+<li>cpio image</li>
+<li>UBI images</li>
+<li>Harddisk / SDCard images</li>
+</ul>
+</ul>
+<h1>Why should you use ELBE to create an embedded root file system?</h1>
+<p>
+Well, first we should look at embedded devices to see what they used to look
+like and how some of them look like today.
+</p>
+<p>
+The first devices, that were initially called embedded Linux, had about 4MiB
+flash and around 16MiB of RAM. With these constrains in mind people started to
+hack a root file system for their devices. If they had bad luck you had to
+start with building a cross toolchain first. Once that part was over you could
+focus on the user land. Busybox is a good tool to start with since it contains
+most of the required programs in a small single binary. Those programs and a few
+configurations files on top and you were done. Maybe you had to compile your
+"added value" binary or something else that was not part of busybox but that was
+it.
+</p>
+<p>
+Now sum up the single steps which were required to create a root file from
+scratch and create a tool to ease your life. This is when tools like
+OpenEmbedded, EDLK were born. Those tools are still good as long as they are
+well maintained. They aren't just projects that are that small these days.
+A lot of them are getting very complex. This includes hardware that has much
+more RAM and a GiBs of NAND flash if not replaced by a disk or mmc card and the
+software, that is used, is more extensive. A lot of libraries are used to ease
+the development of a system. A toolkit for GUI development, several libraries
+for multimedia support just to name a few.
+</p>
+<p>
+Depending on the build environment that is used, it is more or less difficult
+to add a package that is not yet included. It depends on the scripting language
+that is used, the format keeping the build instructions and the user's ability
+to understand it and make changes. Adding a debug version of a package to the
+root file system means a rebuild or restart of the build process to create this
+piece of the rootfile system assuming that a debug version can be selected
+(and not added to the build process). Even then the debug version isn't
+installed in a jiffy.
+</p>
+<p>
+There is usually one person in charge of the root file system and a few others
+that are developing the application or a component of the application. One of
+the application developers has a problem and wants just to install a debug
+version of the library in question or replace it with a later version of it or
+a substitute library just to see if his problem goes away or not. He doesn't
+necessarily know how to handle the build environment to make such changes.
+So he has to ask the person in charge of the root filesystem to make this
+change and send him the new filesystem.
+</p>
+<p>
+The application developer never did this kind of work because the Linux
+distribution on his desktop computer takes care of these things for him.
+The same distribution runs a test suite (if available) of the package after it
+has been built to spot problems in the compiled binaries which can't be run if
+the package is cross compiled.
+</p>
+<p>
+Another missing feature is the bug tracking against all packages in the root
+file system including security updates. This can be a full time job for one
+person even just by looking after 10 packages with a reasonable size.
+So why try to do a lot of work alone while this work is already done by large
+communities around Linux distribution like Debian?
+</p>
+<p>
+Instead of doing the work again we tried to figure out how Debian could be
+reused in a way that will fulfill our needs:
+</p>
+<ul>
+<li>First we aimed to automate the Debian installer so it can work without user
+interaction.</li>
+<li>The next step was to integrate a custom list of packages which should be
+part of the resulting image and add custom files like configuration files.</li>
+<li>files which are part of the file system but not needed on embedded devices
+will be deleted (like documentation).</li>
+<li>The processes is finalized by packaging the target root file system in a
+tarball, cpio image or flashable UBI image.
+</ul>
+<p>
+The individual steps which were required to create the image can be archived
+as the "recipe".
+</p>
+<p>
+This is how ELBE started.
+</p>
+<p>
+The recipe can be used later to create a reproducible image. It only needs the
+packages on a mirror, or a ISO image containing all Packages (created by a
+previous ELBE run) can be used.
+</p>
+<p>
+Once a security update is available it can be obtained by recreating the
+complete image or by calling "apt-get update" from a live system.
+The Debian way simplifies a lot of things here. A package can be quickly
+installed by using the package management system. Each package is already built
+by the Debian community and contains a build log. An appropriate source package
+is also available so the user can rebuild the package if requested. Debian's
+security team evaluates security threats and updates packages. Debian users file
+bugs in the bug tracking system if a package does not work as expected.
+</p>
+<p>
+All licenses from a package are summarized in a single file which can be used
+for an overview of the licenses used in the system.
+</p>
+<p>
+ELBE isn't yet another attempt to create a distribution for embedded devices. It
+reuses the available Debian distribution for embedded needs.
+</p>
+</td>
+</tr>
+</table>
+<iframe name="Footer" src="footer.html" width="100%" height="55px" border="0" frameborder="0" scrolling="no" marginwidth="0px" hspace="0" vspace="0">
+</body>
+</html>

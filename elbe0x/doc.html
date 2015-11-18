@@ -1,0 +1,2990 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.6" />
+<title>Embedded Linux Build Environment (elbe)</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+@media screen {
+  body {
+    max-width: 50em; /* approximately 80 characters wide */
+    margin-left: 16em;
+  }
+
+  #toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+    margin: 0;
+    overflow: auto;
+    border-right: 3px solid #f8f8f8;
+    background-color: white;
+  }
+
+  #toc .toclevel1 {
+    margin-top: 0.5em;
+  }
+
+  #toc .toclevel2 {
+    margin-top: 0.25em;
+    display: list-item;
+    color: #aaaaaa;
+  }
+
+  #toctitle {
+    margin-top: 0.5em;
+  }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article" style="max-width:55em">
+<iframe name="Navigation" src="nav.html" width="100%" height="70px" border="0" frameborder="0" scrolling="no" marginheight="3px" marginwidth="0px" hspace="0" vspace="0">
+you need a browser with iframe support
+</iframe>
+<div id="header">
+<h1>Embedded Linux Build Environment (elbe)</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>Debian based system to generate root-filesystems for embedded devices.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_general_notes">General Notes</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Generally root-filesystem creation faces the following requirements:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Creation of root-filesystem for a specific architecture.
+</p>
+</li>
+<li>
+<p>
+Generation of a development environment for the specific architecture.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Trying to solve this via cross-compilation of the required packages,
+we face the following problems:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Many packages are not designed and tested for cross-compilation.
+</p>
+</li>
+<li>
+<p>
+Big projects consume a significant amount of time to cross compile.
+</p>
+</li>
+<li>
+<p>
+Dependencies are not resolved automatically. The developer is required to
+  manually find out which package versions of dependencies are required.
+</p>
+</li>
+<li>
+<p>
+Changes and patches to the packages need to be updated for newer versions.
+  This process makes an update a very time consuming process.
+</p>
+</li>
+<li>
+<p>
+One must make sure that the same toolchain is used in the development
+  environment and in the root-filesystem.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Elbe takes a different approach for solving these problems:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Standard packages are not self compiled.
+  Elbe uses the Debian distributions binary packages.
+</p>
+</li>
+<li>
+<p>
+Own applications are not cross compiled.
+  They are built natively on the target architecture in a virtual machine or
+  emulator (qemu-system-* or kvm is supported at the moment).
+</p>
+</li>
+<li>
+<p>
+The root-filesystem is a subset of of the Debian system on the virtual
+  development machine. This implicitly ensures, that the same toolchain is used
+  on the development machine and on the target.
+</p>
+</li>
+<li>
+<p>
+Updating, adding or removing a package is done via Debians package-management
+  (apt) which also resolves package dependencies.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation">Installation</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Elbe is shipped as Debian package. This package will pull in the necessary
+dependencies.</p></div>
+<div class="paragraph"><p>Configure <tt>/etc/apt/sources.list.d</tt> appropriately:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>echo 'deb http://debian.linutronix.de/elbe squeeze main' &gt;&gt; /etc/apt/sources.list</tt></pre>
+</div></div>
+<div class="paragraph"><p>and install elbe using the following command:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>aptitude install elbe</tt></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The Elbe system consists of the program <tt>elbe</tt> which is implemented
+in Python. Similar to git, it can be called with several sub commands.
+For example:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>elbe &lt;command&gt;
+elbe create --directory /scratch/example example.xml
+elbe chg_archive example.xml archive.tar.bz2</tt></pre>
+</div></div>
+<div class="paragraph"><p>An Elbe project consists of an xml file that describes the project.</p></div>
+<div class="paragraph"><p>The <em>elbe create</em> command generates a project directory, which contains the
+virtual hard disk image and a <em>Makefile</em> to create a buildimage and the
+root-filesystem.</p></div>
+<div class="paragraph"><p>During this process, <em>elbe create</em> will search the package repos mentioned in
+the xml files mirror section for the kinitrd package, that includes the
+debian-installer. You can use the packages provided by Linutronix from
+<a href="http://debian.linutronix.de/elbe">http://debian.linutronix.de/elbe</a> by adding this url to the mirror section.</p></div>
+<div class="paragraph"><p>After <em>elbe create</em> has generated the project directory, change to the
+project directory and run <em>make</em>.</p></div>
+<div class="paragraph"><p>This will start the root-filesystem generation process:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The initrd of the debian-installer is modified by elbe, so that it doesn&#8217;t ask
+  questions during installation.
+</p>
+</li>
+<li>
+<p>
+The target image generation is hooked into the install process
+</p>
+</li>
+<li>
+<p>
+An emulator starts the installation process
+</p>
+</li>
+<li>
+<p>
+A copy of the buildimage (installed by the debian-installer) is used as
+  target image. (There is a set of different modes for this copy)
+</p>
+</li>
+<li>
+<p>
+fine-tuning commands are applied to this copy.
+</p>
+</li>
+<li>
+<p>
+The archive is unpacked into the copy.
+</p>
+</li>
+<li>
+<p>
+According to what is specified in the xml file. The copy is then baked into a
+  tar archive or filesystem image.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>This diagram illustrates the complete process:</p></div>
+<div class="paragraph"><p><span class="image">
+<img alt="elbe-process.png" width="800" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAABSYAAAGoCAIAAADUxaynAAAABmJLR0QA/wD/AP+gvaeTAAAgAElE
+QVR4nOzdeyBUef8H8O8guU0Ii1wiEkVR1pIUPaktEoW2XW12E6Va2lw2bdlatdot5BHVVnTZlUrp
+op5dXdajm1LZUkouuUW5hSHlMr8/zvPMbx63pJk5M7xf/+w5Z845388xS/OZz/fCYLPZBACgX/z9
+/Xfu3El3FACDXWRkpL+/P91RAAAAQDfE6A4AAAAAAAAAYGCSoDsAABB5qLAB0AU9TQAAAIQcqtwA
+AAAAAAAAfIGUGwAAAAAAAIAvkHIDAAAAAAAA8AVSbgAAAAAAAAC+QMoNAAAAAAAAwBdIuQEAAAAA
+AAD4Aik3AAAAAAAAAF8g5QYAAAAAAADgC6TcADAAWVpa7tu3T9Rb6XR/wTwUAAAAAPAQUm4AGKTM
+zc0TEhI+5A4BAQGTJ0+mpWkAAAAAEAkSdAcAACAy3r59Kykpydl1dXWlMRgAAAAAEH6ocgMAnVgs
+lp+fn46OjpKSkqOjY3FxMXXc1NR0y5Yttra20tLSEyZMePTo0cGDB3V0dOTl5VeuXMlms6nTNDU1
+L168SG2XlZUxGIxXr151aiI6OtrIyIjJZGppaQUGBra2thJC/P39c3JygoOD9fX13dzcCCEvX778
+/PPP1dTU1NXVPT09a2trOZEEBwfb2toaGRmdPn2a+87cPb1NTU1DQkLs7e2NjY1NTEwyMjI4revq
+6iooKKiqqq5du7bbpruNEAAAAAAGAKTcAECnJUuWFBQUZGZmVlRUmJiYuLi4dHR0UC8dOHAgMjKy
+trZ2woQJTk5O6enp2dnZWVlZSUlJZ86c6XsTampq586da2hoSEtLS0lJiY2NJYRERUUZGxtv27Yt
+Pz//+PHjhBB3d/fXr18/fvw4JyensrJy8eLFnDskJycnJibm5uZSGXJPUlJSfv/995ycnICAAA8P
+D0JIXl5ecHDwhQsXXr16VVhYuHDhwm6b7jZCAAAAABgAkHIDAG3KyspOnjwZFxenqqoqKSkZFhb2
+9OnTnJwc6lUfHx8zMzNpaWkqLY+IiFBQUBg9erS9vX1WVlbfW3F3d9fT02MwGIaGhr6+vpcuXep6
+TmFhYXp6+s6dOxUUFJSUlHbs2HH+/PmKigrqVS8vL3V19Xc25O3traKiQghxcnIqKSl58eLFkCFD
+2Gz23bt36+vrZWVlLSws+h0hAAAAAIgipNwAQJuioiIGg2Fvb29oaGhoaDhu3DgZGRlOojtixAhq
+Q1ZWVlZWVkFBgbPb2NjY91ZSU1Pt7OxGjhw5cuTILVu2VFVVdT2ntLRUQkJCW1ub2tXT06MOUrsa
+Ghp9aUhZWZnakJaWJoQ0Njbq6uoePXr0wIEDGhoaVlZWqamp/Y4QAAAAAEQRpk8DANqMHDmSEJKR
+kUEVh/uByWS2tLRQ29XV1V1PqKqqcnZ2TklJmT17tpiYWFRU1NGjR6mXxMT+/ztHLS2ttra2srIy
+TU1NQkhhYSF1kHqVwWD0LzxCiLOzs7Oz85s3bxISEubPn19dXc1kMrmb7iVCAAAAABB1qHIDAG20
+tbXnzZvn5eVF1ZPr6uqOHTvW1tbW9ztMmjTp7NmzhJC2trYdO3Z0PYHFYnV0dJiamoqJidXU1HCv
+a62urv7kyRNqe9SoUVOnTv3222/r6+tra2sDAgJmz57dl87kvcvLy0tLS2tpaRk6dKiKigqDwRAX
+F+/UdC8RAgAAAICoQ8oNAHQ6dOiQgYGBra0tk8k0MzNLTU19r5Ly1q1b8/Lyxo0bZ2NjY25u3vUE
+XV3d8PBwOzs7a2trDw+PmTNncl4KCgpKSUlRVFS0t7cnhCQlJYmLixsYGIwdO1ZZWfnQoUMf/nQt
+LS0bNmxQU1MbPnx4WFhYcnKyjIxMp6Z7iRAAAAAARB2Ds9YOAMD78vf337lzZ2RkpL+/P92xAAxG
++B0EAAAQcqhyAwAAAAAAAPAFpk8DAAAAABA9DQ0Nt2/fpjsKAHgHpNwAAAAAAKInNzd3xowZdEcB
+AO+AlBsAAAAAQFQNGzas2wlEAYB2RUVFRUVFSLkBAAAAAESVoaHhpUuX6I4CALrxww8/bNq0CdOn
+AQAAAAAAAPAFUm4AAAAAAAAAvkDKDQAAAAAAAMAXSLkBAAAAAAAA+AIpNwAAAAAAAABfIOUGAAAA
+AAAA4Auk3AAAAAAA8A6Wlpb79u3jdyumpqZHjhx5r0u4A+spyMrKSgaDUV1d3cs5AHyClBsAAAAA
+AHjA3Nw8ISFBwI0GBARMnjyZf+cDfCAJugMAAAAAAIBB6u3bt5KSkh9yB1dXV76eD/CBUOUGAAAA
+ABg4WCyWn5+fjo6OkpKSo6NjcXExddzU1HTLli22trbS0tITJkx49OjRwYMHdXR05OXlV65cyWaz
+qdM0NTUvXrxIbZeVlTEYjFevXnVqIjo62sjIiMlkamlpBQYGtra2EkL8/f1zcnKCg4P19fXd3NwI
+IS9fvvz888/V1NTU1dU9PT1ra2s5kQQHB9va2hoZGZ0+fbrTzQsKCqZMmTJs2LCJEydeu3btnVH1
+1FG8oqLC0dFRUVHRwMDgwoULnOPc5/fxZ9Lt8xJCysvL58yZo6CgMGbMmAMHDnD6rvf0FsDghJQb
+AAAAAGDgWLJkSUFBQWZmZkVFhYmJiYuLS0dHB/XSgQMHIiMja2trJ0yY4OTklJ6enp2dnZWVlZSU
+dObMmb43oaamdu7cuYaGhrS0tJSUlNjYWEJIVFSUsbHxtm3b8vPzjx8/Tghxd3d//fr148ePc3Jy
+KisrFy9ezLlDcnJyYmJibm4ulZxz2717d3R0dF1dnZeX15w5c6gkth8WLlwoLy9fXl5+9erV+Pj4
+nk7ry8+k2+elHlBNTa2iouLatWvcQ9B7eQtgEELKDQAAAAAwQJSVlZ08eTIuLk5VVVVSUjIsLOzp
+06c5OTnUqz4+PmZmZtLS0lROGBERoaCgMHr0aHt7+6ysrL634u7urqenx2AwDA0NfX19L1261PWc
+wsLC9PT0nTt3KigoKCkp7dix4/z58xUVFdSrXl5e6urq3d586dKlEydOFBcX9/X11dLSOnny5Hv+
+DAghpKCgICMjIyIiQkZG5qOPPtq4cWNPZ/blZ9Lt8+bn51+/fn379u3S0tLKysqhoaHUyb2/BTAI
+YSw3AAAAAMAAUVRUxGAw7O3tOUdkZGQqKirGjx9PCBkxYgR1UFZWVlZWVkFBgbPb2NjY91ZSU1O3
+b99eWFhICGlqaho9enTXc0pLSyUkJLS1taldPT096iCVaWtoaPR0c11dXc62jo5OWVlZ3wPjKCsr
+k5OTU1VVpXb19fV7OrMvP5Nun7e8vFxOTm748OHUOSNHjqQ2en8LYBBCyg0Aosff33/nzp10RyFK
+IiMj/f396Y4CAAD4jkr8MjIyVFRU+ncHJpPZ0tJCbXfbqbuqqsrZ2TklJWX27NliYmJRUVFHjx6l
+XhIT+/8utFpaWm1tbWVlZZqamoQQKl/V0tKiXmUwGD0F8OzZM+5tJyenvkTViaamZlNTE4vFkpOT
+I4RUVla+85Ke9PS8GhoaLBartraWyro5A7Y//C2AAQYdywEAAAAABghtbe158+Z5eXmVlpYSQurq
+6o4dO9bW1tb3O0yaNOns2bOEkLa2th07dnQ9gcVidXR0mJqaiomJ1dTUcE9dpq6u/uTJE2p71KhR
+U6dO/fbbb+vr62trawMCAmbPnt1TZ3Ju+/fvz87Obm9v37NnT0lJiYuLS1+i6kRPT2/y5Mnh4eGE
+kPb29u3bt/fp4bvT0/Pq6+tbWVkFBAS8fv26urp606ZN1PEPfwtggEHKDQCiKjIykg3v4ufnR/cb
+BQAAAnXo0CEDAwNbW1smk2lmZpaamtpLSbmrrVu35uXljRs3zsbGxtzcvOsJurq64eHhdnZ21tbW
+Hh4eM2fO5LwUFBSUkpKiqKhIdatOSkoSFxc3MDAYO3assrLyoUOH+hKAj4/PqlWrFBUVd+/enZqa
+StWK3xlVV0lJSXfv3jUzM7OxsbG0tOzTw3enl+dNSkqqqKhQV1e3trZeuHAhIWTo0KHkg98CGGAY
+7P/OfQ8A8L6oDt6C77RMV7uiCD+rgQ3vL8BglpmZaWlpaWFhkZmZSXcsQC5fvuzq6spZCA2AEPLD
+Dz9s2rQJVW4AAAAAAID3dufOnby8PEJIeXn5+vXrFy1aRHdEIIwwfRoAAAAAAMB7q6ysdHV1raur
+YzKZc+fOpYaOA3SClBsAAAAAAOC9OTg4ODg40B0FCDt0LAcAAAAAAADgC6TcAAAAAAAAAHyBlBsA
+AAAAAACAL5ByAwAAAAAAAPAFUm4AAAAAAAAAvkDKDQAAAAAAAMAXSLkBAAAAAAAA+AIpNwDAu5ma
+mh45cqTv51taWu7bt6/rNgAAAAAMKki5AQD4KyAgYPLkyb2cYG5unpCQIKhwAAAAAEBwJOgOAABg
+gHN1daU7BAAAAACgB6rcAAD/z9TUdO3atTNmzLCwsPj444+vXbvW6YTm5uZ58+Y5ODiwWCxCSHl5
++Zw5cxQUFMaMGXPgwAEGg1FdXd3pEu6O5dHR0bq6ugoKCqqqqmvXriWE+Pv75+TkBAcH6+vru7m5
+8f8RAQAAAEBwUOUGAPgfp06dyszMVFFRSUtLc3BwyM/PV1ZWpl6qrKycO3euubl5TEyMuLg4IcTd
+3X3MmDEVFRVNTU3u7u693zkvLy84OPjevXuGhoZNTU0PHz4khERFRV29enXVqlWenp58fjIAAAAA
+EDRUuQEA/sfXX3+toqJCCLG3t9fX1z958iR1/OHDh1ZWVm5ubnFxcVS+nZ+ff/369e3bt0tLSysr
+K4eGhvZ+5yFDhrDZ7Lt379bX18vKylpYWPD7WQAAAACAXki5AQD+h7q6Ovd2WVkZtR0fHy8rK+vr
+68t5tby8XE5Obvjw4dTuyJEje7+zrq7u0aNHDxw4oKGhYWVllZqayuvYAQAAAEC4IOUGAPgf+fn5
+3NuamprUdnh4uImJib29fV1dHXVEQ0ODxWLV1tZSu8XFxe+8ubOz88WLF2tqajw9PefPn9/Y2EgI
+ERPDn2IAAACAgQmf8wAA/kd8fPydO3fa29tjYmLKy8tdXFyo4xISEr/99puxsbGdnd3Lly8JIfr6
++lZWVgEBAa9fv66urt60aVPvd87Ly0tLS2tpaRk6dKiKigqDwaA6qKurqz958oTfzwUAAAAAgoeU
+GwDgf6xYscLPz09RUXH//v2pqanUuG6KmJjYr7/+On369KlTp1IdzpOSkioqKtTV1a2trRcuXEgI
+GTp0aE93bmlp2bBhg5qa2vDhw8PCwpKTk2VkZAghQUFBKSkpioqK9vb2/H8+AAAAABAczFgOAPA/
+9PT0uk6Elp2dzdmOiIiIiIigtrW0tC5cuEBtX758WVFRkclkEkJu3rzJOZ+zPX78eO7jHNbW1rm5
+ubx7AgAAAAAQFqhyAwD03507d/Ly8ggh5eXl69evX7RoEd0RAQAAAIAQQZUbAKD/KisrXV1d6+rq
+mEzm3Llzw8PD6Y4IAAAAAIQIUm4AgP/H3YG8LxwcHBwcHPgUDAAAAACIOnQsBwAAAAAAAOALpNwA
+AAAAAAAAfIGUGwAAAAAAAIAvkHIDAAAAAAAA8AVSbgAAAAAAAAC+QMoNAAAAAAAAwBdIuQEAAAAA
+AAD4Aik3AAAAAAAAAF8g5QYAAAAAAADgC6TcAAAAAAAAAHwhQXcAAAD9tGbNmjVr1tAdBQAAAABA
+j1DlBgAAAAAAAOALpNwAIHqioqLYwsfT05MQcuDAAboD6Ya/vz/dbxoAAADAYISUGwCAN16/fk0I
+kZaWpjsQAAAAABAWSLkBAHiDSrllZGToDgQAAAAAhAVSbgAA3mhubiaocgMAAAAAF6TcAAC8gSo3
+AAAAAHSClBsAgDdQ5QYAAACATpByAwDwBqZPAwAAAIBOkHIDAPAGVeVGx3IAAAAA4EDKDQDAG6hy
+AwAAAEAnSLkBAHgD06cBAAAAQCdIuQEAeANVbgAAAADoBCk3AAAPvHnzpr29XVJSUlxcnO5YAAAA
+AEBYIOUGAOABlLgBAAAAoCuk3AAAPIDpygEAAACgK6TcAAA8gCo3AAAAAHSFlBsAgAcwXTkAAAAA
+dIWUGwCAB6iO5ahyAwAAAAA3pNwAADyAKjcAAAAAdIWUGwCAB1DlBgAAAICukHIDAPAApk8DAAAA
+gK6QcgMA8AAWCQMAAACAriR8fX3pjqGfYmNj6Q5BtD148CAuLo7uKARt/Pjxy5cvpzsKGIBQ5QYA
+AACAriREN+lCyv2Bnj17Jrrvfr85Ojoi5QZ+wPRpAAAAANCVBPWfXbt20RvHe1m5ciXdIQwcJiYm
+gyQFffDgwe7du+mOAgYsTJ8GAAAAAF39J+UWre7lSLl5aOTIkaL17vfb2bNnkXIDr7S2tg4ZMoT7
+CDqWAwAAAEBXmD4NAOC9JSQkbN26lapsU7rtWP78+fMbN24IOjgAAAAAEBpIuQEA3tvChQt//vnn
+MWPGxMfHd3R0kC4dyx89evT1118bGRlpaGjQGSgAAAAA0AopNwDAexs2bNiyZcvKysq+/vprU1PT
+f/3rX5yO5VevXnVycjI2No6Pj1++fLm2tjbdwQIAAAAAbZByAwg1U1PTI0eO0B0FdMPPz48azv3g
+wYPZs2enpqYSQrZt22ZjY3P27Fk2mz18+PB169bRHSYAAAAA0AkpNwBAf2hqan722Wec3RcvXhBC
+nj59yjmyfv16BQUFGiIDAAAAAKGBlBsAoJ8CAgIYDEa3L+nq6mJtBQAAAABAyg3AX6amplu2bLG1
+tZWWlp4wYcKjR48OHjyoo6MjLy+/cuVKNptNnRYdHW1kZMRkMrW0tAIDA1tbWzvdp7m5ed68eQ4O
+DiwWixDCYrH8/Px0dHSUlJQcHR2Li4sF/WBAyPjx42fPnt3tS+Hh4UOHDhVwPAAAAAAgbJByA/Dd
+gQMHIiMja2trJ0yY4OTklJ6enp2dnZWVlZSUdObMGeocNTW1c+fONTQ0pKWlpaSkxMbGct+hsrJy
+2rRpI0aMOHPmjJycHCFkyZIlBQUFmZmZFRUVJiYmLi4u1LzZIGABAQFdD06ePNnNzU3wwQAAAACA
+sEHKDcB3Pj4+ZmZm0tLSVJ4cERGhoKAwevRoe3v7rKws6hx3d3c9PT0Gg2FoaOjr63vp0iXO5Q8f
+PrSysnJzc4uLixMXFyeElJWVnTx5Mi4uTlVVVVJSMiws7OnTpzk5OfQ83uBmZ2dnYWHR6WB4eHhP
+Hc4BAAAAYFCRoDsAgIFvxIgR1IasrKysrCxnSi1ZWdnGxkZqOzU1dfv27YWFhYSQpqam0aNHcy6P
+j49XVlb29fXlHCkqKmIwGPb29pwjMjIyFRUV48eP5/ezQFdr1qxZtGgRZ9fJycnGxobGeAAAAABA
+eKDK/R+Wlpb79u2jtrEsEwhYVVWVs7NzQEBAUVFRcXHx999/zxnjTQgJDw83MTGxt7evq6ujjowc
+OZIQkpGR8fi/Xrx4MWvWLHqiH/QWLFigpaVFbYuLi4eFhdEbDwAAAAAID6TcIsDc3DwhIYHuKICP
+WCxWR0eHqampmJhYTU0N59sfioSExG+//WZsbGxnZ/fy5UtCiLa29rx587y8vEpLSwkhdXV1x44d
+a2troyf6QW/IkCF+fn7U9pdffmliYkJvPAAAAAAgPJByC9rbt2/pDgGEjq6ubnh4uJ2dnbW1tYeH
+x8yZMzudICYm9uuvv06fPn3q1KllZWWEkEOHDhkYGNja2jKZTDMzs9TUVAweptGyZcvk5eWlpaU3
+b95MdywAAAAAIEToTLm5+3ILTB+XViooKJgyZcqwYcMmTpx47dq1vl/b0NDg5+enq6vLZDKNjY0z
+MzMJIaampsHBwba2tkZGRqdPn+7pPt0uE+Xv75+TkxMcHKyvr0/NgTwAVoei5a2nS3Z2toeHB7Vt
+aWlJLfFF2bdvX1RUFLUdGBiYl5d37dq1CxcuRERE3Lx5s+vlERERjx8/1tTUJIQwmcxffvmloKCg
+sbHx2bNnBw8epGZWA4Gpq6u7c+fOxYsXT548efr06cmTJ//jH/9IT09PSUm5ePHi33//zRmoDwAA
+AACD1qCbPm3JkiVv3rzJzMxUVFQMDQ11cXHJysoSE+v81cPu3btTU1MnTJiwZ8+eOXPmFBQUKCsr
+9+XaxYsXs1isv/76S1tb++nTpxIS//kJJycnZ2RkqKurE0IWLFjQ7X2oZaJGjRr15MmTuXPnampq
++vn5RUVFXb16ddWqVZ6enu/1CMIsICBg7Nix/bjQ3Nyc+0cBIDAdHR0PHz7897//fe3atSdPnhQW
+Fr569arraefOnePeVVZWHjVq1NixY21sbKZMmWJgYCCoeAEAAABAKAyulJtaWqmkpERVVZUQEhYW
+FhMTk5OT03We56VLl06cOJEQ4uvrGxsbe/LkyTlz5rzz2pKSkjNnzuTn51OzW3F/vPby8qLy7V5i
+cHd3p07mLBPFGSDaj0eg3du3byUlJbt9ydXVVcDBAPTPq1evzp07d+rUqStXrnCmr6NIS0vr6emp
+qanJycnJycnJyMgQQlgsFovFampqKi8vLyoqqq6urq6uvnXrFjUdg6qqqr29vYuLy6effkqdDwAA
+AAADW/9T7oqKClNT0x07dlC9Xj09PYuLiy9evCguLm5qaurm5paWlpaZmWlgYJCYmHj79u3Q0NC6
+ujoPD4+YmBi6Bp32fWklXV1dzraOjk5ZWVlfrn327JmEhISenl7XpjU0NN4ZQy/LRPXjEfjK1NT0
+H//4x99//93Q0MBms6Oioqytranjs2bNyszMfPHixebNm6dNm+bv73/58mUGgzFr1qyIiIjhw4cT
+QiwtLb28vLy8vAghLBZr/fr1p0+fbmxstLKy2rVrF/WFRUNDw4YNG86cOVNdXT1y5Mj9+/cnJiZS
+fezDwsLMzMyOHz8uyEeGQaW1tfXEiRMJCQlXrlyhhnhQS6ZbWFhYWFiMHz9eT0+Ps/ZbTzo6OsrK
+ygoKCrKzs2/dupWZmVlUVHTkyJEjR47IyMjMmjVr6dKls2fPFq0uKgAAAADwXvqfcqurq//2228L
+FiyYNGlSZmbmv/71r+zsbM5o0gMHDpw4ccLQ0NDHx8fJyWnq1KnZ2dlVVVVWVlYzZ86cN28ej+J/
+P5yllVRUVHo/89mzZ9zbTk5OfblWR0enra2tsLBw1KhRnV7ifMvQ032oZaJSUlKoj+BRUVFHjx6l
+XuL+RN73R+C3U6dOZWZmqqiopKWlOTg45OfnKysrk//tQm9ra6uoqPj48eP29vYvvvhi8eLFqamp
+ne7TUz/5rl30u/axB+C5Fy9e7N27Ny4urqKighAiKSnp6Ojo5uY2d+5cRUXF97qVmJiYtra2tra2
+nZ0ddaSysjIlJeX48ePp6emnTp06deqUvr7+ypUrv/rqK3l5ed4/DADwWWlpaX19Pd1RCJq2tvaw
+YcPojgIAQNSw+ys0NHT06NFMJvPSpUucgxMmTNi2bRu1ffHiRUJIXV0dtfvZZ59Raw6z2exPPvnk
+119/7UejHxKzs7Ozk5NTSUkJm82ura1NSkpqbW3tFMyECRPU1dXv3bvX1ta2e/duJpP58uXLXq7l
+5ujoOGPGjJKSko6OjidPnhQUFFA3PHz4cO8xFBYWiomJlZWVsdns6urqcePGffLJJ9T5Tk5O3333
+3Tsf4X2dOXOGEOLo6NiPaydMmPDjjz9ydidNmrRnzx7q+E8//UQdLCgoIIQUFxdTuzk5OYSQ58+f
+s7l+2tQaV9SzsNnstrY2OTm5v//+m5oTLj8/v1O7kyZNio+P70fA7A97XugJNfYhMjKS7kB4oKam
+JjAwUFpamvoLM378+L1793L+dvHWixcvIiIiOD1iFBQUtm7d2tTUxI+2YGAbSL+DosjFxUWgH9eE
+Q3JyMt0/ePgParJVCwsLugMBgO6FhoaSDx/LvXz58p9++snS0nL69OncxzldLmVlZWVlZRUUFDi7
+9M7ie+jQoc2bN9va2r58+VJJSWnatGkLFizoepqPj8+qVavu37+vp6eXmppKlZT7cu2RI0dCQkKs
+ra3r6up0dHT279/fteLd7X04y0SpqKgMGzZs5syZ169fp84PCgry8vLavXu3ubl5WlpaHx+B36g6
+NmebWrmKcHWhLy0tlZCQ0NbWpnap7KK0tJT7wp76yb969aqnLvogAB0dHatXr/70008dHR0Hw9pj
+LS0tkZGRP//886tXrxgMxvz587/55ptp06bxr8WPPvpozZo1fn5+qampUVFRly9fDgkJiYmJ2bhx
+o5eXFyafBxAtWlpag6TqW1pa2tDQQHcUAAAi5oNS7o6Oji+//NLR0fHGjRsHDhz4+uuveRUW/1BL
+K/3yyy+djnPWZCKEZGdnE0Ko7yT6ci03eXn5Xbt27dq1i/sgdcN33icwMDAwMLDrPa2trXNzc/se
+xsmTJ3V0dKjp3/gnPz+fe3vu3LnUNidD09LSamtrKysroxa1osaoa2lpcd+kp37yJSUl3XbRx6hX
+wRATE7O1tXVycrKxsfn++++7rhM+kFy8eHHZsmXUWBI3N7fNmzcbGhoKpmkxMbG5c+fOnTs3MzMz
+ODg4PT19+fLlsbGx+/fvNzc3F0wMAPDhoqKi5s+fT3cUgjB//vxTp07RHQUAgIj5oAQmLCysrKzs
+0KFDiYmJ1PLRvAoLPoSZmZmVlZWzs/O9e/f410p8fPydO3fa29tjYmLKy8u7dq4bNWrU1KlTv/32
+2/r6+tra2oCAgNmzZ3OXuAkh2tra8+bN8/LyonqY19XVHTt2rK2tTVtb29HR0cfHp7S0lM1m5+Xl
+URm7urr6kydP+PdQwOHq6mpmZpaRkTFr1qxPPvnk7Nmz7P+O6Rgwmpub/fz8Zs2a9ezZM0NDwz//
+/PPYsWMCy7e5ffLJJ1euXElKStLQ0Lh///6UKVO2bNnS1tYm+EgAAAAAgHfSpl4AACAASURBVLf6
+n3Jfvnx5+/btx48fl5WVnTZtWlBQkJubW1NTEw+Dg/7R1dX98ssvT58+PWnSJBcXl041dl5ZsWKF
+n5+foqLi/v37OX3vO0lKShIXFzcwMBg7dqyysvKhQ4e6nnPo0CEDAwNbW1smk2lmZpaamkrVyY8c
+OWJgYGBtbT1s2LAFCxZUV1cTQoKCglJSUhQVFbn7ogM/MBiMzZs3U9u3bt1ycnKiZonv6OigNzBe
+yc3NNTMzi46OlpSUDA8Pf/DgAb3/UzEYDHd396dPnwYHB7e1tX3//fe2trbUFG4AAAAAIPLoHlj+
+fkQxZgErKioaMmQI9YNiMBhU4t3pnA+cPo17Qrj3ZW5ufvDgwX5f3j+YPq0frKysOv2tMDIyOnz4
+MGfGPhGduiktLU1JSYkQYmhoeP/+fbrD6eyvv/6ipsPQ0dG5e/cu3eGAUBPR38EBg+rhNXimExts
+zyv8MH0agJDjzfRpIJx0dHQ8PT1//fVXQgibzT516lRKSoqLi0toaKiAV/Duqr6+vqioCFOjiYSf
+f/7ZxsaG+0hubu7ixYtDQkLWrl27bNkyugL7EAcPHvTy8mpra5szZ87vv/8uhKtzTZs27fbt2y4u
+Lrdu3ZoyZcqpU6cG9nB6Qsjz58/pDoFnZGVlhfB/KoDBydTUNCAgwMPDg+5AAGBQQ8o9YG3YsOHQ
+oUNv3ryhdtls9smTJ0+ePDljxowtW7ZYWFjQEtWNGzdmz569YMECa2trWgIQpFevXrG5xj+zWKzW
+1lbO7uvXr1taWji7ra2tLBaLs9vR0dFprdf6+nruTt0Cu5u0tPTr1687PVppaam/v39ERETXCfmF
+3P79+729vTs6OtauXbtt2zahnRt8xIgR6enpXl5ev/3227x585KTk+fMmUN3UPzS2trKWelgAPD1
+9e00gyYAAAAMZiKccvv6+tIdgrDT09N79OhRp4MXL168fPny/PnzP2QNpH6PD7eysnr16lW/2/1w
+9+/f9/Hxoba7JqK8TZIHvLq6uubmZrqjeA979uxZsWIFm80ODw8PDg6mO5x3kJKSOnz4sIKCwq5d
+u+bPn3/ixAlHR0e6g+KvTtMripzm5ubB9kcAYJB4+/atpKQk3VEAgKgS4ZQ7Li6O7hBEVUdHx4kT
+J86fP093IDQoKSnZu3evYNqSl5fnXtVMTk6OM8CeECIlJSUtLc3ZHTJkiJycHGdXTEysU9/UD7kb
+g8FQUFDox93Ky8unT5/edepseXn5devW+fr6btiw4datWz3/DIRIYmLiihUrxMXF4+PjRaWTIYPB
+iImJ0dLS+u6779zc3C5dujR58mS6g+IXCQkJUe9evmvXrlWrVtEdBcCAYmpq6ubmlpaWlpmZaWBg
+kJiYePv27dDQ0Lq6Og8Pj5iYGGrK1ejo6Li4uLKyMgUFhc8++2zr1q3c/6gRQpqbmxctWtTW1paU
+lCQnJ8disdavX3/69OnGxkYrK6tdu3ZRq5Z2anrWrFmZmZkvXrzYvHnzmjVrEhISZsyYQQgpKyvT
+0tKqq6uj/m01NTWdM2fO7du3KyoqGAxGbGxspzFZADDIiXDKLeQ992JjY01NTen9fBwXF9ftym1M
+JnPVqlXjxo0TlcSDh8aPH79y5Upqm7dpbde7DQC7du3qlG8PHTrU29t73bp1olWQzM7O9vb2purb
+Ive/fXBwcFlZWUxMjKura2ZmZqfF7QEABrYDBw6cOHHC0NDQx8fHyclp6tSp2dnZVVVVVlZWM2fO
+nDdvHiFETU3t3Llzo0aNevLkydy5czU1NamZBSmVlZVz5841NzePiYmhxhMtWbLkzZs3mZmZioqK
+oaGhLi4uWVlZ3B8AKMnJyRkZGdS/d2vWrOklyJSUlPT0dBUVlYMHD3p4eBQXF/P+BwEAIosHKXdj
+Y+Nnn312/fp1IyOj6OjoKVOmUJ1vLS0tvby8vLy8PryJbglzx/KsrKxVq1a9ffs2ISFBQoKe7zWu
+Xr3aNd8ePnx4UFDQypUr5eTkzp49K+CQKisr1dXVq6qqlJWV+f2/R0+0tbW9vb0F3KiIqqioiI2N
+5exKS0t/8803a9eu7XZBOGFWVVXl5OTEYrGWLl26du1ausPpj8jIyKdPn/7xxx9OTk43btyQkpKi
+OyIAAAHx8fExMzMjhCxZsuTw4cNZWVkKCgoKCgr29vZZWVlUyu3u7k6dbGho6Ovre+nSJU7K/fDh
+ww0bNqxYsSIoKIg6UlZWdvLkyZKSElVVVUJIWFhYTExMTk5O1/llvby8+vj9sre3N/WPo5OTk6en
+54sXL6ibAwAQnqTc8fHxTU1N1dXV4uLiL1++3L59+4ffU9SFhoay2eynT58mJiYuXryYlhjCw8O5
+d4cNG/bNN9+sWbNm+PDhtMTTSUBAwNixY+mOAnoTExNDfX0mLi7+xRdfbNy4UUTnmffx8SktLZ02
+bZrojkaRkJBISkqysrLKzs4OCQmJiIigOyIAAAGhFk0khMjKysrKynLGScnKyjY2NlLbqamp27dv
+LywsJIQ0NTWNHj2ac3l8fLyysjJ3naaoqIjBYNjb23OOyMjIVFRUdE25+z6zo7KyMrVB9YZrbGxE
+yg0AHJ270PRDYWGhoaEh1VHno48+wki2mzdvcoZJb9mypb29XfAx3L59OzU1ldqWl5ffsGFDUVHR
+jz/+KCT5NiHE1dW125T77du3gg8Gunr16tWuXbvExMTc3d1zcnIOHjwoovn2r7/+eurUKSUlpcTE
+xE5D+0SLvLz8iRMnpKSkoqKiLly4QHc4AADCoqqqytnZOSAgoKioqLi4+Pvvv+eeCTU8PNzExMTe
+3r6uro46Qg3bzsjIePxfL168mDVrVtc7UwPFKUwmkzOFanV1NR+fBwAGnA9Nub29vRMSEhITE/X1
+9fX19bW0tLrt8chisfz8/HR0dJSUlBwdHQf2EJeQkBDO9pMnT3777TfBx7Bp0yZCiLy8/MaNG4uK
+ijZv3kxXsl1RUeHo6KioqGhgYMCdJ1haWu7bt4/aNjU1DQ4OtrW1NTIyOn36NC1xQic7d+5cuHBh
+fn5+UlKSoaEh3eH0U3l5eWBgICEkMjJStAafd2vs2LHr1q1js9krVqxoamqiOxwAAKHAYrE6OjpM
+TU3FxMRqamo4ny4oEhISv/32m7GxsZ2d3cuXLwkh2tra8+bN8/LyKi0tJYTU1dUdO3as60ShnUya
+NIkakdfW1rZjxw6+PQ0ADEAfmnLv3bvXw8Nj0aJF+fn5+fn5p06d6va0JUuWFBQUZGZmVlRUmJiY
+uLi4cK8JPJBcuXLlypUr3Ed+/PHHd/4d562MjIw7d+5ERUWVl5dv2rRJUVFRkK13snDhQnl5+fLy
+8qtXr8bHx/d0WnJycmJiYm5urpubmyDDg554eHjs2bNHV1eX7kA+SGhoaH19vZOTE13jO3guJCTE
+zMysuLg4MjKS7lgAAISCrq5ueHi4nZ2dtbW1h4fHzJkzO50gJib266+/Tp8+ferUqWVlZYSQQ4cO
+GRgY2NraMplMMzOz1NRU7oJ2t7Zu3ZqXlzdu3DgbGxtzc3N+PQwADESCmNmr79NUDAAbNmzodISq
+E37xxReCDCM3N7fTolC0KCgoyMjIqKyslJGRkZGR2bhxI/fQKW59n6EEBENEu5Fzu3fvXnx8/NCh
+Q3fu3El3LDwjISERGxs7efLkbdu2LV26FL81ADCwZWdnc7YtLS1ZLBZnl7uaHRgYSPVp6uXyiIgI
+zkQYTCbzl19++eWXX/rYNCFEW1ubu6bCPSM695lSUlLc3doBAAhPxnK/E2eaCkNDQ0NDw3HjxlHT
+VAigaQFLS0u7du1a1+NhYWGCrOrb2NgIQ75NCCkrK5OTk+PMIKKvr9/TmX2foQSgjzZt2tTR0eHl
+5aWjo0N3LLxkaWk5Z84cFovVaYpEABhUuMdnAQCAMBNEyt33aSpE3Y8//tjt8cePH588eVLAwQgD
+TU3NpqYmznfSlZWVPZ35zg5dAO8lLy/vzJkzMjIyXTue9FFlZSWDweh9jhxTU9MjR450Pc7vj8Lh
+4eEMBmP//v2vXr3iXysAIMwCAgImT57cjwvNzc0TEhJ4HQ4AAPRIECl3/6apEDlpaWkZGRk9vfrj
+jz8Owo5Genp6kydPpmpx7e3tWEAOBCYmJobNZn/55Ze0LNPS74/CfWRsbPzpp582NTXt37+ff60A
+AO16WcWjp4U/AABA2Agi5Sb9mqZC5ISGhnK2qTUkVVRUJCT+M1r+/v37KSkp9ERGq6SkpLt375qZ
+mdnY2FhaWtIdDgwKjY2NCQkJDAZj9erVtAQggI/C1BqzcXFxA3UqSoABz9TUdO3atTNmzLCwsPj4
+4485A9M6reLx8uXLzz//XE1NTV1d3dPTs7a2ljqNuzdNT+vCNDQ0+Pn56erqMplMY2PjzMxMf3//
+nJyc4OBgfX19zFcKACAYPEi5Y2Jidu/eTW2bm5tzFi28efOml5cXtU1NU1FQUNDY2Pjs2bODBw9S
+63gPGBcuXLhx4wYhRF9f/8CBA0ePHqW2c3Nzv/zyS+phB2ehW0ND4/z58/fu3bt+/XpAQACbzVZW
+Vib/+79Hdna2h4cHrWHCgHL+/PnGxkYrK6v3zXt7WtOul2UOCwoKpkyZMmzYsIkTJ3I+MXN/FI6O
+jjYyMmIymVpaWoGBga2trdRxU1PTkJAQe3t7Y2NjExOTXvrIdGv27NlaWloFBQW3b99+rwsBQHic
+OnUqMTHx1q1bW7dudXBw4Ixk4V7Fw93d/fXr148fP87JyamsrOx2/YWe1oVZvHhxTk7OX3/91dDQ
+cPLkSRUVlaioKGNj423btuXn5x8/flygTwsAMFgJqMo9sLHZ7I0bN44ZM+bgwYO5ublfffUVlWMz
+GAx9ff2DBw8+evTIw8Pj/v371IqOAMBX1C+au7v7+17Y05p2vSxzuHv37ujo6Lq6Oi8vrzlz5nQd
++62mpnbu3LmGhoa0tLSUlJTY2FjOSykpKb///ntOTk5AQMD7fuskLi6+YMECzsMCgCj6+uuvVVRU
+CCH29vb6+vqcaV84q3gUFhamp6fv3LlTQUFBSUlpx44d58+f7zQBLbUuTFxcnKqqqqSkZFhY2NOn
+T3NyckpKSs6cObN3796RI0cyGAwDA4NRo0YJ/hkBAAApNw88fvx4zZo1Dx8+/PLLL6me5NTHcTGx
+//x4DQwMDh8+nJOTk5+fT2egAINAe3s7VaCeO3fue11IrWkXEREhIyPz0Ucfbdy4kTre08dZ6tWl
+S5dOnDhRXFzc19dXS0ur60SJ7u7uenp6DAbD0NDQ19f30qVLnJe8vb2pT9tOTk4lJSUvXrx4r4Ad
+HBwIIefOnXuvqwDgnVpaWpqbmwXQEPc6f+rq6tSS0YRrFY/S0lIJCQltbW1ql1q+kZoZh6OndWGe
+PXsmISExAFZ8HJzS0tI4/9AAgKgTxLrcA56RkZGRkRH3EaoDeafx6tS/hQKNDGDwuXv3bm1trb6+
+/vvWc3pa047zcZZzJvVxdvz48YQQXV1dznEdHR3OJ2aO1NTU7du3FxYWEkKamppGjx7NeYkaZEEI
+kZaWJoQ0Nja+12RvNjY2srKy9+/ff/HiBS2zxAEMVFJSUjNnzpw4cWJwcLCioiL/GuL+Ij4/P5/z
+RSHn84OWllZbW1tZWZmmpiYhhPpLoqWlxX0Tzrow1Fd4HCUlJW1tbYWFhZ3+GHLqASDMxo8fP2rU
+qMmTJ2/ZssXCwoLucADgg+DPLl90qnIDgMDcu3ePEDJlypT3vbCnNe16X+bw2bNnnDs8e/aM+ljM
+UVVV5ezsHBAQUFRUVFxc/P333/NwQoehQ4daWFiw2ezs7Gxe3ZO38vLywsLCGhsb6Q4E4L2tXr16
+27ZtBgYGP/30U0NDA59aiY+Pv3PnTnt7e0xMTHl5uYuLS6cTRo0aNXXq1G+//ba+vr62tjYgIGD2
+7NnctXHS87ow2trajo6OPj4+paWlbDY7Ly+PytjV1dWfPHnCpycCXlFVVV22bNnFixctLS1dXV3/
+/vtvuiMCgP5DTsgX3Va5AUAAqJ54JiYm73thT2va9b7M4f79+7Ozs9vb2/fs2VNSUtLpEzOLxero
+6DA1NRUTE6upqeH5Yt1Upf3Bgwe8vS2vGBgYZGRk6OrqhoeHc77L4JWGhoY5c+YoKSn1cT02fi+W
+DgOMo6OjhYVFdXV1SEiIrq7u5s2bX716xfNWVqxY4efnp6iouH///tTU1E5lakpSUpK4uLiBgcHY
+sWOVlZUPHTrU9Zye1oU5cuSIgYGBtbX1sGHDFixYQE02ERQUlJKSoqioyN15B4RQcHCwtLQ0m81O
+Tk42MzObP3++0H7BCgC9Q8rNF6hyA9CFSrmNjY37cW1Pa9r1ssyhj4/PqlWrFBUVd+/e3fUTM5Vt
+2tnZWVtbe3h4zJw58wOerBvjxo0jhDx8+JC3t+WhDRs21NTUrFu3btSoUTt27ODh+Nj4+Pjm5uaX
+L19ev369L+fze7F0GGAYDMbWrVup7dra2tDQUE1NTT8/v+fPn/OwFT09vatXrzY0NNy7d8/GxoY6
+2GkVDzU1tcTExBcvXlRWVh46dIgzIKW9vV1SUpLa7mldGHl5+V27dpWUlDQ2Nj548IDqn2xtbZ2b
+m1tXV5eWlsbDZwGeU1dXX758ObXNZrNPnTo1ceJEZ2dnqjMXAIgQjOXmC1S5AehC9Zw0MDDox7XU
+mnac3YCAAGqD+jj7yy+/dDqfKjiEhoZ2On7z5k3OdmBgYGBgYNe2uIsVUlJS/etwTj0m9cjCacqU
+KXZ2dleuXKmqqgoICNi+fft3333n4+MjJSX1Ibd9+/ZtUVGRoaFh39ebdHV1/ZAWYRD6xz/+YW1t
+zVn8r6mpKTo6Oj4+3tfXd+3atd1WpAWmvr6+qKgIU6MNeCEhIfv27eMMz2Gz2adPnz59+rS1tfXm
+zZunT59Ob3gA0EdIufkCVW4AulCdP/k645HwGD58OCGkrq6O7kB6s2HDhitXrlDblZWV/v7+v/zy
+y7p167y8vIYOHdr3+5iams6aNSszM5Mq97HZbDabffHixZUrV65ZsyY6OjoyMrKurm7o0KEeHh47
+duzodLmlpaWXl5eXlxd1Kzc3t7S0tMzMTAMDg8TExNu3b4eGhtbV1Xl4eMTExFBfmJaXly9btuz6
+9euqqqrBwcFLly6tqqri1BhhQHr9+nVLSwtnNzAwkJNyUxobG7dt2/bPf/5z+fLl3X6bJgA3btyY
+PXv2ggULrK2taQmgoKDgzp07/bu2vr6es8ji++ro6Kivr+/ftYSQ1tbWDxnh0un/jffV2NjIGZH0
+XoyMjG7dutXp4LVr12bMmOHg4DB//vx+hwQAAoOUmy9Q5QagBZvNbmxsZDAYTCaT7lgEQV5enhDy
+IZ9BBcDOzs7W1vavv/7iHCkvL1+1atWmTZvWrl37zTffUGsr9kVycnJGRgY1d9SqVava2tp2795N
+CMnLywsODr53756hoWFTU1NfetofOHDgxIkThoaGPj4+Tk5OU6dOzc7OrqqqsrKymjlz5rx58wgh
+7u7uY8aMqaioaGpq6scy7/z29u3bpqamN2/eEEKam5upb166zQr4cVCQbfEpqg/R3NwcERERFxc3
+YsSIft+k3+Nyrays+DGwvO+CgoJobB0obDb73Llzf/75J92BAMC7IeXmC1S5AWhBTVfGZDIHyW/f
+sGHDCCElJSW9f8HHZDJ7T2ulpaV77+ktISHxzm8xeulZ0O2XAlVVVd99993u3btDQkJ6vzOHl5dX
+p7maKUOGDGGz2Xfv3lVXV5eXl+/Lgjo+Pj5mZmaEkCVLlhw+fDgrK0tBQUFBQcHe3j4rK2vevHn5
++fnXr18/e/astLS0tLR0aGgop1bfuz/++KNTft5tba29vb3bebC77bPQbWGQu2i2fv369evX9yU8
+6F3X34WGhob29vZuTzY3NyeEFBQUCCIyYaKnp6egoNC/a+Xl5fv991lMTIz6nrF/hgwZIicn1+/L
+3/l3sndycnJDhgzpx4VnzpzpdsaKoUOHenl5zZo1y8nJqd9RAYBgIOXmC1S5AWhBfZLrd69FkdPH
+EeDvXKaLxq7pz549W7VqVR9P1tDQ6Pa4rq7u0aNHY2JivL29TUxMvv/+ewcHh95vxSlOysrKysrK
+cvIHWVlZ6sdVXl4uJydHdd0n/10rri8KCgoEk4NJSkoqKio2Nze/efNGRkaG6qUvJSVFLfPOjR8H
+BdkWn6Lqi5SUlK4LdxFCZsyYsXnzZisrq8HZrffnn38enA8ueM+ePduwYUOngzIyMqtXrw4ICFBW
+Vs7MzKQlMAB4L0i5+QJVbgBayMjISEhINDc3t7W19b27suiiqse6urq9z6D2zjGE7+x225cxkL3k
+7ceOHfv111+7HpeUlPzqq68CAwP19fV7vzmll+8xnZ2dnZ2d37x5k5CQMH/+/Orq6g8cXKChocFi
+sWpra6msu7i4uI8Xzpo1a+nSpdxHuq2t9VSv67azQLeFQapo5u/vv3Pnzi1btvj7+/cxQui7n376
+qdMRc3PzTZs2zZkzh5Z4CCGVlZXq6urUtALcMxTAgBQREdHa2srZlZSU/Prrr9etW6etrU1jVADw
+vgb+R1JaoMoNQAsGgzFs2LDa2trGxsZ+z6DG70+x3Pf/wLaolPudPS0/pE/4h3v16pWbm1ung1SV
+hpr2mfsDZf/k5eUVFxfb2NhISUmpqKgwGAxqJvPjx4/X1dV5e3v34576+vpWVlYBAQG7du1qamra
+tGlTHy/U09Pr+rwgis6dO8c9bdW0adPCwsKmTJlCY0idBAQEjB07lu4ogF+eP3++d+9ealtSUtLT
+0zMkJKTvPW4AQHigDMsXqHID0IXKHmtqavp9h34v4Gxubp6QkNDvdvuhurqaCP307HFxcdxTPUlJ
+Sa1cufLJkyfh4eG8WmappaVlw4YNampqw4cPDwsLS05OlpGRIYT88ccfx44d6/dtk5KSKioq1NXV
+ra2tFy5cSAh5rynWQdRxStzGxsYnTpy4cuWKUOXbhBBXV9duU+63b98KPhjguW3btr1582bIkCHL
+li178uTJnj17kG8DiChUufkCVW4AuowZM6agoODhw4d97KvclQgt4ExNzW1oaEh3ID1qaGjYvn07
+tS0lJbVs2bLg4OCehmT3rtP0zjExMZzt8ePHc6+FzrFv3z7ONvcJ3LeytLTk7jPPfYmWltaFCxeo
+7cuXLysqKg6SmfCBEHLp0qXr168bGRmFhoa6ubnR+x16RUXFsmXLrl27pqKism7dOs7xTkvfcVbR
+27x5M7paiLri4uKEhITg4OBvv/32o48+ojscAPggKMPyBarcAHQZN24cISQnJ6ffd7C0tOTkXaam
+piEhIfb29sbGxiYmJhkZGdTx6OhoXV1dBQUFVVXVtWvXEkL8/f1zcnKCg4P19fWpD7vR0dFGRkZM
+JlNLSyswMPDDu093RaXc1CMLp507d9bW1kpLS/v5+RUWFkZHR/cv36bFnTt38vLyCCHl5eXr169f
+tGgR3RGB4CQnJ585c+bhw4cLFy6k/V/zhQsXysvLl5eXX716NT4+vqfTkpOTExMTc3NzkW8PAGVl
+Zffu3QsPD0e+DTAA/KfK7evrS28cA4wIVbkfPHgwSN79vs9+BCKN6mbZl5WZ+yglJSU9PV1FReXg
+wYMeHh7FxcXdrgIdFRV19erVVatWeXp6UheqqamdO3du1KhRT548mTt3rqampp+fH6+iolDfLAjt
+YM7a2tp9+/aFhoauXr1aSUmJ7nDeW2Vlpaura11dHZPJnDt3bnh4ON0RgYCw2ezo6GghmYKxoKAg
+IyOjsrJSRkZGRkZm48aN9vb23Z7Z0yp6IIqsra3pDgEAeOY//5zExcXRG8cAI0JV7uLiYrz7MJBQ
+K+X++9//ZrPZPPnay9vbmxpy7OTk5Onp+eLFiz6uAs1ZnNnQ0NDX1/fSpUu8TbkbGxvv3LkjLi5u
+amrKw9vyUFVV1a1bt1RVVekOpJ8cHBzeudgYDEgMBkNI8m1CSFlZmZycHOf3qJchMyLUhQQAYFCR
+2LVrF90xDEAikXKPHz9+EL77Ojo6dIcA/GVsbKyjo/Ps2bO7d+9OmjTpw2+orKxMbVDr+jY2Nurr
+6/dlFejU1NTt27dTy3c1NTWNHj36w4Ph9scff7x582bq1KlCO33amDFj6A4BQORpamo2NTWxWCxq
+qbnKysqezhSJvnUAAIOQxCDpVCxgItGxfOTIkXj3YUCaM2dObGxsamoqT1LubnW7CjT3t2xVVVXO
+zs4pKSmzZ88WExOLioo6evQob2NITU0lhKAMCzCw6enpTZ48OTw8PCwsrL29nTMfIQAAiAqhLsOK
+LpGocgMMVLNnzyaEnDhxgk/3z8vLS0tLa2lpGTp0KPcq0Orq6k+ePKHOYbFYHR0dpqamYmJiNTU1
+3PNg80RLS8vZs2fJfx8WAAawpKSku3fvmpmZ2djYWFpa0h0OAAC8H2EZqjTAiESVG2Cg+vTTTzU1
+NR88eHDlyhU7Ozue359aBfrx48diYmI6OjqcVaCDgoK8vLx2795tbm6elpYWHh5uZ2enoqIybNiw
+mTNnXr9+nYcx/P777zU1NZaWliYmJjy8LQAIIQ0NjfPnz3N2AwICqI2elr4DAAChgpSbL1DlBqCR
+hISEt7f3xo0bd+3a1Y+Uu6dPsVJSUtS3aZ3O4bC2ts7NzeXsBgYGBgYG9n7/bu/TF9Sq1CtWrOjf
+5QAAAAAgGMgJ+QJVbgB6ff311xISEmfOnKFmLxtgrl69eu/eveHDh2P1XQAAAAAhh5SbL1DlBqCX
+hobG4sWLW1tb169fT3csPMZms4OCgggh33zzDTWJOgAAAAAILeSEfIEqNwDttmzZIisre/ToUd4O
+oqZdUlLSjRs3NDU1qcQbAAAAAIQZUm6+QJUbgHbq6urUMniBgYHt8s9iNgAAIABJREFU7e10h8Mb
+TU1NVN0+JCQEJW4AAAAA4YeckC9Q5QYQBuvWrRsxYsT169cjIiLojoU3goKCCgsLJ0yY4OXlRXcs
+AAAAAPBuSLn5AlVuAGGgqKh4+PBhBoOxfv36O3fu0B3Ohzp//nxsbKy0tPTRo0eHDBlCdzgAAAAA
+8G7ICfkCVW4AITF9+nQfH5/W1lZPT8+Ghga6w+m/srKyZcuWEUJCQ0MNDQ3pDgcAAAAA+gQpN1+g
+yg0gPLZv3z5+/PicnJxFixaJ6KDupqamefPmPX/+3N7ePiAggO5wAAAAAKCvkBPyBarcAMJDVlb2
+7Nmzampq58+f//bbb+kO5721t7cvXrz47t27RkZGx44dExcXpzsiAAAAAOgrpNx8gSo3gFDR1tY+
+f/68rKxsdHT08uXLqd9QkdDS0uLs7Hzq1CkNDY20tDQFBQW6IwIAAACA9yBBdwADE6rcAMLGzMws
+KSlpwYIFe/bsYbPZcXFxwv+l2Js3bxYuXHju3DlFRUUq66Y7Iv56/vw53SF8kPr6erpDAAAAAKGD
+lJsvUOUGEEIODg6nT592cXHZu3dvTU3NwYMHZWVl6Q6qR9XV1a6urunp6UpKSn/++efEiRPpjoi/
+2traBvx3CgAAADAIIeXmC1S5AYTTrFmzzpw5M3/+/OTk5IKCgtOnT2tra9MdVDfu37/v7OxcVFSk
+qqr6xx9/TJgwge6I+IjBYKirq9MdBc+g8z8AAABwQ8rNF6hyAwitGTNm3Lhxw8XFJTs7++OPP46P
+j58zZw7dQf2PhISE1atXs1gsCwuL5ORkTU1NuiPiLwkJCVHvUg4AAADQE6TcfIEqN4AwGzdu3N27
+dz09PZOTkx0cHBwdHePi4oQhs338+LGXl9e1a9cIIcHBwWFhYRIS+CsNIOxKS0tzcnLojkIQGhoa
+6A4BAED04MMcX6DKDSDk5OTkjh079s9//nP9+vXnzp27efNmWFjY0qVL6Upxm5ubo6Ojw8LCmpqa
+lJWVo6OjFy1aREskAPC+/P396Q4BAACEF1JuvkCVG0D4iYmJ+fn5ubu7+/r6pqSkLF++fMuWLd9/
+//3SpUsFufZ1S0vLzp07f/nll5qaGgaD4e3tvW3bNowHBhAJ2tra48aNozsKQZOXl6c7BAAAUYKU
+my9Q5QYQFerq6idPnjx27NiGDRuePn3q4+MTFxe3evXqzz//XEpKiq9NNzQ0xMfHx8TE5OfnE0Im
+TZr0008/2dvb87VRAOChqKgoukMAAABhh5yQL1DlBhAhDAZj4cKFDx8+jIuLGzFiRHZ29tKlS7W0
+tNatW/fw4UN+tHjr1q3Vq1dramr6+/vn5+cbGBgcPXr09u3byLcBAAAABhik3HyBKjeAyBkyZMjy
+5cuLiooOHz5sYWFRXV0dHh5ubGw8bty4H3744e7du21tbR9y/zdv3ly/fj0oKEhXV/eTTz6JiYlh
+sVgzZsw4ffp0bm7uwoUL8SUdAAAAwMCDjuV8gSo3gIiSlJT08PDw8PBISkpauXIlg8F49OjRpk2b
+Nm3aJCMjM3HiRAsLi/Hjx+vp6enp6fWymnRHR0d5eXlBQUFBQUF2dvatW7eys7Pfvn1LvaqlpSUl
+JWVkZHTgwAElJSVBPRwAAAAACBpSbr5AlRtApDU3N//00081NTUFBQX5+fnHjx//66+/8vPzr169
+evXqVc5pMjIyampqcnJycnJyMjIyhBAWi8VisZqamp4/f/7mzRvue4qJiY0dO3bGjBnu7u6TJ0/2
+9vbet2/fpEmT4uLiZs+eLegnBAAAAACBQMrNF6hyA4i0ZcuW/f3334SQ9PT0r776aubMmYSQqqqq
+mzdv3rx5My8vr7CwsKioqK6urrCwsKebqKio6Orqjho1ytDQ0MrK6pNPPuGe5nf48OGEkOLi4jlz
+5nh4eERGRiorK/P/yQAAAABAoJBy8wVV5UbKDSCKIiMjf//9d2r70qVLX331FbWtoqIyd+7cuXPn
+cs6sq6urq6traGhoamp6/fo1IURWVlZWVlZOTk5FRYXJZPbSCpVyU44cOfKvf/0rKirqiy++4P3z
+AAAAAAB9kHLzBVXlRsdyAJFz4cKFgIAAzm5aWhqbze7p6zNFRUVFRcX+NcSdchNCqqurPTw89uzZ
+s3fvXkNDw/7dEwAAAACEDXJCvkDHcgBRVFBQ8MUXX1C9VCgvX77MycnhR1udUm5KRkaGmZnZDz/8
+wJloDQAAAABEGlJuvsD0aQAip6mpaf78+XV1dZ2OX7p0iR/NdZtyE0JaWlo2bdpka2vLpyXBAQAA
+AECQkBPyBarcACJn2bJl9+/f73pcwCk35caNGxMnTkS5GwAAAEDUYSw3X6DKDSBaYmNjExMTu30p
+IyOjra1NQoLHfy27ptwyMjIGBgbDhw9XVFQcPny4kpKSrKzsrVu3pkyZwtumAQAAAEBgkHLzBarc
+ACLk2rVr/v7+Pb1aX1+flZVlaWnJ20Y7zbsmLS3d3Ny8detWrNENAAAAMJCgDMsXqHIDiIrnz5+7
+ubm1trYSQqSlpe3t7akJw6WlpTnn8KNvuZyc3NChQ6ntGTNmhIWFEUL8/PzevHnD87YAAAAAgC7I
+CfkCVW4AkfD27duFCxdqaWmFhIRcunSptrb2zz//rKmpIYScPn167Nix1Gl8Hc4tLS0dGxv7zTff
+mJiYPH36NDo6mh9tAQAAAAAtkHLzBarcACKhqanp7NmzmZmZW7ZsmT59upSU1LNnz6qqqpSUlGbM
+mHHz5s0FCxYQQm7cuPH69Wuet071LV+3bt3o0aMlJCSioqIIIT/++OPz58953hYAAAAA0AI5IV+g
+yg0gEhQVFRUUFLiP3Lp1ixBibm7OYDCYTOaJEyf27NnT3t7+73//m+etKykpTZw4cd26ddTu9OnT
+XV1dGxsbg4ODed4WAAAAANACKTdfoMoNIKJu375NCLGwsOAc8fb2vnz5Mj9Wyf7oo48OHDjAPRd6
+RESErKzsb7/9lp6ezvPmAAAAAEDwkBPyBarcACKKqnJ//PHH3AenTJmycuVKnrcVHBw8YcIE7iNa
+WlrBwcFsNnvVqlVtbW08bxEAAAAABAwpN1+gyg0gitra2rKysgghn3zySaeXOLOL81CnxJ4SFBQ0
+evTonJycvXv38rxFAAAAABAw5IR8gSo3gCh69OhRc3PzyP9j7z7jorq2NoDvKXQQUOkdFJAi1Rr1
+2hBRwCQKxquC5hJJoogFg7GBRr0IFhAUxV4So8REQcUE1BjUREWqCjZ6B0GQDjPzfjjv5XKjMSYy
+7CnP/0N+zMxhzjMSyzprn7WNjDQ1NWllkJOT2759OyFk3bp1NTU1tGIAAAAAQK9AyS0U6HIDiCNm
+VXnPG7mp8PT0nDZtWn19/bp16+gmAQAAAIB3hJpQKNDlBhBHzOy016737mNRUVFycnIHDx5krgIA
+AAAAgJhCyS0U6HIDiCMR6XITQgYNGrR8+XI+n79s2TLmEh4AAAAAiCPUhEKBLjeA2Glpabl//z6H
+w3FycqKdhRBC1q9fb2ho+Ouvvx4/fpx2FgAAAAD4m1ByCwW63ABiJyMjo6ury8rKSllZmXYWQghR
+VFQMCwsjhAQHB7948YJ2HAAAAAD4O1ATCgW63ABi57U7ctM1Z86c8ePHV1VVbdq0iXYWAAAAAPg7
+UHILBbrcAGJHdGan9RQTE8PlcqOjo3NycmhnAQAAAIC/DDWhUKDkBhA7ojM7rSdra+tPP/20q6tr
+2bJltLMAAAAAwF+GmlAosLAcQLzU1tbm5+crKCjY2trSzvJ7mzZt0tDQuHr1anx8PO0sAAAAAPDX
+oOQWCnS5AcTL3bt3BQKBg4ODjIwM7Sy/p66uvnXrVkLIihUrmpubaccBAAAAgL8ANaFQoMsNIF5E
+c1V5t48//nj48OGlpaXMDHMAAAAAEBcouYUCXW4A8SKas9O6sdnsPXv2sNns8PDwx48f044DAAAA
+AG8LNaFQoMsNIF5EvMtNCHF2dvb19e3o6AgKCqKdBQAAAADeFkpuoUCXG0CMFBYW1tTUDBgwwMzM
+jHaWNwkLC1NTU0tMTLx48SLtLAAAAADwVlATCgW63ABihGlxDxs2TMR/z2pqaoaEhBBCAgMD29vb
+accBAAAAgD+Hklso0OUGECPMjdyivKq825IlS4YOHfrs2bOdO3fSzgIAAAAAfw41oVCgyw0gRrq7
+3LSD/DkulxsTE8NisTZv3lxUVEQ7DgAAAAD8CZTcQoEuN4C46OrqSktLI4SMGDGCdpa3MnbsWC8v
+r5aWltWrV9POAgAAAAB/AjWhUKDLDSAuHj582NLSYmxsrKGhQTvL29qxY4eSktK333577do12lkA
+AAAA4E1QcgsFutwA4kKMVpV309fX//LLLwkhAQEBnZ2dtOMAAAAAwB9CTSgU6HIDiAtmdpp4ldyE
+kFWrVpmbmz948CA2NpZ2FgAAAAD4Qyi5hQJdbgBxwXS5xWJceU+ysrI7duwghKxfv76yspJ2HAAA
+AAB4PdSEQoEuN4BYaG5uzsnJ4XA4Tk5OtLP8Ze7u7tOnT29sbFy3bh3tLAAAAADweii5hQJdbgCx
+kJmZyePxrKyslJWVaWf5O6KiouTl5Y8cOXL79m3aWQAAAADgNVATCgW63ABiQUxXlXczMzNbvnw5
+n89fvHgxc6UPAAAAAEQKSm6hQJcbQCyI6ey0ntatW2dkZHTv3r0jR47QzgIAAAAAv4eaUCjQ5QYQ
+C+Le5SaEKCoqbtu2jRASHBz8/Plz2nEAAAAA4H+g5BYKdLkBRF9tbW1+fr6ioqKtrS3tLO9k9uzZ
+EyZMeP78+caNG2lnAQAAAID/gZpQKNDlBhB9d+/eFQgEDg4OXC6XdpZ3FR0dLSMjs3fv3qysLNpZ
+AAAAAOC/UHILBbrcAKJPAlaVd7O2tv7ss894PN6SJUuYS34AAAAAIApQEwoFutwAok8CZqf19NVX
+X+no6Ny4ceP06dO0swAAAADA/0PJLRTocgOIPknqchNC+vXrt3nzZkJIUFBQU1MT7TgAAAAAQAhK
+biFBlxtAxBUWFtbU1AwYMMDU1JR2ll6zYMGCESNGlJWVbdmyhXYWAAAAACAEJbeQoMsNIOKYFvew
+YcMk6dIYm83es2cPm83euXPno0ePaMcBAAAAAJTcwoEuN4CIY27klphV5d2cnJwWLlzY0dEREBBA
+OwsAAAAAoOQWDnS5AURcd5ebdpDet3XrVjU1teTk5ISEBNpZAAAAAKQdakKhQJcbQJR1dXWlpaUR
+QkaMGEE7S+/T1NTcuHEjIWT58uVtbW204wAAAABINZTcQoEuN4Aoe/jwYUtLi7GxsYaGBu0sQrF4
+8WI7O7v8/PyIiAjaWQAAAACkGmpCoUCXG0CUSdj2YK/icDgxMTEsFuvf//53YWEh7TgAAAAA0gsl
+t1Cgyw0gypjZaRJ5I3e3MWPGzJ49u7W1ddWqVbSzAAAAAEgv1IRCgS43gCiT+C43Y/v27crKyt99
+992PP/5IOwsAAACAlELJLRTocgOIrObm5pycHC6X6+zsTDuLcOnp6a1Zs4YQsnz58s7OTtpxAAAA
+AKQRakKhQJcbQGRlZmbyeDwrKytFRUXaWYRu5cqVFhYWubm50dHRtLMAAAAASCOU3EKBLjeAyJKS
+VeUMWVnZ3bt3E0JCQ0MrKipoxwEAAACQOqgJhQJdbgCRJQ2z03qaMmWKh4fHy5cvv/zyS9pZAAAA
+AKQOSm6hQJcbQGRJVZebERkZKS8vf/z48dTUVNpZAAAAAKQLakKhQJcbQDTV1tbm5+crKSnZ2trS
+ztJ3TE1NV65cKRAIAgMDeTwe7TgAAAAAUgQlt1Cgyw0gmu7evSsQCOzt7TkcDu0sfWrt2rXGxsYZ
+GRkHDx6knQUAAABAiqAmFAp0uQFEkxSuKmcoKCiEh4cTQtasWVNbW0s7DgAAAIC0QMktFOhyA4gm
+aZud1pOXl9eUKVPq6upCQkJoZwEAAACQFqgJhQJdbgDRJLVdbsauXbtkZGT27duXlpZGOwsAAACA
+VEDJLRTocgOIoMLCwpqamoEDB5qamtLOQoeVldXixYv5fH5gYCBzZRAAAAAAhAo1oVCgyw0ggpgW
+97Bhw6T59+bGjRt1dHRu3br19ddf084CAAAAIPlQcgsFutwAIoi5kVtqV5Uz+vXrt2XLFkJIUFBQ
+Q0MD7TgAAAAAEo5LO4BkQpcbpMry5cuXL19OO8Xb2rhx48aNG2mnoK+qqkpNTY12CgAAAAAJhzas
+UKDLDQAAAAAAAOhyCwW63CAlIiMjIyMjaad4K9nZ2XZ2diYmJvn5+bSziIRFixYdOHBg8uTJycnJ
+tLMAAAAASCy0YYUCXW4AUSPl24O9KiwsbMCAASkpKT/88APtLAAAAAASCzWhUKDkBhA1zOy0YcOG
+0Q4iKvr37x8aGkoIWbZsWXNzM+04AAAAAJIJNaFQYGE5gKhBl/tVn332mZ2dXXFxcUREBO0sAAAA
+AJIJJbdQoMsNIFKam5tzcnK4XK6TkxPtLCKEw+Hs2bOHxWKFh4cXFBTQjgMAAAAggVATCgW63AAi
+JTMzk8fjWVlZKSoq0s4iWt577705c+a0trauWLGCdhYAAAAACYSSWyjQ5QYQKVhV/gY7duzo16/f
+uXPnkpKSaGcBAAAAkDSoCYUCXW4AkYLZaW+gra29Zs0aQsjSpUvb29tpxwEAAACQKCi5hQJdbgCR
+gi73my1fvtzCwuLp06e7d++mnQUAAABAoqAmFAp0uQFER21tbX5+vpKSkq2tLe0sIkpWVjY6OpoQ
+8tVXX5WVldGOAwAAACA5UHILBbrcAKLj7t27AoHAwcGBw+HQziK6XFxcPD09X758GRwcTDsLAAAA
+gORATSgU6HIDiA6sKn9Lu3btkpeX/+abb65fv047CwAAAICEQMktFOhyA4gOzE57S6ampqtWrRII
+BEuWLOnq6qIdBwAAAEASoCYUCnS5AUQHutxv78svvzQ2Nr5///7+/ftpZwEAAACQBCi5hQIlN4CI
+KCgoqKmp0dTUNDU1pZ1FDCgoKGzfvp0Qsn79+pqaGtpxAAAAAMQeSu7eh1XlAKKDWVXu7OxMO4jY
+mDlzpqura319/bp162hnAQAAABB7KAt7H1rcAKIDN3L/Dbt27ZKRkTl48CCzJh8AAAAA/jaU3L0P
+XW4A0YEbuf+GIUOGBAQE8Pn8ZcuWMdcQAQAAAODvQVnY+9DlBhARXV1daWlpBCX3XxcaGqqjo/Pr
+r78eO3aMdhYAAAAAMcZCB6PXtbW1KSgoyMvLt7a20s4CINWys7Pt7OxMTEzy8/NpZxE/x44dW7Bg
+gaam5qNHj9TU1GjHAQCA37t9+/bIkSNlZWV1dHRoZwGA13jx4kVDQwOXdgwJhC43gIjAqvJ34ePj
+c+jQodTU1E2bNu3cuZN2HAAAeL2Ojo6ioiLaKQDgD6Hk7n24lxtARGB22rtgsVhRUVHDhg2Ljo5e
+uHChra0t7UQAAPA/HBwcCgoKaKcAgD+Bkrv3ocsNICLQ5X5HDg4Ofn5++/fvX7Zs2ZUrV2jHAQCA
+/yErK2tsbEw7BQD8CdzL3fsaGxtVVVX79evX0NBAOwuA9GpublZVVWWxWA0NDYqKirTjiKu6ujoL
+C4va2tozZ854eXnRjgMAAAAgZrD4ufehyw0gCjIyMng8nrW1Nertd9G/f/+NGzcSQlasWNHc3Ew7
+DgAAAICYQcnd+3AvN4AoYG7kxqryd+fv729vb19aWvrvf/+bdhYAAAAAMYOysPehyw0gCjA7rbdw
+OJw9e/awWKyIiIjHjx/TjgMAAAAgTlBy9z50uQFEAWan9aLRo0fPnTu3o6MjKCiIdhYAAAAAcYLx
+ab2vpqZGU1NTQ0OjurqadhYAKVVbW6upqamoqNjQ0MDhcGjHkQRVVVUWFhYNDQ0XLlyYPn067TgA
+AAAA4gGd2N6HLjcAdXfv3hUIBI6Ojqi3e4uWltbatWsJIYGBgW1tbbTjAAAAAIgHlIW9D/dyA1CH
+VeXCEBgYaGlp+ezZs127dtHOAgAAACAeUHL3PnS5AajD7DRhkJWVjY6OJoRs3ry5qKiIdhwAAAAA
+MYCysPehyw1AHbrcQjJ58uT333+/paUlODiYdhYAAAAAMYCSu/ehyw1AV0FBATPF0MTEhHYWCRQV
+FaWoqHj69Olr167RzgIAAAAg6lAW9j50uQHoYlrczs7OtINIJkNDw1WrVhFClixZ0tnZSTsOAAAA
+gEhDyd370OUGoAs3cgtbcHCwiYnJw4cPY2NjaWcBAAAAEGkoC3sfutwAdDElN27kFh4FBYXt27cT
+QtavX19RUUE7DgAAAIDoQsnd+9DlBqCoq6srLS2NoOQWsg8//HDq1KmNjY3r1q2jnQUAAABAdKEs
+7H3ocgNQ9PDhw5aWFlNT04EDB9LOIuF27twpIyNz9OjR3377jXYWAAAAABGFkrv3ocsNQBG2B+sz
+Q4YMCQwM5PP5S5YsYf7cAwAAAIDfQVnY+9DlBqAIs9P60oYNG3R1de/du3f48GHaWQAAAABEEUru
+3ocuNwBF6HL3JRUVlbCwMELI6tWrnz9/TjsOAAAAgMhBWdj70OUGoKW5uTknJ4fL5To6OtLOIi3m
+zZs3bty458+fb9y4kXYWAAAAAJGDkrv3ocsNQEtGRgaPx7OxsVFUVKSdRVqwWKzIyEgOh7N3796s
+rCzacQAAAABEC8rC3ocuNwAt2JGbCgcHh0WLFvF4vCVLljB/AAIAAAAAAyV370OXG4AWzE6jZcuW
+LQMHDrxx48a3335LOwsAAACACEFZ2PvQ5QagBbPTaFFXV//qq68IIatWrWpqaqIdBwAAAEBUoOTu
+fehyA1BRW1ubn5+vpKRkbW1NO4s0WrRo0bBhw8rKyrZs2UI7CwAAAICoQFnY+9DlBqDi7t27AoHA
+0dGRw+HQziKN2Gx2VFQUi8XauXPno0ePaMcBAAAAEAkouXsfutwAVGBVOXWjRo2aN29eR0dHQEAA
+7SwAAAAAIoFLO4B4EwgEVVVVLS0thJD6+npCSEtLC7NNzsuXL1NSUvr168fhcOTl5RUUFFgslpaW
+FvYuAhASzE4TBREREQkJCcnJyQkJCZ6enrTjAAAAAFDGwoYub6mwsDAzMzMvL6+8vLysrKyioqK0
+tLSysrKzs/MvvY+qqqqenp6urq6urq6enp6BgYGdnd3QoUOVlZWFlBxASmhqatbU1OTn55uYmNDO
+ItV27NgRFBRkamr64MEDeXl52nEAAAAAaELJ/YeKioquX7+e+R9ME/tVGhoaKioqhBA1NTUWi6Wo
+qCgnJ9f9akNDA5/Pb21tbWtr4/F41dXVra2tr74Jm80eNGiQvb29g4ODk5PT2LFj8e9UgL+koKDA
+1NRUU1OzqqqKdhZp19XV5ejomJOTs2nTpvXr19OOAwAAAEATSu7/0dnZeePGjaSkpEuXLj148KDn
+S8bGxo6Ojra2tnp6etra2lpaWrq6upqamrKysn/pFA0NDeXl5dXV1eXl5VVVVfn5+enp6VlZWT23
+1VFUVJw4ceK0adPc3NyMjY175aMBSLbTp09/9NFH06dPv3DhAu0sEq6qqqqoqKi0tLSkpKS4uLi0
+tJRZ8kMIaWlpaW9v7+rqevnyZffx3XfWqKmpEUJUVFQMDAwMDQ319fX19fWNjIyY/2LoHQAAAEgk
+3MtNCCE8Hi8pKenYsWM//fRTY2Mj86SqqqqLi8vw4cMdHR0dHR3V1dV75VyqqqqqqqpDhgzp+SSf
+z3/8+HFGRkZ6evrPP/987969CxcuMJWDlZXVhx9++PHHH2OtLMAb4EZu4SksLLx169bt27dzcnKy
+s7OfP3/+l769ra2tra2NEFJXV8c8wwy86EleXt7KysrGxmbYsGGjR48eOnQol4u/ngAAAEASSHuX
+Ozs7e8+ePfHx8cy6cRaL5ejo6O7u7uHh4eDgQGvqeF1d3ZUrVxITEy9cuNC9oN3JyWnRokVz585V
+UlKikgpAlP3jH//45ZdfLl265ObmRjuLJGhpaUlJSblw4cKlS5fKysp6vqSiomJsbGxkZGTwH8bG
+xtra2mw2W0FBQV5ensPh9OvXr/v4tra21tZWHo/HXNCsq6tj2uPFxcUlJSUlJSWFhYVMk7ybkpLS
+xIkT3d3dp0+frqen1zcfGQAAAEAYpLTk5vP558+fj42NvXLlCrOnl5GR0cKFC+fMmWNubk473X+1
+tbVdvXr1yJEjCQkJHR0dhJCBAwf6+PgEBARgwTlIA4FAUFJSUlpaWlFRUVZWVl5ezswvbGhoIIQ0
+NjbyeDymomPmJqipqSkrK8vKysrIyDAjCQcOHKitrW1gYKCtra2vr6+jo6Ovr6+rq0v7k4mo9vb2
+H3/88dSpUwkJCcxeDIQQTU3N0aNHjxkzxs7OztLSUl9fv9fP29DQ8OjRo/v379+6devWrVt5eXnM
+300sFmv06NFz5szx8vLS1NTs9fMCAAAACJvUldzt7e379u2LiooqKCgghCgpKc2dO3fRokVOTk60
+o71JQ0PD6dOn9+/fn56eTghhs9nTpk3btGmTg4MD7WgAvampqSkzM/Pefzx58uSvbgrwNpSVlS0s
+LKysrJycnJycnBwdHbF7X1lZWWxs7IEDB6qrq5lnHB0dZ8yY4enpaW9v38dhKisrExMTz58/f+XK
+FWZRuoyMzMyZMwMCAkaPHt3HYQAAAADehRSV3F1dXadOndqyZcujR48IITo6OsuWLVuwYIF4dU5S
+U1Ojo6PPnj3L5/O5XO5HH320du1aS0tL2rkA3klubu6lS5eSkpJSU1OZBR0MNpttZmbG7Kinqamp
+q6vLDC8cMGAAIURFRYXL5crJyfUsmJuamjo7Ozs6OpqbmwkhVVVV1dXVFRUVlZWVlZWVFRUVzErm
+nmdXVFScMGECM7BQCocm3LhxIzo6+ocffmCubtjb28+ePdtUUHj+AAAgAElEQVTb29vU1JR2NNLY
+2JiQkBAfH5+UlMTEc3JyCggI+Oijj3ruDQEAAAAgsqSi5Obz+SdOnPjqq6+ePXtGCNHX1//iiy8+
++eQT8d2IKzc3d8uWLd9++y2Px2Oz2d7e3hs3bhSpJfEAf4rH4yUnJycmJiYlJTGrTgghXC53yJAh
+jo6ODg4Ojo6O9vb2zCZ8vau+vj49PT09PZ2ZWfjkyRPmBhNCyJAhQ6ZNm+bp6Tl27FgWi9XrpxYd
+AoEgPj4+LCwsIyODECIjIzNr1qyAgIBRo0bRjvYa5eXlsbGxcXFxTBNeU1Pzs88+W7FiRc+bxgEA
+AABEkOSX3PHx8evXr2c625aWlps2bZo5cyatuWi9q7i4eMeOHQcOHGhtbWWz2XPnzg0PD9fW1qad
+C+BP5OTkxMTEdI8tJIQMGTLE09Nz8uTJ7733noKCQh/naW5uvnr16oULF5KSkkpKSpgn9fT05s2b
+9+mnn0re3ASBQPDdd99t2LAhLy+PEGJkZLR8+XJfX19mEy9RxufzL168uHv37pSUFEKIsrLy4sWL
+v/zyS1VVVdrRAAAAAF5PkkvuvLy8L774IjExkRCiq6u7adMmHx8fGRkZ2rl6WUFBQWho6MmTJ/l8
+vrq6+tq1awMCAv7qbuEAfaCjoyMhIeHgwYPJyclMV9nGxmbu3Llubm52dna00xFCCJ/Pv3v37sWL
+F7/++uv8/HxCiIyMjIeHh5+fn6urq2Rcqvvll1/WrFlz8+ZNQoiBgcGGDRvmz58vdou0b9y4sX79
++p9//pkQoquru27dOj8/P8n74x0AAAAkgUASlZeXz58/n/n3sZqaWmRkZHt7O+1QwpWbm+vl5cX8
+TPX09Pbv39/V1UU7FMD/e/HiRUhIiIaGBvO/6MCBA4ODgx8+fEg715ukpaUtWrSIGXtOCDEyMoqM
+jGxtbaWd6+/Lzs52dXVlPo6mpuauXbvE+uMIBIKffvqpeyd2U1PTU6dO0U4EAAAA8HuSVnJ3dnZG
+RkYyyyM5HI6fn195eTntUH0nMTFxyJAhzD9Ax40bl52dTTsRSLvm5uZdu3bp6Ogw/1s6OTnFxcU1
+NjbSzvW2ampqdu7caWFhweQ3MzM7dOhQR0cH7Vx/TW1tbfdVSC0trf3790vSVcjk5GRnZ2fmB+Ts
+7Hz37l3aiQAAAAD+S6JK7l9++WXo0KHMP7xcXV1zcnJoJ6Kgs7Nz7969zBh2Lpe7YsUKMSpvQJK8
+fPkyPDy8e0eA9957LykpiXaov4nH43377be2trbMZzE2Nt63b5+4VK1nz541MDBgrkIuXbr0+fPn
+tBP1Ph6Pd/jwYeZ/NllZ2bVr17a0tNAOBQAAACAQSEzJXVhY6O7uzvxr2MrK6urVq7QTUdbc3BwS
+EsLcn9m/f//IyEgej0c7FEiL1tbWsLCw/v37E0JYLJa7u/utW7doh+odqampEyZMEJc7OO7fvz9u
+3DgmrYuLy6NHj2gnEq6mpqaQkBBmkoWOjs6xY8doJwIAAAAQ/5K7ra0tJCSE2ZVXWVk5MjJS7NZ8
+Cs+jR4+mTJnSvd7yzp07tBOB5Dt37lz3RvETJkz45ZdfaCfqZXw+PzEx0cnJifmMw4cPv379Ou1Q
+v9fR0fHVV18xs98HDBgQFxcnPRfd7ty50/3T+eCDD8rKymgnAgAAAKkm9iW3m5tb90ryx48f044j
+cvh8/qFDh5ixVVwu98svv6SdCCTWtWvXum+pdXBwuHLlCu1EwpWQkDBo0CDm806ePDk9PZ12ov/3
+888/M8GYleQvXrygnaiv8fn8Y8eOMevMFRUVw8LCRHkxAgAAAEg28d4k7Pz58z4+Po2NjUOGDDl9
++nT3nZbQE4/HCw8P37hxY3t7O4fD6erqop0IJE1paWlQUNCZM2cEAoGmpubGjRv9/Py4XC7tXELX
+2toaGRkZFhbW2NjI5XI/+eSTzZs3MyvqqWhvb9+0aVN4eHhXV5elpeWBAwfGjBlDKwx1VVVVAQEB
+8fHxhJBJkybFxcWZmprSDgUAAABSR7y3mS0pKWlsbJSVlc3NzR02bNi6detaWlpohxItGRkZY8eO
+XbNmTXt7O+0sIIHa2tpCQ0PNzc1Pnz6toqISFhZWUFDw6aefSkO9TQhRUFD48ssvCwsLg4ODuVxu
+bGysmZlZVFQUj8fr+zBXrlwZMmTI1q1bORxOWFhYTk6ONNfbhBAtLa0zZ84kJSUZGRlduXLF2to6
+NDS0o6ODdi4AAACQLuJdcjN8fX2XLl3a1dW1ZcuWQYMGHT9+XKxb972lurrax8fHycnp119/NTIy
+OnfuHO1EIGlSU1OHDx++cePG1tbWWbNm3b9/Pzg4mBmsIFXU1dXDwsLu3bs3YcKEFy9eLFu2bOzY
+sZmZmX0W4OXLl/7+/i4uLgUFBSNHjrx37x5zCaDPAoiyqVOnPnz4MDg4uKOjY+PGjcOGDbt37x7t
+UAAAACBFJKHklpOTi4qKunbt2tChQysqKnx9fT08PJ4+fUo7FzV8Pv/o0aO2trYnTpxgbubMzMzs
+nugO8O6Ki4s9PDzGjRuXk5Nja2v7yy+/xMfHMztRSS1mr4SEhAQTE5Nff/3V0dHRx8enpqZG2OcV
+CATffPNNXFycjIzMli1bUlNTra2thX1S8cLczv3jjz8aGRllZ2ePHj362rVrtEMBAACAtJCEkpvB
+tJWOHTumoaFx8eJFCwsLHx+fyspK2rn6Wnx8vLW19cKFC6urq5n2TlRUlJqaGu1cIDm+/vprOzu7
+CxcuKCoqbt68+e7du2PHjqUdSlR4eHhkZWWtWLGCy+WeOHHCxsbm5MmTQl1309ra+umnnxJCeDxe
+fX19Z2en8M4l1urr61tbWwkhHR0dxcXFtOMAAACAtJCckpsQwmKxfHx8srOzFy5cSAg5ceKElZXV
+jh07pOQ25tzcXE9PT29v77y8PH19/RMnTly6dGnw4MG0c4FEKS8vP3To0IsXL0xNTe/evbt27Vpm
++3fopqKismPHjitXrmhpaVVXV8+fP//x48fCPqmsrKy8vPz27dsHDRqUkJAg7NOJl6KiIjc3N29v
+7+rqajMzM9pxAAAAQLpIVMnN0NbWPnz48MOHD728vOrr64OCgszMzJhtaWlHE5aioiJvb28bG5vE
+xEQ1NbXIyMj8/Px58+axWCza0UDS5OXlMYty8/PzZ8yYcfnyZdqJRNE333wze/bsqqqqPvs9yOVy
+s7OzJ0yYUF5ePmPGDG9v79ra2r45tSjj8/nbtm2zsrK6fPmynp5eYmKilI+UAwAAgL4ngSU3w8LC
+4syZM4mJiZaWlmVlZf7+/qNHj7548SLtXL2srq5uw4YNQ4cOjY+PZ7FYfn5+Dx8+DAwMlJGRoR0N
+JNnw4cNHjRr19OlTNze3SZMm5eXl0U4kKu7cuePs7Dx37tyKigo3NzcTE5M+O7WpqWlycnJERISC
+gkJ8fLyjo6Pk/Yn3l+Tn57u6uq5evbqlpcXLyys9PR0jLQAAAKDvSWzJzXB3d3/w4MGZM2eMjIzu
+3Lnj7u5uY2Nz/PhxCdiburS01N/fX1dX96uvvmpsbPTy8nr48OGBAwd0dHRoRwPJp6ysfPPmTWZ0
+wtWrV4cOHRoYGNjU1EQ7F03Pnz/38fEZNWrUvXv3DA0NExISLl261McXvzgcTlBQUG5urouLS0lJ
+ibu7u3ReEGlqagoMDLS0tExJSTE0NExKSjpz5oympibtXAAAACCNJLzkJoSw2WwvL6+cnJxt27Zp
+aWk9ePDA19fXycnpzJkzfD6fdrq/o6KiYuXKlZaWlnFxce3t7S4uLteuXTtz5oy5uTntaCBFmNEJ
+WVlZc+bM6ezs3L17t6Oj4/fff087FwU8Hu/QoUNDhw49ceIEi8VavHhxVlaWh4cHrTxGRkaXL1+O
+iYlRVVW9evWqs7NzeHi49IxVS0lJcXJy2r17d1dX18cff5yRkTF16lTaoQAAAEB6SX7JzVBRUfni
+iy8KCgqio6MNDQ2zs7Nnz55taWm5bds2cZlqLhAIrl+/Pn/+fFNT0507d7a0tMyYMeP27ds//fTT
++PHjaacDKaWjo/PNN9+kpKRYWlo+efJk5syZY8eOvXPnDu1cfeenn35ydHT08/MrLy8fMWLE7du3
+Y2JiqO8RwGazFy9eXFBQsHTp0tbW1uDg4CFDhiQlJdFNJWyFhYUeHh4uLi6PHz9m9ic/dOhQ//79
+aecCAAAAqSYtJTdDQUFhyZIlT58+PXz4sLm5+ZMnT1avXm1oaPjhhx9eunRJZOerVVVVhYeHW1pa
+jh8//uTJk11dXf/85z+zs7PPnTs3fPhw2ukAyKRJkx48eHDs2DEdHZ0bN26MGDHCxcXl/v37tHMJ
+161bt0aNGuXq6pqdnc3MCf/tt9+cnJxo5/ovdXX1qKio5ORkS0vLZ8+eTZ8+3cfHp7S0lHau3tfe
+3r5z505m7zplZeXt27enpqY6ODjQzgUAAAAgZSU3Q0ZGZuHChbm5uT/99NPMmTMJIT/88MP06dNN
+TEyCgoKuXbsmInd6V1ZWHjp06P333zcwMAgODn78+LG+vn5oaGhhYeHXX39tY2NDOyDAf7HZbB8f
+n9zc3FWrVsnJyaWkpDg7O69ataqmpoZ2tN5XXFz8ySefjBs37rfffuvXr9/WrVuzs7MpriR/s4kT
+J+bk5ERGRqqoqJw4ccLU1NTf37+8vJx2rt7R1ta2bds2AwODlStXvnz5cv78+U+fPl25ciWXy6Ud
+DQAAAIAQ6Sy5GWw228XF5bvvvisqKvrqq6+MjIxKSkp27NgxceJEDQ2Njz766OTJk8+fP+/jVAKB
+ID09fdOmTcOHD9fT0/Pz8zt//jyPx5s2bdr58+cLCwtDQkL09PT6OBXAW1JVVQ0PD8/Pz1+0aFFX
+V9f27dv19fV9fHyePXtGO1rvyM3N9fb2NjExOXjwIJfLDQ4OLiws/PLLLxUUFGhHexMulxsYGJiZ
+mfnRRx/xeLy4uDhLS8uQkJDGxkba0f4+gUBw5swZe3v71atX19TU2NnZJSUlHT9+XEtLi3Y0AAAA
+gP+S3pK7m46Ozrp16/Lz83/66afAwMDBgwe/ePHi9OnT8+fP19DQMDMz+/DDD0NDQ7///vv8/HyB
+QNC7Z29ubr59+3ZcXNzixYvHjBmjpqbm5OQUEhJy9+5dWVnZKVOmMJtsX7x40dPTk8Ph9O7ZAYRB
+V1d3//79N27cmDp1akdHx4kTJ2xtbZcuXSrWS5ofPXrk6+vLbMhHCPH29r53715YWJi6ujrtaG/L
+xMTk1KlTzF5ZL1++3LRpk6mpaUREhNgV3nw+PzEx0cnJafbs2Y8ePTI3N2c+l6urK+1oAAAAAL+H
+pXf/j2l6u7i4REZGPn369NKlS5cuXUpNTc3Pz8/Pz//hhx+YwxQVFfX19XV0dAwMDHR1dfX09PT1
+9fv160cIUVNTY7FYioqKcnJy3W/b0NDA5/NbW1vb2tp4PF5VVVVJSUlFRQXz39LS0qqqqt8NTjcx
+MXF1dZ02bdrEiROVlJT68hcBoBeNHDkyKSnp3r17W7duPXfuXHR0dFxcnI+Pz6effuro6Eg73dsS
+CASpqamxsbHx8fE8Hk9GRmbBggWrV6+2sLCgHe1vsrOzS0xMvH///qZNm+Lj47/44ov169d7e3uv
+XLnSzs6Odro/UVtbGxMTExcXV1FRQQgZPHjwli1bZs6cyWbj8jEAAACIKJTcrzFo0KClS5cuXbqU
+x+M9efIkMzMzMzMzIyMjMzOzurr68ePHjx8/7q1zcblcKysr+/9wcHDAfF2QJE5OTmfPni0sLNy1
+a1dcXNyBAwcOHDhgYWGxcOHChQsXivJWyYWFhfv27Tt58mRZWRkhRFVVddmyZZ9//rkoZ357NjY2
+Z86cSU5ODgsLu3r16okTJ06ePOnq6hoQEDB16lQRrGDz8vJiYmKOHz/+8uVLQoipqenSpUv9/f3l
+5eVpRwMAAAB4E5Tcb8LhcCwtLS0tLT/66CPmmbq6uvLy8rKyMqZHXVlZWVJS0tLSQgipr68nhLS0
+tLS3t3e/Q79+/Tgcjry8vIKCAovF0tLS0tHR0dPT09XVZZrkOjo6PbviABLJ2Ng4Kipq2bJlcXFx
+R48effTo0erVqzdt2uTl5TV37txx48aJzu+C5ubmlJSUEydOJCYmdnR0EEJMTEw+/vhjPz8/bW1t
+2ul6GbO058GDB9HR0SdPnrx8+fLly5eNjY29vb29vb1FYfp6RUXFd999Fx8ff+PGDYFAwGKxJk+e
+HBAQ4O7uLoLXBQAAAABehZL7r+nfv3///v0xLRzgbzAxMfn3v/+9ZcuWq1evxsXFnT9//tixY8eO
+HeNyuSNGjPDw8Jg8eTKVMo/P59+6devChQspKSmZmZnMfoFKSkoLFixYtGiRKFSeQmVtbb1v376w
+sLBDhw7t3bs3Pz8/PDw8PDzcyMho6tSpbm5u48ePV1VV7bM8XV1daWlply9fTkpKSktLY269UVZW
+nj9//pIlS6ysrPosCQAAAMC7Q8kNAH2KzWZPnjx58uTJJSUlx44dO3/+/L17927evHnz5k1CiKWl
+5ciRIx0dHR0cHOzt7ZWVlYUU48WLF+np6RkZGenp6bdu3SosLGSe53A4Y8eO/eCDD+bNm6ehoSGk
+s4sgNTW1lStXLl++/ObNm6dOnYqPjy8qKtq/f//+/fvZbLaNjc2YMWMcHR3t7Oysra17d0I7n89/
+9uxZVlZWVlbWzZs379y509zczLwkKyvr6ur60UcfeXp6Cu9/BgAAAADhQckNAHQYGBisW7du3bp1
+5eXlFy9eZJrMeXl5eXl5R48eJYSw2Wxzc3N7e3tDQ0M9PT3mjgwDAwMtLS0ZGZm3PEt7eztzGwhz
+P0hJSUlRUVFGRkZ+fn7Pw1RVVV1dXT08PNzc3AYMGNDrH1ZcsNnssWPHjh07Njo6+u7du8nJyT/9
+9NOdO3eys7Ozs7OZYzgcjo6OjpGRkcF/GBsba2trs9lsBQUFeXl5DofDDJVktLW1tba28ng8ZjR6
+XV1dSUlJcXFxcXFxSUkJ8xNpa2vrGcPCwmLy5MlTpkyZMGGCiopKX/4KAAAAAPQulNwAQJmuru4n
+n3zyySeftLa23rx5Mz09nZlZ+PjxY6YC/93xbDabWeesoqLC5XLl5OQUFRW7X21qaurs7Ozo6GA6
+pcyQhVfJyMh0Ty50dHQcNWrU25fx0oDD4YwcOXLkyJHr169vaWn59ddfU1NTc3JysrOz8/PzS0tL
+e3fLN01NTVtbWxsbm5EjR/7jH//Q0dHpxTcHAAAAoAglNwCICgUFBWbNOfOwpaXl/v37Dx48KC8v
+r66urqysrKysrK6uLi8vZwrpPyqne+JyuVpaWgYGBtra2swOf/r6+ra2ttbW1rKyssL9PJJCUVFx
+0qRJkyZNYh62tbWVlJSUlpYyzWqm/K6srCT/mR/Z1dXFzBVndM+PVFNTI4SoqKgYGBgYGhrq6+vr
+6+sbGRnp6elhpwYAAACQVCi5AUBEKSoqDh8+fPjw4a99tb29vaWlpbm5uaOjo7GxkZl5RghRUlKS
+lZWVkZFhbv1VVVXFaOveJS8vP3jw4MGDB9MOAgAAACAGUHIDgFiSk5OTk5NTV1enHQQAAAAA4A+h
++QMAAAAAAAAgFCi5AQAAAAAAAIQCJTcAAAAAAACAUKDk/nP29vYnT5589fmRI0cePHjwzd/7NscQ
+QiorK1ksVm1t7d+MCAAAAAAAAKIH49P+vqCgICsrq3c/BgAAAAAAACQSSu6/b9asWX/7mI6ODuwJ
+DAAAAAAAINmwsPwvaGlpmTFjxvTp05uamsj/Lhq3t7dfs2aNi4uLjY2Nra1tamoq8/zvjgkODh4/
+fvyQIUPOnz9fUVHh7u6urq5ubm6elJRE5RMBAAAAAACA8KDL/bYqKys9PDycnZ1jYmI4HM6rB5w7
+d+769esaGhrHjh2bN29eUVHRq8ecPXs2NTVVR0eHEDJu3DgDA4OysrKmpqa3aZgDAAAAAACAeEGX
++608ePBg1KhRXl5esbGxr623CSGLFi3S0NAghHh6ehYXF1dVVb16jJ+fH1NvP3v2LDU1defOnYqK
+ipqamhs2bBBqfgCx8zYzBd9ltCEAAAAAQB9Ayf1Wjhw5oqSk9Pnnn7/hmIEDBzJfKCgoEEJevnz5
+6jF6enrMF6WlpcrKylpaWszDQYMG9WZcAOkWFBQ0evRo2ikAAAAAAFByv52wsDBbW1sXF5f6+vp3
+eR8Wi8V8oa+v39zczNwTTgiprKx814gA8B+zZs3CTgEAAAAAIApQcr8VLpf79ddf29jYTJgwobq6
++t3f0MzMbPTo0WFhYYQQHo+3ffv2d39PAHH3RzMFm5qaAgMDjY2NBwwY4O7u3nNQwrNnz8aMGdOv
+Xz9HR8ebN28yT/ZcWL579+4hQ4aoqKgYGBisWrWqs7OTef6PRh5Cb3F2dj569CjtFAAAAACUoeR+
+W2w2+8CBAxMnThw3blxpaem7v+Hp06fT09MdHBzGjh07cuTId39DAHE3e/ZsVVXVsrKyGzduHDly
+pPt5X1/fZ8+e3b59u6KiwtbW9oMPPuDz+cxL+/bt2717d319vZ+f37Rp016991tbW/vChQuNjY3J
+ycnnzp3bu3dv90vnzp375ptv7t+/HxQUNG/evD74gAAAAAAgdQTiLDo6mhCyZMkS2kHEQFdXFyGE
+w+HQDgLi7cqVK4SQiRMn9vo7P336lBBSWVnJPExOTiaE1NTUlJSUEEKKi4uZ57u6upSVlbOysgQC
+gZ2d3dq1a7vfwdraev/+/QKBYMSIEQcOHHj1FDt37vTw8GC+trOz27VrF/N1XV1dz1P3IgsLC0JI
+Xl5er79zt+bmZkKIoqJi775tQ0PD0qVLjY2NlZWVra2tf/vtN4FAoKenl5yczBzA/Fzq6+sFAkFU
+VJSxsbGqqqqmpuaKFSsEAkFgYKCcnJympqaZmdmsWbMEAkFVVdWcOXO0tLS0tbV9fX2fP3/OvI+d
+nd3mzZv/8Y9/yMvLDx069MGDB0ePHjUyMurXr9/nn3/O5/N793P5+voSQo4ePdq7bwsAAADwR7BJ
+GACIhD+aKVhQUMBisVxcXLqPVFRUrKioGDp0KCHExMSk+3ljY+NXV6BcvHhx+/bt+fn5hJDm5ubB
+gwd3v/TqyMPus8P8+fObmpp+/vlnQ0PDJ0+ecLl/+JfF48ePg4ODMzIyLC0tm5ubHzx4QAiJjIy8
+cePGkiVLFixYwBzm7e2trq6el5fH4/Hmzp07f/78ixcvMi8dPnz4u+++s7S09Pf39/T0HDduXGZm
+Zk1NzahRo6ZMmTJjxgzhf1wAAAAAYUHJDQAioXumoLKyMukxU9DIyIgQkpqaymzC9zuFhYU9v/b0
+9Oz5ak1Nzfvvv3/u3Dk3Nzc2mx0ZGfntt98K7yNIjOLi4oSEhKdPnzK/+Obm5m84WEZGRiAQpKen
+6+joqKqqDh8+/NVj8vPzr1+/XlRUpKamRgjZsWOHjY1NRUUFs2miv7+/g4MDIcTX1/fEiRNpaWlq
+ampqamouLi5paWkouQEAAECs4V5uABAJfzRT0NDQcMaMGX5+ft0rmc+cOcPcKEEIOXToUGZmJo/H
+279/f3Fx8QcffNDzPZuamvh8vr29PZvNfv78OTbrfkuFhYVcLtfMzOxtDjYxMfn2228PHz6sp6c3
+atSo7t51TyUlJVwu19DQkHnIvDPzAyWE6OrqMl8oKSkpKSkxZTnz8LW7LQIAAACIEZTcACAq/mim
+4PHjx83NzcePH6+iouLg4HDx4sXu/fb8/f2XLFmirq6+b9++ixcv/q4TbmJiEhYWNmHChPfee2/e
+vHlTpkzp088jtoyNjbu6upjV+D2pqKi0tbUxX/ecVPf++++npKQ8f/58wYIFH374IVMns9n//fvF
+wMCgq6ure9k/884GBgZC/RQAAAAAogALywFAVOjp6V26dKn7YVBQEPOFiopKRERERETE747PzMwk
+hISEhPzu+d9++63761WrVq1aterVczHfy5CXlxcIBO+WXaIYGhq6u7v7+/sfPnxYX1+fuZfb1NTU
+yckpMTHR3d29q6trx44dzMGPHz8uKioaO3asvLy8hoYGi8XicDiEEB0dnUePHjHHmJqajhs3bsWK
+FQcOHODxeEFBQW5ubsyqcgAAAADJhi537+i5DzAAgLg7efKkubn5e++9169fv5kzZzI97a1btz5+
+/Nja2nrs2LHOzs7MkW1tbevXr9fW1u7fv//mzZvPnj2rqKhICPniiy/OnTunrq7OjL47ffo0h8Mx
+Nze3srIaOHDg8ePHKX46AAAAgD6DLnfvCAoKsrKyop0CAKB3qKqq7tmzZ8+ePT2fNDQ0vHbtWvfD
+wMBAQoiamlrPZQXd3nvvvdzc3O6H2trap06devWwnssNRo4c2dTU1P0Q1zEBAABAAqDk7h2zZs16
+7fMdHR2ysrJ/9PCPvOVhAAAAAAAAIMqwsPxP2Nvbb9myZfz48QoKCnZ2dg8fPjx27JixsbGqquri
+xYu77//subDc3t4+ODh4/PjxQ4YMOX/+/O8eVldX//Of/9TW1tbR0VmwYEFdXd1rv4vOpwUAAAAA
+AIDegy73nzt8+PB3331naWnp7+/v6ek5bty4zMzMmpqaUaNGTZky5bV7xp49ezY1NZUZDrRly5ae
+D8ePH6+urp6Xl8fj8ebOnTt//vzuPXV6HgYAAAAAAADiDl3uP+fv7+/g4KCgoODr6/vs2bOdO3eq
+qakNHjzYxcUlLS3ttd/i5+fXs3Lufpifn3/9+vWoqCg1NbUBAwbs2LHj0qVLFRUVr/0uAHgDzCwE
+AAAAANGHkvvP6erqMl8oKSkpKSmpqal1P2S2n32Vnp7eax+WlJRwuVxDQ0PmoZmZGfPka78LAN4g
+KCho9OjRtFMAAAAAALwJSm6hYLFYr31oYGDQ1dVVWhRoho8AABEKSURBVFrKPMzPz2eefO13AcAb
+zJo167XbBHR0dLzh4R95y8MAAAAAAP4SlNx9ytTUdNy4cStWrGhoaKirqwsKCnJzc8NicoCeMLMQ
+AAAAACQGSu6+dvr0aQ6HY25ubmVlNXDgwOPHj9NOBCByDh8+vGvXrrq6Ojs7O09Pz+vXr2dmZqal
+pZ0+fTohIeG133L27NlTp07l5uZ6eXn97qG3t3dra2teXt79+/crKyvnz5//R98FfwMWCAAAAAC8
+ASaW/4nMzMzur0eOHNnU1NT9sOfopt9+++213/LqQ21t7VOnTr35RABSjplZSAjx9fU9ceJEWlqa
+mpqampoaM7PwtdsEvHlmYVFRETOFYceOHTY2NhUVFcyrmFn499jb27u6ut6+fbuqqmrTpk1ubm5r
+1649f/78y5cvR40atWfPHiMjI+awSZMmZWVlNTY2CgSCyMjI9957jxBSXV29bNmyq1evslgsV1fX
+nTt39u/fn/ZnAgAAABAKdLkBQORgZqHo67lAgNnN4fbt2xUVFba2th988AGfz2cO++GHH06dOnXn
+zp2tW7dOnz69traWEPKGdQcAAAAAEgZdbgCQBH86s1BfX59gZmHv6V4gUFpa+v333xcXF2tpaRFC
+Nm/eHBMTc//+/aFDhxJCPv74Yw0NDUKIi4vLoEGDvv/++8mTJ79h3QEAAACAhEGXGwAkGWYWCkn3
+AoGCggIWi+Xi4mJpaWlpaWltba2oqFhRUcG82vOXWkdHp7S09M3rDgAAAAAkDEpuAJBwmFkoDN0L
+BJjbtlNTU/P+o6qqytXVlXn16dOn3d/y9OlTfX39N++VCAAAACBhsLAcAEQLZhaKF0NDwxkzZvj5
++cXExBgYGNTX1ycnJ3/44YdcLpcQcuTIkVmzZtnb28fGxpaVlX3wwQcaGhrMuoMDBw7weDysOwAA
+AADJhi43AAC8k+PHj5ubm48fP15FRcXBweHixYvdPfDPPvssMDBQXV390KFDFy9eZO7rxroDAAAA
+kB7ocgMAwF/zuwUCKioqERERERERrx5pZmYWEhLyuyf/aN0BAAAAgORBlxsAAAAAAABAKFByAwAA
+AAAAAAgFFpYDAIBQYEAdAAAAALrcAAAAAAAAAEIhCSX3999/f/bsWdopRFp9fX1AQADtFAAAAAAA
+ANJFvEtuFxeXESNGlJeXz5o1a+rUqU+ePKGdSOQIBILDhw9bWFjExsbKysp+8cUXtBMBAAAAAABI
+C/EuuS0sLH777bczZ85oaWn9+OOPVlZWgYGBjY2NtHOJilu3bjk6Ov7rX/+qqalxd3fPzc3dunUr
+7VAAAAAAAADSQrxLboaXl9ejR4+WLl0qEAh2795taWl5/PhxgUBAOxdN1dXVPj4+Y8aMyczMNDEx
+SUhISExMNDU1pZ0LAAAAAABAikhCyU0IUVVVjYqKSk1Ntbe3r6io8PX1dXNzu3//Pu1cFHR1dcXG
+xtra2p44cYLD4axYsSIrK8vDw4N2LgAAAAAAAKkjISU3Y9SoUWlpaVFRUWpqaj/++KO9vf0nn3xS
+UVFBO1ffuXDhwtChQz///PPq6upx48alp6fv2LFDRUWFdi6QNEVFRYWFhbRTiLr79+/X1tbSTgEA
+AAAANElUyU0I4XA4S5cuLSkpCQkJkZGROXjwoLGxcWBgYENDA+1owpWamjpixAgPD4/c3FxbW9vk
+5OTr16/b2trSzgWSRktLS01N7dmzZ1ZWVps3b25vb6edSBS9fPly5cqVDg4Oz58/19HRUVVVpZ0I
+AAAAAOiQtJKboaysHBoampGR4eHh0dHRsXv3bisrq0OHDnV2dtKO1vsKCgp8fX3Hjx9/584ddXX1
+7du3p6WlTZ48mXYukEzW1tb5+flLly7t6OhYv369mZnZ8ePHaYcSIXw+PyoqytjYeOfOnRwOJyQk
+5OnTp9ra2rRzAQAAAAAdkllyMywtLRMSEm7fvj1mzJjy8nI/Pz99ff1t27a1tLTQjtY70tPTPTw8
+Bg0adPz4cVlZ2ZCQkOLi4pUrV8rKytKOBpJMXV09Kirqzp07I0aMKCsr8/X1nTx5cl5eHu1c9N25
+c2f48OHLli2rq6tzdXXNyckJDQ1VVFSknQsAAAAAqJHkkpsxfPjw69evHz16dPDgwdXV1atXr7aw
+sIiOjm5ra6Md7e/Lzc2dN2/e8OHDL1y4wGKx5syZk5WVFRoaqqysTDsaSAtHR8fU1NTt27erqKhc
+uXLF2dl569atra2ttHPR8eLFi6CgoDFjxty7d09DQ+Pw4cNJSUmDBw/uswCdnZ13797ts9OJqbq6
+utzcXNopAAAAQLpIfslNCGGz2b6+vrm5uadOnRo6dGhpaenSpUtNTU3Dw8Orq6tpp/trUlNTvb29
+bWxsvv76aw6H869//SsvL++bb74xNzenHQ2kjoyMzMqVKwsLCxctWtTS0rJ27VpDQ8OoqKiuri7a
+0fpOa2traGiogYHBjh07WCxWSEhIQUHBwoULWSxW3wSQkZGxsbHp7OwcNWrUqlWrpPaqx5+Kj4+3
+srK6c+eOiorKoEGDaMcBAAAAacGSwv2rb9y4sW3btgsXLhBC2Gz2xIkTFy1a9P7778vIyNCO9ocK
+Cwv37dt38uTJsrIyQoiamlpgYODixYs1NDRoRwMghJCrV6+uWrUqPT2dEOLk5BQRETFhwgTaoYTu
+hx9+CA4OfvLkCSFk4sSJERERjo6OfR+jq6trz549a9asaWlp0dXVjY2N9fT07PsYIquoqOjTTz+9
+fPkyIWTWrFkxMTFaWlq0QwEAAIC0kMaSm3Ht2rV9+/adP3+eGblsZGS0cOHCOXPmiFS7uK2t7erV
+q0eOHElISOjo6CCEmJiYfPzxx4sWLdLU1KSdDuB/8Pn8U6dOrV27tqioiBDi4eERHh5uaWlJO5dQ
+3LlzJygoKDU1lRBibW0dHh4+bdo0upGePXvm5+f3888/E0K8vLz27t07cOBAupGo4/P5ERERmzZt
+Yi5G7Nu3z8PDg3YoAAAAkC7SW3IzGhsbv/3227i4uHv37jHPaGlpTZkyxcPDw83Njdat0Y8ePTp3
+7lxiYuLt27eZNbpKSkpz585dtGiRk5MTlUgAb6mzs/PIkSMbNmyoqqpisVjTp08PCQlxdnamnavX
+XLlyJSQk5ObNm4QQU1PTsLCwWbNm9dky8jfr6urauXNnaGhoa2urgYFBbGzs9OnTaYeiJj8/39/f
+PyUlhRAyc+bMmJgYjI4HAACAviftJXe3mzdvHj169MKFC5WVlcwzqqqqLi4uzs7OdnZ2Q4cO1dXV
+Fd7ZOzo6cnNzs7KysrOzr1+/fu/ePebnwmazhw8f7uXlNX/+fKwhBzFSV1e3ZcuW2NjY1tZWNpvt
+5eW1du1acd8o/ubNm5s3b2bWJ6uqqq5cuXLFihVKSkq0c/0ec3d9cnIyIWTixIl79uyR1LUGf6Sp
+qWnt2rWxsbGdnZ2Ghob79++fOnUq7VAAAAAgpVBy/w8+n5+WlpaYmHjhwoXMzMyeLw0cONDe3t7a
+2trAwEBHR8fAwEBXV1dPT09eXv4vnaKmpqaioqKkpKSioqK0tDQ/Pz87O/vhw4c99wxXVlaeMmWK
+u7v79OnTsYAcxFdlZWVERMT+/fubm5tZLNb777+/Zs0acex4X7t2bfPmzVevXiWE9O/fPzAwcOnS
+pWpqarRz/SE+nx8bG7t27dqGhgYlJaUNGzYsX75clMdV9KKUlJTFixc/fvyYxWItXLgwIiKif//+
+tEMBAACA9ELJ/YdKSkquXbuW+R/19fWvPWzgwIH9+vUjhKipqbFYLEVFRTk5ue5XGxoa+Hx+a2tr
+W1sbj8erqqp67eZkbDZ70KBB9vb2Dg4Ozs7OY8eO7fkmAGLt5cuXe/fuDQ8Pr6urI4RYWlouWLDg
+448/Fv2FG0VFRbGxsV9//XVpaSkhRE9Pb8OGDb6+vuLy27O+vj40NDQmJobP55uZmUVHR7u5udEO
+JUSFhYUBAQHMaMyRI0fu3bvXwcGBdigAAACQdii531ZhYWFmZmZeXl55eXlZWRnTo66srOzZnX4b
+qqqqenp6urq6TJPcwMCAWbiOLbVBsj1//jwqKiouLq6qqooQoqSk5O3t7efnN3r0aNrRfo/P56ek
+pBw8ePD8+fPM2EIjI6MlS5Z8+umn4vj79OrVq4sXL87Ly2OxWPPmzdu6dau+vj7tUL2svb19z549
+GzdubGxsVFZWDg0NDQwM5HK5tHMBAAAAoOR+NwKBoKqqqqWlhRDCtMFbWlqYEeiMfv36cTgceXl5
+BQUFFoulpaWlqKhILS4AbZ2dnYmJiQcPHvzxxx/5fD4hxMTExM3Nzc3NbcKECXTvi37x4kVycvLl
+y5eTkpIqKioIIbKysp6enn5+fi4uLmw2m2K2d8TsIrZhw4bGxkYZGZmFCxeGhIQIdT5Fn2lra4uK
+itqxY0dNTQ1zTSEiIgJ7gAEAAIDoQMkNABQUFxcfPnz4yJEjxcXFzDPy8vLjxo2bOnXqyJEj7ezs
++ubiVGNjY0ZGxq1bt5KSkn799VdmgwBCiKWl5b/+9S8fHx9JGqZQUFCwZs2aM2fO8Pl8FRWV5cuX
+r1y5krkvRhwJBIL4+PgNGzY8evSIEGJnZ7dt2zZXV1fauQAAAAD+B0puAKApKysrKSnp0qVLPSte
+DodjYWHh6Ojo6Ohob2/P3IXx7ou6X7x4wQwvzMjISE9PT09Pf/bsWfefgXJycuPGjZs2bdq0adPM
+zc3f8VwiKysra926dcwNzwMGDAgODvb39xevwpvP51+8eDEkJCQjI4MQYm5uvnHjRm9vb7FeiQAA
+AACSCiU3AIiE+vr65OTklJSUtLS0+/fvvzolQVFRUVdXV1tbW0tLa8CAAYQQFRUVLpcrJyfXsyXe
+1NTU2dnZ0dHR3NxMCKmqqqqurq6oqKisrHx1eKG8vLydnd2wYcNcXFwmTZokgjt+Ccn9+/c3bdoU
+Hx9PCJGTk/P29l65cqWdnR3tXH+itrY2JiYmLi6OWfk/ePDgLVu2zJw5E8U2AAAAiCyU3AAgctrb
+27Ozs+/du5eenp6Tk1NeXl5dXf3aaf9/iaKiora2tq6urp2dnZOTk6Ojo7W1tTQP2UpOTg4LC2M2
+P2OxWK6urgEBAVOnThXBCjYvLy8mJub48eMvX74khJiami5dutTf3/+vbtMIAAAA0MdQcgOAeHjx
+4kVlZWV1dXV5eXljYyMhpLGxkcfjtbW1tba2dh+mpKQkKysrIyPDLETv37+/tra2pqamrq6uOM4b
+7wMPHjyIjo4+efIksy7A2Nh49uzZXl5eTk5OtKOR8vLys2fPxsfH37hxQyAQsFisSZMmBQQEuLu7
+i+B1AQAAAIBXoeQGAADy4sWLQ4cO7d27Nz8/n3nGyMjIzc1t6tSp48ePV1VV7bMkXV1daWlpzOj4
+tLQ0ZrK9srLy/PnzlyxZYmVl1WdJAAAAAN4dSm4AAPh/fD7/5s2bp06dio+Pr62tZZ5ks9k2NjZj
+xoxxdHS0s7OztrZWUFDo3ZM+e/YsKysrKyvr5s2bd+7cYfrthBDZ/2vnDl0kBKI4josDiwarOOHQ
+ZtFuE0Em2v1XpxoEMWk3zHSjQRjYIHcsFy7JLgffT3ow8ODFB783j4dSqu/7rusIKQAAgP+IlRsA
+8Jtzbp5nrbXWepqm8zx/noQQUso0Tb++ZVmWJInv+2EYBkEghHj9Av1K/jvnrnOAfd+ttcYYY4y1
+9qpfTwM8z8vzvG1bpVTTNFEUvW1qAACA27FyAwD+chzHOI7DMKzruizLtm1X2PtGcRyXZVkURVVV
+dV1LKe/tDwAA8ClPb1CZYOWCepIAAAAASUVORK5CYII=" />
+</span></p></div>
+<div class="paragraph"><p>The following steps are executed inside the emulator:</p></div>
+<div class="paragraph"><p><span class="image">
+<img alt="emu-process.png" width="800" src="data:image/png;base64,
+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
+rkJggg==" />
+</span></p></div>
+<div class="sect2">
+<h3 id="_example_xml_files">Example XML Files</h3>
+<div class="paragraph"><p>A root-filesystem-project is described with a xml file.</p></div>
+<div class="paragraph"><p>Elbe ships with a set of example xml files.</p></div>
+<div class="paragraph"><p>The following xml file describes a simple system in the default full copy mode.
+The root filesystem is essentially identical to the build system and it will
+be saved as <tt>nfsroot.tar.gz</tt></p></div>
+<div class="listingblock">
+<div class="title">arm-example.xml</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">&lt;ns0:RootFileSystem</span></span> <span style="color: #009900">xmlns:ns0</span><span style="color: #990000">=</span><span style="color: #FF0000">"https://www.linutronix.de/projects/Elbe"</span>
+        <span style="color: #009900">xmlns:xsi</span><span style="color: #990000">=</span><span style="color: #FF0000">"http://www.w3.org/2001/XMLSchema-instance"</span>
+        <span style="color: #009900">created</span><span style="color: #990000">=</span><span style="color: #FF0000">"2009-05-20T08:50:56"</span> <span style="color: #009900">revision</span><span style="color: #990000">=</span><span style="color: #FF0000">"5"</span>
+        <span style="color: #009900">xsi:schemaLocation</span><span style="color: #990000">=</span><span style="color: #FF0000">"https://www.linutronix.de/projects/Elbe dbsfed.xsd"</span><span style="font-weight: bold"><span style="color: #0000FF">&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;project&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;name&gt;</span></span>ARMexample<span style="font-weight: bold"><span style="color: #0000FF">&lt;/name&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;version&gt;</span></span>08.15<span style="font-weight: bold"><span style="color: #0000FF">&lt;/version&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;mirror&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;primary_host&gt;</span></span>debian.tu-bs.de<span style="font-weight: bold"><span style="color: #0000FF">&lt;/primary_host&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;primary_path&gt;</span></span>/debian<span style="font-weight: bold"><span style="color: #0000FF">&lt;/primary_path&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;primary_proto&gt;</span></span>http<span style="font-weight: bold"><span style="color: #0000FF">&lt;/primary_proto&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;url-list&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;url&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;binary&gt;</span></span>http://debian.linutronix.de/elbe squeeze main<span style="font-weight: bold"><span style="color: #0000FF">&lt;/binary&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/url&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/url-list&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/mirror&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;noauth</span></span> <span style="font-weight: bold"><span style="color: #0000FF">/&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;suite&gt;</span></span>squeeze<span style="font-weight: bold"><span style="color: #0000FF">&lt;/suite&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;buildimage&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;arch&gt;</span></span>armel<span style="font-weight: bold"><span style="color: #0000FF">&lt;/arch&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;size&gt;</span></span>20G<span style="font-weight: bold"><span style="color: #0000FF">&lt;/size&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;mem&gt;</span></span>256<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mem&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;interpreter&gt;</span></span>qemu-system-arm<span style="font-weight: bold"><span style="color: #0000FF">&lt;/interpreter&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;kinitrd&gt;</span></span>testrd<span style="font-weight: bold"><span style="color: #0000FF">&lt;/kinitrd&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;console&gt;</span></span>ttyAMA0,115200n1<span style="font-weight: bold"><span style="color: #0000FF">&lt;/console&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;machine&gt;</span></span>versatilepb<span style="font-weight: bold"><span style="color: #0000FF">&lt;/machine&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;NIC&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;model&gt;</span></span>smc91c111<span style="font-weight: bold"><span style="color: #0000FF">&lt;/model&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;MAC&gt;</span></span>de:ad:be:ef:be:05<span style="font-weight: bold"><span style="color: #0000FF">&lt;/MAC&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/NIC&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;portforwarding&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;forward&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;proto&gt;</span></span>tcp<span style="font-weight: bold"><span style="color: #0000FF">&lt;/proto&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;buildenv&gt;</span></span>22<span style="font-weight: bold"><span style="color: #0000FF">&lt;/buildenv&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;host&gt;</span></span>5022<span style="font-weight: bold"><span style="color: #0000FF">&lt;/host&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/forward&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/portforwarding&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg-list&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg-list&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/buildimage&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/project&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;target&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;hostname&gt;</span></span>myARM<span style="font-weight: bold"><span style="color: #0000FF">&lt;/hostname&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;domain&gt;</span></span>tec.linutronix.de<span style="font-weight: bold"><span style="color: #0000FF">&lt;/domain&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;passwd&gt;</span></span>foo<span style="font-weight: bold"><span style="color: #0000FF">&lt;/passwd&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;console&gt;</span></span>ttyS0,115200<span style="font-weight: bold"><span style="color: #0000FF">&lt;/console&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;package&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;tar&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;name&gt;</span></span>nfsroot.tar.gz<span style="font-weight: bold"><span style="color: #0000FF">&lt;/name&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/tar&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/package&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;finetuning&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/finetuning&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg-list&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>build-essential<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>bash<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>less<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>git<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>debhelper<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>nfs-common<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>openssh-server<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg-list&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/target&gt;</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">&lt;/ns0:RootFileSystem&gt;</span></span></tt></pre></div></div>
+<div class="paragraph"><p>To generate the project directory from the xml file the following command is
+used:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>elbe create --directory /home/user/example example.xml</tt></pre>
+</div></div>
+<div class="paragraph"><p>The project-directory must not exist before calling this command.
+It will contain several scripts, files and a Makefile, which controls the
+creation of the root-filesystem.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_creation_of_the_build_system">Creation of the build system</h3>
+<div class="paragraph"><p>Now change to the project directory and run</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>make</tt></pre>
+</div></div>
+<div class="paragraph"><p>This will start the debian-installer in the virtual machine, which will install
+the build system according to the xml file description. It also generates the
+archive <tt>nfsroot.tar.gz</tt> with a copy of the buildimage.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note</div>
+<div class="paragraph"><p>This takes a while.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_working_inside_the_virtual_machine">Working inside the virtual machine</h3>
+<div class="paragraph"><p>After successful installation, the virtual machine can be started:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>make run</tt></pre>
+</div></div>
+<div class="paragraph"><p>or without a graphical terminal:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>make run-con</tt></pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changing_the_subset_that_is_extracted_as_the_root_filesystem">Changing the subset that is extracted as the root filesystem</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Elbe has several methods to select the subset that is packaged as the
+root-filesystem.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The finetuning section allows to remove, copy or move files before the
+  archive will be extracted and the target image is generated.
+</p>
+</li>
+<li>
+<p>
+The <em>norecommend</em> tag.
+</p>
+</li>
+<li>
+<p>
+The initial copy has several modes, which allow to extract very small subsets.
+</p>
+</li>
+<li>
+<p>
+The embedded archive.
+</p>
+</li>
+</ul></div>
+<div class="sect2">
+<h3 id="_finetuning">Finetuning</h3>
+<div class="paragraph"><p>The finetuning section allows to copy, move and delete files in the target
+root-filesystem. Additionally it is possible to run commands. Here is an
+example finetuning section:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>  <span style="font-weight: bold"><span style="color: #0000FF">&lt;finetuning&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>/usr/share/doc<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;mv</span></span> <span style="color: #009900">path</span><span style="color: #990000">=</span><span style="color: #FF0000">"/var"</span><span style="font-weight: bold"><span style="color: #0000FF">&gt;</span></span>/var_ro<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mv&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;cp</span></span> <span style="color: #009900">path</span><span style="color: #990000">=</span><span style="color: #FF0000">/copy/me</span><span style="font-weight: bold"><span style="color: #0000FF">&gt;</span></span>/my/name/on/target<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mv&gt;</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">&lt;/finetuning&gt;</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note</div>
+<div class="paragraph"><p>The copy, mv, and rm commands operate on full directories.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Advanced Copy</div>
+<div class="paragraph"><p>To copy files from the buildimage into the target image, the
+<tt>&lt;command&gt;</tt> tag can be used. The current directory is /target.</p></div>
+<div class="paragraph"><p>For example to copy <tt>/etc/passwd</tt> from the buildenvironment into the target,
+the following command can be used:</p></div>
+<div class="paragraph"><p><tt>&lt;command&gt;cp /etc/passwd etc/ &lt;/command&gt;</tt></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_useful_directories_to_trim_with_finetuning">Useful directories to trim with finetuning</h3>
+<div class="paragraph"><p>This section provides some useful directories that can be safely removed
+to get a smaller target image.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">&lt;finetuning&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>/usr/share/doc<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>                         <img alt="1" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" />
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>var/cache/apt/archives/*<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>               <img alt="2" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" />
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>var/cache/apt/pkgcache.bin<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>var/cache/apt/srcpkgcache.bin<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>var/lib/apt/lists/*_Release<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>var/lib/apt/lists/*_Packages<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>var/lib/apt/lists/*_Sources<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>
+
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>boot<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>                                   <img alt="3" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" />
+
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>lib/modules/2.6.32-5-versatile/<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>        <img alt="4" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" />
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>var/cache/man/*<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>                        <img alt="5" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB2SURBVHja
+FY6hEcQwDAQPChqGGhoaqgWX8PUYBhqGBn4rX0JooKDh/UlsZ3b2BJKXH8XPTYLh1lpt1h+BwxkR
+A23jhsCQd2IkfH9T3HEkzPFegCXUKSUSpJUPsN7UFOgc9VkZUBoz9l0yrVHZarUcJZeb9XznDyNb
+Ny9CX3/7AAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jp
+c3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlAGZlNjkwNDYzMzc5
+ZWIyNWU1NjJmY2M4Y2M5YjNjN2Uw37I5ngAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElF
+TkSuQmCC" />
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>opt/elbe<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>                               <img alt="6" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB9SURBVHja
+FY0hEsMwDAQXChaaBgoG+guB/UZhvlAYWFhqmCeUBvoJoYaCgqrMbudu9oiI86m6tQyEb1AU6kjI
+3GxcQnVO2K0Uq/Ahi6tpFWClwLDe+wNkwt0R2yfk7Negv+csw8uWZR4c+NS4Z6FOTKmkTO88Df9W
+kfXwiD+zczjqCrgbWQAAAEN0RVh0U29mdHdhcmUAQCgjKUltYWdlTWFnaWNrIDQuMi44IDk5LzA4
+LzAxIGNyaXN0eUBteXN0aWMuZXMuZHVwb250LmNvbZG6IbgAAAAqdEVYdFNpZ25hdHVyZQBkMjVk
+NzE3NmQ2N2EwMzhhZmMxYzU2NTU4ZTNkZmIxYf0Q9bUAAAAOdEVYdFBhZ2UAMTJ4MTIrMCswhG27
+fQAAAABJRU5ErkJggg==" />
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;rm&gt;</span></span>var/cache/debconf/*<span style="font-weight: bold"><span style="color: #0000FF">&lt;/rm&gt;</span></span>                    <img alt="7" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABySURBVHja
+JY6tAYUwDIRPViJZIbKyFoms7EyVT74VkJWswQpIZOSRK4lIvuTyA5Kjmu2Hk6DXZQ1fyh3QcESX
+F7LjhGy9G/BDmzBUK8jKqyukD66BCZIVVkGGat2ToIN7jE+VOfhscx9MR8l/Scl6vPMCPjYxv0cQ
+VlMAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlA
+bXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAMjk4MzY4MTQyYWM0M2Nl
+YmQyNTg2ZDhkMTEzN2M4ZGYmOemZAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5C
+YII=" />
+<span style="font-weight: bold"><span style="color: #0000FF">&lt;/finetuning&gt;</span></span></tt></pre></div></div>
+<div class="colist arabic"><table>
+<tr><td><img alt="1" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" /></td><td>
+The doc files are not necessary on an embedded target.
+</td></tr>
+<tr><td><img alt="2" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" /></td><td>
+The apt cache can be downloaded again if necessary.
+</td></tr>
+<tr><td><img alt="3" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" /></td><td>
+The boot directory contains the kernel used for the VM.
+    On embedded targets the kernel is normally loaded by the bootloader.
+</td></tr>
+<tr><td><img alt="4" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" /></td><td>
+The kernel modules for the standard Debian kernel.
+</td></tr>
+<tr><td><img alt="5" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB2SURBVHja
+FY6hEcQwDAQPChqGGhoaqgWX8PUYBhqGBn4rX0JooKDh/UlsZ3b2BJKXH8XPTYLh1lpt1h+BwxkR
+A23jhsCQd2IkfH9T3HEkzPFegCXUKSUSpJUPsN7UFOgc9VkZUBoz9l0yrVHZarUcJZeb9XznDyNb
+Ny9CX3/7AAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jp
+c3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlAGZlNjkwNDYzMzc5
+ZWIyNWU1NjJmY2M4Y2M5YjNjN2Uw37I5ngAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElF
+TkSuQmCC" /></td><td>
+The man page cache
+</td></tr>
+<tr><td><img alt="6" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB9SURBVHja
+FY0hEsMwDAQXChaaBgoG+guB/UZhvlAYWFhqmCeUBvoJoYaCgqrMbudu9oiI86m6tQyEb1AU6kjI
+3GxcQnVO2K0Uq/Ahi6tpFWClwLDe+wNkwt0R2yfk7Negv+csw8uWZR4c+NS4Z6FOTKmkTO88Df9W
+kfXwiD+zczjqCrgbWQAAAEN0RVh0U29mdHdhcmUAQCgjKUltYWdlTWFnaWNrIDQuMi44IDk5LzA4
+LzAxIGNyaXN0eUBteXN0aWMuZXMuZHVwb250LmNvbZG6IbgAAAAqdEVYdFNpZ25hdHVyZQBkMjVk
+NzE3NmQ2N2EwMzhhZmMxYzU2NTU4ZTNkZmIxYf0Q9bUAAAAOdEVYdFBhZ2UAMTJ4MTIrMCswhG27
+fQAAAABJRU5ErkJggg==" /></td><td>
+The full copy mode will also copy elbe onto the root-filesystem.
+</td></tr>
+<tr><td><img alt="7" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABySURBVHja
+JY6tAYUwDIRPViJZIbKyFoms7EyVT74VkJWswQpIZOSRK4lIvuTyA5Kjmu2Hk6DXZQ1fyh3QcESX
+F7LjhGy9G/BDmzBUK8jKqyukD66BCZIVVkGGat2ToIN7jE+VOfhscx9MR8l/Scl6vPMCPjYxv0cQ
+VlMAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlA
+bXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAMjk4MzY4MTQyYWM0M2Nl
+YmQyNTg2ZDhkMTEzN2M4ZGYmOemZAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5C
+YII=" /></td><td>
+debconf cache is also not necessary
+</td></tr>
+</table></div>
+</div>
+<div class="sect2">
+<h3 id="_archive">Archive</h3>
+<div class="paragraph"><p>It&#8217;s also possible to include an archive into the xml file, that is unpacked
+into the target root-filesystem after the finetuning step.
+This archive must be a bzip2 compressed tar (.tar.bz2) and the following
+command can be used to embed the archive into the xml file:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>elbe chg_archive &lt;xmlfile&gt; archive.tar.bz2</tt></pre>
+</div></div>
+<div class="paragraph"><p>This feature is useful to place custom configuration-files into the final image.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_slimming_the_root_filesystem_with_the_different_modes">Slimming the root filesystem with the different modes</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The copying process has several modes. The mode is configured in the <em>target</em>
+tag. It needs to be the tag before <em>finetuning</em>.</p></div>
+<div class="paragraph"><p>The following commented example illustrates where the mode is configured.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>  <span style="font-weight: bold"><span style="color: #0000FF">&lt;target&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;hostname&gt;</span></span>example<span style="font-weight: bold"><span style="color: #0000FF">&lt;/hostname&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;domain&gt;</span></span>example.com<span style="font-weight: bold"><span style="color: #0000FF">&lt;/domain&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;passwd&gt;</span></span>foo<span style="font-weight: bold"><span style="color: #0000FF">&lt;/passwd&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;package&gt;</span></span>
+            <span style="font-weight: bold"><span style="color: #0000FF">&lt;tar&gt;</span></span>nfsroot.tar.gz<span style="font-weight: bold"><span style="color: #0000FF">&lt;/tar&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;/package&gt;</span></span>
+
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;diet</span></span> <span style="font-weight: bold"><span style="color: #0000FF">/&gt;</span></span>        <img alt="1" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" />
+
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;norecommend</span></span> <span style="font-weight: bold"><span style="color: #0000FF">/&gt;</span></span> <img alt="2" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" />
+
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;finetuning</span></span> \<span style="font-weight: bold"><span style="color: #0000FF">&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg-list&gt;</span></span>
+            <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>bash<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg-list&gt;</span></span>
+
+  <span style="font-weight: bold"><span style="color: #0000FF">&lt;/target&gt;</span></span></tt></pre></div></div>
+<div class="colist arabic"><table>
+<tr><td><img alt="1" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" /></td><td>
+The mode is configured at this place, leaving it out, enables the default
+    mode.
+</td></tr>
+<tr><td><img alt="2" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" /></td><td>
+<em>norecommend</em> should be placed here.
+</td></tr>
+</table></div>
+<div class="sect2">
+<h3 id="_norecommend">norecommend</h3>
+<div class="paragraph"><p><em>norecommend</em> disables installation of recommended packages. This is a frequent
+cause for big root-filesystems. Installed programs will still work, but some
+functionality requiring external programs might be disabled.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note</div>
+<div class="paragraph"><p>This is not strictly a mode as described in the following paragraphs.
+It can be combined with any of them, and the following modes are mutually
+exclusive.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_default">default</h3>
+<div class="paragraph"><p>The default mode generates a full copy of the build image.
+This mode is the easiest to use, but its not possible to generate images
+which have the Debian package management removed.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_setsel">setsel</h3>
+<div class="paragraph"><p>The setsel mode can be used to generate images which only contain <em>dpkg</em>,
+and offers a more fine-grained control on which packages are installed.</p></div>
+<div class="paragraph"><p>The recommended usage is as follows:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Generate an image in the default mode.
+</p>
+</li>
+<li>
+<p>
+Run the image and use aptitude to purge unwanted packages.
+</p>
+</li>
+<li>
+<p>
+Maybe even use dpkg to remove apt and aptitude.
+</p>
+</li>
+<li>
+<p>
+Then generate the list of selected Packages using
+  <tt>dpkg --get-selections &gt; selections.list</tt>
+</p>
+</li>
+<li>
+<p>
+Transfer this file to the host System.
+</p>
+</li>
+<li>
+<p>
+Use <tt>elbe setsel &lt;xmlfile&gt; selections.list</tt>
+  to import the pkg-list into the xml file.
+</p>
+</li>
+<li>
+<p>
+Rebuild using setsel mode.
+</p>
+</li>
+</ul></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">How it works</div>
+<div class="paragraph"><p>The setsel mode works by feeding the pkg list to <tt>dpkg --set-selections</tt> in
+the target image copy. It has the advantage that there is no need to cope with
+some unregistered configuration files.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_diet">diet</h3>
+<div class="paragraph"><p>Diet Mode only copies the files that are referenced in the Package management.
+It resolves the dependencies so that one does not need to reference library
+packages.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">But</div>
+<div class="paragraph"><p>Some packages rely on files generated in the post-inst scripts, which are not
+tracked by the package management. Work is in progress to execute the post-inst
+scripts in the target copy, but there are still some problems with
+corner-cases, when dependencies of these scripts get removed in the
+<em>finetuning</em>.</p></div>
+<div class="paragraph"><p>These Errors are hard to find. And slow down development of an RFS.
+Diet Mode is intended to build small root-filesystems. E.g. to
+add some packages, like openssh-server, to a busybox based system.</p></div>
+<div class="paragraph"><p>Do not use this for normal filesystems.</p></div>
+<div class="paragraph"><p>This also holds for the <em>tighten</em> mode.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_tighten">tighten</h3>
+<div class="paragraph"><p>Tighten mode only extracts the files referenced by the packages in <em>pkg-list</em>.
+No dependencies are resolved.
+This mode is intended for compatibility with old xml files, do not use in
+new elbe projects.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cdrom_functionality">CDROM Functionality</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Elbe creates a CDROM iso image with all the installed packages.
+It is created in the build directory, and its filename is <tt>install.iso</tt>
+This can also serve as an installation source.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>    <span style="font-weight: bold"><span style="color: #0000FF">&lt;mirror&gt;</span></span>
+            <span style="font-weight: bold"><span style="color: #0000FF">&lt;cdrom&gt;</span></span>/home/user/elbe-example/install.iso<span style="font-weight: bold"><span style="color: #0000FF">&lt;/cdrom&gt;</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">&lt;/mirror&gt;</span></span></tt></pre></div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_install_reports">Install Reports</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The build process also creates a report file in asciidoc format:
+<tt>elbe-report.txt</tt>  can be converted to html using the following command:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>asciidoc elbe-report.txt</tt></pre>
+</div></div>
+<div class="paragraph"><p>This report lists all files in the root-file-system, including the origin
+Debian package.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validation">Validation</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>After a build the <tt>source.xml</tt> file includes informations about all
+installed packages and versions. If this information is already present in
+a file used with <tt>elbe create</tt> the installed package versions and md5 hashes
+are validated and a report is printed and saved to <tt>validation.txt</tt>. This
+file is also in asciidoc format.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_xml_reference">XML Reference</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This section is a step by step explanation of the ARM example.</p></div>
+<div class="paragraph"><p>The xml file starts with the following header, which should always be the same:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">&lt;ns0:RootFileSystem</span></span> <span style="color: #009900">xmlns:ns0</span><span style="color: #990000">=</span><span style="color: #FF0000">"https://www.linutronix.de/projects/Elbe"</span>
+     <span style="color: #009900">xmlns:xsi</span><span style="color: #990000">=</span><span style="color: #FF0000">"http://www.w3.org/2001/XMLSchema-instance"</span>
+     <span style="color: #009900">created</span><span style="color: #990000">=</span><span style="color: #FF0000">"2009-05-20T08:50:56"</span> <span style="color: #009900">revision</span><span style="color: #990000">=</span><span style="color: #FF0000">"5"</span>
+     <span style="color: #009900">xsi:schemaLocation</span><span style="color: #990000">=</span><span style="color: #FF0000">"https://www.linutronix.de/projects/Elbe dbsfed.xsd"</span><span style="font-weight: bold"><span style="color: #0000FF">&gt;</span></span></tt></pre></div></div>
+<div class="paragraph"><p>After this header follows the project description.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>        <span style="font-weight: bold"><span style="color: #0000FF">&lt;project&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;name&gt;</span></span>ARMexample<span style="font-weight: bold"><span style="color: #0000FF">&lt;/name&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;version&gt;</span></span>08.15<span style="font-weight: bold"><span style="color: #0000FF">&lt;/version&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;mirror&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;primary_host&gt;</span></span>debian.tu-bs.de<span style="font-weight: bold"><span style="color: #0000FF">&lt;/primary_host&gt;</span></span>    <img alt="1" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;primary_path&gt;</span></span>/debian<span style="font-weight: bold"><span style="color: #0000FF">&lt;/primary_path&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;primary_proto&gt;</span></span>http<span style="font-weight: bold"><span style="color: #0000FF">&lt;/primary_proto&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;url-list&gt;</span></span>                                      <img alt="2" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" />
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;url&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;binary&gt;</span></span>http://debian.linutronix.de/elbe squeeze main<span style="font-weight: bold"><span style="color: #0000FF">&lt;/binary&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/url&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/url-list&gt;</span></span>
+
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/mirror&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;noauth</span></span> <span style="font-weight: bold"><span style="color: #0000FF">/&gt;</span></span>                                              <img alt="3" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" />
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;suite&gt;</span></span>squeeze<span style="font-weight: bold"><span style="color: #0000FF">&lt;/suite&gt;</span></span>                                  <img alt="4" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" /></tt></pre></div></div>
+<div class="colist arabic"><table>
+<tr><td><img alt="1" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" /></td><td>
+The <em>mirror</em> tag contains
+    <em>primary_host</em>, <em>primary_path</em> and <em>primary_proto</em>.
+    It describes the Debian mirror used.
+</td></tr>
+<tr><td><img alt="2" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" /></td><td>
+The <em>url-list</em> can contain additional package sources.
+</td></tr>
+<tr><td><img alt="3" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" /></td><td>
+The <em>noauth</em> tag can be used to disable authentication if custom
+    unsigned packages are supposed to be installed.
+</td></tr>
+<tr><td><img alt="4" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" /></td><td>
+The suite selects the distribution codename used from the primary mirror.
+</td></tr>
+</table></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note</div>
+<div class="paragraph"><p>the <em>project</em> tag isn&#8217;t closed yet.</p></div>
+</div></div>
+<div class="paragraph"><p>The following section describes the virtual machine in which the
+debian-installer is exectued and custom packages can be build.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>                <span style="font-weight: bold"><span style="color: #0000FF">&lt;buildimage&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;arch&gt;</span></span>armel<span style="font-weight: bold"><span style="color: #0000FF">&lt;/arch&gt;</span></span>                              <img alt="1" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;size&gt;</span></span>20G<span style="font-weight: bold"><span style="color: #0000FF">&lt;/size&gt;</span></span>                                <img alt="2" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;mem&gt;</span></span>256<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mem&gt;</span></span>                                  <img alt="3" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;interpreter&gt;</span></span>qemu-system-arm<span style="font-weight: bold"><span style="color: #0000FF">&lt;/interpreter&gt;</span></span>      <img alt="4" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;kinitrd&gt;</span></span>testrd<span style="font-weight: bold"><span style="color: #0000FF">&lt;/kinitrd&gt;</span></span>                       <img alt="5" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB2SURBVHja
+FY6hEcQwDAQPChqGGhoaqgWX8PUYBhqGBn4rX0JooKDh/UlsZ3b2BJKXH8XPTYLh1lpt1h+BwxkR
+A23jhsCQd2IkfH9T3HEkzPFegCXUKSUSpJUPsN7UFOgc9VkZUBoz9l0yrVHZarUcJZeb9XznDyNb
+Ny9CX3/7AAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jp
+c3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlAGZlNjkwNDYzMzc5
+ZWIyNWU1NjJmY2M4Y2M5YjNjN2Uw37I5ngAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElF
+TkSuQmCC" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;console&gt;</span></span>ttyAMA0,115200n1<span style="font-weight: bold"><span style="color: #0000FF">&lt;/console&gt;</span></span>             <img alt="6" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB9SURBVHja
+FY0hEsMwDAQXChaaBgoG+guB/UZhvlAYWFhqmCeUBvoJoYaCgqrMbudu9oiI86m6tQyEb1AU6kjI
+3GxcQnVO2K0Uq/Ahi6tpFWClwLDe+wNkwt0R2yfk7Negv+csw8uWZR4c+NS4Z6FOTKmkTO88Df9W
+kfXwiD+zczjqCrgbWQAAAEN0RVh0U29mdHdhcmUAQCgjKUltYWdlTWFnaWNrIDQuMi44IDk5LzA4
+LzAxIGNyaXN0eUBteXN0aWMuZXMuZHVwb250LmNvbZG6IbgAAAAqdEVYdFNpZ25hdHVyZQBkMjVk
+NzE3NmQ2N2EwMzhhZmMxYzU2NTU4ZTNkZmIxYf0Q9bUAAAAOdEVYdFBhZ2UAMTJ4MTIrMCswhG27
+fQAAAABJRU5ErkJggg==" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;machine&gt;</span></span>versatilepb<span style="font-weight: bold"><span style="color: #0000FF">&lt;/machine&gt;</span></span>                  <img alt="7" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABySURBVHja
+JY6tAYUwDIRPViJZIbKyFoms7EyVT74VkJWswQpIZOSRK4lIvuTyA5Kjmu2Hk6DXZQ1fyh3QcESX
+F7LjhGy9G/BDmzBUK8jKqyukD66BCZIVVkGGat2ToIN7jE+VOfhscx9MR8l/Scl6vPMCPjYxv0cQ
+VlMAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlA
+bXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAMjk4MzY4MTQyYWM0M2Nl
+YmQyNTg2ZDhkMTEzN2M4ZGYmOemZAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5C
+YII=" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;NIC&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;model&gt;</span></span>smc91c111<span style="font-weight: bold"><span style="color: #0000FF">&lt;/model&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;MAC&gt;</span></span>de:ad:be:ef:be:05<span style="font-weight: bold"><span style="color: #0000FF">&lt;/MAC&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/NIC&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;portforwarding&gt;</span></span>                                <img alt="8" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB/SURBVHja
+HY6hFcMwDAUPChqWGgYGhhoaBnaFwqzQEbyCYWCg1wgMNTQ0VKUK6T/duy9U9dyXuFdb0JEhRNi6
+hQT1uVtgnVTIM9APKBiUZpDxgZUXcPXnFhAP77lnv4hjtcHZHDPBMZbYvy4wtZQ+irj6X+qzDStV
+rTnG5O/8AKOfObpGYu0OAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkv
+MDgvMDEgY3Jpc3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADU3
+YmUxOTUwNWMwM2Y5MmYzODQ3ZjUzNWU5YjExNGU52TRrQwAAAA50RVh0UGFnZQAxMngxMiswKzCE
+bbt9AAAAAElFTkSuQmCC" />
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;forward&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;proto&gt;</span></span>tcp<span style="font-weight: bold"><span style="color: #0000FF">&lt;/proto&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;buildenv&gt;</span></span>22<span style="font-weight: bold"><span style="color: #0000FF">&lt;/buildenv&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;host&gt;</span></span>5022<span style="font-weight: bold"><span style="color: #0000FF">&lt;/host&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/forward&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/portforwarding&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg-list&gt;</span></span>                                      <img alt="9" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB/SURBVHja
+FY4hFoQwDAVHRlZikchKLLISuVdYieQKyF4BWbmSa1RiKysjs6nJe5M/L/mYWdmXeS9qhukGIcDa
+HRJSarudlALHK5N+IJPg9kUdEROcI3lABoSnt/Yb4LcQkZoh4u6mc7IVLtRnsf6FRbEeh+3S60/N
+cgwSL6/zB4xQOGLZ0vsXAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkv
+MDgvMDEgY3Jpc3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADM0
+NjIzZTVlNGQ0ODMxMGU0MDliMjgwYWZlMjQ3NjAy1DE0JAAAAA50RVh0UGFnZQAxMngxMiswKzCE
+bbt9AAAAAElFTkSuQmCC" />
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>buildd<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg-list&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/buildimage&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/project&gt;</span></span></tt></pre></div></div>
+<div class="colist arabic"><table>
+<tr><td><img alt="1" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" /></td><td>
+<em>arch</em> is the Debian architecture of the target.
+</td></tr>
+<tr><td><img alt="2" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" /></td><td>
+<em>size</em> is the size of the hard-disk image.
+</td></tr>
+<tr><td><img alt="3" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" /></td><td>
+<em>mem</em> controls the amount of RAM that is allocated to the virtual machine.
+</td></tr>
+<tr><td><img alt="4" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" /></td><td>
+The <em>interpreter</em> is either <em>qemu-system-&lt;arch&gt;</em> or <em>qemu-kvm</em>.
+    Usage of kvm is usually only possible, when the target is <em>x86</em>.
+</td></tr>
+<tr><td><img alt="5" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB2SURBVHja
+FY6hEcQwDAQPChqGGhoaqgWX8PUYBhqGBn4rX0JooKDh/UlsZ3b2BJKXH8XPTYLh1lpt1h+BwxkR
+A23jhsCQd2IkfH9T3HEkzPFegCXUKSUSpJUPsN7UFOgc9VkZUBoz9l0yrVHZarUcJZeb9XznDyNb
+Ny9CX3/7AAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jp
+c3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlAGZlNjkwNDYzMzc5
+ZWIyNWU1NjJmY2M4Y2M5YjNjN2Uw37I5ngAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElF
+TkSuQmCC" /></td><td>
+The name of the kinitrd package.
+    All package sources mentioned in the xml file are scanned for this package.
+    It provides the debian-installer kernel and initrd. This package is not
+    hosted on official Debian mirrors. So it makes sense additional add the
+    &lt;noauth/&gt; tag to the &lt;mirror&gt; section.
+</td></tr>
+<tr><td><img alt="6" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB9SURBVHja
+FY0hEsMwDAQXChaaBgoG+guB/UZhvlAYWFhqmCeUBvoJoYaCgqrMbudu9oiI86m6tQyEb1AU6kjI
+3GxcQnVO2K0Uq/Ahi6tpFWClwLDe+wNkwt0R2yfk7Negv+csw8uWZR4c+NS4Z6FOTKmkTO88Df9W
+kfXwiD+zczjqCrgbWQAAAEN0RVh0U29mdHdhcmUAQCgjKUltYWdlTWFnaWNrIDQuMi44IDk5LzA4
+LzAxIGNyaXN0eUBteXN0aWMuZXMuZHVwb250LmNvbZG6IbgAAAAqdEVYdFNpZ25hdHVyZQBkMjVk
+NzE3NmQ2N2EwMzhhZmMxYzU2NTU4ZTNkZmIxYf0Q9bUAAAAOdEVYdFBhZ2UAMTJ4MTIrMCswhG27
+fQAAAABJRU5ErkJggg==" /></td><td>
+The <em>console</em> line needs special attention because it is different on
+    different emulation targets.
+</td></tr>
+<tr><td><img alt="7" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABySURBVHja
+JY6tAYUwDIRPViJZIbKyFoms7EyVT74VkJWswQpIZOSRK4lIvuTyA5Kjmu2Hk6DXZQ1fyh3QcESX
+F7LjhGy9G/BDmzBUK8jKqyukD66BCZIVVkGGat2ToIN7jE+VOfhscx9MR8l/Scl6vPMCPjYxv0cQ
+VlMAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlA
+bXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAMjk4MzY4MTQyYWM0M2Nl
+YmQyNTg2ZDhkMTEzN2M4ZGYmOemZAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5C
+YII=" /></td><td>
+The <em>machine</em> tag contains the <em>-machine</em> parameter, that is provided to
+    qemu.
+</td></tr>
+<tr><td><img alt="8" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB/SURBVHja
+HY6hFcMwDAUPChqWGgYGhhoaBnaFwqzQEbyCYWCg1wgMNTQ0VKUK6T/duy9U9dyXuFdb0JEhRNi6
+hQT1uVtgnVTIM9APKBiUZpDxgZUXcPXnFhAP77lnv4hjtcHZHDPBMZbYvy4wtZQ+irj6X+qzDStV
+rTnG5O/8AKOfObpGYu0OAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkv
+MDgvMDEgY3Jpc3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADU3
+YmUxOTUwNWMwM2Y5MmYzODQ3ZjUzNWU5YjExNGU52TRrQwAAAA50RVh0UGFnZQAxMngxMiswKzCE
+bbt9AAAAAElFTkSuQmCC" /></td><td>
+<em>portforwarding</em> of network server ports from the virtual machine to the
+    host. This example forwards the ssh port to port 5022 on the host.
+</td></tr>
+<tr><td><img alt="9" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB/SURBVHja
+FY4hFoQwDAVHRlZikchKLLISuVdYieQKyF4BWbmSa1RiKysjs6nJe5M/L/mYWdmXeS9qhukGIcDa
+HRJSarudlALHK5N+IJPg9kUdEROcI3lABoSnt/Yb4LcQkZoh4u6mc7IVLtRnsf6FRbEeh+3S60/N
+cgwSL6/zB4xQOGLZ0vsXAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkv
+MDgvMDEgY3Jpc3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADM0
+NjIzZTVlNGQ0ODMxMGU0MDliMjgwYWZlMjQ3NjAy1DE0JAAAAA50RVh0UGFnZQAxMngxMiswKzCE
+bbt9AAAAAElFTkSuQmCC" /></td><td>
+This is the list of packages that are only installed to the buildimage.
+     (The packages listed in the target sections pkg-list are installed to
+     the target image and the buildimage.) It can be used for example to
+     install the debian build server into the buildenvironment.
+</td></tr>
+</table></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note</div>
+<div class="paragraph"><p>Only change the sizes of hard-disk and RAM if that is necessary.</p></div>
+<div class="paragraph"><p>The undescribed values are correctly configured in the example files. It is
+very uncertain that you need to change them.</p></div>
+<div class="paragraph"><p>There are example files for arm, powerpc and x86.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>        <span style="font-weight: bold"><span style="color: #0000FF">&lt;target&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;hostname&gt;</span></span>myARM<span style="font-weight: bold"><span style="color: #0000FF">&lt;/hostname&gt;</span></span>                      <img alt="1" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" />
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;domain&gt;</span></span>tec.linutronix.de<span style="font-weight: bold"><span style="color: #0000FF">&lt;/domain&gt;</span></span>              <img alt="2" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" />
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;passwd&gt;</span></span>foo<span style="font-weight: bold"><span style="color: #0000FF">&lt;/passwd&gt;</span></span>                            <img alt="3" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" />
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;console&gt;</span></span>ttyS0,115200<span style="font-weight: bold"><span style="color: #0000FF">&lt;/console&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;package&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;tar&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;name&gt;</span></span>nfsroot.tar.gz<span style="font-weight: bold"><span style="color: #0000FF">&lt;/name&gt;</span></span>     <img alt="4" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/tar&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/package&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;finetuning&gt;</span></span>                                    <img alt="5" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB2SURBVHja
+FY6hEcQwDAQPChqGGhoaqgWX8PUYBhqGBn4rX0JooKDh/UlsZ3b2BJKXH8XPTYLh1lpt1h+BwxkR
+A23jhsCQd2IkfH9T3HEkzPFegCXUKSUSpJUPsN7UFOgc9VkZUBoz9l0yrVHZarUcJZeb9XznDyNb
+Ny9CX3/7AAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jp
+c3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlAGZlNjkwNDYzMzc5
+ZWIyNWU1NjJmY2M4Y2M5YjNjN2Uw37I5ngAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElF
+TkSuQmCC" />
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/finetuning&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg-list&gt;</span></span>                                      <img alt="6" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB9SURBVHja
+FY0hEsMwDAQXChaaBgoG+guB/UZhvlAYWFhqmCeUBvoJoYaCgqrMbudu9oiI86m6tQyEb1AU6kjI
+3GxcQnVO2K0Uq/Ahi6tpFWClwLDe+wNkwt0R2yfk7Negv+csw8uWZR4c+NS4Z6FOTKmkTO88Df9W
+kfXwiD+zczjqCrgbWQAAAEN0RVh0U29mdHdhcmUAQCgjKUltYWdlTWFnaWNrIDQuMi44IDk5LzA4
+LzAxIGNyaXN0eUBteXN0aWMuZXMuZHVwb250LmNvbZG6IbgAAAAqdEVYdFNpZ25hdHVyZQBkMjVk
+NzE3NmQ2N2EwMzhhZmMxYzU2NTU4ZTNkZmIxYf0Q9bUAAAAOdEVYdFBhZ2UAMTJ4MTIrMCswhG27
+fQAAAABJRU5ErkJggg==" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>build-essential<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>bash<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>less<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>git<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>debhelper<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>nfs-common<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>openssh-server<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg-list&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/target&gt;</span></span></tt></pre></div></div>
+<div class="colist arabic"><table>
+<tr><td><img alt="1" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" /></td><td>
+The hostname
+</td></tr>
+<tr><td><img alt="2" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" /></td><td>
+and domainname
+</td></tr>
+<tr><td><img alt="3" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" /></td><td>
+This is the root password of the machine.
+</td></tr>
+<tr><td><img alt="4" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" /></td><td>
+This describes, that the resulting rootfilesystem, shall be generated as
+    <em>nfsroot.tar.gz</em>
+</td></tr>
+<tr><td><img alt="5" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB2SURBVHja
+FY6hEcQwDAQPChqGGhoaqgWX8PUYBhqGBn4rX0JooKDh/UlsZ3b2BJKXH8XPTYLh1lpt1h+BwxkR
+A23jhsCQd2IkfH9T3HEkzPFegCXUKSUSpJUPsN7UFOgc9VkZUBoz9l0yrVHZarUcJZeb9XznDyNb
+Ny9CX3/7AAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jp
+c3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlAGZlNjkwNDYzMzc5
+ZWIyNWU1NjJmY2M4Y2M5YjNjN2Uw37I5ngAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElF
+TkSuQmCC" /></td><td>
+finetuning section can be empty. If you need finetuning it can be defined
+    here. The format of this tag is explained above.
+</td></tr>
+<tr><td><img alt="6" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB9SURBVHja
+FY0hEsMwDAQXChaaBgoG+guB/UZhvlAYWFhqmCeUBvoJoYaCgqrMbudu9oiI86m6tQyEb1AU6kjI
+3GxcQnVO2K0Uq/Ahi6tpFWClwLDe+wNkwt0R2yfk7Negv+csw8uWZR4c+NS4Z6FOTKmkTO88Df9W
+kfXwiD+zczjqCrgbWQAAAEN0RVh0U29mdHdhcmUAQCgjKUltYWdlTWFnaWNrIDQuMi44IDk5LzA4
+LzAxIGNyaXN0eUBteXN0aWMuZXMuZHVwb250LmNvbZG6IbgAAAAqdEVYdFNpZ25hdHVyZQBkMjVk
+NzE3NmQ2N2EwMzhhZmMxYzU2NTU4ZTNkZmIxYf0Q9bUAAAAOdEVYdFBhZ2UAMTJ4MTIrMCswhG27
+fQAAAABJRU5ErkJggg==" /></td><td>
+The package list resides here.
+</td></tr>
+</table></div>
+<div class="sect2">
+<h3 id="_building_ubi_images">Building ubi images</h3>
+<div class="paragraph"><p>Elbe also has the ability to generate ubi images, including different
+partitions and mountpoints. Lets look at an example <em>target</em> section.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">&lt;target&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;hostname&gt;</span></span>myARM<span style="font-weight: bold"><span style="color: #0000FF">&lt;/hostname&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;domain&gt;</span></span>tec.linutronix.de<span style="font-weight: bold"><span style="color: #0000FF">&lt;/domain&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;passwd&gt;</span></span>foo<span style="font-weight: bold"><span style="color: #0000FF">&lt;/passwd&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;console&gt;</span></span>ttyS0,115200<span style="font-weight: bold"><span style="color: #0000FF">&lt;/console&gt;</span></span>
+
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;images&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;mtd&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;name&gt;</span></span>linux.img<span style="font-weight: bold"><span style="color: #0000FF">&lt;/name&gt;</span></span>                  <img alt="1" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;nr&gt;</span></span>0<span style="font-weight: bold"><span style="color: #0000FF">&lt;/nr&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;size&gt;</span></span>60MB<span style="font-weight: bold"><span style="color: #0000FF">&lt;/size&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;ubivg&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;label&gt;</span></span>nand<span style="font-weight: bold"><span style="color: #0000FF">&lt;/label&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;miniosize&gt;</span></span>2048<span style="font-weight: bold"><span style="color: #0000FF">&lt;/miniosize&gt;</span></span>     <img alt="2" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" />
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;maxlogicaleraseblockcount&gt;</span></span>1533<span style="font-weight: bold"><span style="color: #0000FF">&lt;/maxlogicaleraseblockcount&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;logicaleraseblocksize&gt;</span></span>126976<span style="font-weight: bold"><span style="color: #0000FF">&lt;/logicaleraseblocksize&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;physicaleraseblocksize&gt;</span></span>128KiB<span style="font-weight: bold"><span style="color: #0000FF">&lt;/physicaleraseblocksize&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;ubi&gt;</span></span>                           <img alt="3" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" />
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>static<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;label&gt;</span></span>kernel<span style="font-weight: bold"><span style="color: #0000FF">&lt;/label&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;id&gt;</span></span>0<span style="font-weight: bold"><span style="color: #0000FF">&lt;/id&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;size&gt;</span></span>4MiB<span style="font-weight: bold"><span style="color: #0000FF">&lt;/size&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;binary&gt;</span></span>/boot/vmlinuz-2.6.33.9-rt31<span style="font-weight: bold"><span style="color: #0000FF">&lt;/binary&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/ubi&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;ubi&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>dynamic<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;label&gt;</span></span>rfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/label&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;id&gt;</span></span>1<span style="font-weight: bold"><span style="color: #0000FF">&lt;/id&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;size&gt;</span></span>26MiB<span style="font-weight: bold"><span style="color: #0000FF">&lt;/size&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/ubi&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;ubi&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>dynamic<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;label&gt;</span></span>data<span style="font-weight: bold"><span style="color: #0000FF">&lt;/label&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;id&gt;</span></span>2<span style="font-weight: bold"><span style="color: #0000FF">&lt;/id&gt;</span></span>
+                                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;size&gt;</span></span>30MiB<span style="font-weight: bold"><span style="color: #0000FF">&lt;/size&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/ubi&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/ubivg&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/mtd&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/images&gt;</span></span>
+
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;fstab&gt;</span></span>                                                 <img alt="4" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" />
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;bylabel&gt;</span></span>                                       <img alt="5" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB2SURBVHja
+FY6hEcQwDAQPChqGGhoaqgWX8PUYBhqGBn4rX0JooKDh/UlsZ3b2BJKXH8XPTYLh1lpt1h+BwxkR
+A23jhsCQd2IkfH9T3HEkzPFegCXUKSUSpJUPsN7UFOgc9VkZUBoz9l0yrVHZarUcJZeb9XznDyNb
+Ny9CX3/7AAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jp
+c3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlAGZlNjkwNDYzMzc5
+ZWIyNWU1NjJmY2M4Y2M5YjNjN2Uw37I5ngAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElF
+TkSuQmCC" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;label&gt;</span></span>data<span style="font-weight: bold"><span style="color: #0000FF">&lt;/label&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;mountpoint&gt;</span></span>/opt<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mountpoint&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;fs&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>ubifs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;mkfs&gt;</span></span>-x lzo<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mkfs&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/fs&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;options&gt;</span></span>rw<span style="font-weight: bold"><span style="color: #0000FF">&lt;/options&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/bylabel&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;bylabel&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;label&gt;</span></span>rfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/label&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;mountpoint&gt;</span></span>/<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mountpoint&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;fs&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>ubifs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;mkfs&gt;</span></span>-x lzo<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mkfs&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/fs&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;options&gt;</span></span>ro<span style="font-weight: bold"><span style="color: #0000FF">&lt;/options&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/bylabel&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;bydev&gt;</span></span>                                         <img alt="6" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB9SURBVHja
+FY0hEsMwDAQXChaaBgoG+guB/UZhvlAYWFhqmCeUBvoJoYaCgqrMbudu9oiI86m6tQyEb1AU6kjI
+3GxcQnVO2K0Uq/Ahi6tpFWClwLDe+wNkwt0R2yfk7Negv+csw8uWZR4c+NS4Z6FOTKmkTO88Df9W
+kfXwiD+zczjqCrgbWQAAAEN0RVh0U29mdHdhcmUAQCgjKUltYWdlTWFnaWNrIDQuMi44IDk5LzA4
+LzAxIGNyaXN0eUBteXN0aWMuZXMuZHVwb250LmNvbZG6IbgAAAAqdEVYdFNpZ25hdHVyZQBkMjVk
+NzE3NmQ2N2EwMzhhZmMxYzU2NTU4ZTNkZmIxYf0Q9bUAAAAOdEVYdFBhZ2UAMTJ4MTIrMCswhG27
+fQAAAABJRU5ErkJggg==" />
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;source&gt;</span></span>proc<span style="font-weight: bold"><span style="color: #0000FF">&lt;/source&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;mountpoint&gt;</span></span>/proc<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mountpoint&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;fs&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>proc<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/fs&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/bydev&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;bydev&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;source&gt;</span></span>sysfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/source&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;mountpoint&gt;</span></span>/sys<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mountpoint&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;fs&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>sysfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/fs&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/bydev&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;bydev&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;source&gt;</span></span>tmpfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/source&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;mountpoint&gt;</span></span>/tmp<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mountpoint&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;fs&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>tmpfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/fs&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;options&gt;</span></span>size=2M<span style="font-weight: bold"><span style="color: #0000FF">&lt;/options&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/bydev&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;bydev&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;source&gt;</span></span>tmpfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/source&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;mountpoint&gt;</span></span>/var/log<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mountpoint&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;fs&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>tmpfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/fs&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;options&gt;</span></span>size=4M<span style="font-weight: bold"><span style="color: #0000FF">&lt;/options&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/bydev&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;bydev&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;source&gt;</span></span>tmpfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/source&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;mountpoint&gt;</span></span>/var/run<span style="font-weight: bold"><span style="color: #0000FF">&lt;/mountpoint&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;fs&gt;</span></span>
+                                <span style="font-weight: bold"><span style="color: #0000FF">&lt;type&gt;</span></span>tmpfs<span style="font-weight: bold"><span style="color: #0000FF">&lt;/type&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/fs&gt;</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">&lt;options&gt;</span></span>size=2M<span style="font-weight: bold"><span style="color: #0000FF">&lt;/options&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;/bydev&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/fstab&gt;</span></span>
+
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;finetuning&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/finetuning&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg-list&gt;</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">&lt;pkg&gt;</span></span>dash<span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg&gt;</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">&lt;/pkg-list&gt;</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">&lt;/target&gt;</span></span></tt></pre></div></div>
+<div class="colist arabic"><table>
+<tr><td><img alt="1" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABjSURBVHja
+VY6xDcAwCAS/pPQaLim9QmajdOk2I2SNrMEIlARIoigU8Cek/4e7zdHaWOYOVwaoA6wOCw05Y7FB
+gE0tIWQ+sBcwKM8qoD/wB5wGL8hjfdzWrh01GRp1hInGjDoXwHgsFuzBVLQAAABDdEVYdFNvZnR3
+YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBjcmlzdHlAbXlzdGljLmVzLmR1cG9u
+dC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUANThhMDcyZTA3MGRhMjJmNjEzNWNiZDNlNDE0NTQ2
+ZjloaiHtAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAASUVORK5CYII=" /></td><td>
+This specifies an mtd image with 60MB size whose filename is linux.img
+</td></tr>
+<tr><td><img alt="2" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB7SURBVHja
+HY6hFcMwDEQ/NDQsNSwU9Apdo7Cw0CsIBoZmhKzQEQJLDQsFVclHpHu693W429Zr7bu541Pg3kCm
+Y0K75u9TEUPhuGgWU4mQDvieEaSQEnsT6zKPeZY0EUNtrHMCXvYUuSUg0PsMjUSvpysUT6OOSil9
+izp/VNk1YJ8vf6MAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8w
+MSBjcmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBlYWU1
+MjljOTRhN2Y0N2RlY2NmYWRhMjhhY2I5ZGblb7ENAAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30A
+AAAASUVORK5CYII=" /></td><td>
+Parameters for the ubi tools, describing the NAND geometry.
+</td></tr>
+<tr><td><img alt="3" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB4SURBVHja
+JU6rFcNADBM09BqBhl6ltDCwKxQeDOwKB7tGYGCoYaChK6cmlt7TD1W5uap/sgoVBnEXWBTSoOdx
+7gpLDOAVorWC0ABdcBPqwZtx8Muf+DPXJpQ96Nu/LSMYl/n17oCOnplTOrpiwW3sUs4ZJmob5/wA
+Ubg1Y/zrjUwAAABDdEVYdFNvZnR3YXJlAEAoIylJbWFnZU1hZ2ljayA0LjIuOCA5OS8wOC8wMSBj
+cmlzdHlAbXlzdGljLmVzLmR1cG9udC5jb22RuiG4AAAAKnRFWHRTaWduYXR1cmUAODBiYmRhMjcy
+NmRkYWNlOGFiOGEwMWY1OWRlMmViZGII/Q51AAAADnRFWHRQYWdlADEyeDEyKzArMIRtu30AAAAA
+SUVORK5CYII=" /></td><td>
+Specification of ubi volumes.
+</td></tr>
+<tr><td><img alt="4" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAABzSURBVHja
+HY0hEoUwEEMjkZVYZGVlr1CJxCKRXKPyy28reyVsZeXKsCFi573ZzAQk+x5jaQ6gFQAxIA8XceEN
+ZEN3DkOCH/TobUoSVuAYwSSLyzbvaHWVFJxUmmp+PF+twrLkuXzLwPmZ8+OjtH8KS6pGvuoGNo5b
+6rzDAAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jpc3R5
+QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlADlmODJmY2FjOWUwMzlj
+YmRiNzIzODBhNDU5MTMyNGY1gLv4dgAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElFTkSu
+QmCC" /></td><td>
+specifies the fstab, so that everything can be copied to the right image.
+</td></tr>
+<tr><td><img alt="5" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB2SURBVHja
+FY6hEcQwDAQPChqGGhoaqgWX8PUYBhqGBn4rX0JooKDh/UlsZ3b2BJKXH8XPTYLh1lpt1h+BwxkR
+A23jhsCQd2IkfH9T3HEkzPFegCXUKSUSpJUPsN7UFOgc9VkZUBoz9l0yrVHZarUcJZeb9XznDyNb
+Ny9CX3/7AAAAQ3RFWHRTb2Z0d2FyZQBAKCMpSW1hZ2VNYWdpY2sgNC4yLjggOTkvMDgvMDEgY3Jp
+c3R5QG15c3RpYy5lcy5kdXBvbnQuY29tkbohuAAAACp0RVh0U2lnbmF0dXJlAGZlNjkwNDYzMzc5
+ZWIyNWU1NjJmY2M4Y2M5YjNjN2Uw37I5ngAAAA50RVh0UGFnZQAxMngxMiswKzCEbbt9AAAAAElF
+TkSuQmCC" /></td><td>
+Normal partition entries are by label.
+</td></tr>
+<tr><td><img alt="6" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAAmJLR0QAAKqNIzIAAAB9SURBVHja
+FY0hEsMwDAQXChaaBgoG+guB/UZhvlAYWFhqmCeUBvoJoYaCgqrMbudu9oiI86m6tQyEb1AU6kjI
+3GxcQnVO2K0Uq/Ahi6tpFWClwLDe+wNkwt0R2yfk7Negv+csw8uWZR4c+NS4Z6FOTKmkTO88Df9W
+kfXwiD+zczjqCrgbWQAAAEN0RVh0U29mdHdhcmUAQCgjKUltYWdlTWFnaWNrIDQuMi44IDk5LzA4
+LzAxIGNyaXN0eUBteXN0aWMuZXMuZHVwb250LmNvbZG6IbgAAAAqdEVYdFNpZ25hdHVyZQBkMjVk
+NzE3NmQ2N2EwMzhhZmMxYzU2NTU4ZTNkZmIxYf0Q9bUAAAAOdEVYdFBhZ2UAMTJ4MTIrMCswhG27
+fQAAAABJRU5ErkJggg==" /></td><td>
+The target /etc/fstab file is created with the entries defined in this section.
+    Entries for <em>/proc</em>, <em>/sys</em> etc. can be generated with <em>bydev</em> nodes.
+</td></tr>
+</table></div>
+<div class="paragraph"><p>A complete reference that is automatically generated from the schema file is
+also available.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2013-01-09 17:05:57 CET
+</div>
+</div>
+<iframe name="Footer" src="footer.html" width="100%" height="55px" border="0" frameborder="0" scrolling="no" marginwidth="0px" hspace="0" vspace="0">
+</body>
+</html>

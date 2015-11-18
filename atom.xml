@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  
+
+  <title>ELBE</title>
+  <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.5.3</generator>
+    <icon>http://elbe-rfs.org/apple-touch-icon-precomposed.png</icon>
+  <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
+  <link href="http://elbe-rfs.org/atom.xml" rel="self"/>
+  <link href="http://elbe-rfs.org/" rel="alternate" type="text/html"/>
+  <updated>2015-11-18T15:33:54+01:00</updated>
+  <id>http://elbe-rfs.org/</id>
+  <author>
+    <name></name>
+    <uri>http://elbe-rfs.org/</uri>
+    
+  </author>
+
+  
+  <entry>
+    <title>ELBE in a nutshell</title>
+    <link href="http://elbe-rfs.org/whatiselbe/"/>
+    <updated>2015-11-16T00:00:00+01:00</updated>
+    <id>http://elbe-rfs.org/whatiselbe</id>
+    <author>
+      <name></name>
+      <uri>http://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;This article describes why the ELBE project was born.&lt;/p&gt;
+
+&lt;h1 id=&quot;early-embedded-linux-devices&quot;&gt;early embedded Linux devices&lt;/h1&gt;
+&lt;p&gt;Well, first we should look at embedded devices to see what they used to look
+like and how some of them look like today.&lt;/p&gt;
+
+&lt;p&gt;The first devices, that were initially called embedded Linux, had about 4MiB
+flash and around 16MiB of RAM. With these constrains in mind people started to
+hack a root file system for their devices. If they had bad luck you had to
+start with building a cross toolchain first.&lt;/p&gt;
+
+&lt;p&gt;Once that part was over you could focus on the user land. Busybox is a good
+tool to start with since it contains most of the required programs in a small
+single binary. Those programs and a few configurations files on top and you
+were done. Maybe you had to compile your “added value” binary or something
+else that was not part of busybox but that was it.&lt;/p&gt;
+
+&lt;h1 id=&quot;cross-build-toolkits&quot;&gt;Cross-build Toolkits&lt;/h1&gt;
+&lt;p&gt;Now sum up the single steps which were required to create a root file from
+scratch and create a tool to ease your life. This is when tools like
+OpenEmbedded, EDLK were born. Those tools are still good as long as they are
+well maintained. They aren’t just projects that are that small these days.
+A lot of them are getting very complex. This includes hardware that has much
+more RAM and a GiBs of NAND flash if not replaced by a disk or mmc card and
+the software, that is used, is more extensive.&lt;/p&gt;
+
+&lt;h1 id=&quot;rootfilesystems-are-getting-bigger-and-bigger&quot;&gt;Rootfilesystems are getting bigger and bigger&lt;/h1&gt;
+&lt;p&gt;A lot of libraries are used to ease the development of a system.
+A toolkit for GUI development, several libraries for multimedia support just
+to name a few.&lt;/p&gt;
+
+&lt;p&gt;Depending on the build environment that is used, it is more or less difficult
+to add a package that is not yet included. It depends on the scripting
+language that is used, the format keeping the build instructions and the
+user’s ability to understand it and make changes.&lt;/p&gt;
+
+&lt;h1 id=&quot;adding-debuging-tools-is-not-that-easy&quot;&gt;Adding Debuging Tools is not that easy&lt;/h1&gt;
+&lt;p&gt;Adding a debug version of a package to the root file system means a rebuild or
+restart of the build process to create this piece of the rootfile system
+assuming that a debug version can be selected (and not added to the build
+process). Even then the debug version isn’t installed in a jiffy.&lt;/p&gt;
+
+&lt;p&gt;There is usually one person in charge of the root file system and a few others
+that are developing the application or a component of the application. One of
+the application developers has a problem and wants just to install a debug
+version of the library in question or replace it with a later version of it or
+a substitute library just to see if his problem goes away or not.
+He doesn’t necessarily know how to handle the build environment to make such
+changes. So he has to ask the person in charge of the root filesystem to make
+this change and send him the new filesystem.&lt;/p&gt;
+
+&lt;p&gt;The application developer never did this kind of work because the Linux
+distribution on his desktop computer takes care of these things for him.
+The same distribution runs a test suite (if available) of the package after it
+has been built to spot problems in the compiled binaries which can’t be run if
+the package is cross compiled.&lt;/p&gt;
+
+&lt;h1 id=&quot;no-bugtracking-informations-available&quot;&gt;No Bugtracking Informations available&lt;/h1&gt;
+&lt;p&gt;Another missing feature is the bug tracking against all packages in the root
+file system including security updates. This can be a full time job for one
+person even just by looking after 10 packages with a reasonable size. So why
+try to do a lot of work alone while this work is already done by large
+communities around Linux distribution like Debian?&lt;/p&gt;
+
+&lt;h1 id=&quot;debian-for-embedded&quot;&gt;Debian for embedded?&lt;/h1&gt;
+&lt;p&gt;Instead of doing the work again we tried to figure out how Debian could be
+reused in a way that will fulfill our needs.&lt;/p&gt;
+
+&lt;p&gt;Continue reading &lt;a href=&quot;http://elbe-rfs.org/docs/elbeoverview-en.html&quot;&gt;ELBE Overview&lt;/a&gt;.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Secure</title>
+    <link href="http://elbe-rfs.org/feature/secure/"/>
+    <updated>2015-11-16T00:00:00+01:00</updated>
+    <id>http://elbe-rfs.org/feature/secure</id>
+    <author>
+      <name></name>
+      <uri>http://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;ELBE reuses the security of Debian. An update-checker informs if security
+updates are available.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Reproducable Images</title>
+    <link href="http://elbe-rfs.org/feature/reproducable/"/>
+    <updated>2015-11-16T00:00:00+01:00</updated>
+    <id>http://elbe-rfs.org/feature/reproducable</id>
+    <author>
+      <name></name>
+      <uri>http://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;The Rootfilesystem is described in a single XML file.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Based on Debian</title>
+    <link href="http://elbe-rfs.org/feature/debianbased/"/>
+    <updated>2015-11-16T00:00:00+01:00</updated>
+    <id>http://elbe-rfs.org/feature/debianbased</id>
+    <author>
+      <name></name>
+      <uri>http://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;No need to build all binaries. ELBE reuses Debian packages!&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>ELBE ADK</title>
+    <link href="http://elbe-rfs.org/feature/adk/"/>
+    <updated>2015-11-16T00:00:00+01:00</updated>
+    <id>http://elbe-rfs.org/feature/adk</id>
+    <author>
+      <name></name>
+      <uri>http://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;a native Application Development Kit is included&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>elbe v0.9.7 released</title>
+    <link href="http://elbe-rfs.org/news/v097/"/>
+    <updated>2015-10-16T00:00:00+02:00</updated>
+    <id>http://elbe-rfs.org/news/v097</id>
+    <author>
+      <name></name>
+      <uri>http://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;a major speedup of ‘elbe initvm submit’ was realized, because image files
+are gzipped now inside the initvm. This reduces the copy time to the host PC
+by far.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  
+</feed>
