@@ -131,6 +131,8 @@
 <div class="verseblock">
 <pre class="content"><em>elbe control</em> [options] <em>list_projects</em><br>
 <em>elbe control</em> [options] <em>create_project</em> &lt;xmlfile&gt;<br>
+<em>elbe control</em> [options] <em>build_sysroot</em> &lt;build-dir&gt;<br>
+<em>elbe control</em> [options] <em>set_pdebuild</em> &lt;project-dir&gt; &lt;pdebuild file&gt;<br>
 <em>elbe control</em> [options] <em>get_files</em> &lt;build-dir&gt;<br>
 <em>elbe control</em> [options] <em>set_cdrom</em> &lt;build-dir&gt; &lt;iso-img&gt;<br>
 <em>elbe control</em> [options] <em>reset_project</em> &lt;build-dir&gt;<br>
@@ -138,6 +140,7 @@
 <em>elbe control</em> [options] <em>wait_busy</em> &lt;build-dir&gt;<br>
 <em>elbe control</em> [options] <em>set_xml</em> &lt;build-dir&gt; &lt;xmlfile&gt;<br>
 <em>elbe control</em> [options] <em>del_project</em> &lt;build-dir&gt;<br>
+<em>elbe control</em> [options] <em>build_pbuilder</em> &lt;build-dir&gt;<br>
 <em>elbe control</em> [options] <em>build</em> &lt;build-dir&gt;<br>
 <em>elbe control</em> [options] <em>get_file</em> &lt;build-dir&gt; &lt;filename&gt;<br>
 <em>elbe control</em> [options] <em>dump_file</em> &lt;build-dir&gt; &lt;filename&gt;<br>
@@ -219,13 +222,42 @@ build 2 projects at once.</p>
 </dd>
 <dt class="hdlist1"><em>create_project</em> &lt;xmlfile&gt;</dt>
 <dd>
-<p>Creae a new project on soap server. &lt;xmlfile&gt; is uploaded,<br>
+<p>Create a new project on soap server. &lt;xmlfile&gt; is uploaded,<br>
 and a new build-dir is created.</p>
 <div class="paragraph">
 <p>The name of the created &lt;build-dir&gt; is printed to stdout, for further<br>
 reference in subsequent commands.</p>
 </div>
 </dd>
+<dt class="hdlist1"><em>build_sysroot</em> &lt;build-dir&gt;</dt>
+<dd>
+<p>Build a sysroot for the specified project.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The sysroot can be used with a toolchain for cross-compiles.</p>
+</div>
+<div class="paragraph">
+<p><em>set_pdebuild</em> &lt;build-dir&gt; &lt;pdebuild file&gt;</p>
+</div>
+<div class="paragraph">
+<p>Build a Debian Project using a pbuilder.</p>
+</div>
+<div class="paragraph">
+<p>The pdebuild file needs to be a .tar.gz archive of a project<br>
+containing a ./debian folder with a valid debianization.</p>
+</div>
+<div class="paragraph">
+<p>+<br>
+The generated debian packages are stored inside the initvm.</p>
+</div>
+<div class="paragraph">
+<p>+<br>
+Use get_files to retrieve them.</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><em>get_files</em> &lt;build-dir&gt;</dt>
 <dd>
 <p>Get list of files in the &lt;build-dir&gt;.</p>
@@ -268,6 +300,10 @@ This is most likely going to change the status of the project to<br>
 <dt class="hdlist1"><em>del_project</em> &lt;build-dir&gt;</dt>
 <dd>
 <p>Delete project in &lt;build-dir&gt;</p>
+</dd>
+<dt class="hdlist1"><em>build_pbuilder</em> &lt;build-dir&gt;</dt>
+<dd>
+<p>Build a pbuilder environment for the given project &lt;build-dir&gt;.</p>
 </dd>
 <dt class="hdlist1"><em>build</em> &lt;build-dir&gt;</dt>
 <dd>

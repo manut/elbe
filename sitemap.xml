@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://elbe-rfs.org/news/v098/</loc>
+    <lastmod>2015-12-14T00:00:00+01:00</lastmod>
+  </url>
+  <url>
+    <loc>http://elbe-rfs.org/internals/</loc>
+    <lastmod>2015-12-14T00:00:00+01:00</lastmod>
+  </url>
+  <url>
     <loc>http://elbe-rfs.org/whatiselbe/</loc>
     <lastmod>2015-11-16T00:00:00+01:00</lastmod>
   </url>
@@ -68,6 +76,9 @@
   </url>
   <url>
     <loc>http://elbe-rfs.org/docs/elbe-mkcdrom.html</loc>
+  </url>
+  <url>
+    <loc>http://elbe-rfs.org/docs/elbe-pbuilder.html</loc>
   </url>
   <url>
     <loc>http://elbe-rfs.org/docs/elbe-pkgdiff.html</loc>

@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Documentation • ELBE</title>
+    <title>elbe-pbuilder(1) • ELBE</title>
     
     
     
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Documentation">
+	<meta name="twitter:title" content="elbe-pbuilder(1)">
 	
 	
 	
@@ -19,12 +19,12 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US.UTF-8">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Documentation">
+	<meta property="og:title" content="elbe-pbuilder(1)">
 	
-	<meta property="og:url" content="http://elbe-rfs.org/docs/">
+	<meta property="og:url" content="http://elbe-rfs.org/docs/elbe-pbuilder.html">
 	<meta property="og:site_name" content="ELBE">
 
-    <link rel="canonical" href="http://elbe-rfs.org/docs/">
+    <link rel="canonical" href="http://elbe-rfs.org/docs/elbe-pbuilder.html">
 
     <link href="http://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
     <link href="http://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -116,93 +116,93 @@
 
 
     <div id="page-wrapper">
-      <div id="main" role="main">
-	<article class="wrap" itemscope itemtype="http://schema.org/Article">
-		
-		
-		<div class="page-title">
-			<h1>Documentation</h1>
-		</div>
-		<div class="inner-wrap">
-			<div id="content" class="page-content" itemprop="articleBody">
-				<ul>
-  <li><a href="quickstart.html">Quickstart Tutorial</a></li>
-  <li><a href="elbeoverview-en.html">Technical Overview</a></li>
-  <li><a href="elbe-examples.html">Examples</a></li>
-  <li><a href="elbe-schema-reference.html">XML Schema Reference</a></li>
-</ul>
-
-<h2 id="media">media</h2>
-<p>There are <a href="http://elbe-rfs.org/images/20150322-clt-elbe.pdf">slides</a> and a
-<a href="https://chemnitzer.linux-tage.de/2015/de/programm/beitrag/208">audio recording</a> 
-from a ELBE talk at the Chemnitzer Linuxtage 2015.</p>
-
-<h2 id="man-pages">man-pages</h2>
-
-<p>The fist man-page you want to have a look at is:</p>
-
-<ul>
-  <li><a href="elbe-initvm.html">elbe initvm</a></li>
-</ul>
-
-<p>Other interesting man-pages are:</p>
-
-<ul>
-  <li><a href="elbe.html">elbe</a></li>
-  <li><a href="elbe-show.html">elbe show</a></li>
-  <li><a href="elbe-get_archive.html">elbe get_archive</a></li>
-  <li><a href="elbe-chg_archive.html">elbe chg_archive</a></li>
-  <li><a href="elbe-check_updates.html">elbe check_updates</a></li>
-</ul>
-
-<p>These man-pages are related with the elbe-updated that may run on a target and
-update generation:</p>
-
-<ul>
-  <li><a href="elbe-updated.html">elbe updated</a></li>
-  <li><a href="elbe-gen_update.html">elbe gen_update</a></li>
-  <li><a href="elbe-sign.html">elbe sign</a></li>
-  <li><a href="elbe-remove_sign.html">elbe remove_sign</a></li>
-</ul>
-
-<p>The following man-pages cover application development tools:</p>
-
-<ul>
-  <li><a href="elbe-buildsysroot.html">elbe buildsysroot</a></li>
-  <li><a href="elbe-chroot.html">elbe chroot</a></li>
-  <li><a href="elbe-pbuilder.html">elbe pbuilder</a></li>
-</ul>
-
-<p>Advanced user may be interested in those subcommands:</p>
-
-<ul>
-  <li><a href="elbe-control.html">elbe control</a></li>
-  <li><a href="elbe-diff.html">elbe diff</a></li>
-  <li><a href="elbe-pkgdiff.html">elbe pkgdiff</a></li>
-  <li><a href="elbe-setsel.html">elbe setsel</a></li>
-</ul>
-
-				<hr />
-				<footer class="page-footer">
-					
-					<div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Documentation&amp;url=http://elbe-rfs.org/docs/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://elbe-rfs.org/docs/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://elbe-rfs.org/docs/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
-</div><!-- /.share-this -->
-					<div class="page-meta">
-	<p>Updated <time datetime="2015-11-16T12:57:46Z" itemprop="datePublished">November 16, 2015</time></p>
-</div><!-- /.page-meta -->
-				</footer><!-- /.footer -->
-				<aside>
-					
-				</aside>
-			</div><!-- /.content -->
-		</div><!-- /.inner-wrap -->
-		
-	</article><!-- ./wrap -->
-</div><!-- /#main -->
-
+      <h1>elbe-pbuilder(1)</h1>
+<div class="sect1">
+<h2 id="name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>elbe-pbuilder - High Level Interface to the ELBE Package Build System.<br>
+              Allows to create a package builder for a project and to build<br>
+              Debian packages.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>elbe pbuilder</em> <em>build</em> [--project &lt;project&gt; | --xmlfile &lt;xmlfile&gt;]<br>
+<em>elbe pbuilder</em> <em>create</em> --project &lt;project&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creates a pbuilder for a specified project and builds the Debian package<br>
+like pbuilder, but for the configured ELBE project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--project &lt;dir&gt;</dt>
+<dd>
+<p><em>key</em> (/var/cache/elbe/&lt;uuid&gt; for the project inside the initvm to use.<br>
+Use <em>elbe control list_projects</em> to get a list of the available projects.</p>
+</dd>
+<dt class="hdlist1">--xmlfile &lt;xmlfile&gt;</dt>
+<dd>
+<p>This file is used to create a new ELBE project including the pbuilder<br>
+environment.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="commands">COMMANDS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>build</em></dt>
+<dd>
+<p>Build the <em>Debianized Project</em> in the current working directory. (A valid<br>
+./debian directory needs to exist.) If --project was specified, the specified<br>
+build environment will be used. If --xmlfile is specified a new build<br>
+environment will be created for the given ELBE XML File and the <em>Debianized<br>
+Project</em> in the current working directory will be build. The result of the<br>
+package build is stored in ../ like pbuilder does.</p>
+</dd>
+<dt class="hdlist1"><em>create</em></dt>
+<dd>
+<p>A pbuilder environment for the given project will be created.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="see-also">SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>linkgit:elbe-control[1]<br>
+linkgit:pbuilder[1]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="elbe">ELBE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the linkgit:elbe[1] suite</p>
+</div>
+</div>
+</div>
       <footer role="contentinfo" id="site-footer">
 	<nav role="navigation" class="menu bottom-menu">
 		<ul class="menu-item">

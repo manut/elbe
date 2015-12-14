@@ -2,14 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Documentation • ELBE</title>
+    <title>ELBE technical Details • ELBE</title>
+    <meta name="description" content="This article describes the qemu features ELBE is using.
+
+">
+    <meta name="keywords" content="">
     
-    
-    
-    
+      
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Documentation">
-	
+	<meta name="twitter:title" content="ELBE technical Details">
+	<meta name="twitter:description" content="This article describes the qemu features ELBE is using.
+
+">
 	
 	
 	
@@ -19,12 +23,14 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US.UTF-8">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Documentation">
-	
-	<meta property="og:url" content="http://elbe-rfs.org/docs/">
+	<meta property="og:title" content="ELBE technical Details">
+	<meta property="og:description" content="This article describes the qemu features ELBE is using.
+
+">
+	<meta property="og:url" content="http://elbe-rfs.org/internals/">
 	<meta property="og:site_name" content="ELBE">
 
-    <link rel="canonical" href="http://elbe-rfs.org/docs/">
+    <link rel="canonical" href="http://elbe-rfs.org/internals/">
 
     <link href="http://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
     <link href="http://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -121,77 +127,89 @@
 		
 		
 		<div class="page-title">
-			<h1>Documentation</h1>
+			<h1>ELBE technical Details</h1>
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				<ul>
-  <li><a href="quickstart.html">Quickstart Tutorial</a></li>
-  <li><a href="elbeoverview-en.html">Technical Overview</a></li>
-  <li><a href="elbe-examples.html">Examples</a></li>
-  <li><a href="elbe-schema-reference.html">XML Schema Reference</a></li>
-</ul>
+				<p>This article describes the qemu features ELBE is using.</p>
 
-<h2 id="media">media</h2>
-<p>There are <a href="http://elbe-rfs.org/images/20150322-clt-elbe.pdf">slides</a> and a
-<a href="https://chemnitzer.linux-tage.de/2015/de/programm/beitrag/208">audio recording</a> 
-from a ELBE talk at the Chemnitzer Linuxtage 2015.</p>
-
-<h2 id="man-pages">man-pages</h2>
-
-<p>The fist man-page you want to have a look at is:</p>
+<p>One essential point to understand is that qemu combines two
+fundamentally different functionalities, which can also be used
+independently and that ELBE uses both of them separately:</p>
 
 <ul>
-  <li><a href="elbe-initvm.html">elbe initvm</a></li>
+  <li>Virtualization (running a machine-in-a-machine)</li>
+  <li>Emulation (running foreign machine-code)</li>
 </ul>
 
-<p>Other interesting man-pages are:</p>
+<p>Both are traditionally used in combination (to run, for example, a full
+ARM-based Android mobile device on an x86-based development machine).
+ELBE, however, uses both functionalities separately, each one without
+the other:</p>
+
+<p>At the outside, ‘elbe initvm’ runs a full virtual machine with the host
+system’s architecture, using the kvm technology. On a typical x86-based
+host, this VM still runs x86 code at full efficiency, but does so in a
+fully encapsulated environment, running its own kernel with virtualized
+devices in it own root-file resides in a single file (buildenv.img) on
+the hosts file system. This virtual machine must be booted before it can
+be used and communication happens through its virtual console or through
+virtual network connections.</p>
+
+<p>At the inside, ‘elbe chroot’ runs a CPU emulation environment without
+machine virtualization. This command actually does two separate things
+at once:</p>
 
 <ul>
-  <li><a href="elbe.html">elbe</a></li>
-  <li><a href="elbe-show.html">elbe show</a></li>
-  <li><a href="elbe-get_archive.html">elbe get_archive</a></li>
-  <li><a href="elbe-chg_archive.html">elbe chg_archive</a></li>
-  <li><a href="elbe-check_updates.html">elbe check_updates</a></li>
+  <li>
+    <p>chroot - i.e. divert all child processes to view a certain directory
+as their root. Within this directory, there is a full set of
+subdirectories (/etc, /usr, /var, …) and the child processes cannot
+see or access anything outside this directory.</p>
+  </li>
+  <li>
+    <p>qemu-user-binfmt - i.e. register qemu in such a way that binaries of
+the target architecture (e.g. ARM) are transparently called via qemu
+(this fairly complex technique is documented e.g. on
+https://wiki.debian.org/QemuUserEmulation)</p>
+  </li>
 </ul>
 
-<p>These man-pages are related with the elbe-updated that may run on a target and
-update generation:</p>
+<p>The effect is that inside this ‘elbe chroot’ environment target .deb
+packages can be deployed and target binaries executed. However, there is
+not kernel running in the target architecture and the devices are still
+those provided by the encapsulating initvm virtual machine.</p>
 
-<ul>
-  <li><a href="elbe-updated.html">elbe updated</a></li>
-  <li><a href="elbe-gen_update.html">elbe gen_update</a></li>
-  <li><a href="elbe-sign.html">elbe sign</a></li>
-  <li><a href="elbe-remove_sign.html">elbe remove_sign</a></li>
-</ul>
-
-<p>The following man-pages cover application development tools:</p>
-
-<ul>
-  <li><a href="elbe-buildsysroot.html">elbe buildsysroot</a></li>
-  <li><a href="elbe-chroot.html">elbe chroot</a></li>
-  <li><a href="elbe-pbuilder.html">elbe pbuilder</a></li>
-</ul>
-
-<p>Advanced user may be interested in those subcommands:</p>
-
-<ul>
-  <li><a href="elbe-control.html">elbe control</a></li>
-  <li><a href="elbe-diff.html">elbe diff</a></li>
-  <li><a href="elbe-pkgdiff.html">elbe pkgdiff</a></li>
-  <li><a href="elbe-setsel.html">elbe setsel</a></li>
-</ul>
+<p>While at the ‘elbe initvm’ boundary, the outside can only see a single
+‘qemu’ process and a single ‘buildenv.img’ file, the ‘elbe chroot’
+boundary is much more transparent, allowing the outside to observe
+individual processes and files of the inner environment.</p>
 
 				<hr />
 				<footer class="page-footer">
 					
+	
+
+
+
+
+<div class="author-content">
+	<div class="author-name">
+		Written by
+		
+			<span itemprop="author">Dr. Norbert Nemec</span>
+		
+	</div>
+	<p class="author-bio"></p>
+</div>
+
 					<div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Documentation&amp;url=http://elbe-rfs.org/docs/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://elbe-rfs.org/docs/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://elbe-rfs.org/docs/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=ELBE%20technical%20Details&amp;url=http://elbe-rfs.org/internals/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://elbe-rfs.org/internals/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://elbe-rfs.org/internals/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
 </div><!-- /.share-this -->
 					<div class="page-meta">
-	<p>Updated <time datetime="2015-11-16T12:57:46Z" itemprop="datePublished">November 16, 2015</time></p>
+	<p>Updated <time datetime="2015-12-14T00:00:00Z" itemprop="datePublished">December 14, 2015</time></p>
 </div><!-- /.page-meta -->
 				</footer><!-- /.footer -->
 				<aside>

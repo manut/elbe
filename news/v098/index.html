@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Documentation • ELBE</title>
+    <title>elbe v0.9.8 released • ELBE</title>
+    <meta name="description" content="pbuilder support, and more">
+    <meta name="keywords" content="">
     
-    
-    
-    
+      
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Documentation">
-	
+	<meta name="twitter:title" content="elbe v0.9.8 released">
+	<meta name="twitter:description" content="pbuilder support, and more">
 	
 	
 	
@@ -19,12 +19,12 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US.UTF-8">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Documentation">
-	
-	<meta property="og:url" content="http://elbe-rfs.org/docs/">
+	<meta property="og:title" content="elbe v0.9.8 released">
+	<meta property="og:description" content="pbuilder support, and more">
+	<meta property="og:url" content="http://elbe-rfs.org/news/v098/">
 	<meta property="og:site_name" content="ELBE">
 
-    <link rel="canonical" href="http://elbe-rfs.org/docs/">
+    <link rel="canonical" href="http://elbe-rfs.org/news/v098/">
 
     <link href="http://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
     <link href="http://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -120,78 +120,84 @@
 	<article class="wrap" itemscope itemtype="http://schema.org/Article">
 		
 		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="http://elbe-rfs.org" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="http://elbe-rfs.org/news/" itemprop="url">
+        <span itemprop="title">News</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
 		<div class="page-title">
-			<h1>Documentation</h1>
+			<h1>elbe v0.9.8 released</h1>
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				<ul>
-  <li><a href="quickstart.html">Quickstart Tutorial</a></li>
-  <li><a href="elbeoverview-en.html">Technical Overview</a></li>
-  <li><a href="elbe-examples.html">Examples</a></li>
-  <li><a href="elbe-schema-reference.html">XML Schema Reference</a></li>
-</ul>
-
-<h2 id="media">media</h2>
-<p>There are <a href="http://elbe-rfs.org/images/20150322-clt-elbe.pdf">slides</a> and a
-<a href="https://chemnitzer.linux-tage.de/2015/de/programm/beitrag/208">audio recording</a> 
-from a ELBE talk at the Chemnitzer Linuxtage 2015.</p>
-
-<h2 id="man-pages">man-pages</h2>
-
-<p>The fist man-page you want to have a look at is:</p>
+				<p>The ‘big’ news in this release include:</p>
 
 <ul>
-  <li><a href="elbe-initvm.html">elbe initvm</a></li>
+  <li>
+    <p>an USB Monitor for updated</p>
+  </li>
+  <li>
+    <p>elbe chg_archive takes a directory OR a .tar.gz file as input</p>
+  </li>
+  <li>
+    <p>pbuilder support to rebuild debian packages</p>
+  </li>
 </ul>
 
-<p>Other interesting man-pages are:</p>
+<p>Howto use the pbuilder feature:</p>
 
-<ul>
-  <li><a href="elbe.html">elbe</a></li>
-  <li><a href="elbe-show.html">elbe show</a></li>
-  <li><a href="elbe-get_archive.html">elbe get_archive</a></li>
-  <li><a href="elbe-chg_archive.html">elbe chg_archive</a></li>
-  <li><a href="elbe-check_updates.html">elbe check_updates</a></li>
-</ul>
+<h1 id="build-an-initvm-with-the-current-elbe-version-098">build an initvm with the current elbe version 0.9.8</h1>
+<p>$ elbe initvm create
+# retrieve the source of a debian package you’d like to rebuild
+$ apt-get source nano
+# go to the source directory
+$ cd nano-2.4.2
+# if wanted, the source or debian/ files can be modified now
+$ vi src/nano.c
+# increase the package version
+$ dch
+# use any ELBE XML file to..
+$ zcat /usr/share/doc/elbe-doc/examples/armhf-ti-beaglebone-black.xml.gz &gt; /tmp/bbb.xml
+# ..rebuild the package against
+$ elbe pbuilder build –xmlfile /tmp/bbb.xml</p>
 
-<p>These man-pages are related with the elbe-updated that may run on a target and
-update generation:</p>
-
-<ul>
-  <li><a href="elbe-updated.html">elbe updated</a></li>
-  <li><a href="elbe-gen_update.html">elbe gen_update</a></li>
-  <li><a href="elbe-sign.html">elbe sign</a></li>
-  <li><a href="elbe-remove_sign.html">elbe remove_sign</a></li>
-</ul>
-
-<p>The following man-pages cover application development tools:</p>
-
-<ul>
-  <li><a href="elbe-buildsysroot.html">elbe buildsysroot</a></li>
-  <li><a href="elbe-chroot.html">elbe chroot</a></li>
-  <li><a href="elbe-pbuilder.html">elbe pbuilder</a></li>
-</ul>
-
-<p>Advanced user may be interested in those subcommands:</p>
-
-<ul>
-  <li><a href="elbe-control.html">elbe control</a></li>
-  <li><a href="elbe-diff.html">elbe diff</a></li>
-  <li><a href="elbe-pkgdiff.html">elbe pkgdiff</a></li>
-  <li><a href="elbe-setsel.html">elbe setsel</a></li>
-</ul>
 
 				<hr />
 				<footer class="page-footer">
 					
+	
+
+
+
+<div class="author-image">
+	<img src="http://www.gravatar.com/avatar/565400ba01d843cced55bdc159f310ad?s=150" alt="Manuel Traut">
+</div>
+
+
+<div class="author-content">
+	<div class="author-name">
+		Written by
+		
+			<span itemprop="author">Manuel Traut</span>
+		
+	</div>
+	<p class="author-bio"></p>
+</div>
+
 					<div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Documentation&amp;url=http://elbe-rfs.org/docs/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://elbe-rfs.org/docs/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://elbe-rfs.org/docs/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=elbe%20v0.9.8%20released&amp;url=http://elbe-rfs.org/news/v098/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://elbe-rfs.org/news/v098/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://elbe-rfs.org/news/v098/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
 </div><!-- /.share-this -->
 					<div class="page-meta">
-	<p>Updated <time datetime="2015-11-16T12:57:46Z" itemprop="datePublished">November 16, 2015</time></p>
+	<p>Updated <time datetime="2015-12-14T00:00:00Z" itemprop="datePublished">December 14, 2015</time></p>
 </div><!-- /.page-meta -->
 				</footer><!-- /.footer -->
 				<aside>

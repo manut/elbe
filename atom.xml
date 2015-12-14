@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="http://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="http://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2015-11-20T09:39:22+01:00</updated>
+  <updated>2015-12-14T19:05:02+01:00</updated>
   <id>http://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -17,6 +17,122 @@
     
   </author>
 
+  
+  <entry>
+    <title>elbe v0.9.8 released</title>
+    <link href="http://elbe-rfs.org/news/v098/"/>
+    <updated>2015-12-14T00:00:00+01:00</updated>
+    <id>http://elbe-rfs.org/news/v098</id>
+    <author>
+      <name></name>
+      <uri>http://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;The ‘big’ news in this release include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;an USB Monitor for updated&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;elbe chg_archive takes a directory OR a .tar.gz file as input&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;pbuilder support to rebuild debian packages&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Howto use the pbuilder feature:&lt;/p&gt;
+
+&lt;h1 id=&quot;build-an-initvm-with-the-current-elbe-version-098&quot;&gt;build an initvm with the current elbe version 0.9.8&lt;/h1&gt;
+&lt;p&gt;$ elbe initvm create
+# retrieve the source of a debian package you’d like to rebuild
+$ apt-get source nano
+# go to the source directory
+$ cd nano-2.4.2
+# if wanted, the source or debian/ files can be modified now
+$ vi src/nano.c
+# increase the package version
+$ dch
+# use any ELBE XML file to..
+$ zcat /usr/share/doc/elbe-doc/examples/armhf-ti-beaglebone-black.xml.gz &amp;gt; /tmp/bbb.xml
+# ..rebuild the package against
+$ elbe pbuilder build –xmlfile /tmp/bbb.xml&lt;/p&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>ELBE technical Details</title>
+    <link href="http://elbe-rfs.org/internals/"/>
+    <updated>2015-12-14T00:00:00+01:00</updated>
+    <id>http://elbe-rfs.org/internals</id>
+    <author>
+      <name></name>
+      <uri>http://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;This article describes the qemu features ELBE is using.&lt;/p&gt;
+
+&lt;p&gt;One essential point to understand is that qemu combines two
+fundamentally different functionalities, which can also be used
+independently and that ELBE uses both of them separately:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Virtualization (running a machine-in-a-machine)&lt;/li&gt;
+  &lt;li&gt;Emulation (running foreign machine-code)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Both are traditionally used in combination (to run, for example, a full
+ARM-based Android mobile device on an x86-based development machine).
+ELBE, however, uses both functionalities separately, each one without
+the other:&lt;/p&gt;
+
+&lt;p&gt;At the outside, ‘elbe initvm’ runs a full virtual machine with the host
+system’s architecture, using the kvm technology. On a typical x86-based
+host, this VM still runs x86 code at full efficiency, but does so in a
+fully encapsulated environment, running its own kernel with virtualized
+devices in it own root-file resides in a single file (buildenv.img) on
+the hosts file system. This virtual machine must be booted before it can
+be used and communication happens through its virtual console or through
+virtual network connections.&lt;/p&gt;
+
+&lt;p&gt;At the inside, ‘elbe chroot’ runs a CPU emulation environment without
+machine virtualization. This command actually does two separate things
+at once:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;chroot - i.e. divert all child processes to view a certain directory
+as their root. Within this directory, there is a full set of
+subdirectories (/etc, /usr, /var, …) and the child processes cannot
+see or access anything outside this directory.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;qemu-user-binfmt - i.e. register qemu in such a way that binaries of
+the target architecture (e.g. ARM) are transparently called via qemu
+(this fairly complex technique is documented e.g. on
+https://wiki.debian.org/QemuUserEmulation)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The effect is that inside this ‘elbe chroot’ environment target .deb
+packages can be deployed and target binaries executed. However, there is
+not kernel running in the target architecture and the devices are still
+those provided by the encapsulating initvm virtual machine.&lt;/p&gt;
+
+&lt;p&gt;While at the ‘elbe initvm’ boundary, the outside can only see a single
+‘qemu’ process and a single ‘buildenv.img’ file, the ‘elbe chroot’
+boundary is much more transparent, allowing the outside to observe
+individual processes and files of the inner environment.&lt;/p&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>ELBE in a nutshell</title>
