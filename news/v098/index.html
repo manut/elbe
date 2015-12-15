@@ -153,12 +153,14 @@
 
 <p>Howto use the pbuilder feature:</p>
 
-<h1 id="build-an-initvm-with-the-current-elbe-version-098">build an initvm with the current elbe version 0.9.8</h1>
-<p>$ elbe initvm create
-# retrieve the source of a debian package you’d like to rebuild
+<pre><code># build an initvm with the current elbe version 0.9.8
+$ elbe initvm create
+# retrieve the source of a debian package you'd like to rebuild
 $ apt-get source nano
 # go to the source directory
 $ cd nano-2.4.2
+# we currently only support debian source format git and native
+$ echo "3.0 (native)" &gt; debian/source/format
 # if wanted, the source or debian/ files can be modified now
 $ vi src/nano.c
 # increase the package version
@@ -166,8 +168,8 @@ $ dch
 # use any ELBE XML file to..
 $ zcat /usr/share/doc/elbe-doc/examples/armhf-ti-beaglebone-black.xml.gz &gt; /tmp/bbb.xml
 # ..rebuild the package against
-$ elbe pbuilder build –xmlfile /tmp/bbb.xml</p>
-
+$ elbe pbuilder build --xmlfile /tmp/bbb.xml
+</code></pre>
 
 				<hr />
 				<footer class="page-footer">

@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="http://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="http://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2015-12-14T19:05:02+01:00</updated>
+  <updated>2015-12-15T07:48:09+01:00</updated>
   <id>http://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -46,12 +46,14 @@
 
 &lt;p&gt;Howto use the pbuilder feature:&lt;/p&gt;
 
-&lt;h1 id=&quot;build-an-initvm-with-the-current-elbe-version-098&quot;&gt;build an initvm with the current elbe version 0.9.8&lt;/h1&gt;
-&lt;p&gt;$ elbe initvm create
-# retrieve the source of a debian package you’d like to rebuild
+&lt;pre&gt;&lt;code&gt;# build an initvm with the current elbe version 0.9.8
+$ elbe initvm create
+# retrieve the source of a debian package you&#39;d like to rebuild
 $ apt-get source nano
 # go to the source directory
 $ cd nano-2.4.2
+# we currently only support debian source format git and native
+$ echo &quot;3.0 (native)&quot; &amp;gt; debian/source/format
 # if wanted, the source or debian/ files can be modified now
 $ vi src/nano.c
 # increase the package version
@@ -59,8 +61,8 @@ $ dch
 # use any ELBE XML file to..
 $ zcat /usr/share/doc/elbe-doc/examples/armhf-ti-beaglebone-black.xml.gz &amp;gt; /tmp/bbb.xml
 # ..rebuild the package against
-$ elbe pbuilder build –xmlfile /tmp/bbb.xml&lt;/p&gt;
-
+$ elbe pbuilder build --xmlfile /tmp/bbb.xml
+&lt;/code&gt;&lt;/pre&gt;
 
     </content>
   </entry>
