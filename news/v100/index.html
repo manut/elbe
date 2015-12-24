@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Downloads • ELBE</title>
+    <title>elbe v1.0 released • ELBE</title>
+    <meta name="description" content="elbe 1.0 is 0.5.x feature complete now">
+    <meta name="keywords" content="">
     
-    
-    
-    
+      
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Downloads">
-	
+	<meta name="twitter:title" content="elbe v1.0 released">
+	<meta name="twitter:description" content="elbe 1.0 is 0.5.x feature complete now">
 	
 	
 	
@@ -19,12 +19,12 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US.UTF-8">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Downloads">
-	
-	<meta property="og:url" content="http://elbe-rfs.org/download/">
+	<meta property="og:title" content="elbe v1.0 released">
+	<meta property="og:description" content="elbe 1.0 is 0.5.x feature complete now">
+	<meta property="og:url" content="http://elbe-rfs.org/news/v100/">
 	<meta property="og:site_name" content="ELBE">
 
-    <link rel="canonical" href="http://elbe-rfs.org/download/">
+    <link rel="canonical" href="http://elbe-rfs.org/news/v100/">
 
     <link href="http://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
     <link href="http://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -120,63 +120,73 @@
 	<article class="wrap" itemscope itemtype="http://schema.org/Article">
 		
 		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="http://elbe-rfs.org" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="http://elbe-rfs.org/news/" itemprop="url">
+        <span itemprop="title">News</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
 		<div class="page-title">
-			<h1>Downloads</h1>
+			<h1>elbe v1.0 released</h1>
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				<p>The current elbe version is <em>1.0</em></p>
+				<p>There are no big changes since last devel release elbe version 0.9.8</p>
 
-<p>There are several ways to install a binary version of elbe.</p>
+<p>The Debian packages for elbe 1.x are available from linutronix,
+add sth. like this to your sources.list</p>
 
-<p>The easiest way is to install the <a href="index.html#debian">Debian packages via apt</a>.</p>
+<hr />
+<p>deb http://debian.linutronix.de/elbe jessie main
+deb-src http://debian.linutronix.de/elbe jessie main
+—-</p>
 
-<h2 id="debian">Debian Binary Packages</h2>
+<p>New elbe 1.x releases are published in the master branch.</p>
 
-<p>The recommended way to use ELBE is running it on a Debian PC.
-Linutronix provides a signed repository that can be included in apt.</p>
+<p>The new development branch on github is devel/elbe-2.0
+To retrieve Debian packages for the development version of elbe
+add sth. like this to your sources.list</p>
 
-<h4>Debian jessie</h4>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
-<span class="nb">cd</span> /tmp
-wget http://debian.linutronix.de/elbe/elbe-repo.pub
-apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe-testing jessie main&quot;</span> &gt;&gt; /etc/apt/sources.list
-apt-get update
-apt-get install elbe</code></pre></div>
-
-<h4>Debian sid</h4>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
-<span class="nb">cd</span> /tmp
-wget http://debian.linutronix.de/elbe/elbe-repo.pub
-apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe-testing sid main&quot;</span> &gt;&gt; /etc/apt/sources.list
-apt-get update
-apt-get install elbe</code></pre></div>
-
-<h4>Debian wheezy</h4>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
-<span class="nb">cd</span> /tmp
-wget http://debian.linutronix.de/elbe/elbe-repo.pub
-apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe-testing wheezy main&quot;</span> &gt;&gt; /etc/apt/sources.list
-apt-get update
-apt-get install elbe</code></pre></div>
-
+<hr />
+<p>deb http://debian.linutronix.de/elbe-testing jessie main
+deb-src http://debian.linutronix.de/elbe-testing jessie main
+—-</p>
 
 				<hr />
 				<footer class="page-footer">
 					
+	
+
+
+
+<div class="author-image">
+	<img src="http://www.gravatar.com/avatar/565400ba01d843cced55bdc159f310ad?s=150" alt="Manuel Traut">
+</div>
+
+
+<div class="author-content">
+	<div class="author-name">
+		Written by
+		
+			<span itemprop="author">Manuel Traut</span>
+		
+	</div>
+	<p class="author-bio"></p>
+</div>
+
 					<div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Downloads&amp;url=http://elbe-rfs.org/download/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://elbe-rfs.org/download/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://elbe-rfs.org/download/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=elbe%20v1.0%20released&amp;url=http://elbe-rfs.org/news/v100/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://elbe-rfs.org/news/v100/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://elbe-rfs.org/news/v100/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
 </div><!-- /.share-this -->
 					<div class="page-meta">
-	<p>Updated <time datetime="2015-11-17T12:50:42Z" itemprop="datePublished">November 17, 2015</time></p>
+	<p>Updated <time datetime="2015-12-24T00:00:00Z" itemprop="datePublished">December 24, 2015</time></p>
 </div><!-- /.page-meta -->
 				</footer><!-- /.footer -->
 				<aside>
