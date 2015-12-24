@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="http://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="http://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2015-12-24T15:40:10+01:00</updated>
+  <updated>2015-12-24T16:14:40+01:00</updated>
   <id>http://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -35,10 +35,9 @@
 &lt;p&gt;The Debian packages for elbe 1.x are available from linutronix,
 add sth. like this to your sources.list&lt;/p&gt;
 
-&lt;hr /&gt;
-&lt;p&gt;deb http://debian.linutronix.de/elbe jessie main
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe jessie main
 deb-src http://debian.linutronix.de/elbe jessie main
-—-&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;New elbe 1.x releases are published in the master branch.&lt;/p&gt;
 
@@ -46,10 +45,9 @@ deb-src http://debian.linutronix.de/elbe jessie main
 To retrieve Debian packages for the development version of elbe
 add sth. like this to your sources.list&lt;/p&gt;
 
-&lt;hr /&gt;
-&lt;p&gt;deb http://debian.linutronix.de/elbe-testing jessie main
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe-testing jessie main
 deb-src http://debian.linutronix.de/elbe-testing jessie main
-—-&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
     </content>
   </entry>
