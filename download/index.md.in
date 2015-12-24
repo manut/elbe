@@ -143,7 +143,7 @@ Linutronix provides a signed repository that can be included in apt.
 <span class="nb">cd</span> /tmp
 wget http://debian.linutronix.de/elbe/elbe-repo.pub
 apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe-testing jessie main&quot;</span> &gt;&gt; /etc/apt/sources.list
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe jessie main&quot;</span> &gt;&gt; /etc/apt/sources.list
 apt-get update
 apt-get install elbe</code></pre></div>
 
@@ -152,7 +152,7 @@ apt-get install elbe</code></pre></div>
 <span class="nb">cd</span> /tmp
 wget http://debian.linutronix.de/elbe/elbe-repo.pub
 apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe-testing sid main&quot;</span> &gt;&gt; /etc/apt/sources.list
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe sid main&quot;</span> &gt;&gt; /etc/apt/sources.list
 apt-get update
 apt-get install elbe</code></pre></div>
 
@@ -161,7 +161,7 @@ apt-get install elbe</code></pre></div>
 <span class="nb">cd</span> /tmp
 wget http://debian.linutronix.de/elbe/elbe-repo.pub
 apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe-testing wheezy main&quot;</span> &gt;&gt; /etc/apt/sources.list
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe wheezy main&quot;</span> &gt;&gt; /etc/apt/sources.list
 apt-get update
 apt-get install elbe</code></pre></div>
 
