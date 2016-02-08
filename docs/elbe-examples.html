@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ELBE examples • ELBE</title>
+    <title>ELBE</title>
     
     
     
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="ELBE examples">
+	<meta name="twitter:title" content="ELBE">
 	
 	
 	
@@ -19,7 +19,7 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US.UTF-8">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="ELBE examples">
+	<meta property="og:title" content="ELBE">
 	
 	<meta property="og:url" content="http://elbe-rfs.org/docs/elbe-examples.html">
 	<meta property="og:site_name" content="ELBE">
@@ -116,193 +116,7 @@
 
 
     <div id="page-wrapper">
-      <h1>ELBE examples</h1>
-<div class="sect1">
-<h2 id="armel-rescue-busybox-cpio-xml">armel-rescue-busybox-cpio.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: wheezy</p>
-</div>
-<div class="paragraph">
-<p>busybox based rescue rfs for armel</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="armel-versatile-ubi-tightenmode-xml">armel-versatile-ubi-tightenmode.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: wheezy</p>
-</div>
-<div class="paragraph">
-<p>creates an UBI based target system without debian package management</p>
-</div>
-<div class="paragraph">
-<p>xml validation failed. Bailing out<br>
-XML Parse error<br>
-Opening and ending tag mismatch: images line 33 and target, line 133, column 11<br>
-Unable to open xml File. Bailing out</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="armhf-nfs-with-build-tools-xml">armhf-nfs-with-build-tools.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: jessie</p>
-</div>
-<div class="paragraph">
-<p>creates an nfsroot for arm based systems</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="armhf-ti-beaglebone-black-rt-xml">armhf-ti-beaglebone-black-rt.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: wheezy</p>
-</div>
-<div class="paragraph">
-<p>rootfs for beaglebone black with real-time kernel</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="armhf-ti-beaglebone-black-xml">armhf-ti-beaglebone-black.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: jessie</p>
-</div>
-<div class="paragraph">
-<p>debian jessie rootfs for beaglebone black</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="armhf-zynq-zedboard-xml">armhf-zynq-zedboard.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: wheezy</p>
-</div>
-<div class="paragraph">
-<p>sdcard image for xilinx zedboard with real-time kernel</p>
-</div>
-<div class="paragraph">
-<p>no project description available</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="powerpc-xml">powerpc.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: jessie</p>
-</div>
-<div class="paragraph">
-<p>example for testing powerpc</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="x86_32-pc-hdimg-minimal-grub-legacy-wheezy-xml">x86_32-pc-hdimg-minimal-grub-legacy-wheezy.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: wheezy<br>
-lightweight example</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="x86_32-pc-hdimg-minimal-grub-wheezy-xml">x86_32-pc-hdimg-minimal-grub-wheezy.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: wheezy<br>
-lightweight example</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="x86_32-squashfs-xml">x86_32-squashfs.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: wheezy</p>
-</div>
-<div class="paragraph">
-<p>i386 squashfs image with a squashfs aware initramfs</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="usage">usage:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>$ elbe buildchroot --skip-cdrom -t ~/sfs-example squashfs-root.xml<br>
-$ cd ~/sfs-example<br>
-$ mkdir your_disk<br>
-$ cp root.sfs your_disk/<br>
-$ cp chroot/initramfs.cpio.gz your_disk/<br>
-$ cp target/boot/vmlinuz-3.2.0-4-686-pae your_disk/<br>
-# testing: root= is the partition with your squashfs images.<br>
-# 	   root_sfs= is the image file within root.<br>
-$ qemu-system-i386 -kernel your_disk/vmlinuz-3.2.0-4-686-pae -initrd your_disk/initramfs.cpio.gz \<br>
--append "root=/dev/sda1 root_sfs=root.sfs console=ttyS0" --nographic -hda fat:your_disk/ -m 512M</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="x86_64-pc-hdimg-gnome3-xml">x86_64-pc-hdimg-gnome3.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: jessie</p>
-</div>
-<div class="paragraph">
-<p>use this command to generate a vmware image:<br>
-qemu-img convert -O vmdk debian-jessie-amd64-gnome3.img debian-jessie-amd64-gnome3.vmdk</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="x86_64-pc-hdimg-minimal-grub-jessie-xml">x86_64-pc-hdimg-minimal-grub-jessie.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: jessie<br>
-lightweight example</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="x86_64-pc-hdimg-readonly-rfs-xml">x86_64-pc-hdimg-readonly-rfs.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: wheezy</p>
-</div>
-<div class="paragraph">
-<p>read-only rfs with elbe-updated</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="x86_64-pc-hdimg-with-additional-adk-pkgs-xml">x86_64-pc-hdimg-with-additional-adk-pkgs.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: jessie</p>
-</div>
-<div class="paragraph">
-<p>lightweight example</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="x86_64-pc-hdimg-with-updated-xml">x86_64-pc-hdimg-with-updated.xml</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Debian suite: jessie</p>
-</div>
-<div class="paragraph">
-<p>is used to test the elbe update daemon</p>
-</div>
-</div>
-</div>
+      
       <footer role="contentinfo" id="site-footer">
 	<nav role="navigation" class="menu bottom-menu">
 		<ul class="menu-item">
