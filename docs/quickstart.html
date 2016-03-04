@@ -474,6 +474,53 @@ installed at <code>/usr/share/doc/elbe-doc/elbeoverview-en.html</code></p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="using-the-elbe-pbuilder-feature">Using the Elbe Pbuilder Feature</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since Version 1.9.2, elbe is able to create a pbuilder Environment.<br>
+You can create a pbuilder for a specific xml File inside the initvm.</p>
+</div>
+<div class="paragraph">
+<p>The repositories and architecture specified in the xml File will be used<br>
+to satisfy build dependencies.<br>
+Pbuilder will only build debianised Software.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Currently only source formats <code>3.0 (native)</code> and <code>3.0 (git)</code> are supported<br>
+      and tested. <code>3.0 (quilt)</code> does not work.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A pbuilder instance is always associated with a project inside the initvm.<br>
+The <code>pbuilder create</code> command will write the project uuid to a file, if instructed to<br>
+do so.</p>
+</div>
+<div class="paragraph">
+<p><code>pbuilder build</code> works like <code>pdebuild</code>, in that it uploads the current working directory<br>
+into the initvm pbuilder project, and then builds it using the pbuilder instance<br>
+created earlier.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ elbe pbuilder create --xmlfile fun.xml --writeproject fun.prj
+$ cd program
+$ elbe pbuilder build --project `cat ../fun.prj` --output ../out</pre>
+</div>
+</div>
+</div>
+</div>
       <footer role="contentinfo" id="site-footer">
 	<nav role="navigation" class="menu bottom-menu">
 		<ul class="menu-item">

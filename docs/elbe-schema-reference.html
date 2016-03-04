@@ -1132,19 +1132,36 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="binaryblob">TYPE: binaryblob</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>a binary that is dd&#8217;ed to the specified offset</p>
+</div>
+<div class="sect2">
+<h3 id="example-19">Example</h3>
+<div class="literalblock">
+<div class="content">
+<pre>no sequence</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="msdoshd">TYPE: msdoshd</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>describes a harddisk</p>
 </div>
 <div class="sect2">
-<h3 id="example-19">Example</h3>
+<h3 id="example-20">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;msdoshd&gt;
   &lt;name&gt; string &lt;/name&gt;
   &lt;size&gt; rfs:part_size &lt;/size&gt;
   &lt;grub-install&gt; string &lt;/grub-install&gt;
+  &lt;binary&gt; rfs:binaryblob &lt;/binary&gt;
   &lt;partition&gt; rfs:partition &lt;/partition&gt;
 &lt;/msdoshd&gt;</pre>
 </div>
@@ -1166,6 +1183,10 @@
 <dd>
 <p>human readable name of the harddisk, this will be used as name for   the image file</p>
 </dd>
+<dt class="hdlist1">binary (<em><a href="#binaryblob">rfs:binaryblob</a></em>) <strong>optional</strong> </dt>
+<dd>
+<p>binary blob that is dd&#8217;ed to the specified offset</p>
+</dd>
 <dt class="hdlist1">partition (<em><a href="#partition">rfs:partition</a></em>) </dt>
 <dd>
 <p>Partition Entries of this harddisk (max: 4)</p>
@@ -1182,7 +1203,7 @@
 <p>container for all storage devices of the target</p>
 </div>
 <div class="sect2">
-<h3 id="example-20">Example</h3>
+<h3 id="example-21">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;images&gt;
@@ -1226,7 +1247,7 @@
 <p>description of a linux filesystem</p>
 </div>
 <div class="sect2">
-<h3 id="example-21">Example</h3>
+<h3 id="example-22">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;fs&gt;
@@ -1270,7 +1291,7 @@
 <p>mount storage by the label of the partition or volume</p>
 </div>
 <div class="sect2">
-<h3 id="example-22">Example</h3>
+<h3 id="example-23">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;bylabel&gt;
@@ -1314,7 +1335,7 @@
 <p>mount virtual filesystems or other storage devices device-node</p>
 </div>
 <div class="sect2">
-<h3 id="example-23">Example</h3>
+<h3 id="example-24">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;bydev&gt;
@@ -1358,7 +1379,7 @@
 <p>container for mounts</p>
 </div>
 <div class="sect2">
-<h3 id="example-24">Example</h3>
+<h3 id="example-25">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;fstab&gt;
@@ -1392,7 +1413,7 @@
 <p>list of packages, each contains the hole rootfilesystem</p>
 </div>
 <div class="sect2">
-<h3 id="example-25">Example</h3>
+<h3 id="example-26">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;package&gt;
@@ -1431,7 +1452,7 @@
 <p>describes a tar package</p>
 </div>
 <div class="sect2">
-<h3 id="example-26">Example</h3>
+<h3 id="example-27">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;tar&gt;
@@ -1465,7 +1486,7 @@
 <p>describes a cpio package</p>
 </div>
 <div class="sect2">
-<h3 id="example-27">Example</h3>
+<h3 id="example-28">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;cpio&gt;
@@ -1494,7 +1515,7 @@
 <p>describes a squashfs image</p>
 </div>
 <div class="sect2">
-<h3 id="example-28">Example</h3>
+<h3 id="example-29">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;squashfs&gt;
@@ -1523,7 +1544,7 @@
 <p>describes a partition of a harddisk</p>
 </div>
 <div class="sect2">
-<h3 id="example-29">Example</h3>
+<h3 id="example-30">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;partition&gt;
@@ -1757,7 +1778,7 @@
 <p>container for finetuning commands; these commands are executed in the root of the target filesystem after the target filesystem was created</p>
 </div>
 <div class="sect2">
-<h3 id="example-30">Example</h3>
+<h3 id="example-31">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;finetuning&gt;
@@ -1778,7 +1799,7 @@
 <p>describes an additional user account, the following parameters are available: <em>shell</em> - the login shell for the user, <em>passwd</em> - the password for the user and <em>groups</em> - a comma separated list of groups the user is member of. The value of the tag describes the login name for the account.</p>
 </div>
 <div class="sect2">
-<h3 id="example-31">Example</h3>
+<h3 id="example-32">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1794,7 +1815,7 @@
 <p>describes a copy or move of an element in the rootfilesystem</p>
 </div>
 <div class="sect2">
-<h3 id="example-32">Example</h3>
+<h3 id="example-33">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1810,7 +1831,7 @@
 <p>describes a mknod operaition in finetuning</p>
 </div>
 <div class="sect2">
-<h3 id="example-33">Example</h3>
+<h3 id="example-34">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1826,7 +1847,7 @@
 <p>describes a git location of a debian source package</p>
 </div>
 <div class="sect2">
-<h3 id="example-34">Example</h3>
+<h3 id="example-35">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;git_src&gt;
@@ -1860,7 +1881,7 @@
 <p>describes a svn location of a debian source package</p>
 </div>
 <div class="sect2">
-<h3 id="example-35">Example</h3>
+<h3 id="example-36">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;svn_src&gt;
@@ -1894,7 +1915,7 @@
 <p>describes a debian binary package</p>
 </div>
 <div class="sect2">
-<h3 id="example-36">Example</h3>
+<h3 id="example-37">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1910,7 +1931,7 @@
 <p>container of debian packages</p>
 </div>
 <div class="sect2">
-<h3 id="example-37">Example</h3>
+<h3 id="example-38">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;pkg-list&gt;
@@ -1949,7 +1970,7 @@
 <p>List of packages to be validated against the installed list.</p>
 </div>
 <div class="sect2">
-<h3 id="example-38">Example</h3>
+<h3 id="example-39">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;fullpkg-list&gt;
@@ -1978,7 +1999,7 @@
 <p>describes a preseeding entry</p>
 </div>
 <div class="sect2">
-<h3 id="example-39">Example</h3>
+<h3 id="example-40">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1994,7 +2015,7 @@
 <p>container of config entries</p>
 </div>
 <div class="sect2">
-<h3 id="example-40">Example</h3>
+<h3 id="example-41">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;preseed&gt;

@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>elbe-pbuilder(1) • ELBE</title>
+    <title>elbe-parselicence(1) • ELBE</title>
     
     
     
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="elbe-pbuilder(1)">
+	<meta name="twitter:title" content="elbe-parselicence(1)">
 	
 	
 	
@@ -19,12 +19,12 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US.UTF-8">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="elbe-pbuilder(1)">
+	<meta property="og:title" content="elbe-parselicence(1)">
 	
-	<meta property="og:url" content="http://elbe-rfs.org/docs/elbe-pbuilder.html">
+	<meta property="og:url" content="http://elbe-rfs.org/docs/elbe-parselicence.html">
 	<meta property="og:site_name" content="ELBE">
 
-    <link rel="canonical" href="http://elbe-rfs.org/docs/elbe-pbuilder.html">
+    <link rel="canonical" href="http://elbe-rfs.org/docs/elbe-parselicence.html">
 
     <link href="http://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
     <link href="http://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -116,14 +116,13 @@
 
 
     <div id="page-wrapper">
-      <h1>elbe-pbuilder(1)</h1>
+      <h1>elbe-parselicence(1)</h1>
 <div class="sect1">
 <h2 id="name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>elbe-pbuilder - High Level Interface to the ELBE Package Build System.<br>
-              Allows to create a package builder for a project and to build<br>
-              Debian packages.</p>
+<p>elbe-parselicence - Generate a file containing the licences of the packages<br>
+included in a project.</p>
 </div>
 </div>
 </div>
@@ -131,8 +130,13 @@
 <h2 id="synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>elbe pbuilder</em> <em>build</em>  [--project &lt;project&gt; | --xmlfile &lt;xmlfile&gt;]<br>
-<em>elbe pbuilder</em> <em>create</em> [--project &lt;project&gt; | --xmlfile &lt;xmlfile&gt;] [--writeproject &lt;filename&gt;]</pre>
+<pre class="content"><em>elbe parselicence</em> \<br>
+	--mapping &lt;mapping filename&gt; \<br>
+	[ --output &lt;filename&gt; \<br>
+	[ --tvout &lt;filename&gt; \<br>
+	[ --use-nomos ] \<br>
+	[ --errors-only ] \<br>
+	&lt;licence.xml filename&gt;</pre>
 </div>
 </div>
 </div>
@@ -140,13 +144,14 @@
 <h2 id="description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Creates a pbuilder for a specified project and builds the Debian package<br>
-like pbuilder, but for the configured ELBE project.</p>
+<p><em>elbe-parselicence</em> parses an xml file with licence information.<br>
+This xml file is generated during an elbe build.<br>
+SPDX Licenses information is generated using mappings and overrides found<br>
+in the mapping file.</p>
 </div>
 <div class="paragraph">
-<p>Currently only the source formats 3.0 (git) and 3.0 (native) are supported.<br>
-3.0 (quilt) requires Files in the parent directory, which are not uploaded,<br>
-because only the curent Workdirectory is uploaded.</p>
+<p>This information is written to an output xml File, and to a tagvalue based<br>
+SPDX File.</p>
 </div>
 </div>
 </div>
@@ -155,78 +160,29 @@ because only the curent Workdirectory is uploaded.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">--project &lt;dir&gt;</dt>
+<dt class="hdlist1">--output &lt;filename&gt;</dt>
 <dd>
-<p><em>key</em> (/var/cache/elbe/&lt;uuid&gt; for the project inside the initvm to use.<br>
-Use <em>elbe control list_projects</em> to get a list of the available projects.<br>
-Another option would be to use the --writeproject option, when the<br>
-pbuilder is created.</p>
+<p>Write the xml result to &lt;filename&gt;.</p>
 </dd>
-<dt class="hdlist1">--xmlfile &lt;xmlfile&gt;</dt>
+<dt class="hdlist1">--tvout &lt;filename&gt;</dt>
 <dd>
-<p>This file is used to create a new ELBE project including the pbuilder<br>
-environment.</p>
+<p>Write the tagvalue result to &lt;filename&gt;.</p>
 </dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="commands">COMMANDS</h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><em>create</em></dt>
+<dt class="hdlist1">--use-nomos</dt>
 <dd>
-<p>A pbuilder environment for the given project or xml File will be created.</p>
+<p>Also pipe licence text through nomos, and add this info<br>
+to xml Datastructures.</p>
 </dd>
-<dt class="hdlist1"><em>build</em></dt>
+<dt class="hdlist1">--errors-only</dt>
 <dd>
-<p>Build the <em>Debianized Project</em> in the current working directory. (A valid<br>
-./debian directory needs to exist.) If --project was specified, the specified<br>
-build environment will be used. If --xmlfile is specified a new build<br>
-environment will be created for the given ELBE XML File and the <em>Debianized<br>
-Project</em> in the current working directory will be build. The result of the<br>
-package build is stored in ../ like pbuilder does.</p>
+<p>Only Output Packages with errors.<br>
+This is useful during the Phase where the mapping file is setup.</p>
+</dd>
+<dt class="hdlist1">&lt;licence.xml filename&gt;</dt>
+<dd>
+<p>licence.xml File generated during elbe build.</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="examples">EXAMPLES</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Build a pbuilder for <em>myarm.xml</em>. Save project name into myarm.prj</p>
-<div class="listingblock">
-<div class="content">
-<pre># elbe pbuilder create --xmlfile myarm.xml --writeproject myarm.prj</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Use the pbuilder we have built, to build <em>program</em>, using the prj<br>
-File generated in parent directory</p>
-<div class="listingblock">
-<div class="content">
-<pre># cd program
-# elbe pbuilder build --project `cat ../myarm.prj`</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="see-also">SEE ALSO</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>linkgit:elbe-control[1]<br>
-linkgit:elbe-initvm[1]<br>
-linkgit:pdebuild[1]</p>
 </div>
 </div>
 </div>
