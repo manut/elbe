@@ -131,7 +131,7 @@ included in a project.</p>
 <div class="sectionbody">
 <div class="verseblock">
 <pre class="content"><em>elbe parselicence</em> \<br>
-	--mapping &lt;mapping filename&gt; \<br>
+	--mapping &lt;filename&gt; \<br>
 	[ --output &lt;filename&gt; \<br>
 	[ --tvout &lt;filename&gt; \<br>
 	[ --use-nomos ] \<br>
@@ -160,6 +160,11 @@ SPDX File.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
+<dt class="hdlist1">--mapping &lt;filename&gt;</dt>
+<dd>
+<p>Use &lt;filename&gt; to aid with packages which contain non-machinereadable<br>
+or incomplete Licence infos. The format is explained in the chapter MAPPING FILE.</p>
+</dd>
 <dt class="hdlist1">--output &lt;filename&gt;</dt>
 <dd>
 <p>Write the xml result to &lt;filename&gt;.</p>
@@ -183,6 +188,351 @@ This is useful during the Phase where the mapping file is setup.</p>
 <p>licence.xml File generated during elbe build.</p>
 </dd>
 </dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="workflow">WORKFLOW</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Elbe generates a <code>license.xml</code> File. This file is then parsed using</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>elbe parselicence --mapping my_mapping.xml /path/to/license.xml --errors-only --output out.xml</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+an example mapping is still missing. Maybe you can use some text from this man page.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The previous step will only output nodes into out.xml where an error happened.<br>
+The errors need to be fixed by expanding <code>my_mapping.xml</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<code>my_mapping.xml</code> is describe in it own chapter.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When no more errors happen, one can remove the option <code>--errors-only</code> and<br>
+use the out.xml or generate tag-value output using option <code>--tvout &lt;filename&gt;</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>elbe parselicence --mapping my_mapping.xml /path/to/license.xml --tvout spdx_licenses.tagvalue</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="license-xml-file">LICENSE.XML FILE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When elbe builds an image, it will look at all /usr/share/doc/*/COPYING Files,<br>
+and concatenate them into <code>license.txt</code>. New Versions of elbe will also generate<br>
+<code>license.xml</code>, which also contains meta-data extracted from machinereadable COPYING<br>
+files, or generated via heuristics.</p>
+</div>
+<div class="paragraph">
+<p>There are 3 possibitlities per Package:</p>
+</div>
+<div class="sect2">
+<h3 id="copying-file-is-machinereadable">COPYING File is machinereadable</h3>
+<div class="paragraph">
+<p>When the Copying File is machinereadable. The debian Licenses and<br>
+all per file Information is put into the xml File.</p>
+</div>
+<div class="paragraph">
+<p>The <code>&lt;pkglicense&gt;</code> tag will contain a <code>&lt;machinereadable /&gt;</code> tag,<br>
+and also <code>&lt;debian_licenses&gt;</code> and a <code>&lt;detailed&gt;</code> tag.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;pkglicense name="liblogging-stdlog0"&gt;&lt;text&gt;Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: liblogging
+Source: http://www.liblogging.org/
+
+Files: *
+Copyright: 2002-2014 Rainer Gerhards and Adiscon GmbH.
+License: BSD-2-Clause
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE HOLDERS OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+&lt;/text&gt;
+&lt;machinereadable /&gt;
+&lt;debian_licenses&gt;&lt;license&gt;BSD-2-Clause&lt;/license&gt;
+&lt;/debian_licenses&gt;
+&lt;detailed&gt;&lt;files&gt;&lt;glob&gt;*&lt;/glob&gt;
+&lt;license&gt;BSD-2-Clause&lt;/license&gt;
+&lt;copyright&gt;2002-2014 Rainer Gerhards and Adiscon GmbH.&lt;/copyright&gt;
+&lt;/files&gt;
+&lt;/detailed&gt;
+&lt;/pkglicense&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="some-information-can-be-extracted-via-heuristics">Some information can be extracted via heuristics</h3>
+<div class="paragraph">
+<p>There are quite a COPYING Files, which almost adopted the<br>
+new machine readable Format. But the parser does not accept it.</p>
+</div>
+<div class="paragraph">
+<p>The heuristic will look for lines containing <code>License: *</code> and will<br>
+extract that info into a <code>&lt;debian_licenses&gt;</code> tag.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;pkglicense name="libapt-pkg4.12"&gt;&lt;text&gt;Apt is copyright 1997, 1998, 1999 Jason Gunthorpe and others.
+Apt is currently developed by APT Development Team &amp;lt;deity@lists.debian.org&amp;gt;.
+
+License: GPLv2+
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+
+See /usr/share/common-licenses/GPL-2, or
+&amp;lt;http://www.gnu.org/copyleft/gpl.txt&amp;gt; for the terms of the latest version
+of the GNU General Public License.
+
+&lt;/text&gt;
+&lt;heuristics /&gt;
+&lt;debian_licenses&gt;&lt;license&gt;GPLv2+&lt;/license&gt;
+&lt;/debian_licenses&gt;
+&lt;/pkglicense&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-information-can-be-extracted-automatically">No information can be extracted automatically</h3>
+<div class="paragraph">
+<p>Only the text will be put into the xml File.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;pkglicense name="bsd-mailx"&gt;&lt;text&gt;This package was debianized by Loic Prylli &amp;lt;lprylli@graville.fdn.fr&amp;gt; on
+Mon, 23 Dec 1996 00:13:13 +0100.
+The package is currently maintained by Robert Luberda &amp;lt;robert@debian.org&amp;gt;
+
+It is now based on OpenBSD in directory src/usr.bin/mail on a lot of major
+ftp sites.
+See the README.Debian (and changelog.Debian) for the complicated history
+of the Debian package.
+
+Copyright (c) 1980, 1993 The Regents of the University of California.
+
+
+
+This software is licensed under the BSD License. The complete text of
+the license is included below:
+
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+   3. Neither the name of the University nor the names of its contributors
+      may be used to endorse or promote products derived from this software
+      without specific prior written permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+   FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+   SUCH DAMAGE.
+&lt;/text&gt;
+&lt;/pkglicense&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mapping-file">MAPPING FILE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to help <code>elbe parselicence</code> with decisions, which it can not make automatically,<br>
+a mapping file is needed.</p>
+</div>
+<div class="paragraph">
+<p>It defines the following items:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>global mappings from Debian License to SPDX License Identifier in node <code>&lt;global&gt;</code></p>
+</li>
+<li>
+<p>per package mappings <code>&lt;perpackage&gt; &lt;package&gt; &lt;mapping&gt;</code></p>
+</li>
+<li>
+<p>per package override definitions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is an example mapping.xml:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;license_map&gt;
+	&lt;global&gt;
+		&lt;mapping name='GPL-1+'&gt;GPL-1.0+&lt;/mapping&gt;
+		&lt;mapping name='GPL-2'&gt;GPL-2.0&lt;/mapping&gt;
+		&lt;mapping name='GPL-2.0'&gt;GPL-2.0&lt;/mapping&gt;
+		&lt;mapping name='GPL-2+'&gt;GPL-2.0+&lt;/mapping&gt;
+		&lt;mapping name='GPLv2+'&gt;GPL-2.0+&lt;/mapping&gt;
+		&lt;mapping name='GPL-2.0+'&gt;GPL-2.0+&lt;/mapping&gt;
+		&lt;mapping name='GPL-2.1+'&gt;GPL-2.1+&lt;/mapping&gt;
+		&lt;mapping name='GPL-3+'&gt;GPL-3.0+&lt;/mapping&gt;
+		&lt;mapping name='GPLv3+'&gt;GPL-3.0+&lt;/mapping&gt;
+		&lt;mapping name='GPL-3.0+'&gt;GPL-3.0+&lt;/mapping&gt;
+
+		&lt;mapping name='LGPL-2'&gt;LGPL-2.0&lt;/mapping&gt;
+		&lt;mapping name='LGPL-2.0'&gt;LGPL-2.0&lt;/mapping&gt;
+		&lt;mapping name='LGPL-2+'&gt;LGPL-2.0+&lt;/mapping&gt;
+		&lt;mapping name='LGPL2.1'&gt;LGPL-2.1&lt;/mapping&gt;
+		&lt;mapping name='LGPL-2.1'&gt;LGPL-2.1&lt;/mapping&gt;
+		&lt;mapping name='LGPL-2.1+'&gt;LGPL-2.1+&lt;/mapping&gt;
+		&lt;mapping name='LGPL-3+'&gt;LGPL-3.0+&lt;/mapping&gt;
+		&lt;mapping name='LGPL-3.0+'&gt;LGPL-3.0+&lt;/mapping&gt;
+		&lt;mapping name='LGPL'&gt;LGPL-3.0+&lt;/mapping&gt;
+
+		&lt;mapping name='GFDL-1.2'&gt;GFDL-1.2&lt;/mapping&gt;
+		&lt;mapping name='GFDL-1.2+'&gt;GFDL-1.2+&lt;/mapping&gt;
+		&lt;mapping name='GFDL-1.3'&gt;GFDL-1.3&lt;/mapping&gt;
+		&lt;mapping name='GFDL-1.3+'&gt;GFDL-1.3+&lt;/mapping&gt;
+
+		&lt;mapping name='BSD-2-clause'&gt;BSD-2-Clause&lt;/mapping&gt;
+		&lt;mapping name='BSD-2-Clause'&gt;BSD-2-Clause&lt;/mapping&gt;
+		&lt;mapping name='BSD-3-clause'&gt;BSD-3-Clause&lt;/mapping&gt;
+		&lt;mapping name='BSD-3-Clause'&gt;BSD-3-Clause&lt;/mapping&gt;
+		&lt;mapping name='BSD-4-clause'&gt;BSD-4-Clause&lt;/mapping&gt;
+		&lt;mapping name='BSD-4-Clause'&gt;BSD-4-Clause&lt;/mapping&gt;
+		&lt;mapping name='MIT'&gt;MIT&lt;/mapping&gt;
+		&lt;mapping name='CC-BY-SA-3.0'&gt;CC-BY-SA-3.0&lt;/mapping&gt;
+
+		&lt;mapping name='ZLIB'&gt;Zlib&lt;/mapping&gt;
+		&lt;mapping name='MPL-2.0'&gt;MPL-2.0&lt;/mapping&gt;
+		&lt;mapping name='Apache-2.0'&gt;Apache-2.0&lt;/mapping&gt;
+		&lt;mapping name='GPL-3.0-with-GCC-exception'&gt;GPL-3.0 WITH GCC-exception-3.1&lt;/mapping&gt;
+		&lt;mapping name='GPL-3+ with GCC-Runtime-3.1 exception'&gt;GPL-3.0+ WITH GCC-exception-3.1&lt;/mapping&gt;
+		&lt;mapping name='Artistic'&gt;Artistic-1.0&lt;/mapping&gt;
+		&lt;mapping name='Artistic-2'&gt;Artistic-2.0&lt;/mapping&gt;
+		&lt;mapping name='GPL-3+ with OpenSSL exception'&gt;GPL-3.0+ WITH openvpn-openssl-exception&lt;/mapping&gt;
+		&lt;mapping name='FTL'&gt;FTL&lt;/mapping&gt;
+		&lt;mapping name='ISC'&gt;ISC&lt;/mapping&gt;
+		&lt;mapping name='Gzip'&gt;Zlib&lt;/mapping&gt;
+
+		&lt;mapping name='X-Consortium'&gt;X11&lt;/mapping&gt;
+
+		&lt;mapping name='Expat'&gt;MIT&lt;/mapping&gt;
+		&lt;mapping name='public-domain'&gt;CC-0&lt;/mapping&gt;
+	&lt;/global&gt;
+
+	&lt;perpackage&gt;
+		&lt;package name='grub-common'&gt;
+			&lt;!-- heuristics override, because of error in machine read--&gt;
+			&lt;license&gt;GPL-3.0+&lt;/license&gt;
+			&lt;license&gt;MIT&lt;/license&gt;
+			&lt;license&gt;CC-BY-SA-3.0&lt;/license&gt;
+		&lt;/package&gt;
+		&lt;package name='init-system-helpers'&gt;
+			&lt;mapping name='BSD'&gt;BSD-3-Clause&lt;/mapping&gt;
+		&lt;/package&gt;
+
+		&lt;package name='liblzo2-2'&gt;
+			&lt;license&gt;GPL-2.0+&lt;/license&gt;
+		&lt;/package&gt;
+		&lt;package name='logrotate'&gt;
+			&lt;license&gt;GPL-2.0+&lt;/license&gt;
+		&lt;/package&gt;
+	&lt;/perpackage&gt;
+&lt;/license_map&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, it is also necessary to add identity mappings, like<br>
+<code>&lt;mapping name='GPL-2.0'&gt;GPL-2.0&lt;/mapping&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Its not allowed to mix <code>&lt;license&gt;</code> and <code>&lt;mapping&gt;</code> in a single &lt;package&gt; node.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nomos">NOMOS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Nomos is part of fossology. See <a href="http://www.fossology.org/projects/fossology/wiki/Debian_Install_2_5" class="bare">http://www.fossology.org/projects/fossology/wiki/Debian_Install_2_5</a><br>
+to find out, how to install the nomos executable.</p>
 </div>
 </div>
 </div>

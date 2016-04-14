@@ -831,7 +831,9 @@
   &lt;setsel&gt; string &lt;/setsel&gt;
   &lt;norecommend&gt; string &lt;/norecommend&gt;
   &lt;finetuning&gt; rfs:finetuning &lt;/finetuning&gt;
+  &lt;pbuilder&gt; rfs:pbuilder &lt;/pbuilder&gt;
   &lt;pkg-list&gt; rfs:pkg-list &lt;/pkg-list&gt;
+  &lt;pkg-blacklist&gt; rfs:blacklist &lt;/pkg-blacklist&gt;
 &lt;/target&gt;</pre>
 </div>
 </div>
@@ -888,9 +890,17 @@
 <dd>
 <p>apply the given commands to the target rootfilesystem</p>
 </dd>
+<dt class="hdlist1">pbuilder (<em><a href="#pbuilder">rfs:pbuilder</a></em>) </dt>
+<dd>
+<p>build and optionaly install debianized sources</p>
+</dd>
 <dt class="hdlist1">pkg-list (<em><a href="#pkg-list">rfs:pkg-list</a></em>) </dt>
 <dd>
 <p>install the given packages into the rootfilesystem</p>
+</dd>
+<dt class="hdlist1">pkg-blacklist (<em><a href="#blacklist">rfs:blacklist</a></em>) </dt>
+<dd>
+<p>avoid installation of packages into sysroot or target</p>
 </dd>
 </dl>
 </div>
@@ -1844,32 +1854,14 @@
 <h2 id="git_src">TYPE: git_src</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>describes a git location of a debian source package</p>
+<p>URI of the git repository, e.g. "git://myhost/myrepo.git"</p>
 </div>
 <div class="sect2">
 <h3 id="example-35">Example</h3>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
-<pre>&lt;git_src&gt;
-  &lt;url&gt; string &lt;/url&gt;
-  &lt;tag&gt; string &lt;/tag&gt;
-&lt;/git_src&gt;</pre>
+<pre>no sequence</pre>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="element-description-28">Element description</h3>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">url (<em>string</em>) </dt>
-<dd>
-<p>url of the git repository, e.g. "git://myhost/myrepo.git"</p>
-</dd>
-<dt class="hdlist1">tag (<em>string</em>) </dt>
-<dd>
-<p>reference to a tag in the git tree</p>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1878,32 +1870,14 @@
 <h2 id="svn_src">TYPE: svn_src</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>describes a svn location of a debian source package</p>
+<p>URI of the svn repository, e.g. "svn://myhost/myrepo/tags/my_tag"</p>
 </div>
 <div class="sect2">
 <h3 id="example-36">Example</h3>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
-<pre>&lt;svn_src&gt;
-  &lt;url&gt; string &lt;/url&gt;
-  &lt;rev&gt; integer &lt;/rev&gt;
-&lt;/svn_src&gt;</pre>
+<pre>no sequence</pre>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="element-description-29">Element description</h3>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">url (<em>string</em>) </dt>
-<dd>
-<p>url of the svn repository, e.g. "svn://myhost/myrepo/tags/my_tag"</p>
-</dd>
-<dt class="hdlist1">rev (<em>integer</em>) </dt>
-<dd>
-<p>svn revision which should be checked out</p>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1925,20 +1899,82 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="pbuilder">TYPE: pbuilder</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>reference to debian source packages</p>
+</div>
+<div class="sect2">
+<h3 id="example-38">Example</h3>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;pbuilder&gt;
+  &lt;git&gt; rfs:git_src &lt;/git&gt;
+  &lt;svn&gt; rfs:svn_src &lt;/svn&gt;
+&lt;/pbuilder&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="element-description-28">Element description</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">git (<em><a href="#git_src">rfs:git_src</a></em>) </dt>
+<dd>
+<p>reference to a git tree hosting a debian source package. The source   will be build with a pbuilder before the image generation. Use the   <em>install</em> attribute to specify which binary packages should be   installed in the target image.</p>
+</dd>
+<dt class="hdlist1">svn (<em><a href="#svn_src">rfs:svn_src</a></em>) </dt>
+<dd>
+<p>reference to a svn repository hosting a debian source package. The   source will be build with a pbuilder before the image generation.   Use the <em>install</em> attribute to specify which binary packages should   be installed in the target image.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="pkg-list">TYPE: pkg-list</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>container of debian packages</p>
 </div>
 <div class="sect2">
-<h3 id="example-38">Example</h3>
+<h3 id="example-39">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;pkg-list&gt;
-  &lt;git-src&gt; rfs:git_src &lt;/git-src&gt;
-  &lt;svn-src&gt; rfs:svn_src &lt;/svn-src&gt;
   &lt;pkg&gt; rfs:pkg &lt;/pkg&gt;
 &lt;/pkg-list&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="element-description-29">Element description</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">pkg (<em><a href="#pkg">rfs:pkg</a></em>) </dt>
+<dd>
+<p>reference to a binary debian package which will be installed from   the given mirrors into the target rootfilesystem.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="blacklist">TYPE: blacklist</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>blacklists of debian packages</p>
+</div>
+<div class="sect2">
+<h3 id="example-40">Example</h3>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;blacklist&gt;
+  &lt;sysroot&gt; rfs:pkg-list &lt;/sysroot&gt;
+  &lt;target&gt; rfs:pkg-list &lt;/target&gt;
+&lt;/blacklist&gt;</pre>
 </div>
 </div>
 </div>
@@ -1946,17 +1982,13 @@
 <h3 id="element-description-30">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">git-src (<em><a href="#git_src">rfs:git_src</a></em>) </dt>
+<dt class="hdlist1">sysroot (<em><a href="#pkg-list">rfs:pkg-list</a></em>) </dt>
 <dd>
-<p>reference to a git tree hosting a debian source package. The tree   will be cloned into the build environment and <em>dpkg-buildpackage</em>   will be called. The resulting debian package will be installed into   the target rootfilesystem. Take care that all build dependencies   needs to be listed inside <em>buildenv</em>/<em>pkg-list</em> at the moment.</p>
+<p>avoid installing the specified packages into the sysroot</p>
 </dd>
-<dt class="hdlist1">svn-src (<em><a href="#svn_src">rfs:svn_src</a></em>) </dt>
+<dt class="hdlist1">target (<em><a href="#pkg-list">rfs:pkg-list</a></em>) </dt>
 <dd>
-<p>reference to a svn repository hosting a debian source package. The   repository will be checked out into the build environment and   <em>dpkg-buildpackage</em> will be called. The resulting debian package   will be installed into the target rootfilesystem. Take care that   all build dependencies needs to be listed inside   <em>buildenv</em>/<em>pkg-list</em> at the moment.</p>
-</dd>
-<dt class="hdlist1">pkg (<em><a href="#pkg">rfs:pkg</a></em>) </dt>
-<dd>
-<p>reference to a binary debian package which will be installed from   the given mirrors into the target rootfilesystem.</p>
+<p>avoid installing the specified packages into the target</p>
 </dd>
 </dl>
 </div>
@@ -1970,7 +2002,7 @@
 <p>List of packages to be validated against the installed list.</p>
 </div>
 <div class="sect2">
-<h3 id="example-39">Example</h3>
+<h3 id="example-41">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;fullpkg-list&gt;
@@ -1999,7 +2031,7 @@
 <p>describes a preseeding entry</p>
 </div>
 <div class="sect2">
-<h3 id="example-40">Example</h3>
+<h3 id="example-42">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -2015,7 +2047,7 @@
 <p>container of config entries</p>
 </div>
 <div class="sect2">
-<h3 id="example-41">Example</h3>
+<h3 id="example-43">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;preseed&gt;
