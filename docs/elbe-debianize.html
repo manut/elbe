@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Downloads • ELBE</title>
+    <title>elbe-debianize(1) • ELBE</title>
     
     
     
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Downloads">
+	<meta name="twitter:title" content="elbe-debianize(1)">
 	
 	
 	
@@ -19,12 +19,12 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US.UTF-8">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Downloads">
+	<meta property="og:title" content="elbe-debianize(1)">
 	
-	<meta property="og:url" content="http://elbe-rfs.org/download/">
+	<meta property="og:url" content="http://elbe-rfs.org/docs/elbe-debianize.html">
 	<meta property="og:site_name" content="ELBE">
 
-    <link rel="canonical" href="http://elbe-rfs.org/download/">
+    <link rel="canonical" href="http://elbe-rfs.org/docs/elbe-debianize.html">
 
     <link href="http://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
     <link href="http://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -116,80 +116,83 @@
 
 
     <div id="page-wrapper">
-      <div id="main" role="main">
-	<article class="wrap" itemscope itemtype="http://schema.org/Article">
-		
-		
-		<div class="page-title">
-			<h1>Downloads</h1>
-		</div>
-		<div class="inner-wrap">
-			<div id="content" class="page-content" itemprop="articleBody">
-				<p>The current elbe version is <em>1.1</em></p>
-
-<p>The current elbe testing version is <em>1.9.6</em></p>
-
-<p>There are several ways to install a binary version of elbe.</p>
-
-<p>The easiest way is to install the <a href="index.html#debian">Debian packages via apt</a>.</p>
-
-<h2 id="debian">Debian Binary Packages</h2>
-
-<p>The recommended way to use ELBE is running it on a Debian PC.
-Linutronix provides a signed repository that can be included in apt.</p>
-
-<h4>Debian jessie</h4>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
-<span class="nb">cd</span> /tmp
-wget http://debian.linutronix.de/elbe/elbe-repo.pub
-apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe jessie main&quot;</span> &gt;&gt; /etc/apt/sources.list
-apt-get update
-apt-get install elbe</code></pre></div>
-
-<h4>Debian sid</h4>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
-<span class="nb">cd</span> /tmp
-wget http://debian.linutronix.de/elbe/elbe-repo.pub
-apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe sid main&quot;</span> &gt;&gt; /etc/apt/sources.list
-apt-get update
-apt-get install elbe</code></pre></div>
-
-<h4>Debian wheezy</h4>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
-<span class="nb">cd</span> /tmp
-wget http://debian.linutronix.de/elbe/elbe-repo.pub
-apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe wheezy main&quot;</span> &gt;&gt; /etc/apt/sources.list
-apt-get update
-apt-get install elbe</code></pre></div>
-
-
-				<hr />
-				<footer class="page-footer">
-					
-					<div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Downloads&amp;url=http://elbe-rfs.org/download/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://elbe-rfs.org/download/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://elbe-rfs.org/download/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
-</div><!-- /.share-this -->
-					<div class="page-meta">
-	<p>Updated <time datetime="2015-11-17T12:50:42Z" itemprop="datePublished">November 17, 2015</time></p>
-</div><!-- /.page-meta -->
-				</footer><!-- /.footer -->
-				<aside>
-					
-				</aside>
-			</div><!-- /.content -->
-		</div><!-- /.inner-wrap -->
-		
-	</article><!-- ./wrap -->
-</div><!-- /#main -->
-
+      <h1>elbe-debianize(1)</h1>
+<div class="sect1">
+<h2 id="name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>elbe-debianize - generate a debianization</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>elbe debianize</em></pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>elbe debianize</em> generates a <em>debian</em> folder inside e.g. a kernel source tree.<br>
+This contains the informations needed to transfer the source into debian source<br>
+and binary packages.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="examples">EXAMPLES</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>to debianize a stable kernel for an armhf system use the following commands.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
+$ cd linux-stable
+$ elbe debianize
+$ git add -f debian
+$ git commit -sm 'add the elbe generated debianization'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>if you selected a cross compiler, the package could be build with</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ dpkg-buildpackage -a armhf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>otherwise use <em>elbe-pbuilder</em></p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ elbe pbuilder build /var/cache/elbe/&lt;uuid&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="elbe">ELBE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the linkgit:elbe[1] suite</p>
+</div>
+</div>
+</div>
       <footer role="contentinfo" id="site-footer">
 	<nav role="navigation" class="menu bottom-menu">
 		<ul class="menu-item">
