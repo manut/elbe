@@ -1173,6 +1173,8 @@
   &lt;grub-install&gt; string &lt;/grub-install&gt;
   &lt;binary&gt; rfs:binaryblob &lt;/binary&gt;
   &lt;partition&gt; rfs:partition &lt;/partition&gt;
+  &lt;extended&gt; rfs:extended &lt;/extended&gt;
+  &lt;partition&gt; rfs:partition &lt;/partition&gt;
 &lt;/msdoshd&gt;</pre>
 </div>
 </div>
@@ -1200,6 +1202,14 @@
 <dt class="hdlist1">partition (<em><a href="#partition">rfs:partition</a></em>) </dt>
 <dd>
 <p>Partition Entries of this harddisk (max: 4)</p>
+</dd>
+<dt class="hdlist1">extended (<em><a href="#extended">rfs:extended</a></em>) </dt>
+<dd>
+<p>Extended Partition Entries of this harddisk (max: 1)</p>
+</dd>
+<dt class="hdlist1">partition (<em><a href="#partition">rfs:partition</a></em>) </dt>
+<dd>
+<p>Partition Entries of this harddisk (max: 3)</p>
 </dd>
 </dl>
 </div>
@@ -1574,7 +1584,7 @@
 <dd>
 <p>size of the partition</p>
 </dd>
-<dt class="hdlist1">label (<em>string</em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">label (<em>string</em>) </dt>
 <dd>
 <p>human readable label of the partition used for mount by label and   as filename for the flashable image</p>
 </dd>
@@ -1585,6 +1595,40 @@
 <dt class="hdlist1">biosgrub (<em>string</em>) <strong>optional</strong> </dt>
 <dd>
 <p>Whether this partition is marked as biosgrub partition.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extended">TYPE: extended</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>describes a extended partition of a harddisk</p>
+</div>
+<div class="sect2">
+<h3 id="example-31">Example</h3>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;extended&gt;
+  &lt;size&gt; rfs:part_size &lt;/size&gt;
+  &lt;logical&gt; rfs:partition &lt;/logical&gt;
+&lt;/extended&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="element-description-27">Element description</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">size (<em><a href="#part_size">rfs:part_size</a></em>) </dt>
+<dd>
+<p>size of the partition</p>
+</dd>
+<dt class="hdlist1">logical (<em><a href="#partition">rfs:partition</a></em>) </dt>
+<dd>
+<p>logical partition of this extended partition</p>
 </dd>
 </dl>
 </div>
@@ -1788,7 +1832,7 @@
 <p>container for finetuning commands; these commands are executed in the root of the target filesystem after the target filesystem was created</p>
 </div>
 <div class="sect2">
-<h3 id="example-31">Example</h3>
+<h3 id="example-32">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;finetuning&gt;
@@ -1797,7 +1841,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="element-description-27">Element description</h3>
+<h3 id="element-description-28">Element description</h3>
 
 </div>
 </div>
@@ -1809,7 +1853,7 @@
 <p>describes an additional user account, the following parameters are available: <em>shell</em> - the login shell for the user, <em>passwd</em> - the password for the user and <em>groups</em> - a comma separated list of groups the user is member of. The value of the tag describes the login name for the account.</p>
 </div>
 <div class="sect2">
-<h3 id="example-32">Example</h3>
+<h3 id="example-33">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1825,7 +1869,7 @@
 <p>describes a copy or move of an element in the rootfilesystem</p>
 </div>
 <div class="sect2">
-<h3 id="example-33">Example</h3>
+<h3 id="example-34">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1841,7 +1885,7 @@
 <p>describes a mknod operaition in finetuning</p>
 </div>
 <div class="sect2">
-<h3 id="example-34">Example</h3>
+<h3 id="example-35">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1857,7 +1901,7 @@
 <p>URI of the git repository, e.g. "git://myhost/myrepo.git"</p>
 </div>
 <div class="sect2">
-<h3 id="example-35">Example</h3>
+<h3 id="example-36">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1873,7 +1917,7 @@
 <p>URI of the svn repository, e.g. "svn://myhost/myrepo/tags/my_tag"</p>
 </div>
 <div class="sect2">
-<h3 id="example-36">Example</h3>
+<h3 id="example-37">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1889,7 +1933,7 @@
 <p>describes a debian binary package</p>
 </div>
 <div class="sect2">
-<h3 id="example-37">Example</h3>
+<h3 id="example-38">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -1905,7 +1949,7 @@
 <p>reference to debian source packages</p>
 </div>
 <div class="sect2">
-<h3 id="example-38">Example</h3>
+<h3 id="example-39">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;pbuilder&gt;
@@ -1916,7 +1960,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="element-description-28">Element description</h3>
+<h3 id="element-description-29">Element description</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">git (<em><a href="#git_src">rfs:git_src</a></em>) </dt>
@@ -1939,7 +1983,7 @@
 <p>container of debian packages</p>
 </div>
 <div class="sect2">
-<h3 id="example-39">Example</h3>
+<h3 id="example-40">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;pkg-list&gt;
@@ -1949,7 +1993,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="element-description-29">Element description</h3>
+<h3 id="element-description-30">Element description</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">pkg (<em><a href="#pkg">rfs:pkg</a></em>) </dt>
@@ -1968,7 +2012,7 @@
 <p>blacklists of debian packages</p>
 </div>
 <div class="sect2">
-<h3 id="example-40">Example</h3>
+<h3 id="example-41">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;blacklist&gt;
@@ -1979,7 +2023,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="element-description-30">Element description</h3>
+<h3 id="element-description-31">Element description</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">sysroot (<em><a href="#pkg-list">rfs:pkg-list</a></em>) </dt>
@@ -2002,7 +2046,7 @@
 <p>List of packages to be validated against the installed list.</p>
 </div>
 <div class="sect2">
-<h3 id="example-41">Example</h3>
+<h3 id="example-42">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;fullpkg-list&gt;
@@ -2012,7 +2056,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="element-description-31">Element description</h3>
+<h3 id="element-description-32">Element description</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">pkg (<em><a href="#pkg">rfs:pkg</a></em>) </dt>
@@ -2031,7 +2075,7 @@
 <p>describes a preseeding entry</p>
 </div>
 <div class="sect2">
-<h3 id="example-42">Example</h3>
+<h3 id="example-43">Example</h3>
 <div class="literalblock">
 <div class="content">
 <pre>no sequence</pre>
@@ -2047,7 +2091,7 @@
 <p>container of config entries</p>
 </div>
 <div class="sect2">
-<h3 id="example-43">Example</h3>
+<h3 id="example-44">Example</h3>
 <div class="listingblock">
 <div class="content">
 <pre>&lt;preseed&gt;
@@ -2057,7 +2101,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="element-description-32">Element description</h3>
+<h3 id="element-description-33">Element description</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">conf (<em><a href="#conf">rfs:conf</a></em>) </dt>
