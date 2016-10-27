@@ -1,185 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://elbe-rfs.org/news/v100/</loc>
+    <loc>https://elbe-rfs.org/news/v100/</loc>
     <lastmod>2015-12-24T00:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/news/v098/</loc>
+    <loc>https://elbe-rfs.org/news/v098/</loc>
     <lastmod>2015-12-14T00:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/internals/</loc>
+    <loc>https://elbe-rfs.org/internals/</loc>
     <lastmod>2015-12-14T00:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/whatiselbe/</loc>
+    <loc>https://elbe-rfs.org/whatiselbe/</loc>
     <lastmod>2015-11-16T00:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/feature/secure/</loc>
+    <loc>https://elbe-rfs.org/feature/secure/</loc>
     <lastmod>2015-11-16T00:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/feature/reproducable/</loc>
+    <loc>https://elbe-rfs.org/feature/reproducable/</loc>
     <lastmod>2015-11-16T00:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/feature/debianbased/</loc>
+    <loc>https://elbe-rfs.org/feature/debianbased/</loc>
     <lastmod>2015-11-16T00:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/feature/adk/</loc>
+    <loc>https://elbe-rfs.org/feature/adk/</loc>
     <lastmod>2015-11-16T00:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/news/v097/</loc>
+    <loc>https://elbe-rfs.org/news/v097/</loc>
     <lastmod>2015-10-16T00:00:00+02:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-add.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-add.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-buildchroot.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-buildchroot.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-buildsysroot.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-buildsysroot.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-check_updates.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-check_updates.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-chg_archive.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-chg_archive.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-chroot.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-chroot.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-control.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-control.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-debianize.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-debianize.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-diff.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-diff.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-examples.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-examples.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-gen_update.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-gen_update.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-genlicence.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-genlicence.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-get_archive.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-get_archive.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-hdimg.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-hdimg.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-init.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-init.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-initvm.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-initvm.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-mkcdrom.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-mkcdrom.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-parselicence.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-parselicence.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-pbuilder.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-pbuilder.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-pkgdiff.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-pkgdiff.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-remove_sign.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-remove_sign.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-schema-reference.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-schema-reference.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-setsel.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-setsel.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-show.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-show.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-sign.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-sign.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-updated.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-updated.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-validate.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-validate.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe-xsdtoasciidoc.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe-xsdtoasciidoc.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbe.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbe.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/elbeoverview-en.html</loc>
+    <loc>https://elbe-rfs.org/docs/elbeoverview-en.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/news/</loc>
+    <loc>https://elbe-rfs.org/news/</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/</loc>
+    <loc>https://elbe-rfs.org/</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/download/</loc>
+    <loc>https://elbe-rfs.org/download/</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/devel/</loc>
+    <loc>https://elbe-rfs.org/devel/</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/support/</loc>
+    <loc>https://elbe-rfs.org/support/</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/</loc>
+    <loc>https://elbe-rfs.org/docs/</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/quickstart.html</loc>
+    <loc>https://elbe-rfs.org/docs/quickstart.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/docs/repobuilder-en.html</loc>
+    <loc>https://elbe-rfs.org/docs/repobuilder-en.html</loc>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/elbe0x/support.html</loc>
+    <loc>https://elbe-rfs.org/elbe0x/support.html</loc>
     <lastmod>2013-02-25T16:18:53+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/elbe0x/doc.html</loc>
+    <loc>https://elbe-rfs.org/elbe0x/doc.html</loc>
     <lastmod>2013-02-25T16:18:53+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/elbe0x/impressum.html</loc>
+    <loc>https://elbe-rfs.org/elbe0x/impressum.html</loc>
     <lastmod>2013-02-25T16:18:53+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/elbe0x/footer.html</loc>
+    <loc>https://elbe-rfs.org/elbe0x/footer.html</loc>
     <lastmod>2013-02-25T16:18:53+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/elbe0x/devel.html</loc>
+    <loc>https://elbe-rfs.org/elbe0x/devel.html</loc>
     <lastmod>2013-02-25T16:18:53+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/elbe0x/download.html</loc>
+    <loc>https://elbe-rfs.org/elbe0x/download.html</loc>
     <lastmod>2015-03-03T13:11:20+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/elbe0x/index.html</loc>
+    <loc>https://elbe-rfs.org/elbe0x/index.html</loc>
     <lastmod>2015-11-17T15:10:47+01:00</lastmod>
   </url>
   <url>
-    <loc>http://elbe-rfs.org/elbe0x/nav.html</loc>
+    <loc>https://elbe-rfs.org/elbe0x/nav.html</loc>
     <lastmod>2013-02-25T16:18:53+01:00</lastmod>
   </url>
 </urlset>

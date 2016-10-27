@@ -5,27 +5,27 @@
 
   <title>ELBE</title>
   <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.5.3</generator>
-    <icon>http://elbe-rfs.org/apple-touch-icon-precomposed.png</icon>
+    <icon>https://elbe-rfs.org/apple-touch-icon-precomposed.png</icon>
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
-  <link href="http://elbe-rfs.org/atom.xml" rel="self"/>
-  <link href="http://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2016-10-25T18:52:49+02:00</updated>
-  <id>http://elbe-rfs.org/</id>
+  <link href="https://elbe-rfs.org/atom.xml" rel="self"/>
+  <link href="https://elbe-rfs.org/" rel="alternate" type="text/html"/>
+  <updated>2016-10-27T19:53:05+02:00</updated>
+  <id>https://elbe-rfs.org/</id>
   <author>
     <name></name>
-    <uri>http://elbe-rfs.org/</uri>
+    <uri>https://elbe-rfs.org/</uri>
     
   </author>
 
   
   <entry>
     <title>elbe v1.0 released</title>
-    <link href="http://elbe-rfs.org/news/v100/"/>
+    <link href="https://elbe-rfs.org/news/v100/"/>
     <updated>2015-12-24T00:00:00+01:00</updated>
-    <id>http://elbe-rfs.org/news/v100</id>
+    <id>https://elbe-rfs.org/news/v100</id>
     <author>
       <name></name>
-      <uri>http://elbe-rfs.org/</uri>
+      <uri>https://elbe-rfs.org/</uri>
       
     </author>
     <content type="html">
@@ -54,12 +54,12 @@ deb-src http://debian.linutronix.de/elbe-testing jessie main
   
   <entry>
     <title>elbe v0.9.8 released</title>
-    <link href="http://elbe-rfs.org/news/v098/"/>
+    <link href="https://elbe-rfs.org/news/v098/"/>
     <updated>2015-12-14T00:00:00+01:00</updated>
-    <id>http://elbe-rfs.org/news/v098</id>
+    <id>https://elbe-rfs.org/news/v098</id>
     <author>
       <name></name>
-      <uri>http://elbe-rfs.org/</uri>
+      <uri>https://elbe-rfs.org/</uri>
       
     </author>
     <content type="html">
@@ -103,12 +103,12 @@ $ elbe pbuilder build --xmlfile /tmp/bbb.xml
   
   <entry>
     <title>ELBE technical Details</title>
-    <link href="http://elbe-rfs.org/internals/"/>
+    <link href="https://elbe-rfs.org/internals/"/>
     <updated>2015-12-14T00:00:00+01:00</updated>
-    <id>http://elbe-rfs.org/internals</id>
+    <id>https://elbe-rfs.org/internals</id>
     <author>
       <name></name>
-      <uri>http://elbe-rfs.org/</uri>
+      <uri>https://elbe-rfs.org/</uri>
       
     </author>
     <content type="html">
@@ -172,12 +172,12 @@ individual processes and files of the inner environment.&lt;/p&gt;
   
   <entry>
     <title>ELBE in a nutshell</title>
-    <link href="http://elbe-rfs.org/whatiselbe/"/>
+    <link href="https://elbe-rfs.org/whatiselbe/"/>
     <updated>2015-11-16T00:00:00+01:00</updated>
-    <id>http://elbe-rfs.org/whatiselbe</id>
+    <id>https://elbe-rfs.org/whatiselbe</id>
     <author>
       <name></name>
-      <uri>http://elbe-rfs.org/</uri>
+      <uri>https://elbe-rfs.org/</uri>
       
     </author>
     <content type="html">
@@ -250,19 +250,19 @@ communities around Linux distribution like Debian?&lt;/p&gt;
 &lt;p&gt;Instead of doing the work again we tried to figure out how Debian could be
 reused in a way that will fulfill our needs.&lt;/p&gt;
 
-&lt;p&gt;Continue reading &lt;a href=&quot;http://elbe-rfs.org/docs/elbeoverview-en.html&quot;&gt;ELBE Overview&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Continue reading &lt;a href=&quot;https://elbe-rfs.org/docs/elbeoverview-en.html&quot;&gt;ELBE Overview&lt;/a&gt;.&lt;/p&gt;
 
     </content>
   </entry>
   
   <entry>
     <title>Secure</title>
-    <link href="http://elbe-rfs.org/feature/secure/"/>
+    <link href="https://elbe-rfs.org/feature/secure/"/>
     <updated>2015-11-16T00:00:00+01:00</updated>
-    <id>http://elbe-rfs.org/feature/secure</id>
+    <id>https://elbe-rfs.org/feature/secure</id>
     <author>
       <name></name>
-      <uri>http://elbe-rfs.org/</uri>
+      <uri>https://elbe-rfs.org/</uri>
       
     </author>
     <content type="html">
@@ -275,12 +275,12 @@ updates are available.&lt;/p&gt;
   
   <entry>
     <title>Reproducable Images</title>
-    <link href="http://elbe-rfs.org/feature/reproducable/"/>
+    <link href="https://elbe-rfs.org/feature/reproducable/"/>
     <updated>2015-11-16T00:00:00+01:00</updated>
-    <id>http://elbe-rfs.org/feature/reproducable</id>
+    <id>https://elbe-rfs.org/feature/reproducable</id>
     <author>
       <name></name>
-      <uri>http://elbe-rfs.org/</uri>
+      <uri>https://elbe-rfs.org/</uri>
       
     </author>
     <content type="html">
@@ -292,12 +292,12 @@ updates are available.&lt;/p&gt;
   
   <entry>
     <title>Based on Debian</title>
-    <link href="http://elbe-rfs.org/feature/debianbased/"/>
+    <link href="https://elbe-rfs.org/feature/debianbased/"/>
     <updated>2015-11-16T00:00:00+01:00</updated>
-    <id>http://elbe-rfs.org/feature/debianbased</id>
+    <id>https://elbe-rfs.org/feature/debianbased</id>
     <author>
       <name></name>
-      <uri>http://elbe-rfs.org/</uri>
+      <uri>https://elbe-rfs.org/</uri>
       
     </author>
     <content type="html">
@@ -309,12 +309,12 @@ updates are available.&lt;/p&gt;
   
   <entry>
     <title>ELBE ADK</title>
-    <link href="http://elbe-rfs.org/feature/adk/"/>
+    <link href="https://elbe-rfs.org/feature/adk/"/>
     <updated>2015-11-16T00:00:00+01:00</updated>
-    <id>http://elbe-rfs.org/feature/adk</id>
+    <id>https://elbe-rfs.org/feature/adk</id>
     <author>
       <name></name>
-      <uri>http://elbe-rfs.org/</uri>
+      <uri>https://elbe-rfs.org/</uri>
       
     </author>
     <content type="html">
@@ -326,12 +326,12 @@ updates are available.&lt;/p&gt;
   
   <entry>
     <title>elbe v0.9.7 released</title>
-    <link href="http://elbe-rfs.org/news/v097/"/>
+    <link href="https://elbe-rfs.org/news/v097/"/>
     <updated>2015-10-16T00:00:00+02:00</updated>
-    <id>http://elbe-rfs.org/news/v097</id>
+    <id>https://elbe-rfs.org/news/v097</id>
     <author>
       <name></name>
-      <uri>http://elbe-rfs.org/</uri>
+      <uri>https://elbe-rfs.org/</uri>
       
     </author>
     <content type="html">
