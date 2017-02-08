@@ -130,7 +130,7 @@
 <div class="sectionbody">
 <div class="verseblock">
 <pre class="content"><em>elbe control</em> [options] <em>list_projects</em><br>
-<em>elbe control</em> [options] <em>create_project</em> &lt;xmlfile&gt;<br>
+<em>elbe control</em> [options] <em>create_project</em><br>
 <em>elbe control</em> [options] <em>build_sysroot</em> &lt;build-dir&gt;<br>
 <em>elbe control</em> [options] <em>set_pdebuild</em> &lt;project-dir&gt; &lt;pdebuild file&gt;<br>
 <em>elbe control</em> [options] <em>get_files</em> &lt;build-dir&gt;<br>
@@ -220,10 +220,10 @@ build 2 projects at once.</p>
 <dd>
 <p>List projects available on the elbe daemon.</p>
 </dd>
-<dt class="hdlist1"><em>create_project</em> &lt;xmlfile&gt;</dt>
+<dt class="hdlist1"><em>create_project</em></dt>
 <dd>
-<p>Create a new project on soap server. &lt;xmlfile&gt; is uploaded,<br>
-and a new build-dir is created.</p>
+<p>Create a new project on soap server.<br>
+a new build-dir is created.</p>
 <div class="paragraph">
 <p>The name of the created &lt;build-dir&gt; is printed to stdout, for further<br>
 reference in subsequent commands.</p>
@@ -396,7 +396,7 @@ linkgit:git-daemon[1]</p>
 		</ul>
 	</nav><!-- /.bottom-menu -->
 	<p class="copyright">
-		&#169; 2016
+		&#169; 2017
 		<a href="https://elbe-rfs.org">ELBE</a> by
 		<a href="https://linutronix.de">Linutronix GmbH</a> -
 		ELBE is not affiliated with Debian, Debian is a registered trademark owned by SPI
