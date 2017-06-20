@@ -156,51 +156,51 @@
 <h3 id="element-description">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">initvm (<em><a href="#initvm">rfs:initvm</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">initvm <a href="#initvm">rfs:initvm</a> <strong>optional</strong> </dt>
 <dd>
 <p>Configurations that are used for creating the initvm   e.g. the definition of the used debian mirrors, suite and buildtype</p>
 </dd>
-<dt class="hdlist1">project (<em><a href="#project">rfs:project</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">project <a href="#project">rfs:project</a> <strong>optional</strong> </dt>
 <dd>
 <p>Configurations that are used for creating the buildenvironment and   the target rootfilesystem. e.g. the definition of the used debian   mirrors.</p>
 </dd>
-<dt class="hdlist1">target (<em><a href="#target">rfs:target</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">target <a href="#target">rfs:target</a> <strong>optional</strong> </dt>
 <dd>
 <p>Configurations that are used to create the target rootfilesystem</p>
 </dd>
-<dt class="hdlist1">archive (<em>base64Binary</em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">archive base64Binary <strong>optional</strong> </dt>
 <dd>
 <p>tar.bz2 file that contains configuration files for the target   rootfilesystem. To alter this node use <em>elbe chg_archive</em> and   to get the content of this node <em>elbe get_archive</em>.</p>
 </dd>
-<dt class="hdlist1">debootstrappkgs (<em><a href="#fullpkg-list">rfs:fullpkg-list</a></em>) </dt>
+<dt class="hdlist1">debootstrappkgs <a href="#fullpkg-list">rfs:fullpkg-list</a> </dt>
 <dd>
 <p>List of packages installed right after debootstrap</p>
 </dd>
-<dt class="hdlist1">initvmpkgs (<em><a href="#fullpkg-list">rfs:fullpkg-list</a></em>) </dt>
+<dt class="hdlist1">initvmpkgs <a href="#fullpkg-list">rfs:fullpkg-list</a> </dt>
 <dd>
 <p>List of packages installed right after debootstrap</p>
 </dd>
-<dt class="hdlist1">initvm_sources_list (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">initvm_sources_list <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>apt sources list.</p>
 </dd>
-<dt class="hdlist1">initvm_apt_prefs (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">initvm_apt_prefs <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>apt preferences list</p>
 </dd>
-<dt class="hdlist1">fullpkgs (<em><a href="#fullpkg-list">rfs:fullpkg-list</a></em>) </dt>
+<dt class="hdlist1">fullpkgs <a href="#fullpkg-list">rfs:fullpkg-list</a> </dt>
 <dd>
 <p>List of packages with their versions installed on the RFS</p>
 </dd>
-<dt class="hdlist1">sources_list (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">sources_list <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>apt sources list.</p>
 </dd>
-<dt class="hdlist1">apt_prefs (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">apt_prefs <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>apt preferences list</p>
 </dd>
-<dt class="hdlist1">elbe_version (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">elbe_version <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>Elbe Version that was used in the last build of this file.</p>
 </dd>
@@ -280,15 +280,15 @@
 <h3 id="element-description-2">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">binary (<em><a href="#binary-url">rfs:binary-url</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">binary <a href="#binary-url">rfs:binary-url</a> <strong>optional</strong> </dt>
 <dd>
 <p>e.g. "http://myhost/debian /" or "http://debian.org/debian main"</p>
 </dd>
-<dt class="hdlist1">source (<em>string</em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">source string <strong>optional</strong> </dt>
 <dd>
 <p>e.g. "http://myhost/sources /" or "http://debian.org/debian main"</p>
 </dd>
-<dt class="hdlist1">key (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">key <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>URL of the Public Key used to sign this Repository e.g "http://myhost/key.pub" or "http://debian.linutronix.de/elbe/elbe-repo.pub"</p>
 </dd>
@@ -317,7 +317,7 @@
 <h3 id="element-description-3">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">url (<em><a href="#url">rfs:url</a></em>) </dt>
+<dt class="hdlist1">url <a href="#url">rfs:url</a> </dt>
 <dd>
 <p>describes an additional debian mirror</p>
 </dd>
@@ -351,27 +351,27 @@
 <h3 id="element-description-4">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">primary_host (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">primary_host <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>IP address or hostname of the primary debian mirror   e.g. "debian.org" without a protocol or any slash</p>
 </dd>
-<dt class="hdlist1">primary_path (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">primary_path <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>base path to the debian mirror on the given host   e.g. "/debian"</p>
 </dd>
-<dt class="hdlist1">primary_proto (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">primary_proto <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>protocol to access the primary debian mirror   e.g. "http" or "ftp"</p>
 </dd>
-<dt class="hdlist1">primary_proxy (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">primary_proxy <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>proxy to access the debian mirror   e.g. "http://me:mypass@myproxy:8080"</p>
 </dd>
-<dt class="hdlist1">cdrom (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">cdrom <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>iso image of a cdrom/dvd with debian packages.</p>
 </dd>
-<dt class="hdlist1">url-list (<em><a href="#url-list">rfs:url-list</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">url-list <a href="#url-list">rfs:url-list</a> <strong>optional</strong> </dt>
 <dd>
 <p>additional debian repositories, e.g. for own debian packages</p>
 </dd>
@@ -409,43 +409,43 @@
 <h3 id="element-description-5">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">buildtype (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">buildtype <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>Default buildtype like armel, ppc, and in the future armel-virtio</p>
 </dd>
-<dt class="hdlist1">mirror (<em><a href="#mirror">rfs:mirror</a></em>) </dt>
+<dt class="hdlist1">mirror <a href="#mirror">rfs:mirror</a> </dt>
 <dd>
 <p>used debian mirrors</p>
 </dd>
-<dt class="hdlist1">noauth (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">noauth <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>allow installation of unsigned debian packages</p>
 </dd>
-<dt class="hdlist1">preference (<em><a href="#preference">rfs:preference</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">preference <a href="#preference">rfs:preference</a> <strong>optional</strong> </dt>
 <dd>
 <p>used for pinning of all packages   TODO: example?</p>
 </dd>
-<dt class="hdlist1">suite (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">suite <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>name of the debian suite that should be used to generate the initvm.   e.g. "lenny", "squeeze", "sid", ..</p>
 </dd>
-<dt class="hdlist1">pkg-list (<em><a href="#pkg-list">rfs:pkg-list</a></em>) </dt>
+<dt class="hdlist1">pkg-list <a href="#pkg-list">rfs:pkg-list</a> </dt>
 <dd>
 <p>additional packages that are installed into the initvm.</p>
 </dd>
-<dt class="hdlist1">preseed (<em><a href="#preseed">rfs:preseed</a></em>) </dt>
+<dt class="hdlist1">preseed <a href="#preseed">rfs:preseed</a> </dt>
 <dd>
 <p>Custom preseeding Values for apt</p>
 </dd>
-<dt class="hdlist1">size (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">size <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>size of the virtual harddisk used to run the build environment</p>
 </dd>
-<dt class="hdlist1">img (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">img <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>hd image backend format: raw, qcow, vmdk, &#8230;&#8203;</p>
 </dd>
-<dt class="hdlist1">portforwarding (<em><a href="#portforwarding">rfs:portforwarding</a></em>) </dt>
+<dt class="hdlist1">portforwarding <a href="#portforwarding">rfs:portforwarding</a> </dt>
 <dd>
 <p>network ports of the buildenvironment that are forwarded to the   host machine</p>
 </dd>
@@ -484,47 +484,47 @@
 <h3 id="element-description-6">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">name (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">name <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>name of the project this rootfilesystem is associated with</p>
 </dd>
-<dt class="hdlist1">version (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">version <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>version of the rootfilesystem definition</p>
 </dd>
-<dt class="hdlist1">description (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">description <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>human readable description of the project</p>
 </dd>
-<dt class="hdlist1">buildtype (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">buildtype <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>Default buildtype like armel, ppc, and in the future armel-virtio</p>
 </dd>
-<dt class="hdlist1">mirror (<em><a href="#mirror">rfs:mirror</a></em>) </dt>
+<dt class="hdlist1">mirror <a href="#mirror">rfs:mirror</a> </dt>
 <dd>
 <p>used debian mirrors</p>
 </dd>
-<dt class="hdlist1">noauth (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">noauth <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>allow installation of unsigned debian packages</p>
 </dd>
-<dt class="hdlist1">preference (<em><a href="#preference">rfs:preference</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">preference <a href="#preference">rfs:preference</a> <strong>optional</strong> </dt>
 <dd>
 <p>used for pinning of all packages   TODO: example?</p>
 </dd>
-<dt class="hdlist1">raw-preference (<em><a href="#raw-preference">rfs:raw-preference</a></em>) </dt>
+<dt class="hdlist1">raw-preference <a href="#raw-preference">rfs:raw-preference</a> </dt>
 <dd>
 <p>gets dedented and striped and is then written to /etc/apt/preferences   TODO: example?</p>
 </dd>
-<dt class="hdlist1">suite (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">suite <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>name of the debian suite that should be used to generate the   buildenvironment and the rootfilesystem.   e.g. "lenny", "squeeze", "sid", ..</p>
 </dd>
-<dt class="hdlist1">buildimage (<em><a href="#buildimage">rfs:buildimage</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">buildimage <a href="#buildimage">rfs:buildimage</a> <strong>optional</strong> </dt>
 <dd>
 <p>reference to the buildimage which is used to generate the   rootfilesystem</p>
 </dd>
-<dt class="hdlist1">preseed (<em><a href="#preseed">rfs:preseed</a></em>) </dt>
+<dt class="hdlist1">preseed <a href="#preseed">rfs:preseed</a> </dt>
 <dd>
 <p>Custom preseeding Values for apt</p>
 </dd>
@@ -596,51 +596,51 @@
 <h3 id="element-description-7">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">arch (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">arch <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>architecture of the target system. e.g. "amd64", "armel", "ppc", ..</p>
 </dd>
-<dt class="hdlist1">size (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">size <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>size of the virtual harddisk used to run the build environment</p>
 </dd>
-<dt class="hdlist1">mem (<em><a href="#memory">rfs:memory</a></em>) </dt>
+<dt class="hdlist1">mem <a href="#memory">rfs:memory</a> </dt>
 <dd>
 <p>amount of memory mapped into the virtual build environment</p>
 </dd>
-<dt class="hdlist1">interpreter (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">interpreter <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>virtual machine interpreter, e.g. "kvm", "qemu-system-arm", &#8230;&#8203;</p>
 </dd>
-<dt class="hdlist1">interpreterversion (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">interpreterversion <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>virtual machine interpreter version, e.g. "2.8.0", "1.4.7", &#8230;&#8203;</p>
 </dd>
-<dt class="hdlist1">kinitrd (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">kinitrd <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>pkg name of the initrd/kernel package.</p>
 </dd>
-<dt class="hdlist1">console (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">console <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>serial console of the virtual machine, e.g. "ttyAMA0,115200n1"</p>
 </dd>
-<dt class="hdlist1">machine (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">machine <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>virtual platform to host the build environment,   e.g. "versatilepb"</p>
 </dd>
-<dt class="hdlist1">NIC (<em><a href="#NIC">rfs:NIC</a></em>) </dt>
+<dt class="hdlist1">NIC <a href="#NIC">rfs:NIC</a> </dt>
 <dd>
 <p>network interface emulation</p>
 </dd>
-<dt class="hdlist1">portforwarding (<em><a href="#portforwarding">rfs:portforwarding</a></em>) </dt>
+<dt class="hdlist1">portforwarding <a href="#portforwarding">rfs:portforwarding</a> </dt>
 <dd>
 <p>network ports of the buildenvironment that are forwarded to the   host machine</p>
 </dd>
-<dt class="hdlist1">pkgversionlist (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">pkgversionlist <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>create /etc/elbe_pkglist on the target RFS. It includes all packages   that include files that are used in the target. The list also   contains the versions of the used packages.</p>
 </dd>
-<dt class="hdlist1">pkg-list (<em><a href="#pkg-list">rfs:pkg-list</a></em>) </dt>
+<dt class="hdlist1">pkg-list <a href="#pkg-list">rfs:pkg-list</a> </dt>
 <dd>
 <p>additional packages that are only installed into the   build environment; not into the target root filesystem.</p>
 </dd>
@@ -715,11 +715,11 @@
 <h3 id="element-description-8">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">model (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">model <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>hardware emulation of the network interface; e.g. "e1000"</p>
 </dd>
-<dt class="hdlist1">MAC (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">MAC <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>mac address of the virtual network interface</p>
 </dd>
@@ -799,15 +799,15 @@
 <h3 id="element-description-9">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">proto (<em><a href="#fw_proto">rfs:fw_proto</a></em>) </dt>
+<dt class="hdlist1">proto <a href="#fw_proto">rfs:fw_proto</a> </dt>
 <dd>
 <p>network protocol to forward either "udp" or "tcp"</p>
 </dd>
-<dt class="hdlist1">buildenv (<em>integer</em>) </dt>
+<dt class="hdlist1">buildenv integer </dt>
 <dd>
 <p>port on the buildenvironment, e.g. "22" for ssh</p>
 </dd>
-<dt class="hdlist1">host (<em>integer</em>) </dt>
+<dt class="hdlist1">host integer </dt>
 <dd>
 <p>port on the host machine, e.g. "10022"</p>
 </dd>
@@ -836,7 +836,7 @@
 <h3 id="element-description-10">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">forward (<em><a href="#forward">rfs:forward</a></em>) </dt>
+<dt class="hdlist1">forward <a href="#forward">rfs:forward</a> </dt>
 <dd>
 <p>describes a single port forward</p>
 </dd>
@@ -879,63 +879,63 @@
 <h3 id="element-description-11">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">hostname (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">hostname <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>hostname of the system</p>
 </dd>
-<dt class="hdlist1">domain (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">domain <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>domainname of the network the target system is part of</p>
 </dd>
-<dt class="hdlist1">passwd (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">passwd <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>root password</p>
 </dd>
-<dt class="hdlist1">console (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">console <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>serial console for getty</p>
 </dd>
-<dt class="hdlist1">package (<em><a href="#package">rfs:package</a></em>) </dt>
+<dt class="hdlist1">package <a href="#package">rfs:package</a> </dt>
 <dd>
 <p>package rootfilesystem as a tarball, cpio or a squashfs image</p>
 </dd>
-<dt class="hdlist1">images (<em><a href="#images">rfs:images</a></em>) </dt>
+<dt class="hdlist1">images <a href="#images">rfs:images</a> </dt>
 <dd>
 <p>generate (flashable) images of the rootfilesystem</p>
 </dd>
-<dt class="hdlist1">fstab (<em><a href="#fstab">rfs:fstab</a></em>) </dt>
+<dt class="hdlist1">fstab <a href="#fstab">rfs:fstab</a> </dt>
 <dd>
 <p>specify which resources should be mounted</p>
 </dd>
-<dt class="hdlist1">tighten (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">tighten <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>don&#8217;t install any dependencies; just the content of the given debian   packages</p>
 </dd>
-<dt class="hdlist1">diet (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">diet <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>use reverse dependencies of the given debian packages to determine   the rootfilesystem content; this is useful to get rid of dpkg/apt.</p>
 </dd>
-<dt class="hdlist1">setsel (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">setsel <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>Elbe uses <code>dpkg --set-selections</code> to install packages in the target.   The rootfs still needs dpkg, and all dependencies need to be   specified in the pkg-list.   The target will contain all postinst generated scripts.</p>
 </dd>
-<dt class="hdlist1">norecommend (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">norecommend <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>Turn off the installation of recommended Packages.</p>
 </dd>
-<dt class="hdlist1">finetuning (<em><a href="#finetuning">rfs:finetuning</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">finetuning <a href="#finetuning">rfs:finetuning</a> <strong>optional</strong> </dt>
 <dd>
 <p>apply the given commands to the target rootfilesystem</p>
 </dd>
-<dt class="hdlist1">pbuilder (<em><a href="#pbuilder">rfs:pbuilder</a></em>) </dt>
+<dt class="hdlist1">pbuilder <a href="#pbuilder">rfs:pbuilder</a> </dt>
 <dd>
 <p>build and optionaly install debianized sources</p>
 </dd>
-<dt class="hdlist1">pkg-list (<em><a href="#pkg-list">rfs:pkg-list</a></em>) </dt>
+<dt class="hdlist1">pkg-list <a href="#pkg-list">rfs:pkg-list</a> </dt>
 <dd>
 <p>install the given packages into the rootfilesystem</p>
 </dd>
-<dt class="hdlist1">pkg-blacklist (<em><a href="#blacklist">rfs:blacklist</a></em>) </dt>
+<dt class="hdlist1">pkg-blacklist <a href="#blacklist">rfs:blacklist</a> </dt>
 <dd>
 <p>avoid installation of packages into sysroot or target</p>
 </dd>
@@ -1018,27 +1018,27 @@
 <h3 id="element-description-12">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">type (<em><a href="#ubi_type">rfs:ubi_type</a></em>) </dt>
+<dt class="hdlist1">type <a href="#ubi_type">rfs:ubi_type</a> </dt>
 <dd>
 <p>type of the ubi volume; either "static" or "dynamic"</p>
 </dd>
-<dt class="hdlist1">label (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">label <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>human readable name of the ubi volume (also used for mount by label)</p>
 </dd>
-<dt class="hdlist1">id (<em>integer</em>) </dt>
+<dt class="hdlist1">id integer </dt>
 <dd>
 <p>id of the ubi volume</p>
 </dd>
-<dt class="hdlist1">size (<em><a href="#part_size">rfs:part_size</a></em>) </dt>
+<dt class="hdlist1">size <a href="#part_size">rfs:part_size</a> </dt>
 <dd>
 <p>size of the ubi volume</p>
 </dd>
-<dt class="hdlist1">binary (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">binary <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>path and filename of a binary image which will be used as a source   for this volume; this can be used for example to store the linux   kernel in a static ubi volume</p>
 </dd>
-<dt class="hdlist1">empty (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">empty <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>if binary is used or a label was given that is also available in   the fstab this tag can be used to force the creation of an empty   ubi volume.</p>
 </dd>
@@ -1072,27 +1072,27 @@
 <h3 id="element-description-13">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">label (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">label <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>human readable name; used to generate filename for the flashable   image file</p>
 </dd>
-<dt class="hdlist1">miniosize (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">miniosize <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>flash parameter minimal i/o size</p>
 </dd>
-<dt class="hdlist1">maxlogicaleraseblockcount (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">maxlogicaleraseblockcount <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>flash parameter maximum logical erase block count</p>
 </dd>
-<dt class="hdlist1">logicaleraseblocksize (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">logicaleraseblocksize <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>flash parameter logical erase block size</p>
 </dd>
-<dt class="hdlist1">physicaleraseblocksize (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">physicaleraseblocksize <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>flash parameter physical erase block size</p>
 </dd>
-<dt class="hdlist1">subpagesize (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">subpagesize <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>flash parameter subpagesize</p>
 </dd>
@@ -1125,23 +1125,23 @@
 <h3 id="element-description-14">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">name (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">name <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>human readable name of the mtd device</p>
 </dd>
-<dt class="hdlist1">nr (<em>integer</em>) </dt>
+<dt class="hdlist1">nr integer </dt>
 <dd>
 <p>number of the mtd device</p>
 </dd>
-<dt class="hdlist1">size (<em><a href="#part_size">rfs:part_size</a></em>) </dt>
+<dt class="hdlist1">size <a href="#part_size">rfs:part_size</a> </dt>
 <dd>
 <p>size of the mtd device</p>
 </dd>
-<dt class="hdlist1">binary (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">binary <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>path and filename of a binary image which will be used as a source   for this mtd device; this can be used for example to store the   bootloader in the beginning of the flash (mtd0)</p>
 </dd>
-<dt class="hdlist1">ubivg (<em><a href="#ubivg">rfs:ubivg</a></em>) </dt>
+<dt class="hdlist1">ubivg <a href="#ubivg">rfs:ubivg</a> </dt>
 <dd>
 <p>if the mtd will be used to store ubi volumes, this container is   used to define them</p>
 </dd>
@@ -1173,19 +1173,19 @@
 <h3 id="element-description-15">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">name (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">name <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>human readable name of the harddisk, this will be used as name for   the image file</p>
 </dd>
-<dt class="hdlist1">size (<em><a href="#part_size">rfs:part_size</a></em>) </dt>
+<dt class="hdlist1">size <a href="#part_size">rfs:part_size</a> </dt>
 <dd>
 <p>size of the harddisk</p>
 </dd>
-<dt class="hdlist1">grub-install (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">grub-install <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>human readable name of the harddisk, this will be used as name for   the image file</p>
 </dd>
-<dt class="hdlist1">partition (<em><a href="#partition">rfs:partition</a></em>) </dt>
+<dt class="hdlist1">partition <a href="#partition">rfs:partition</a> </dt>
 <dd>
 <p>Partition Entries of this harddisk</p>
 </dd>
@@ -1236,31 +1236,31 @@
 <h3 id="element-description-16">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">name (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">name <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>human readable name of the harddisk, this will be used as name for   the image file</p>
 </dd>
-<dt class="hdlist1">size (<em><a href="#part_size">rfs:part_size</a></em>) </dt>
+<dt class="hdlist1">size <a href="#part_size">rfs:part_size</a> </dt>
 <dd>
 <p>size of the harddisk</p>
 </dd>
-<dt class="hdlist1">grub-install (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">grub-install <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>human readable name of the harddisk, this will be used as name for   the image file</p>
 </dd>
-<dt class="hdlist1">binary (<em><a href="#binaryblob">rfs:binaryblob</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">binary <a href="#binaryblob">rfs:binaryblob</a> <strong>optional</strong> </dt>
 <dd>
 <p>binary blob that is dd&#8217;ed to the specified offset</p>
 </dd>
-<dt class="hdlist1">partition (<em><a href="#partition">rfs:partition</a></em>) </dt>
+<dt class="hdlist1">partition <a href="#partition">rfs:partition</a> </dt>
 <dd>
 <p>Partition Entries of this harddisk (max: 4)</p>
 </dd>
-<dt class="hdlist1">extended (<em><a href="#extended">rfs:extended</a></em>) </dt>
+<dt class="hdlist1">extended <a href="#extended">rfs:extended</a> </dt>
 <dd>
 <p>Extended Partition Entries of this harddisk (max: 1)</p>
 </dd>
-<dt class="hdlist1">partition (<em><a href="#partition">rfs:partition</a></em>) </dt>
+<dt class="hdlist1">partition <a href="#partition">rfs:partition</a> </dt>
 <dd>
 <p>Partition Entries of this harddisk (max: 3)</p>
 </dd>
@@ -1292,19 +1292,19 @@
 <h3 id="element-description-17">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">mtd (<em><a href="#mtd">rfs:mtd</a></em>) </dt>
+<dt class="hdlist1">mtd <a href="#mtd">rfs:mtd</a> </dt>
 <dd>
 <p>container for all mtd devices of the target</p>
 </dd>
-<dt class="hdlist1">msdoshd (<em><a href="#msdoshd">rfs:msdoshd</a></em>) </dt>
+<dt class="hdlist1">msdoshd <a href="#msdoshd">rfs:msdoshd</a> </dt>
 <dd>
 <p>container for Harddisks with msdos Partitionlabel.</p>
 </dd>
-<dt class="hdlist1">gpthd (<em><a href="#gpthd">rfs:gpthd</a></em>) </dt>
+<dt class="hdlist1">gpthd <a href="#gpthd">rfs:gpthd</a> </dt>
 <dd>
 <p>container for Harddisks with GPT Partitionlabel</p>
 </dd>
-<dt class="hdlist1">passno (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">passno <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>passno order for fsck</p>
 </dd>
@@ -1336,19 +1336,19 @@
 <h3 id="element-description-18">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">type (<em><a href="#fs_type">rfs:fs_type</a></em>) </dt>
+<dt class="hdlist1">type <a href="#fs_type">rfs:fs_type</a> </dt>
 <dd>
 <p>filesystemtype, e.g. "ext3", "ubifs", &#8230;&#8203;</p>
 </dd>
-<dt class="hdlist1">mkfs (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">mkfs <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>options passed to the mkfs command</p>
 </dd>
-<dt class="hdlist1">tune2fs (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">tune2fs <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>options passed to the tune2fs command</p>
 </dd>
-<dt class="hdlist1">passno (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">passno <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>passno order for fsck</p>
 </dd>
@@ -1381,23 +1381,23 @@
 <h3 id="element-description-19">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">label (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">label <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>label of the partition/volume to mount</p>
 </dd>
-<dt class="hdlist1">mountpoint (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">mountpoint <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>path in the rootfilesystem where the partition/volume is mounted</p>
 </dd>
-<dt class="hdlist1">fs (<em><a href="#fs">rfs:fs</a></em>) </dt>
+<dt class="hdlist1">fs <a href="#fs">rfs:fs</a> </dt>
 <dd>
 <p>filesystem of the partition/volume to mount</p>
 </dd>
-<dt class="hdlist1">options (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">options <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>options passed to the mount command</p>
 </dd>
-<dt class="hdlist1">nofstab (<em><a href="#empty">rfs:empty</a></em>) </dt>
+<dt class="hdlist1">nofstab <a href="#empty">rfs:empty</a> </dt>
 <dd>
 <p>This mountpoint shall not be inserted into fstab.   Useful for redundant filesystems, where two entries   with identical mountpoint would end up in the fstab.</p>
 </dd>
@@ -1429,19 +1429,19 @@
 <h3 id="element-description-20">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">source (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">source <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>either a device-node or "none" for virtual filesystems</p>
 </dd>
-<dt class="hdlist1">mountpoint (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">mountpoint <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>path in the rootfilesystem where the device or virtual filesystem   is mounted</p>
 </dd>
-<dt class="hdlist1">fs (<em><a href="#fs">rfs:fs</a></em>) </dt>
+<dt class="hdlist1">fs <a href="#fs">rfs:fs</a> </dt>
 <dd>
 <p>filesystem of the device or the virtual filesystem name</p>
 </dd>
-<dt class="hdlist1">options (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">options <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>options passed to the mount command</p>
 </dd>
@@ -1471,11 +1471,11 @@
 <h3 id="element-description-21">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">bylabel (<em><a href="#bylabel">rfs:bylabel</a></em>) </dt>
+<dt class="hdlist1">bylabel <a href="#bylabel">rfs:bylabel</a> </dt>
 <dd>
 <p>describes a mount by a volume or partition label</p>
 </dd>
-<dt class="hdlist1">bydev (<em><a href="#bydev">rfs:bydev</a></em>) </dt>
+<dt class="hdlist1">bydev <a href="#bydev">rfs:bydev</a> </dt>
 <dd>
 <p>describes a mount based on a device node or a mount of a virtual   filesystem like debugfs or tmpfs</p>
 </dd>
@@ -1506,15 +1506,15 @@
 <h3 id="element-description-22">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">tar (<em><a href="#tar">rfs:tar</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">tar <a href="#tar">rfs:tar</a> <strong>optional</strong> </dt>
 <dd>
 <p>tar package of the rootfilesystem</p>
 </dd>
-<dt class="hdlist1">cpio (<em><a href="#cpio">rfs:cpio</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">cpio <a href="#cpio">rfs:cpio</a> <strong>optional</strong> </dt>
 <dd>
 <p>cpio package of the rootfilesystem</p>
 </dd>
-<dt class="hdlist1">squashfs (<em><a href="#squashfs">rfs:squashfs</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">squashfs <a href="#squashfs">rfs:squashfs</a> <strong>optional</strong> </dt>
 <dd>
 <p>squashfs image of the rootfilesystem</p>
 </dd>
@@ -1544,11 +1544,11 @@
 <h3 id="element-description-23">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">name (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">name <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>filename of the tar package</p>
 </dd>
-<dt class="hdlist1">options (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">options <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>options passed to the tar command</p>
 </dd>
@@ -1577,7 +1577,7 @@
 <h3 id="element-description-24">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">name (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">name <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>filename of the cpio package</p>
 </dd>
@@ -1606,7 +1606,7 @@
 <h3 id="element-description-25">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">name (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">name <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>filename of the squashfs image</p>
 </dd>
@@ -1638,19 +1638,19 @@
 <h3 id="element-description-26">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">size (<em><a href="#part_size">rfs:part_size</a></em>) </dt>
+<dt class="hdlist1">size <a href="#part_size">rfs:part_size</a> </dt>
 <dd>
 <p>size of the partition</p>
 </dd>
-<dt class="hdlist1">label (<em><a href="#string">rfs:string</a></em>) </dt>
+<dt class="hdlist1">label <a href="#string">rfs:string</a> </dt>
 <dd>
 <p>human readable label of the partition used for mount by label and   as filename for the flashable image</p>
 </dd>
-<dt class="hdlist1">bootable (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">bootable <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>Whether this partition is marked bootable.</p>
 </dd>
-<dt class="hdlist1">biosgrub (<em><a href="#string">rfs:string</a></em>) <strong>optional</strong> </dt>
+<dt class="hdlist1">biosgrub <a href="#string">rfs:string</a> <strong>optional</strong> </dt>
 <dd>
 <p>Whether this partition is marked as biosgrub partition.</p>
 </dd>
@@ -1680,11 +1680,11 @@
 <h3 id="element-description-27">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">size (<em><a href="#part_size">rfs:part_size</a></em>) </dt>
+<dt class="hdlist1">size <a href="#part_size">rfs:part_size</a> </dt>
 <dd>
 <p>size of the partition</p>
 </dd>
-<dt class="hdlist1">logical (<em><a href="#partition">rfs:partition</a></em>) </dt>
+<dt class="hdlist1">logical <a href="#partition">rfs:partition</a> </dt>
 <dd>
 <p>logical partition of this extended partition</p>
 </dd>
@@ -2101,11 +2101,11 @@
 <h3 id="element-description-29">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">git (<em><a href="#git_src">rfs:git_src</a></em>) </dt>
+<dt class="hdlist1">git <a href="#git_src">rfs:git_src</a> </dt>
 <dd>
 <p>reference to a git tree hosting a debian source package. The source   will be build with a pbuilder before the image generation. Use the   <em>install</em> attribute to specify which binary packages should be   installed in the target image.</p>
 </dd>
-<dt class="hdlist1">svn (<em><a href="#svn_src">rfs:svn_src</a></em>) </dt>
+<dt class="hdlist1">svn <a href="#svn_src">rfs:svn_src</a> </dt>
 <dd>
 <p>reference to a svn repository hosting a debian source package. The   source will be build with a pbuilder before the image generation.   Use the <em>install</em> attribute to specify which binary packages should   be installed in the target image.</p>
 </dd>
@@ -2134,7 +2134,7 @@
 <h3 id="element-description-30">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">pkg (<em><a href="#pkg">rfs:pkg</a></em>) </dt>
+<dt class="hdlist1">pkg <a href="#pkg">rfs:pkg</a> </dt>
 <dd>
 <p>reference to a binary debian package which will be installed from   the given mirrors into the target rootfilesystem.</p>
 </dd>
@@ -2163,7 +2163,7 @@
 <h3 id="element-description-31">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">sysroot (<em><a href="#pkg-list">rfs:pkg-list</a></em>) </dt>
+<dt class="hdlist1">sysroot <a href="#pkg-list">rfs:pkg-list</a> </dt>
 <dd>
 <p>avoid installing the specified packages into the sysroot</p>
 </dd>
@@ -2192,7 +2192,7 @@
 <h3 id="element-description-32">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">pkg (<em><a href="#pkg">rfs:pkg</a></em>) </dt>
+<dt class="hdlist1">pkg <a href="#pkg">rfs:pkg</a> </dt>
 <dd>
 <p>Reference to a binary debian package which is supposed to be installed.</p>
 </dd>
@@ -2237,7 +2237,7 @@
 <h3 id="element-description-33">Element description</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">conf (<em><a href="#conf">rfs:conf</a></em>) </dt>
+<dt class="hdlist1">conf <a href="#conf">rfs:conf</a> </dt>
 <dd>
 <p>A config entry</p>
 </dd>
