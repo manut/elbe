@@ -127,7 +127,7 @@
 			<div id="content" class="page-content" itemprop="articleBody">
 				<p>The current elbe version is <em>1.2</em></p>
 
-<p>The current elbe testing version is <em>1.9.20</em></p>
+<p>The current elbe testing version is <em>1.9.22</em></p>
 
 <p>There are several ways to install a binary version of elbe.</p>
 
@@ -138,15 +138,15 @@
 <p>The recommended way to use ELBE is running it on a Debian PC.
 Linutronix provides a signed repository that can be included in apt.</p>
 
-<h4>Debian jessie</h4>
+<h4>Debian stretch</h4>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
 <span class="nb">cd</span> /tmp
 wget http://debian.linutronix.de/elbe/elbe-repo.pub
 apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe jessie main&quot;</span> &gt;&gt; /etc/apt/sources.list
-apt-get update
-apt-get install elbe</code></pre></div>
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe stretch main&quot;</span> &gt;&gt; /etc/apt/sources.list
+apt update
+apt install elbe</code></pre></div>
 
 <h4>Debian sid</h4>
 
@@ -155,6 +155,16 @@ apt-get install elbe</code></pre></div>
 wget http://debian.linutronix.de/elbe/elbe-repo.pub
 apt-key add elbe-repo.pub
 <span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe sid main&quot;</span> &gt;&gt; /etc/apt/sources.list
+apt update
+apt install elbe</code></pre></div>
+
+<h4>Debian jessie</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
+<span class="nb">cd</span> /tmp
+wget http://debian.linutronix.de/elbe/elbe-repo.pub
+apt-key add elbe-repo.pub
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe jessie main&quot;</span> &gt;&gt; /etc/apt/sources.list
 apt-get update
 apt-get install elbe</code></pre></div>
 
@@ -178,7 +188,7 @@ apt-get install elbe</code></pre></div>
 	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=https://elbe-rfs.org/download/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
 </div><!-- /.share-this -->
 					<div class="page-meta">
-	<p>Updated <time datetime="2015-11-17T12:50:42Z" itemprop="datePublished">November 17, 2015</time></p>
+	<p>Updated <time datetime="2015-11-17T11:50:42Z" itemprop="datePublished">November 17, 2015</time></p>
 </div><!-- /.page-meta -->
 				</footer><!-- /.footer -->
 				<aside>
