@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE Quickstart &mdash; ELBE 1.9.22 documentation</title>
+  <title>ELBE Quickstart &mdash; ELBE 1.9.23 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.9.22 documentation" href="index.html"/>
+    <link rel="top" title="ELBE 1.9.23 documentation" href="index.html"/>
         <link rel="next" title="elbe" href="elbe.html"/>
         <link rel="prev" title="ELBE Overview" href="article-elbeoverview-en.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                1.9.22
+                1.9.23
               </div>
             
           
@@ -271,6 +271,10 @@ contents:</p>
 <span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">common</span> <span class="n">jessie</span> <span class="n">main</span>
 </pre></div>
 </div>
+<p>Add a repository key to the list of trusted keys (as root):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ wget -q -O - http://debian.linutronix.de/elbe-common/elbe-repo.pub | apt-key add -
+</pre></div>
+</div>
 <p>Then run (as root):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ apt-get update
 $ apt-get install elbe
@@ -310,6 +314,12 @@ generating root-filesystems.</p>
 <p>This virtual-machine is referred to as “initvm”. You will want your
 initvm to be the same architecture as your workstation. This allows
 using hardware accelerated virtualization implemented by kvm.</p>
+<p>In order to be able to work with virtual machines as a regular user,
+that user needs to be added to some groups depending on Debian version:</p>
+<p>For Debian/stretch, jessie-backports, and newer:</p>
+<p>$ adduser &lt;youruser&gt; libvirt $ adduser &lt;youruser&gt; libvirt-qemu</p>
+<p>For jessie and older:</p>
+<p>$ adduser &lt;youruser&gt; kvm $ adduser &lt;youruser&gt; libvirt</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe initvm create --directory=initvm
 /home/torbenh/elbe/elbe/initvm
 gpg: keyring `/tmp/tmpPfPXt4/secring.gpg&#39; created
@@ -544,6 +554,7 @@ $ elbe pbuilder build --project `cat ../fun.prj` --output ../out
             <dd><a href="../releases_v1.2/article-quickstart.html">releases/v1.2</a></dd>
             <dd><a href="../releases_v1.9.21/article-quickstart.html">releases/v1.9.21</a></dd>
             <dd><a href="../releases_v1.9.22/article-quickstart.html">releases/v1.9.22</a></dd>
+            <dd><a href="../releases_v1.9.23/article-quickstart.html">releases/v1.9.23</a></dd>
         </dl>
     </div>
 </div>
@@ -554,7 +565,7 @@ $ elbe pbuilder build --project `cat ../fun.prj` --output ../out
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.9.22',
+            VERSION:'1.9.23',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
