@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE Quickstart &mdash; ELBE 1.9.24 documentation</title>
+  <title>ELBE Quickstart &mdash; ELBE 1.9.25 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.9.24 documentation" href="index.html"/>
+    <link rel="top" title="ELBE 1.9.25 documentation" href="index.html"/>
         <link rel="next" title="elbe" href="elbe.html"/>
         <link rel="prev" title="ELBE Overview" href="article-elbeoverview-en.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                1.9.24
+                1.9.25
               </div>
             
           
@@ -119,6 +119,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#using-the-elbe-pbuilder-feature">Using the Elbe Pbuilder Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-repository">Custom Repository</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="article-elbeoverview-en.html">ELBE Overview</a></li>
@@ -134,6 +135,8 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
@@ -151,6 +154,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -497,6 +501,58 @@ $ elbe pbuilder build --project `cat ../fun.prj` --output ../out
 </pre></div>
 </div>
 </div>
+<div class="section" id="custom-repository">
+<h2>Custom Repository<a class="headerlink" href="#custom-repository" title="Permalink to this headline">¶</a></h2>
+<p>You might have your own packages which should be installed into your
+image. This can be done with a custom repository. You can use
+<a class="reference external" href="https://mirrorer.alioth.debian.org/">reprepro</a> to create your own
+repository.</p>
+<p>To create your own repository with reprepro you need only the
+<code class="docutils literal"><span class="pre">distributions</span></code> configuration file. For an amd64 and source repository
+for Debian jessie it might look as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Origin</span><span class="p">:</span> <span class="n">mylocal</span>
+<span class="n">Label</span><span class="p">:</span> <span class="n">mylocal</span>
+<span class="n">Suite</span><span class="p">:</span> <span class="n">stable</span>
+<span class="n">Codename</span><span class="p">:</span> <span class="n">jessie</span>
+<span class="n">Architectures</span><span class="p">:</span> <span class="n">amd64</span> <span class="n">source</span>
+<span class="n">Components</span><span class="p">:</span> <span class="n">main</span>
+<span class="n">Description</span><span class="p">:</span> <span class="n">my</span> <span class="n">local</span> <span class="n">repo</span>
+</pre></div>
+</div>
+<p>Now place the <code class="docutils literal"><span class="pre">distributions</span></code> file in a <code class="docutils literal"><span class="pre">conf</span></code> named directory.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>repo/
+├── conf
+│   └── distributions
+</pre></div>
+</div>
+<p>To include packages in your repository you might use the following
+command from inside the <code class="docutils literal"><span class="pre">repo</span></code> directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ reprepro include jessie ../path/to/your/*.changes
+</pre></div>
+</div>
+<p>To use this repository from ELBE you need a webserver. Simply place the
+repository inside the document root of your webserver.</p>
+<p>If the webserver is running on the same machine as the initvm you can
+use the following to access the repository:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span> <span class="n">jessie</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span> <span class="n">jessie</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span><span class="n">key</span><span class="o">.</span><span class="n">pub</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>ELBE replaces the string <code class="docutils literal"><span class="pre">LOCALMACHINE</span></code> with the ip address of your
+machine. If you use an external machine as webserver you need to replace
+<code class="docutils literal"><span class="pre">LOCALMACHINE</span></code> with the name or the ip of it.</p>
+<p>You need to sign your repository (see <code class="docutils literal"><span class="pre">SignWith</span></code> in the <a class="reference external" href="https://mirrorer.alioth.debian.org/reprepro.1.html">reprepro
+manpage</a>), or you
+may set &lt;noauth/&gt; in your xml file. If you don’t sign your repository
+you don’t need the <code class="docutils literal"><span class="pre">&lt;key&gt;</span></code> tag.</p>
+<p>Now you can install packages from your custom repository the same way
+you can install from any other repository.</p>
+</div>
 </div>
 
 
@@ -547,6 +603,7 @@ $ elbe pbuilder build --project `cat ../fun.prj` --output ../out
             <dt>Branches</dt>
             <dd><a href="../devel_elbe-1.0/article-quickstart.html">devel/elbe-1.0</a></dd>
             <dd><a href="article-quickstart.html">devel/elbe-2.0</a></dd>
+            <dd><a href="../devel_elbe-3.0/article-quickstart.html">devel/elbe-3.0</a></dd>
             <dd><a href="../master/article-quickstart.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/article-quickstart.html">releases/v1.0</a></dd>
@@ -556,6 +613,7 @@ $ elbe pbuilder build --project `cat ../fun.prj` --output ../out
             <dd><a href="../releases_v1.9.22/article-quickstart.html">releases/v1.9.22</a></dd>
             <dd><a href="../releases_v1.9.23/article-quickstart.html">releases/v1.9.23</a></dd>
             <dd><a href="../releases_v1.9.24/article-quickstart.html">releases/v1.9.24</a></dd>
+            <dd><a href="../releases_v1.9.25/article-quickstart.html">releases/v1.9.25</a></dd>
         </dl>
     </div>
 </div>
@@ -566,7 +624,7 @@ $ elbe pbuilder build --project `cat ../fun.prj` --output ../out
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.9.24',
+            VERSION:'1.9.25',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

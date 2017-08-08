@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE Overview &mdash; ELBE 1.9.24 documentation</title>
+  <title>ELBE Overview &mdash; ELBE 1.9.25 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.9.24 documentation" href="index.html"/>
+    <link rel="top" title="ELBE 1.9.25 documentation" href="index.html"/>
         <link rel="next" title="ELBE Quickstart" href="article-quickstart.html"/>
         <link rel="prev" title="ELBE XML Reference" href="article-elbe-schema-reference.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                1.9.24
+                1.9.25
               </div>
             
           
@@ -139,6 +139,8 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
@@ -156,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -683,12 +686,12 @@ the same:</p>
 <li>The <em>url-list</em> can contain additional package sources.</li>
 <li>The <em>noauth</em> tag can be used to disable authentication if custom
 unsigned packages are supposed to be installed.</li>
-<li>The suite selects the distribution codename used from the primary
+<li>The <em>suite</em> selects the distribution codename used from the primary
 mirror.</li>
 </ul>
 <p>the <em>project</em> tag isn’t closed yet.</p>
 <p>The following section describes the virtual machine in which the
-debian-installer is exectued and custom packages can be build.</p>
+debian-installer is executed and custom packages can be build.</p>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="n">buildimage</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">arch</span><span class="o">&gt;</span><span class="n">armel</span><span class="o">&lt;/</span><span class="n">arch</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">20</span><span class="n">G</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
@@ -740,7 +743,7 @@ installed to the target image and the buildimage.) It can be used for
 example to install the debian build server into the buildenvironment.
 (optional)</li>
 </ul>
-<p>The optional parameters are normaly set to defaults by the buildtype
+<p>The optional parameters are normally set to defaults by the buildtype
 tag. The tags can be used for advanced use of elbe; to override the
 defaults.</p>
 <p>If the optional parameters are not set, the buildtype can even be
@@ -1040,6 +1043,7 @@ the build VM.</p>
             <dt>Branches</dt>
             <dd><a href="../devel_elbe-1.0/article-elbeoverview-en.html">devel/elbe-1.0</a></dd>
             <dd><a href="article-elbeoverview-en.html">devel/elbe-2.0</a></dd>
+            <dd><a href="../devel_elbe-3.0/article-elbeoverview-en.html">devel/elbe-3.0</a></dd>
             <dd><a href="../master/article-elbeoverview-en.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/article-elbeoverview-en.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/article-elbeoverview-en.html">releases/v1.0</a></dd>
@@ -1049,6 +1053,7 @@ the build VM.</p>
             <dd><a href="../releases_v1.9.22/article-elbeoverview-en.html">releases/v1.9.22</a></dd>
             <dd><a href="../releases_v1.9.23/article-elbeoverview-en.html">releases/v1.9.23</a></dd>
             <dd><a href="../releases_v1.9.24/article-elbeoverview-en.html">releases/v1.9.24</a></dd>
+            <dd><a href="../releases_v1.9.25/article-elbeoverview-en.html">releases/v1.9.25</a></dd>
         </dl>
     </div>
 </div>
@@ -1059,7 +1064,7 @@ the build VM.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.9.24',
+            VERSION:'1.9.25',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

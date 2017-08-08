@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-control &mdash; ELBE 1.9.24 documentation</title>
+  <title>elbe-control &mdash; ELBE 1.9.25 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.9.24 documentation" href="index.html"/>
-        <link rel="next" title="elbe-debianize" href="elbe-debianize.html"/>
+    <link rel="top" title="ELBE 1.9.25 documentation" href="index.html"/>
+        <link rel="next" title="elbe-daemon" href="elbe-daemon.html"/>
         <link rel="prev" title="elbe-chroot" href="elbe-chroot.html"/> 
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                1.9.24
+                1.9.25
               </div>
             
           
@@ -117,6 +117,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#elbe">ELBE</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
@@ -134,6 +136,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -214,6 +217,8 @@
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_sysroot</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_pdebuild</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pdebuild</span> <span class="n">file</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">get_files</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_chroot_tarball</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_orig</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_cdrom</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">iso</span><span class="o">-</span><span class="n">img</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">reset_project</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">list_users</span>
@@ -277,6 +282,10 @@ up (default is 10 times, yielding 10 seconds).</td></tr>
 <kbd><span class="option">--output <var>&lt;directory&gt;</var></span></kbd></td>
 </tr>
 <tr><td>&#160;</td><td>Output downloaded files to &lt;directory&gt;.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--pbuilder-only</span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Only list/download pbuilder files.</td></tr>
 </tbody>
 </table>
 </div>
@@ -307,6 +316,14 @@ a ./debian folder with a valid debianization.</p>
 <dd><p class="first">Get list of files in the &lt;build-dir&gt;.</p>
 <p class="last">If the –output option is specified, the files are downloaded to the
 directory specified in the option.</p>
+</dd>
+<dt><em>build_chroot_tarball</em> &lt;build-dir&gt;</dt>
+<dd>Creates a tarball of the chroot environment in &lt;build_dir&gt;.</dd>
+<dt><em>set_orig</em> &lt;build-dir&gt; &lt;orig-file&gt;</dt>
+<dd><p class="first">Uploads a quilt orig-file to the initvm.</p>
+<p class="last">This command shall be run before building a Debian package with
+<code class="docutils literal"><span class="pre">elbe</span> <span class="pre">pbuilder</span>
+<span class="pre">build</span></code> if the package is given in the quilt source format.</p>
 </dd>
 <dt><em>set_cdrom</em> &lt;build-dir&gt; &lt;iso-img&gt;</dt>
 <dd>Set the cdrom iso image. The &lt;iso-img&gt; is uploaded into the intivm.
@@ -393,7 +410,7 @@ log.txt         (Log file)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="elbe-debianize.html" class="btn btn-neutral float-right" title="elbe-debianize" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="elbe-daemon.html" class="btn btn-neutral float-right" title="elbe-daemon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="elbe-chroot.html" class="btn btn-neutral" title="elbe-chroot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -431,6 +448,7 @@ log.txt         (Log file)
             <dt>Branches</dt>
             <dd><a href="../devel_elbe-1.0/elbe-control.html">devel/elbe-1.0</a></dd>
             <dd><a href="elbe-control.html">devel/elbe-2.0</a></dd>
+            <dd><a href="../devel_elbe-3.0/elbe-control.html">devel/elbe-3.0</a></dd>
             <dd><a href="../master/elbe-control.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/elbe-control.html">releases/v1.0</a></dd>
@@ -440,6 +458,7 @@ log.txt         (Log file)
             <dd><a href="../releases_v1.9.22/elbe-control.html">releases/v1.9.22</a></dd>
             <dd><a href="../releases_v1.9.23/elbe-control.html">releases/v1.9.23</a></dd>
             <dd><a href="../releases_v1.9.24/elbe-control.html">releases/v1.9.24</a></dd>
+            <dd><a href="../releases_v1.9.25/elbe-control.html">releases/v1.9.25</a></dd>
         </dl>
     </div>
 </div>
@@ -450,7 +469,7 @@ log.txt         (Log file)
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.9.24',
+            VERSION:'1.9.25',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
