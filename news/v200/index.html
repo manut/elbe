@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>elbe v2.0 released • ELBE</title>
+    <meta name="description" content="including pbuilder and stretch support">
+    <meta name="keywords" content="">
+    
+      
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="elbe v2.0 released">
+	<meta name="twitter:description" content="including pbuilder and stretch support">
+	
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="https://elbe-rfs.org/images/elbe-icon.png">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US.UTF-8">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="elbe v2.0 released">
+	<meta property="og:description" content="including pbuilder and stretch support">
+	<meta property="og:url" content="https://elbe-rfs.org/news/v200/">
+	<meta property="og:site_name" content="ELBE">
+
+    <link rel="canonical" href="https://elbe-rfs.org/news/v200/">
+
+    <link href="https://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
+    <link href="https://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="https://elbe-rfs.org/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="https://elbe-rfs.org/js/vendor/html5shiv.min.js"></script>
+      <script src="https://elbe-rfs.org/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="https://elbe-rfs.org/" class="site-title"><img src="https://elbe-rfs.org/images/elbe-logo-small.png"></a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">ELBE</a></li>
+	
+    
+        
+    
+    <li><a href="https://elbe-rfs.org/download" >Download</a></li>
+  
+    
+        
+    
+    <li><a href="https://elbe-rfs.org/docs" >Docs</a></li>
+  
+    
+        
+    
+    <li><a href="https://elbe-rfs.org/support" >Support</a></li>
+  
+    
+        
+    
+    <li><a href="https://elbe-rfs.org/devel" >Devel</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>ELBE <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="https://elbe-rfs.org/download">
+        
+        <div class="title">Download</div>
+        <p class="excerpt">Get Binary and Source packages</p>
+      </a>
+    </li><li>
+      <a href="https://elbe-rfs.org/docs">
+        
+        <div class="title">Docs</div>
+        <p class="excerpt">Documentation and man-pages</p>
+      </a>
+    </li><li>
+      <a href="https://elbe-rfs.org/support">
+        
+        <div class="title">Support</div>
+        <p class="excerpt">Community and commercial support</p>
+      </a>
+    </li><li>
+      <a href="https://elbe-rfs.org/devel">
+        
+        <div class="title">Devel</div>
+        <p class="excerpt">Development details</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="https://elbe-rfs.org" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="https://elbe-rfs.org/news/" itemprop="url">
+        <span itemprop="title">News</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+		<div class="page-title">
+			<h1>elbe v2.0 released</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<p>All features of elbe-1.x are still available. The XML format is compatible.
+Additional the following features are added:</p>
+
+<p>The following new features can be used for targets:</p>
+
+<ul>
+  <li>
+    <p>stretch target support</p>
+  </li>
+  <li>
+    <p>arm64/aarch64 support</p>
+  </li>
+  <li>
+    <p>extended partitions support for msdoshd</p>
+  </li>
+  <li>
+    <p>support xmls with xincludes, see e.g.
+  <a href="https://github.com/Linutronix/elbe/blob/devel/elbe-2.0/examples/x86_32-pc-hdimg-with-include-development.xml">examples/x86_32-pc-hdimg-with-include-development.xml</a></p>
+  </li>
+  <li>
+    <p>comments are now longer removed from elbe xml files, if e.g. chg_archive is called</p>
+  </li>
+</ul>
+
+<p>The pbuilder is able to build binary debian packages from debian source packages
+for a certain project and host them in a debian repo:</p>
+
+<ul>
+  <li>
+    <p>more information about the pbuilder support are in the man-page
+  <a href="https://elbe-rfs.org/docs/sphinx/elbe-pbuilder.html">elbe-pbuilder.1</a>.
+  There is also an example
+  <a href="https://github.com/Linutronix/elbe/blob/devel/elbe-2.0/examples/armhf-ti-beaglebone-black.xml">examples/armhf-ti-beaglebone-black.xml</a>
+  that shows howto trigger pbuilder jobs during image generation.</p>
+  </li>
+  <li>
+    <p>the packages build by pbuilder are hosted in a project local debian repo.
+There are elbe commands to e.g. copy the repo to the host pc. The commands
+are explained in the
+  <a href="https://elbe-rfs.org/docs/sphinx/elbe-prjrepo.html">elbe-prjrepo.1</a>
+man page.</p>
+  </li>
+</ul>
+
+<p><em>elbe debianize</em> helps generating debian source packages for common source
+trees like the linux kernel:</p>
+
+<ul>
+  <li>elbe debianize currently supports packaging the linux kernel and the barebox
+bootloader. More infos can be found in the man page
+ <a href="https://elbe-rfs.org/docs/sphinx/elbe-debianize.html">elbe-debianize.1</a>.</li>
+</ul>
+
+<p>Other user visible changes are:</p>
+
+<ul>
+  <li>
+    <p>the progress of an image or pbuilder run is now displayed on the host pc</p>
+  </li>
+  <li>
+    <p>it is posible to blacklist packages that they are not added to the sysroot.
+More infos about this feature are in the commit message of the according
+ <a href="https://github.com/Linutronix/elbe/commit/0d40931e2bd3c2f0e129749aa16c5ef17b0fa968">git commit</a>
+The
+ <a href="https://elbe-rfs.org/docs/sphinx/devel_elbe-2.0/article-elbe-schema-reference.html#type-blacklist">XML schema reference</a>
+describes the syntax.</p>
+  </li>
+  <li>
+    <p>we now generate <a href="https://elbe-rfs.org/docs/sphinx/index.html">docs</a> for multiple versions of elbe</p>
+  </li>
+  <li>
+    <p>there are systemd service files for all elbe daemons</p>
+  </li>
+</ul>
+
+<p>The Debian packages for elbe 2.x are available from linutronix.
+Add sth. like this to your sources.list:</p>
+
+<pre><code>deb http://debian.linutronix.de/elbe stretch main
+deb-src http://debian.linutronix.de/elbe stretch main
+</code></pre>
+
+<p>The new development branch on github is devel/elbe-3.0.
+To retrieve Debian packages for the development version of elbe
+add sth. like this to your sources.list:</p>
+
+<pre><code>deb http://debian.linutronix.de/elbe-testing stretch main
+deb-src http://debian.linutronix.de/elbe-testing stretch main
+</code></pre>
+
+				<hr />
+				<footer class="page-footer">
+					
+	
+
+
+
+<div class="author-image">
+	<img src="http://www.gravatar.com/avatar/565400ba01d843cced55bdc159f310ad?s=150" alt="Manuel Traut">
+</div>
+
+
+<div class="author-content">
+	<div class="author-name">
+		Written by
+		
+			<span itemprop="author">Manuel Traut</span>
+		
+	</div>
+	<p class="author-bio"></p>
+</div>
+
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=elbe%20v2.0%20released&amp;url=https://elbe-rfs.org/news/v200/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://elbe-rfs.org/news/v200/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=https://elbe-rfs.org/news/v200/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+</div><!-- /.share-this -->
+					<div class="page-meta">
+	<p>Updated <time datetime="2017-08-09T00:00:00Z" itemprop="datePublished">August 09, 2017</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="https://elbe-rfs.org" ></a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">
+		&#169; 2017
+		<a href="https://elbe-rfs.org">ELBE</a> by
+		<a href="https://linutronix.de">Linutronix GmbH</a> -
+		ELBE is not affiliated with Debian, Debian is a registered trademark owned by SPI
+	</p>
+</footer>
+
+
+
+    </div>
+
+    <script src="https://elbe-rfs.org/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="https://elbe-rfs.org/js/main.js"></script>
+
+  </body>
+
+</html>
