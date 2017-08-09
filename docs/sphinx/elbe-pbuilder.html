@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-pbuilder &mdash; ELBE 1.2 documentation</title>
+  <title>elbe-pbuilder &mdash; ELBE 2.0 documentation</title>
   
 
   
@@ -37,9 +37,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.2 documentation" href="index.html"/>
+    <link rel="top" title="ELBE 2.0 documentation" href="index.html"/>
         <link rel="next" title="elbe-pkgdiff" href="elbe-pkgdiff.html"/>
-        <link rel="prev" title="elbe-mkcdrom" href="elbe-mkcdrom.html"/> 
+        <link rel="prev" title="elbe-parselicence" href="elbe-parselicence.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                1.2
+                2.0
               </div>
             
           
@@ -100,12 +100,16 @@
 <p class="caption"><span class="caption-text">man-pages</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
@@ -114,21 +118,25 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">elbe-pbuilder</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#name">NAME</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">DESCRIPTION</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#options">OPTIONS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#commands">COMMANDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">EXAMPLES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#see-also">SEE ALSO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#elbe">ELBE</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -206,8 +214,8 @@ packages.</p>
 <div class="section" id="synopsis">
 <h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">pbuilder</span> <span class="n">build</span> <span class="p">[</span><span class="o">--</span><span class="n">project</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">--</span><span class="n">xmlfile</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span><span class="p">]</span>
-<span class="n">elbe</span> <span class="n">pbuilder</span> <span class="n">create</span> <span class="o">--</span><span class="n">project</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">pbuilder</span> <span class="n">build</span>  <span class="p">[</span><span class="o">--</span><span class="n">project</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">--</span><span class="n">xmlfile</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">elbe</span> <span class="n">pbuilder</span> <span class="n">create</span> <span class="p">[</span><span class="o">--</span><span class="n">project</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">--</span><span class="n">xmlfile</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">writeproject</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -216,6 +224,9 @@ packages.</p>
 <h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Creates a pbuilder for a specified project and builds the Debian package
 like pbuilder, but for the configured ELBE project.</p>
+<p>Currently only the source formats 3.0 (git) and 3.0 (native) are
+supported. 3.0 (quilt) requires Files in the parent directory, which are
+not uploaded, because only the curent Workdirectory is uploaded.</p>
 </div>
 <div class="section" id="options">
 <h2>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
@@ -228,7 +239,8 @@ like pbuilder, but for the configured ELBE project.</p>
 </tr>
 <tr><td>&#160;</td><td><em>key</em> (/var/cache/elbe/&lt;uuid&gt; for the project inside the initvm to
 use. Use <em>elbe control list_projects</em> to get a list of the
-available projects.</td></tr>
+available projects. Another option would be to use the
+–writeproject option, when the pbuilder is created.</td></tr>
 <tr><td class="option-group" colspan="2">
 <kbd><span class="option">--xmlfile <var>&lt;xmlfile&gt;</var></span></kbd></td>
 </tr>
@@ -240,6 +252,9 @@ pbuilder environment.</td></tr>
 <div class="section" id="commands">
 <h2>COMMANDS<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
+<dt><em>create</em></dt>
+<dd>A pbuilder environment for the given project or xml File will be
+created.</dd>
 <dt><em>build</em></dt>
 <dd>Build the <em>Debianized Project</em> in the current working directory. (A
 valid ./debian directory needs to exist.) If –project was
@@ -248,13 +263,28 @@ specified, the specified build environment will be used. If
 the given ELBE XML File and the <em>Debianized Project</em> in the current
 working directory will be build. The result of the package build is
 stored in ../ like pbuilder does.</dd>
-<dt><em>create</em></dt>
-<dd>A pbuilder environment for the given project will be created.</dd>
 </dl>
+</div>
+<div class="section" id="examples">
+<h2>EXAMPLES<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Build a pbuilder for <em>myarm.xml</em>. Save project name into myarm.prj</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># elbe pbuilder create --xmlfile myarm.xml --writeproject myarm.prj</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use the pbuilder we have built, to build <em>program</em>, using the prj
+File generated in parent directory</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># cd program</span>
+<span class="c1"># elbe pbuilder build --project `cat ../myarm.prj`</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </div>
 <div class="section" id="see-also">
 <h2>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<p>elbe-control1 pbuilder1</p>
+<p>elbe-control1 elbe-initvm1 pdebuild1</p>
 </div>
 <div class="section" id="elbe">
 <h2>ELBE<a class="headerlink" href="#elbe" title="Permalink to this headline">¶</a></h2>
@@ -275,7 +305,7 @@ stored in ../ like pbuilder does.</dd>
         <a href="elbe-pkgdiff.html" class="btn btn-neutral float-right" title="elbe-pkgdiff" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="elbe-mkcdrom.html" class="btn btn-neutral" title="elbe-mkcdrom" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="elbe-parselicence.html" class="btn btn-neutral" title="elbe-parselicence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -302,7 +332,7 @@ stored in ../ like pbuilder does.</dd>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v1.2
+        v: releases/v2.0
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -321,6 +351,7 @@ stored in ../ like pbuilder does.</dd>
             <dd><a href="releases_v1.9.23/elbe-pbuilder.html">releases/v1.9.23</a></dd>
             <dd><a href="releases_v1.9.24/elbe-pbuilder.html">releases/v1.9.24</a></dd>
             <dd><a href="releases_v1.9.25/elbe-pbuilder.html">releases/v1.9.25</a></dd>
+            <dd><a href="releases_v2.0/elbe-pbuilder.html">releases/v2.0</a></dd>
         </dl>
     </div>
 </div>
@@ -331,7 +362,7 @@ stored in ../ like pbuilder does.</dd>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.2',
+            VERSION:'2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

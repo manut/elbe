@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE Quickstart &mdash; ELBE 1.2 documentation</title>
+  <title>ELBE Quickstart &mdash; ELBE 2.0 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.2 documentation" href="index.html"/>
+    <link rel="top" title="ELBE 2.0 documentation" href="index.html"/>
         <link rel="next" title="elbe" href="elbe.html"/>
         <link rel="prev" title="ELBE Overview" href="article-elbeoverview-en.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                1.2
+                2.0
               </div>
             
           
@@ -118,6 +118,8 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-elbe-pbuilder-feature">Using the Elbe Pbuilder Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-repository">Custom Repository</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="article-elbeoverview-en.html">ELBE Overview</a></li>
@@ -126,12 +128,16 @@
 <p class="caption"><span class="caption-text">man-pages</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
@@ -140,12 +146,15 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -256,12 +265,18 @@ on a Debian 8 (Jessie) system.</p>
 <div class="section" id="binary-debian-packages">
 <h3>Binary Debian packages<a class="headerlink" href="#binary-debian-packages" title="Permalink to this headline">¶</a></h3>
 <p>The latest packages for elbe reside in the following repository</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">testing</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">common</span>
 </pre></div>
 </div>
 <p>Create the file <code class="docutils literal"><span class="pre">/etc/apt/sources.list.d/elbe.list</span></code> with the following
 contents:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">jessie</span> <span class="n">main</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">testing</span> <span class="n">jessie</span> <span class="n">main</span>
+<span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">common</span> <span class="n">jessie</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>Add a repository key to the list of trusted keys (as root):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ wget -q -O - http://debian.linutronix.de/elbe-common/elbe-repo.pub | apt-key add -
 </pre></div>
 </div>
 <p>Then run (as root):</p>
@@ -303,6 +318,12 @@ generating root-filesystems.</p>
 <p>This virtual-machine is referred to as “initvm”. You will want your
 initvm to be the same architecture as your workstation. This allows
 using hardware accelerated virtualization implemented by kvm.</p>
+<p>In order to be able to work with virtual machines as a regular user,
+that user needs to be added to some groups depending on Debian version:</p>
+<p>For Debian/stretch, jessie-backports, and newer:</p>
+<p>$ adduser &lt;youruser&gt; libvirt $ adduser &lt;youruser&gt; libvirt-qemu</p>
+<p>For jessie and older:</p>
+<p>$ adduser &lt;youruser&gt; kvm $ adduser &lt;youruser&gt; libvirt</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe initvm create --directory=initvm
 /home/torbenh/elbe/elbe/initvm
 gpg: keyring `/tmp/tmpPfPXt4/secring.gpg&#39; created
@@ -455,6 +476,83 @@ is installed at <code class="docutils literal"><span class="pre">/usr/share/doc/
 </div>
 </div>
 </div>
+<div class="section" id="using-the-elbe-pbuilder-feature">
+<h2>Using the Elbe Pbuilder Feature<a class="headerlink" href="#using-the-elbe-pbuilder-feature" title="Permalink to this headline">¶</a></h2>
+<p>Since Version 1.9.2, elbe is able to create a pbuilder Environment. You
+can create a pbuilder for a specific xml File inside the initvm.</p>
+<p>The repositories and architecture specified in the xml File will be used
+to satisfy build dependencies. Pbuilder will only build debianised
+Software.</p>
+<blockquote>
+<div><p><strong>Note</strong></p>
+<p>Currently only source formats <code class="docutils literal"><span class="pre">3.0</span> <span class="pre">(native)</span></code> and <code class="docutils literal"><span class="pre">3.0</span> <span class="pre">(git)</span></code> are
+supported and tested. <code class="docutils literal"><span class="pre">3.0</span> <span class="pre">(quilt)</span></code> does not work.</p>
+</div></blockquote>
+<p>A pbuilder instance is always associated with a project inside the
+initvm. The <code class="docutils literal"><span class="pre">pbuilder</span> <span class="pre">create</span></code> command will write the project uuid to a
+file, if instructed to do so.</p>
+<p><code class="docutils literal"><span class="pre">pbuilder</span> <span class="pre">build</span></code> works like <code class="docutils literal"><span class="pre">pdebuild</span></code>, in that it uploads the
+current working directory into the initvm pbuilder project, and then
+builds it using the pbuilder instance created earlier.</p>
+<p>Here is an example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe pbuilder create --xmlfile fun.xml --writeproject fun.prj
+$ cd program
+$ elbe pbuilder build --project `cat ../fun.prj` --output ../out
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-repository">
+<h2>Custom Repository<a class="headerlink" href="#custom-repository" title="Permalink to this headline">¶</a></h2>
+<p>You might have your own packages which should be installed into your
+image. This can be done with a custom repository. You can use
+<a class="reference external" href="https://mirrorer.alioth.debian.org/">reprepro</a> to create your own
+repository.</p>
+<p>To create your own repository with reprepro you need only the
+<code class="docutils literal"><span class="pre">distributions</span></code> configuration file. For an amd64 and source repository
+for Debian jessie it might look as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Origin</span><span class="p">:</span> <span class="n">mylocal</span>
+<span class="n">Label</span><span class="p">:</span> <span class="n">mylocal</span>
+<span class="n">Suite</span><span class="p">:</span> <span class="n">stable</span>
+<span class="n">Codename</span><span class="p">:</span> <span class="n">jessie</span>
+<span class="n">Architectures</span><span class="p">:</span> <span class="n">amd64</span> <span class="n">source</span>
+<span class="n">Components</span><span class="p">:</span> <span class="n">main</span>
+<span class="n">Description</span><span class="p">:</span> <span class="n">my</span> <span class="n">local</span> <span class="n">repo</span>
+</pre></div>
+</div>
+<p>Now place the <code class="docutils literal"><span class="pre">distributions</span></code> file in a <code class="docutils literal"><span class="pre">conf</span></code> named directory.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>repo/
+├── conf
+│   └── distributions
+</pre></div>
+</div>
+<p>To include packages in your repository you might use the following
+command from inside the <code class="docutils literal"><span class="pre">repo</span></code> directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ reprepro include jessie ../path/to/your/*.changes
+</pre></div>
+</div>
+<p>To use this repository from ELBE you need a webserver. Simply place the
+repository inside the document root of your webserver.</p>
+<p>If the webserver is running on the same machine as the initvm you can
+use the following to access the repository:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span> <span class="n">jessie</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span> <span class="n">jessie</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span><span class="n">key</span><span class="o">.</span><span class="n">pub</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>ELBE replaces the string <code class="docutils literal"><span class="pre">LOCALMACHINE</span></code> with the ip address of your
+machine. If you use an external machine as webserver you need to replace
+<code class="docutils literal"><span class="pre">LOCALMACHINE</span></code> with the name or the ip of it.</p>
+<p>You need to sign your repository (see <code class="docutils literal"><span class="pre">SignWith</span></code> in the <a class="reference external" href="https://mirrorer.alioth.debian.org/reprepro.1.html">reprepro
+manpage</a>), or you
+may set &lt;noauth/&gt; in your xml file. If you don’t sign your repository
+you don’t need the <code class="docutils literal"><span class="pre">&lt;key&gt;</span></code> tag.</p>
+<p>Now you can install packages from your custom repository the same way
+you can install from any other repository.</p>
+</div>
 </div>
 
 
@@ -497,7 +595,7 @@ is installed at <code class="docutils literal"><span class="pre">/usr/share/doc/
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v1.2
+        v: releases/v2.0
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -516,6 +614,7 @@ is installed at <code class="docutils literal"><span class="pre">/usr/share/doc/
             <dd><a href="releases_v1.9.23/article-quickstart.html">releases/v1.9.23</a></dd>
             <dd><a href="releases_v1.9.24/article-quickstart.html">releases/v1.9.24</a></dd>
             <dd><a href="releases_v1.9.25/article-quickstart.html">releases/v1.9.25</a></dd>
+            <dd><a href="releases_v2.0/article-quickstart.html">releases/v2.0</a></dd>
         </dl>
     </div>
 </div>
@@ -526,7 +625,7 @@ is installed at <code class="docutils literal"><span class="pre">/usr/share/doc/
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.2',
+            VERSION:'2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

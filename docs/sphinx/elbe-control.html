@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-control &mdash; ELBE 1.2 documentation</title>
+  <title>elbe-control &mdash; ELBE 2.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.2 documentation" href="index.html"/>
-        <link rel="next" title="elbe-diff" href="elbe-diff.html"/>
+    <link rel="top" title="ELBE 2.0 documentation" href="index.html"/>
+        <link rel="next" title="elbe-daemon" href="elbe-daemon.html"/>
         <link rel="prev" title="elbe-chroot" href="elbe-chroot.html"/> 
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                1.2
+                2.0
               </div>
             
           
@@ -100,6 +100,7 @@
 <p class="caption"><span class="caption-text">man-pages</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
@@ -116,6 +117,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#elbe">ELBE</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
@@ -124,12 +128,15 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -206,10 +213,12 @@
 <h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">list_projects</span>
-<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">create_project</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">create_project</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_sysroot</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_pdebuild</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pdebuild</span> <span class="n">file</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">get_files</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_chroot_tarball</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_orig</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_cdrom</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">iso</span><span class="o">-</span><span class="n">img</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">reset_project</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">list_users</span>
@@ -218,6 +227,7 @@
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">del_project</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_pbuilder</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">rm_log</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">get_file</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">dump_file</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">shutdown_initvm</span>
@@ -272,6 +282,10 @@ up (default is 10 times, yielding 10 seconds).</td></tr>
 <kbd><span class="option">--output <var>&lt;directory&gt;</var></span></kbd></td>
 </tr>
 <tr><td>&#160;</td><td>Output downloaded files to &lt;directory&gt;.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--pbuilder-only</span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Only list/download pbuilder files.</td></tr>
 </tbody>
 </table>
 </div>
@@ -280,9 +294,8 @@ up (default is 10 times, yielding 10 seconds).</td></tr>
 <dl class="docutils">
 <dt><em>list_projects</em></dt>
 <dd>List projects available on the elbe daemon.</dd>
-<dt><em>create_project</em> &lt;xmlfile&gt;</dt>
-<dd><p class="first">Create a new project on soap server. &lt;xmlfile&gt; is uploaded, and a
-new build-dir is created.</p>
+<dt><em>create_project</em></dt>
+<dd><p class="first">Create a new project on soap server. a new build-dir is created.</p>
 <p class="last">The name of the created &lt;build-dir&gt; is printed to stdout, for
 further reference in subsequent commands.</p>
 </dd>
@@ -303,6 +316,14 @@ a ./debian folder with a valid debianization.</p>
 <dd><p class="first">Get list of files in the &lt;build-dir&gt;.</p>
 <p class="last">If the –output option is specified, the files are downloaded to the
 directory specified in the option.</p>
+</dd>
+<dt><em>build_chroot_tarball</em> &lt;build-dir&gt;</dt>
+<dd>Creates a tarball of the chroot environment in &lt;build_dir&gt;.</dd>
+<dt><em>set_orig</em> &lt;build-dir&gt; &lt;orig-file&gt;</dt>
+<dd><p class="first">Uploads a quilt orig-file to the initvm.</p>
+<p class="last">This command shall be run before building a Debian package with
+<code class="docutils literal"><span class="pre">elbe</span> <span class="pre">pbuilder</span>
+<span class="pre">build</span></code> if the package is given in the quilt source format.</p>
 </dd>
 <dt><em>set_cdrom</em> &lt;build-dir&gt; &lt;iso-img&gt;</dt>
 <dd>Set the cdrom iso image. The &lt;iso-img&gt; is uploaded into the intivm.
@@ -328,6 +349,8 @@ likely going to change the status of the project to
 <dd>Build a pbuilder environment for the given project &lt;build-dir&gt;.</dd>
 <dt><em>build</em> &lt;build-dir&gt;</dt>
 <dd>Trigger building the project. Status will change to busy.</dd>
+<dt><em>rm_log</em> &lt;build-dir&gt;</dt>
+<dd>Deletes log file for the given project &lt;build-dir&gt;</dd>
 <dt><em>get_file</em> &lt;build-dir&gt; &lt;filename&gt;</dt>
 <dd>Download a single file from the project.</dd>
 <dt><em>dump_file</em> &lt;build-dir&gt; &lt;filename&gt;</dt>
@@ -387,7 +410,7 @@ log.txt         (Log file)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="elbe-diff.html" class="btn btn-neutral float-right" title="elbe-diff" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="elbe-daemon.html" class="btn btn-neutral float-right" title="elbe-daemon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="elbe-chroot.html" class="btn btn-neutral" title="elbe-chroot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -417,7 +440,7 @@ log.txt         (Log file)
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v1.2
+        v: releases/v2.0
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -436,6 +459,7 @@ log.txt         (Log file)
             <dd><a href="releases_v1.9.23/elbe-control.html">releases/v1.9.23</a></dd>
             <dd><a href="releases_v1.9.24/elbe-control.html">releases/v1.9.24</a></dd>
             <dd><a href="releases_v1.9.25/elbe-control.html">releases/v1.9.25</a></dd>
+            <dd><a href="releases_v2.0/elbe-control.html">releases/v2.0</a></dd>
         </dl>
     </div>
 </div>
@@ -446,7 +470,7 @@ log.txt         (Log file)
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.2',
+            VERSION:'2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

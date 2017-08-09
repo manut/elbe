@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE docs &mdash; ELBE 1.2 documentation</title>
+  <title>ELBE docs &mdash; ELBE 2.0 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.2 documentation" href="#"/>
+    <link rel="top" title="ELBE 2.0 documentation" href="#"/>
         <link rel="next" title="ELBE XML Reference" href="article-elbe-schema-reference.html"/> 
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                1.2
+                2.0
               </div>
             
           
@@ -99,12 +99,16 @@
 <p class="caption"><span class="caption-text">man-pages</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
@@ -113,12 +117,15 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -197,6 +204,8 @@
 <li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#submitting-an-xml-file">Submitting an XML file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#ports-opened-by-initvm">Ports opened by initvm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#advanced-usage">Advanced usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#using-the-elbe-pbuilder-feature">Using the Elbe Pbuilder Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#custom-repository">Custom Repository</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="article-elbeoverview-en.html">ELBE Overview</a><ul>
@@ -226,17 +235,21 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-preference">TYPE: preference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-raw-preference">TYPE: raw-preference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-buildimage">TYPE: buildimage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-memory">SIMPLE TYPE: memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-memory">TYPE: memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-memory-restriction">SIMPLE TYPE: memory_restriction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-nic">TYPE: NIC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-fw-proto">SIMPLE TYPE: fw_proto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-fw-proto">TYPE: fw_proto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-fw-proto-restriction">SIMPLE TYPE: fw_proto_restriction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-forward">TYPE: forward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-portforwarding">TYPE: portforwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-target">TYPE: target</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-ubi-type">SIMPLE TYPE: ubi_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-ubi-type">TYPE: ubi_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-ubi-type-restriction">SIMPLE TYPE: ubi_type_restriction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-ubi">TYPE: ubi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-ubivg">TYPE: ubivg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-mtd">TYPE: mtd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-gpthd">TYPE: gpthd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-binaryblob">TYPE: binaryblob</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-msdoshd">TYPE: msdoshd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-images">TYPE: images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-fs">TYPE: fs</a></li>
@@ -248,21 +261,31 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-cpio">TYPE: cpio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-squashfs">TYPE: squashfs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-partition">TYPE: partition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-part-size">SIMPLE TYPE: part_size</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-part-nr">SIMPLE TYPE: part_nr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-part-type">SIMPLE TYPE: part_type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-fs-type">SIMPLE TYPE: fs_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-extended">TYPE: extended</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-part-size">TYPE: part_size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-part-size-restriction">SIMPLE TYPE: part_size_restriction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-part-nr">TYPE: part_nr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-part-nr-restriction">SIMPLE TYPE: part_nr_restriction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-part-type">TYPE: part_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-part-type-restriction">SIMPLE TYPE: part_type_restriction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-fs-type">TYPE: fs_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-fs-type-restriction">SIMPLE TYPE: fs_type_restriction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-finetuning">TYPE: finetuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-adduser">TYPE: adduser</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-cpmv">TYPE: cpmv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-rm">TYPE: rm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-mknod">TYPE: mknod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-git-src">TYPE: git_src</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-svn-src">TYPE: svn_src</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-pkg">TYPE: pkg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-pbuilder">TYPE: pbuilder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-pkg-list">TYPE: pkg-list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-blacklist">TYPE: blacklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-fullpkg-list">TYPE: fullpkg-list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-conf">TYPE: conf</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-preseed">TYPE: preseed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-empty">TYPE: empty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-string">TYPE: string</a></li>
 </ul>
 </li>
 </ul>
@@ -271,12 +294,16 @@
 <p class="caption"><span class="caption-text">man-pages</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
@@ -285,12 +312,15 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -344,7 +374,7 @@
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v1.2
+        v: releases/v2.0
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -363,6 +393,7 @@
             <dd><a href="releases_v1.9.23/index.html">releases/v1.9.23</a></dd>
             <dd><a href="releases_v1.9.24/index.html">releases/v1.9.24</a></dd>
             <dd><a href="releases_v1.9.25/index.html">releases/v1.9.25</a></dd>
+            <dd><a href="releases_v2.0/index.html">releases/v2.0</a></dd>
         </dl>
     </div>
 </div>
@@ -373,7 +404,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.2',
+            VERSION:'2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

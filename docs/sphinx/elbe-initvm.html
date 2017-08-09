@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-initvm &mdash; ELBE 1.2 documentation</title>
+  <title>elbe-initvm &mdash; ELBE 2.0 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.2 documentation" href="index.html"/>
+    <link rel="top" title="ELBE 2.0 documentation" href="index.html"/>
         <link rel="next" title="elbe-mkcdrom" href="elbe-mkcdrom.html"/>
         <link rel="prev" title="elbe-init" href="elbe-init.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                1.2
+                2.0
               </div>
             
           
@@ -100,12 +100,16 @@
 <p class="caption"><span class="caption-text">man-pages</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
@@ -124,12 +128,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -210,6 +217,7 @@ an initvm and directly build Rootfilesystems using ELBE.</p>
 <span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">create</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">isoimage</span><span class="o">&gt;</span><span class="p">]</span>
 <span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">submit</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">isoimage</span><span class="o">&gt;</span><span class="p">]</span>
 <span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">start</span>
+<span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">stop</span>
 <span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">ensure</span>
 <span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">start_build</span>
 </pre></div>
@@ -286,8 +294,8 @@ session is attached.</dd>
 <dd><p class="first">This command triggers a complete rebuild of the Elbe XML File. it
 also includes rebuilding the initvm.</p>
 <p>If an initvm is already available, you should use the <em>submit</em>
-command, which. Also note that only a single initvm can be running
-on your host.</p>
+command, to build a project in an existing initvm.</p>
+<p>Note that only a single initvm can be running on your host.</p>
 <p class="last">When a iso Image with the binaries has been built earlier, it can
 also be used to recreate the original image. The source.xml from the
 iso will be used, and all the binary packages available also.</p>
@@ -301,6 +309,8 @@ iso will be used, and all the binary packages available also.</p>
 </dd>
 <dt><em>start</em></dt>
 <dd>Start initvm in the Background.</dd>
+<dt><em>stop</em></dt>
+<dd>Shutdown running initvm.</dd>
 <dt><em>ensure</em></dt>
 <dd>Make sure an initvm is running in the Background.</dd>
 <dt><em>start_build</em></dt>
@@ -374,7 +384,7 @@ xml</p>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v1.2
+        v: releases/v2.0
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -393,6 +403,7 @@ xml</p>
             <dd><a href="releases_v1.9.23/elbe-initvm.html">releases/v1.9.23</a></dd>
             <dd><a href="releases_v1.9.24/elbe-initvm.html">releases/v1.9.24</a></dd>
             <dd><a href="releases_v1.9.25/elbe-initvm.html">releases/v1.9.25</a></dd>
+            <dd><a href="releases_v2.0/elbe-initvm.html">releases/v2.0</a></dd>
         </dl>
     </div>
 </div>
@@ -403,7 +414,7 @@ xml</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.2',
+            VERSION:'2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

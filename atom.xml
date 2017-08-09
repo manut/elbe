@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="https://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="https://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2017-08-08T08:05:34+00:00</updated>
+  <updated>2017-08-09T16:24:40+00:00</updated>
   <id>https://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -17,6 +17,111 @@
     
   </author>
 
+  
+  <entry>
+    <title>elbe v2.0 released</title>
+    <link href="https://elbe-rfs.org/news/v200/"/>
+    <updated>2017-08-09T00:00:00+00:00</updated>
+    <id>https://elbe-rfs.org/news/v200</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;All features of elbe-1.x are still available. The XML format is compatible.
+Additional the following features are added:&lt;/p&gt;
+
+&lt;p&gt;The following new features can be used for targets:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;stretch target support&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;arm64/aarch64 support&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;extended partitions support for msdoshd&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;support xmls with xincludes, see e.g.
+  &lt;a href=&quot;https://github.com/Linutronix/elbe/blob/devel/elbe-2.0/examples/x86_32-pc-hdimg-with-include-development.xml&quot;&gt;examples/x86_32-pc-hdimg-with-include-development.xml&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;comments are now longer removed from elbe xml files, if e.g. chg_archive is called&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The pbuilder is able to build binary debian packages from debian source packages
+for a certain project and host them in a debian repo:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;more information about the pbuilder support are in the man-page
+  &lt;a href=&quot;https://elbe-rfs.org/docs/sphinx/elbe-pbuilder.html&quot;&gt;elbe-pbuilder.1&lt;/a&gt;.
+  There is also an example
+  &lt;a href=&quot;https://github.com/Linutronix/elbe/blob/devel/elbe-2.0/examples/armhf-ti-beaglebone-black.xml&quot;&gt;examples/armhf-ti-beaglebone-black.xml&lt;/a&gt;
+  that shows howto trigger pbuilder jobs during image generation.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;the packages build by pbuilder are hosted in a project local debian repo.
+There are elbe commands to e.g. copy the repo to the host pc. The commands
+are explained in the
+  &lt;a href=&quot;https://elbe-rfs.org/docs/sphinx/elbe-prjrepo.html&quot;&gt;elbe-prjrepo.1&lt;/a&gt;
+man page.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;elbe debianize&lt;/em&gt; helps generating debian source packages for common source
+trees like the linux kernel:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;elbe debianize currently supports packaging the linux kernel and the barebox
+bootloader. More infos can be found in the man page
+ &lt;a href=&quot;https://elbe-rfs.org/docs/sphinx/elbe-debianize.html&quot;&gt;elbe-debianize.1&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Other user visible changes are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;the progress of an image or pbuilder run is now displayed on the host pc&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;it is posible to blacklist packages that they are not added to the sysroot.
+More infos about this feature are in the commit message of the according
+ &lt;a href=&quot;https://github.com/Linutronix/elbe/commit/0d40931e2bd3c2f0e129749aa16c5ef17b0fa968&quot;&gt;git commit&lt;/a&gt;
+The
+ &lt;a href=&quot;https://elbe-rfs.org/docs/sphinx/devel_elbe-2.0/article-elbe-schema-reference.html#type-blacklist&quot;&gt;XML schema reference&lt;/a&gt;
+describes the syntax.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;we now generate &lt;a href=&quot;https://elbe-rfs.org/docs/sphinx/index.html&quot;&gt;docs&lt;/a&gt; for multiple versions of elbe&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;there are systemd service files for all elbe daemons&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Debian packages for elbe 2.x are available from linutronix.
+Add sth. like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe stretch main
+deb-src http://debian.linutronix.de/elbe stretch main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The new development branch on github is devel/elbe-3.0.
+To retrieve Debian packages for the development version of elbe
+add sth. like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe-testing stretch main
+deb-src http://debian.linutronix.de/elbe-testing stretch main
+&lt;/code&gt;&lt;/pre&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>elbe v1.0 released</title>
