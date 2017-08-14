@@ -60,6 +60,7 @@ The latest packages for elbe reside in the following repository
 ::
 
     http://debian.linutronix.de/elbe
+    http://debian.linutronix.de/elbe-common
 
 Create the file ``/etc/apt/sources.list.d/elbe.list`` with the following
 contents:
@@ -67,6 +68,13 @@ contents:
 ::
 
     deb http://debian.linutronix.de/elbe jessie main
+    deb http://debian.linutronix.de/elbe-common jessie main
+
+Add a repository key to the list of trusted keys (as root):
+
+::
+
+    $ wget -q -O - http://debian.linutronix.de/elbe-common/elbe-repo.pub | apt-key add -
 
 Then run (as root):
 
@@ -113,6 +121,17 @@ generating root-filesystems.
 This virtual-machine is referred to as "initvm". You will want your
 initvm to be the same architecture as your workstation. This allows
 using hardware accelerated virtualization implemented by kvm.
+
+In order to be able to work with virtual machines as a regular user,
+that user needs to be added to some groups depending on Debian version:
+
+For Debian/stretch, jessie-backports, and newer:
+
+$ adduser <youruser> libvirt $ adduser <youruser> libvirt-qemu
+
+For jessie and older:
+
+$ adduser <youruser> kvm $ adduser <youruser> libvirt
 
 ::
 
@@ -287,3 +306,99 @@ Further Example
 
 A more complete example can be found in the ELBE overview document that
 is installed at ``/usr/share/doc/elbe-doc/elbeoverview-en.html``
+
+Using the Elbe Pbuilder Feature
+===============================
+
+Since Version 1.9.2, elbe is able to create a pbuilder Environment. You
+can create a pbuilder for a specific xml File inside the initvm.
+
+The repositories and architecture specified in the xml File will be used
+to satisfy build dependencies. Pbuilder will only build debianised
+Software.
+
+    **Note**
+
+    Currently only source formats ``3.0 (native)`` and ``3.0 (git)`` are
+    supported and tested. ``3.0 (quilt)`` does not work.
+
+A pbuilder instance is always associated with a project inside the
+initvm. The ``pbuilder create`` command will write the project uuid to a
+file, if instructed to do so.
+
+``pbuilder build`` works like ``pdebuild``, in that it uploads the
+current working directory into the initvm pbuilder project, and then
+builds it using the pbuilder instance created earlier.
+
+Here is an example:
+
+::
+
+    $ elbe pbuilder create --xmlfile fun.xml --writeproject fun.prj
+    $ cd program
+    $ elbe pbuilder build --project `cat ../fun.prj` --output ../out
+
+Custom Repository
+=================
+
+You might have your own packages which should be installed into your
+image. This can be done with a custom repository. You can use
+`reprepro <https://mirrorer.alioth.debian.org/>`__ to create your own
+repository.
+
+To create your own repository with reprepro you need only the
+``distributions`` configuration file. For an amd64 and source repository
+for Debian jessie it might look as follows:
+
+::
+
+    Origin: mylocal
+    Label: mylocal
+    Suite: stable
+    Codename: jessie
+    Architectures: amd64 source
+    Components: main
+    Description: my local repo
+
+Now place the ``distributions`` file in a ``conf`` named directory.
+
+::
+
+    repo/
+    ├── conf
+    │   └── distributions
+
+To include packages in your repository you might use the following
+command from inside the ``repo`` directory:
+
+::
+
+    $ reprepro include jessie ../path/to/your/*.changes
+
+To use this repository from ELBE you need a webserver. Simply place the
+repository inside the document root of your webserver.
+
+If the webserver is running on the same machine as the initvm you can
+use the following to access the repository:
+
+.. code:: xml
+
+    <url-list>
+            <url>
+                    <binary>http://LOCALMACHINE/repo/ jessie main</binary>
+                    <source>http://LOCALMACHINE/repo/ jessie main</source>
+                    <key>http://LOCALMACHINE/repo/key.pub</key>
+            </url>
+    </url-list>
+
+ELBE replaces the string ``LOCALMACHINE`` with the ip address of your
+machine. If you use an external machine as webserver you need to replace
+``LOCALMACHINE`` with the name or the ip of it.
+
+You need to sign your repository (see ``SignWith`` in the `reprepro
+manpage <https://mirrorer.alioth.debian.org/reprepro.1.html>`__), or you
+may set <noauth/> in your xml file. If you don’t sign your repository
+you don’t need the ``<key>`` tag.
+
+Now you can install packages from your custom repository the same way
+you can install from any other repository.

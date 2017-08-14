@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-mkcdrom &mdash; ELBE 1.2 documentation</title>
+  <title>elbe-mkcdrom &mdash; ELBE 2.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 1.2 documentation" href="index.html"/>
-        <link rel="next" title="elbe-pbuilder" href="elbe-pbuilder.html"/>
+    <link rel="top" title="ELBE 2.0 documentation" href="index.html"/>
+        <link rel="next" title="elbe-parselicence" href="elbe-parselicence.html"/>
         <link rel="prev" title="elbe-initvm" href="elbe-initvm.html"/> 
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                1.2
+                2.0
               </div>
             
           
@@ -100,12 +100,16 @@
 <p class="caption"><span class="caption-text">man-pages</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
@@ -122,12 +126,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#elbe">ELBE</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
@@ -306,7 +313,7 @@ be given.</dd>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="elbe-pbuilder.html" class="btn btn-neutral float-right" title="elbe-pbuilder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="elbe-parselicence.html" class="btn btn-neutral float-right" title="elbe-parselicence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="elbe-initvm.html" class="btn btn-neutral" title="elbe-initvm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -356,6 +363,7 @@ be given.</dd>
             <dd><a href="../releases_v1.9.24/elbe-mkcdrom.html">releases/v1.9.24</a></dd>
             <dd><a href="../releases_v1.9.25/elbe-mkcdrom.html">releases/v1.9.25</a></dd>
             <dd><a href="../releases_v2.0/elbe-mkcdrom.html">releases/v2.0</a></dd>
+            <dd><a href="../releases_v2.1/elbe-mkcdrom.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.9.1/elbe-mkcdrom.html">releases/v2.9.1</a></dd>
         </dl>
     </div>
@@ -367,7 +375,7 @@ be given.</dd>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.2',
+            VERSION:'2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
