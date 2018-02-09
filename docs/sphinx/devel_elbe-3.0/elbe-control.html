@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-control &mdash; ELBE 2.9.7 documentation</title>
+  <title>elbe-control &mdash; ELBE 2.9.8 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ELBE 2.9.7 documentation" href="index.html"/>
+    <link rel="top" title="ELBE 2.9.8 documentation" href="index.html"/>
         <link rel="next" title="elbe-daemon" href="elbe-daemon.html"/>
         <link rel="prev" title="elbe-chroot" href="elbe-chroot.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.9.7
+                2.9.8
               </div>
             
           
@@ -102,6 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
@@ -219,6 +220,7 @@
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_pdebuild</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pdebuild</span> <span class="n">file</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">get_files</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_chroot_tarball</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_sdk</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_orig</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_cdrom</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">iso</span><span class="o">-</span><span class="n">img</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">reset_project</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
@@ -323,6 +325,8 @@ in quotation marks.</p>
 </dd>
 <dt><em>build_chroot_tarball</em> &lt;build-dir&gt;</dt>
 <dd>Creates a tarball of the chroot environment in &lt;build_dir&gt;.</dd>
+<dt><em>build_sdk</em> &lt;build-dir&gt;</dt>
+<dd>Creates a yocto-style SDK.</dd>
 <dt><em>set_orig</em> &lt;build-dir&gt; &lt;orig-file&gt;</dt>
 <dd><p class="first">Uploads a quilt orig-file to the initvm.</p>
 <p class="last">This command shall be run before building a Debian package with
@@ -473,6 +477,7 @@ log.txt         (Log file)
             <dd><a href="../releases_v2.9.5/elbe-control.html">releases/v2.9.5</a></dd>
             <dd><a href="../releases_v2.9.6/elbe-control.html">releases/v2.9.6</a></dd>
             <dd><a href="../releases_v2.9.7/elbe-control.html">releases/v2.9.7</a></dd>
+            <dd><a href="../releases_v2.9.8/elbe-control.html">releases/v2.9.8</a></dd>
         </dl>
     </div>
 </div>
@@ -483,7 +488,7 @@ log.txt         (Log file)
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.9.7',
+            VERSION:'2.9.8',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
