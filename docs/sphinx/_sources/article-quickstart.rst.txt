@@ -59,7 +59,7 @@ The latest packages for elbe reside in the following repository
 
 ::
 
-    http://debian.linutronix.de/elbe-testing
+    http://debian.linutronix.de/elbe
     http://debian.linutronix.de/elbe-common
 
 Create the file ``/etc/apt/sources.list.d/elbe.list`` with the following
@@ -67,7 +67,7 @@ contents:
 
 ::
 
-    deb http://debian.linutronix.de/elbe-testing jessie main
+    deb http://debian.linutronix.de/elbe jessie main
     deb http://debian.linutronix.de/elbe-common jessie main
 
 Add a repository key to the list of trusted keys (as root):
@@ -121,17 +121,6 @@ generating root-filesystems.
 This virtual-machine is referred to as "initvm". You will want your
 initvm to be the same architecture as your workstation. This allows
 using hardware accelerated virtualization implemented by kvm.
-
-In order to be able to work with virtual machines as a regular user,
-that user needs to be added to some groups depending on Debian version:
-
-For Debian/stretch, jessie-backports, and newer:
-
-$ adduser <youruser> libvirt $ adduser <youruser> libvirt-qemu
-
-For jessie and older:
-
-$ adduser <youruser> kvm $ adduser <youruser> libvirt
 
 ::
 
