@@ -1,0 +1,40 @@
+************************
+elbe-validate
+************************
+
+NAME
+====
+
+elbe-validate - validate xml file.
+
+SYNOPSIS
+========
+
+    ::
+
+        elbe validate <xmlfile>
+
+DESCRIPTION
+===========
+
+This command validates the xmlfile provided, and prints out errors.
+
+OPTIONS
+=======
+
+<xmlfile>
+    The xml file to validate.
+
+EXAMPLES
+========
+
+-  Validate *mywheezy.xml*
+
+   ::
+
+       $ elbe validate mywheezy.xml
+
+ELBE
+====
+
+Part of the elbe1 suite
