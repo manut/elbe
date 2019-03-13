@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-parselicence &mdash; ELBE 2.3 documentation</title>
+  <title>elbe-parselicence &mdash; ELBE 2.4 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                2.3
+                2.4
               </div>
             
           
@@ -212,7 +212,7 @@ packages included in a project.</p>
 <div class="section" id="synopsis">
 <h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">parselicence</span> \
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">parselicence</span> \
         <span class="o">--</span><span class="n">mapping</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> \
         <span class="p">[</span> <span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> \
         <span class="p">[</span> <span class="o">--</span><span class="n">tvout</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> \
@@ -268,8 +268,8 @@ where the mapping file is setup.</td></tr>
 </div>
 <div class="section" id="workflow">
 <h2>WORKFLOW<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
-<p>Elbe generates a <code class="docutils literal notranslate"><span class="pre">license.xml</span></code> File. This file is then parsed using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">parselicence</span> <span class="o">--</span><span class="n">mapping</span> <span class="n">my_mapping</span><span class="o">.</span><span class="n">xml</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">license</span><span class="o">.</span><span class="n">xml</span> <span class="o">--</span><span class="n">errors</span><span class="o">-</span><span class="n">only</span> <span class="o">--</span><span class="n">output</span> <span class="n">out</span><span class="o">.</span><span class="n">xml</span>
+<p>Elbe generates a <code class="docutils literal"><span class="pre">license.xml</span></code> File. This file is then parsed using</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">parselicence</span> <span class="o">--</span><span class="n">mapping</span> <span class="n">my_mapping</span><span class="o">.</span><span class="n">xml</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">license</span><span class="o">.</span><span class="n">xml</span> <span class="o">--</span><span class="n">errors</span><span class="o">-</span><span class="n">only</span> <span class="o">--</span><span class="n">output</span> <span class="n">out</span><span class="o">.</span><span class="n">xml</span>
 
 <span class="o">**</span><span class="n">Note</span><span class="o">**</span>
 
@@ -278,23 +278,23 @@ where the mapping file is setup.</td></tr>
 </pre></div>
 </div>
 <p>The previous step will only output nodes into out.xml where an error
-happened. The errors need to be fixed by expanding <code class="docutils literal notranslate"><span class="pre">my_mapping.xml</span></code></p>
+happened. The errors need to be fixed by expanding <code class="docutils literal"><span class="pre">my_mapping.xml</span></code></p>
 <blockquote>
 <div><p><strong>Note</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">my_mapping.xml</span></code> is describe in it own chapter.</p>
+<p><code class="docutils literal"><span class="pre">my_mapping.xml</span></code> is describe in it own chapter.</p>
 </div></blockquote>
-<p>When no more errors happen, one can remove the option <code class="docutils literal notranslate"><span class="pre">--errors-only</span></code>
+<p>When no more errors happen, one can remove the option <code class="docutils literal"><span class="pre">--errors-only</span></code>
 and use the out.xml or generate tag-value output using option
-<code class="docutils literal notranslate"><span class="pre">--tvout</span> <span class="pre">&lt;filename&gt;</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">parselicence</span> <span class="o">--</span><span class="n">mapping</span> <span class="n">my_mapping</span><span class="o">.</span><span class="n">xml</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">license</span><span class="o">.</span><span class="n">xml</span> <span class="o">--</span><span class="n">tvout</span> <span class="n">spdx_licenses</span><span class="o">.</span><span class="n">tagvalue</span>
+<code class="docutils literal"><span class="pre">--tvout</span> <span class="pre">&lt;filename&gt;</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">parselicence</span> <span class="o">--</span><span class="n">mapping</span> <span class="n">my_mapping</span><span class="o">.</span><span class="n">xml</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">license</span><span class="o">.</span><span class="n">xml</span> <span class="o">--</span><span class="n">tvout</span> <span class="n">spdx_licenses</span><span class="o">.</span><span class="n">tagvalue</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="license-xml-file">
 <h2>LICENSE.XML FILE<a class="headerlink" href="#license-xml-file" title="Permalink to this headline">¶</a></h2>
 <p>When elbe builds an image, it will look at all /usr/share/doc/*/COPYING
-Files, and concatenate them into <code class="docutils literal notranslate"><span class="pre">license.txt</span></code>. New Versions of elbe
-will also generate <code class="docutils literal notranslate"><span class="pre">license.xml</span></code>, which also contains meta-data
+Files, and concatenate them into <code class="docutils literal"><span class="pre">license.txt</span></code>. New Versions of elbe
+will also generate <code class="docutils literal"><span class="pre">license.xml</span></code>, which also contains meta-data
 extracted from machinereadable COPYING files, or generated via
 heuristics.</p>
 <p>There are 3 possibitlities per Package:</p>
@@ -302,10 +302,10 @@ heuristics.</p>
 <h3>COPYING File is machinereadable<a class="headerlink" href="#copying-file-is-machinereadable" title="Permalink to this headline">¶</a></h3>
 <p>When the Copying File is machinereadable. The debian Licenses and all
 per file Information is put into the xml File.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">&lt;pkglicense&gt;</span></code> tag will contain a <code class="docutils literal notranslate"><span class="pre">&lt;machinereadable</span> <span class="pre">/&gt;</span></code> tag, and
-also <code class="docutils literal notranslate"><span class="pre">&lt;debian_licenses&gt;</span></code> and a <code class="docutils literal notranslate"><span class="pre">&lt;detailed&gt;</span></code> tag.</p>
+<p>The <code class="docutils literal"><span class="pre">&lt;pkglicense&gt;</span></code> tag will contain a <code class="docutils literal"><span class="pre">&lt;machinereadable</span> <span class="pre">/&gt;</span></code> tag, and
+also <code class="docutils literal"><span class="pre">&lt;debian_licenses&gt;</span></code> and a <code class="docutils literal"><span class="pre">&lt;detailed&gt;</span></code> tag.</p>
 <p>Example:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;pkglicense name=&quot;liblogging-stdlog0&quot;&gt;&lt;text&gt;Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>&lt;pkglicense name=&quot;liblogging-stdlog0&quot;&gt;&lt;text&gt;Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: liblogging
 Source: http://www.liblogging.org/
 
@@ -351,10 +351,10 @@ License: BSD-2-Clause
 <h3>Some information can be extracted via heuristics<a class="headerlink" href="#some-information-can-be-extracted-via-heuristics" title="Permalink to this headline">¶</a></h3>
 <p>There are quite a COPYING Files, which almost adopted the new machine
 readable Format. But the parser does not accept it.</p>
-<p>The heuristic will look for lines containing <code class="docutils literal notranslate"><span class="pre">License:</span> <span class="pre">*</span></code> and will
-extract that info into a <code class="docutils literal notranslate"><span class="pre">&lt;debian_licenses&gt;</span></code> tag.</p>
+<p>The heuristic will look for lines containing <code class="docutils literal"><span class="pre">License:</span> <span class="pre">*</span></code> and will
+extract that info into a <code class="docutils literal"><span class="pre">&lt;debian_licenses&gt;</span></code> tag.</p>
 <p>Example:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkglicense</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;libapt-pkg4.12&quot;</span><span class="o">&gt;&lt;</span><span class="n">text</span><span class="o">&gt;</span><span class="n">Apt</span> <span class="ow">is</span> <span class="n">copyright</span> <span class="mi">1997</span><span class="p">,</span> <span class="mi">1998</span><span class="p">,</span> <span class="mi">1999</span> <span class="n">Jason</span> <span class="n">Gunthorpe</span> <span class="ow">and</span> <span class="n">others</span><span class="o">.</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkglicense</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;libapt-pkg4.12&quot;</span><span class="o">&gt;&lt;</span><span class="n">text</span><span class="o">&gt;</span><span class="n">Apt</span> <span class="ow">is</span> <span class="n">copyright</span> <span class="mi">1997</span><span class="p">,</span> <span class="mi">1998</span><span class="p">,</span> <span class="mi">1999</span> <span class="n">Jason</span> <span class="n">Gunthorpe</span> <span class="ow">and</span> <span class="n">others</span><span class="o">.</span>
 <span class="n">Apt</span> <span class="ow">is</span> <span class="n">currently</span> <span class="n">developed</span> <span class="n">by</span> <span class="n">APT</span> <span class="n">Development</span> <span class="n">Team</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">deity</span><span class="nd">@lists</span><span class="o">.</span><span class="n">debian</span><span class="o">.</span><span class="n">org</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">.</span>
 
 <span class="n">License</span><span class="p">:</span> <span class="n">GPLv2</span><span class="o">+</span>
@@ -389,7 +389,7 @@ extract that info into a <code class="docutils literal notranslate"><span class=
 <h3>No information can be extracted automatically<a class="headerlink" href="#no-information-can-be-extracted-automatically" title="Permalink to this headline">¶</a></h3>
 <p>Only the text will be put into the xml File.</p>
 <p>Example:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;pkglicense name=&quot;bsd-mailx&quot;&gt;&lt;text&gt;This package was debianized by Loic Prylli &amp;lt;lprylli@graville.fdn.fr&amp;gt; on
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>&lt;pkglicense name=&quot;bsd-mailx&quot;&gt;&lt;text&gt;This package was debianized by Loic Prylli &amp;lt;lprylli@graville.fdn.fr&amp;gt; on
 Mon, 23 Dec 1996 00:13:13 +0100.
 The package is currently maintained by Robert Luberda &amp;lt;robert@debian.org&amp;gt;
 
@@ -437,17 +437,17 @@ the license is included below:
 </div>
 <div class="section" id="mapping-file">
 <h2>MAPPING FILE<a class="headerlink" href="#mapping-file" title="Permalink to this headline">¶</a></h2>
-<p>In order to help <code class="docutils literal notranslate"><span class="pre">elbe</span> <span class="pre">parselicence</span></code> with decisions, which it can not
+<p>In order to help <code class="docutils literal"><span class="pre">elbe</span> <span class="pre">parselicence</span></code> with decisions, which it can not
 make automatically, a mapping file is needed.</p>
 <p>It defines the following items:</p>
 <ul class="simple">
 <li>global mappings from Debian License to SPDX License Identifier in
-node <code class="docutils literal notranslate"><span class="pre">&lt;global&gt;</span></code></li>
-<li>per package mappings <code class="docutils literal notranslate"><span class="pre">&lt;perpackage&gt;</span> <span class="pre">&lt;package&gt;</span> <span class="pre">&lt;mapping&gt;</span></code></li>
+node <code class="docutils literal"><span class="pre">&lt;global&gt;</span></code></li>
+<li>per package mappings <code class="docutils literal"><span class="pre">&lt;perpackage&gt;</span> <span class="pre">&lt;package&gt;</span> <span class="pre">&lt;mapping&gt;</span></code></li>
 <li>per package override definitions</li>
 </ul>
 <p>Here is an example mapping.xml:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
 &lt;license_map&gt;
         &lt;global&gt;
                 &lt;mapping name=&#39;GPL-1+&#39;&gt;GPL-1.0+&lt;/mapping&gt;
@@ -525,8 +525,8 @@ node <code class="docutils literal notranslate"><span class="pre">&lt;global&gt;
 </pre></div>
 </div>
 <p>As you can see, it is also necessary to add identity mappings, like
-<code class="docutils literal notranslate"><span class="pre">&lt;mapping</span> <span class="pre">name='GPL-2.0'&gt;GPL-2.0&lt;/mapping&gt;</span></code></p>
-<p>Its not allowed to mix <code class="docutils literal notranslate"><span class="pre">&lt;license&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;mapping&gt;</span></code> in a single
+<code class="docutils literal"><span class="pre">&lt;mapping</span> <span class="pre">name='GPL-2.0'&gt;GPL-2.0&lt;/mapping&gt;</span></code></p>
+<p>Its not allowed to mix <code class="docutils literal"><span class="pre">&lt;license&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;mapping&gt;</span></code> in a single
 &lt;package&gt; node.</p>
 </div>
 <div class="section" id="nomos">
@@ -579,7 +579,7 @@ find out, how to install the nomos executable.</p>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v2.3
+        v: releases/v2.4
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -588,6 +588,7 @@ find out, how to install the nomos executable.</p>
             <dd><a href="devel_elbe-1.0/index.html">devel/elbe-1.0</a></dd>
             <dd><a href="devel_elbe-2.0/elbe-parselicence.html">devel/elbe-2.0</a></dd>
             <dd><a href="devel_elbe-3.0/elbe-parselicence.html">devel/elbe-3.0</a></dd>
+            <dd><a href="devel_manut_pylint/elbe-parselicence.html">devel/manut/pylint</a></dd>
             <dd><a href="master/elbe-parselicence.html">master</a></dd>
             <dd><a href="releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="releases_v1.0/index.html">releases/v1.0</a></dd>
@@ -602,9 +603,17 @@ find out, how to install the nomos executable.</p>
             <dd><a href="releases_v2.1/elbe-parselicence.html">releases/v2.1</a></dd>
             <dd><a href="releases_v2.2/elbe-parselicence.html">releases/v2.2</a></dd>
             <dd><a href="releases_v2.3/elbe-parselicence.html">releases/v2.3</a></dd>
+            <dd><a href="releases_v2.4/elbe-parselicence.html">releases/v2.4</a></dd>
             <dd><a href="releases_v2.9.1/elbe-parselicence.html">releases/v2.9.1</a></dd>
             <dd><a href="releases_v2.9.10/elbe-parselicence.html">releases/v2.9.10</a></dd>
             <dd><a href="releases_v2.9.11/elbe-parselicence.html">releases/v2.9.11</a></dd>
+            <dd><a href="releases_v2.9.12/elbe-parselicence.html">releases/v2.9.12</a></dd>
+            <dd><a href="releases_v2.9.13/elbe-parselicence.html">releases/v2.9.13</a></dd>
+            <dd><a href="releases_v2.9.14/elbe-parselicence.html">releases/v2.9.14</a></dd>
+            <dd><a href="releases_v2.9.15/elbe-parselicence.html">releases/v2.9.15</a></dd>
+            <dd><a href="releases_v2.9.16/elbe-parselicence.html">releases/v2.9.16</a></dd>
+            <dd><a href="releases_v2.9.17/elbe-parselicence.html">releases/v2.9.17</a></dd>
+            <dd><a href="releases_v2.9.18/elbe-parselicence.html">releases/v2.9.18</a></dd>
             <dd><a href="releases_v2.9.2/elbe-parselicence.html">releases/v2.9.2</a></dd>
             <dd><a href="releases_v2.9.3/elbe-parselicence.html">releases/v2.9.3</a></dd>
             <dd><a href="releases_v2.9.4/elbe-parselicence.html">releases/v2.9.4</a></dd>
@@ -623,7 +632,7 @@ find out, how to install the nomos executable.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.3',
+            VERSION:'2.4',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -644,9 +653,7 @@ find out, how to install the nomos executable.</p>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

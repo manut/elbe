@@ -204,7 +204,7 @@
 <div class="section" id="synopsis">
 <h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">buildchroot</span> <span class="p">[</span> <span class="n">OPTIONS</span> <span class="p">]</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">buildchroot</span> <span class="p">[</span> <span class="n">OPTIONS</span> <span class="p">]</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -294,13 +294,13 @@ recommended)</td></tr>
 <ul>
 <li><p class="first">Build a root filesystem from <em>myarm.xml</em> in <em>/root/myarm</em>. Log to
 <em>myarm.txt</em>. Do not build any ISO-Images.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># elbe buildchroot --output myarm.txt --target /root/myarm myarm.xml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># elbe buildchroot --output myarm.txt --target /root/myarm myarm.xml</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Build a root filesystem from <em>myarm.xml</em> in <em>/root/myarm</em>. Log to
 <em>myarm.txt</em>. Also build source and binary ISO-Images.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># elbe buildchroot --output myarm.txt --target /root/myarm \</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># elbe buildchroot --output myarm.txt --target /root/myarm \</span>
         <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">sources</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="nb">bin</span> <span class="n">myarm</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
@@ -360,6 +360,7 @@ recommended)</td></tr>
             <dd><a href="../devel_elbe-1.0/elbe-buildchroot.html">devel/elbe-1.0</a></dd>
             <dd><a href="../devel_elbe-2.0/elbe-buildchroot.html">devel/elbe-2.0</a></dd>
             <dd><a href="../devel_elbe-3.0/elbe-buildchroot.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../devel_manut_pylint/elbe-buildchroot.html">devel/manut/pylint</a></dd>
             <dd><a href="../master/elbe-buildchroot.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/elbe-buildchroot.html">releases/v1.0</a></dd>
@@ -374,9 +375,17 @@ recommended)</td></tr>
             <dd><a href="../releases_v2.1/elbe-buildchroot.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/elbe-buildchroot.html">releases/v2.2</a></dd>
             <dd><a href="../releases_v2.3/elbe-buildchroot.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/elbe-buildchroot.html">releases/v2.4</a></dd>
             <dd><a href="../releases_v2.9.1/elbe-buildchroot.html">releases/v2.9.1</a></dd>
             <dd><a href="../releases_v2.9.10/elbe-buildchroot.html">releases/v2.9.10</a></dd>
             <dd><a href="../releases_v2.9.11/elbe-buildchroot.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/elbe-buildchroot.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/elbe-buildchroot.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/elbe-buildchroot.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/elbe-buildchroot.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/elbe-buildchroot.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/elbe-buildchroot.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/elbe-buildchroot.html">releases/v2.9.18</a></dd>
             <dd><a href="../releases_v2.9.2/elbe-buildchroot.html">releases/v2.9.2</a></dd>
             <dd><a href="../releases_v2.9.3/elbe-buildchroot.html">releases/v2.9.3</a></dd>
             <dd><a href="elbe-buildchroot.html">releases/v2.9.4</a></dd>
@@ -416,9 +425,7 @@ recommended)</td></tr>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

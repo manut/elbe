@@ -205,7 +205,7 @@
 <div class="section" id="synopsis">
 <h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">list_projects</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">list_projects</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">create_project</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_sysroot</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_pdebuild</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pdebuild</span> <span class="n">file</span><span class="o">&gt;</span>
@@ -315,7 +315,7 @@ directory specified in the option.</p>
 <dt><em>set_orig</em> &lt;build-dir&gt; &lt;orig-file&gt;</dt>
 <dd><p class="first">Uploads a quilt orig-file to the initvm.</p>
 <p class="last">This command shall be run before building a Debian package with
-<code class="docutils literal notranslate"><span class="pre">elbe</span> <span class="pre">pbuilder</span>
+<code class="docutils literal"><span class="pre">elbe</span> <span class="pre">pbuilder</span>
 <span class="pre">build</span></code> if the package is given in the quilt source format.</p>
 </dd>
 <dt><em>set_cdrom</em> &lt;build-dir&gt; &lt;iso-img&gt;</dt>
@@ -356,7 +356,7 @@ likely going to change the status of the project to
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">List current Projects</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elbe control list_projects
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe control list_projects
 /var/cache/elbe/982d64de-e69f-48c7-8942-66d8d480f3dc    rescue image    1.0     build_done      2015-06-08 15:29:29.613620
 /var/cache/elbe/dd37a03e-31bd-45db-afd4-fc51d51fa90a    rescue image    1.0     build_done      2015-06-09 08:53:26.658500
 /var/cache/elbe/8d62928f-4e75-47cf-aec9-d2365ca59003    rescue image    1.0     build_done      2015-06-09 09:14:15.371456
@@ -364,7 +364,7 @@ likely going to change the status of the project to
 </div>
 </li>
 <li><p class="first">Create a new Project, trigger build, and wait till it finishes.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elbe control create_project examples/rescue.xml
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe control create_project examples/rescue.xml
 /var/cache/elbe/f310dcbc-f5fc-423e-99e4-fb72d7b9dd5f
 $ elbe control build /var/cache/elbe/f310dcbc-f5fc-423e-99e4-fb72d7b9dd5f
 $ elbe control wait_busy /var/cache/elbe/f310dcbc-f5fc-423e-99e4-fb72d7b9dd5f
@@ -440,6 +440,7 @@ log.txt         (Log file)
             <dd><a href="../devel_elbe-1.0/elbe-control.html">devel/elbe-1.0</a></dd>
             <dd><a href="../devel_elbe-2.0/elbe-control.html">devel/elbe-2.0</a></dd>
             <dd><a href="../devel_elbe-3.0/elbe-control.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../devel_manut_pylint/elbe-control.html">devel/manut/pylint</a></dd>
             <dd><a href="../master/elbe-control.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/elbe-control.html">releases/v1.0</a></dd>
@@ -454,9 +455,17 @@ log.txt         (Log file)
             <dd><a href="../releases_v2.1/elbe-control.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/elbe-control.html">releases/v2.2</a></dd>
             <dd><a href="elbe-control.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/elbe-control.html">releases/v2.4</a></dd>
             <dd><a href="../releases_v2.9.1/elbe-control.html">releases/v2.9.1</a></dd>
             <dd><a href="../releases_v2.9.10/elbe-control.html">releases/v2.9.10</a></dd>
             <dd><a href="../releases_v2.9.11/elbe-control.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/elbe-control.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/elbe-control.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/elbe-control.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/elbe-control.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/elbe-control.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/elbe-control.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/elbe-control.html">releases/v2.9.18</a></dd>
             <dd><a href="../releases_v2.9.2/elbe-control.html">releases/v2.9.2</a></dd>
             <dd><a href="../releases_v2.9.3/elbe-control.html">releases/v2.9.3</a></dd>
             <dd><a href="../releases_v2.9.4/elbe-control.html">releases/v2.9.4</a></dd>
@@ -496,9 +505,7 @@ log.txt         (Log file)
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

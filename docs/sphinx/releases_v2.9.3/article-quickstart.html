@@ -226,7 +226,7 @@ root-filesystem from the XML file and to simple modifications.</p>
 <ol class="arabic simple">
 <li>install Debian 8 (Jessie) on your Host</li>
 <li>install ELBE on Host Linux</li>
-<li>generate the <code class="docutils literal notranslate"><span class="pre">initvm</span></code> running the buildenvironment</li>
+<li>generate the <code class="docutils literal"><span class="pre">initvm</span></code> running the buildenvironment</li>
 <li>build the root-filesystem inside the initvm</li>
 </ol>
 <p>Steps 1 and 2 need only be performed once.</p>
@@ -245,7 +245,7 @@ file, which needs to be different from the default Debian Install.</p>
 <p>This guide also explains how the archive can be extracted from the XML
 file, and vice versa.</p>
 <p>ELBE allows to manipulate the generated root-filesystem through a set of
-<code class="docutils literal notranslate"><span class="pre">&lt;finetuning&gt;</span></code> rules. We also describe, how these can be used to add a
+<code class="docutils literal"><span class="pre">&lt;finetuning&gt;</span></code> rules. We also describe, how these can be used to add a
 user, change directory permissions, and remove files from the
 root-filesystem.</p>
 </div>
@@ -258,22 +258,22 @@ on a Debian 8 (Jessie) system.</p>
 <div class="section" id="binary-debian-packages">
 <h3>Binary Debian packages<a class="headerlink" href="#binary-debian-packages" title="Permalink to this headline">¶</a></h3>
 <p>The latest packages for elbe reside in the following repository</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">testing</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">testing</span>
 <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">common</span>
 </pre></div>
 </div>
-<p>Create the file <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/elbe.list</span></code> with the following
+<p>Create the file <code class="docutils literal"><span class="pre">/etc/apt/sources.list.d/elbe.list</span></code> with the following
 contents:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">testing</span> <span class="n">jessie</span> <span class="n">main</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">testing</span> <span class="n">jessie</span> <span class="n">main</span>
 <span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">common</span> <span class="n">jessie</span> <span class="n">main</span>
 </pre></div>
 </div>
 <p>Add a repository key to the list of trusted keys (as root):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget -q -O - http://debian.linutronix.de/elbe-common/elbe-repo.pub | apt-key add -
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ wget -q -O - http://debian.linutronix.de/elbe-common/elbe-repo.pub | apt-key add -
 </pre></div>
 </div>
 <p>Then run (as root):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ apt-get update
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ apt-get update
 $ apt-get install elbe
 </pre></div>
 </div>
@@ -282,7 +282,7 @@ $ apt-get install elbe
 <h3>Git Version<a class="headerlink" href="#git-version" title="Permalink to this headline">¶</a></h3>
 <p>If you can not use Debian Jessie, you can also checkout the current ELBE
 source-code via git from github.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/Linutronix/elbe.git
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/Linutronix/elbe.git
 Cloning into &#39;elbe&#39;...
 remote: Counting objects: 5435, done.
 remote: Compressing objects: 100% (8/8), done.
@@ -298,7 +298,7 @@ examples INSTALL    Makefile README  setup.py    test  THANKS TODO
 </div>
 <p>ELBE can run without being installed from the git checkout. Just note
 that file paths are different under this situation.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="o">-&gt;</span> <span class="o">./</span><span class="n">elbe</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="o">-&gt;</span> <span class="o">./</span><span class="n">elbe</span>
 <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span> <span class="o">-&gt;</span> <span class="n">examples</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -317,7 +317,7 @@ that user needs to be added to some groups depending on Debian version:</p>
 <p>$ adduser &lt;youruser&gt; libvirt $ adduser &lt;youruser&gt; libvirt-qemu</p>
 <p>For jessie and older:</p>
 <p>$ adduser &lt;youruser&gt; kvm $ adduser &lt;youruser&gt; libvirt</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elbe initvm create --directory=initvm
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe initvm create --directory=initvm
 /home/torbenh/elbe/elbe/initvm
 gpg: keyring `/tmp/tmpPfPXt4/secring.gpg&#39; created
 gpg: keyring `/tmp/tmpPfPXt4/etc/apt/trusted.gpg.d/linutronix-elbe.gpg&#39; created
@@ -358,7 +358,7 @@ directory.</p>
 <p>Submitting an XML file triggers an image build inside the initvm. Once
 the initvm has been created and is running, you can submit XML files
 using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elbe initvm submit --directory=initvm /usr/share/doc/elbe-doc/examples/rescue.xml
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe initvm submit --directory=initvm /usr/share/doc/elbe-doc/examples/rescue.xml
 Build started, waiting till it finishes
 project still busy, waiting
 project still busy, waiting
@@ -406,12 +406,12 @@ tools on your host to communicate with the initvm.</p>
 <p>The ELBE XML file contains an archive which is extracted into the
 root-filesystem during the image generation phase.</p>
 <p>It is acessed with the following commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elbe get_archive fun.xml archive.tar.bz2
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe get_archive fun.xml archive.tar.bz2
 </pre></div>
 </div>
 <p>It is a normal tar.bz2 which can be manipulated and reinjected into the
 XML:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir arch
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir arch
 $ tar xvfj archive.tar.bz2 -C arch
 $ echo hello &gt; arch/hello
 $ elbe chg_archive fun.xml arch
@@ -420,20 +420,20 @@ $ elbe chg_archive fun.xml arch
 </div>
 <div class="section" id="adding-packages-to-the-list-of-packages-to-install">
 <h3>Adding packages to the “list of packages to install”<a class="headerlink" href="#adding-packages-to-the-list-of-packages-to-install" title="Permalink to this headline">¶</a></h3>
-<p>The XML file contains a <em>list of packages to install</em> <code class="docutils literal notranslate"><span class="pre">&lt;pkg-list&gt;</span></code> in
-the <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> XML node. Inserting a line containing</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">util</span><span class="o">-</span><span class="n">linux</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+<p>The XML file contains a <em>list of packages to install</em> <code class="docutils literal"><span class="pre">&lt;pkg-list&gt;</span></code> in
+the <code class="docutils literal"><span class="pre">&lt;target&gt;</span></code> XML node. Inserting a line containing</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">util</span><span class="o">-</span><span class="n">linux</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>will add the <code class="docutils literal notranslate"><span class="pre">util-linux</span></code> package to the target-rfs.</p>
+<p>will add the <code class="docutils literal"><span class="pre">util-linux</span></code> package to the target-rfs.</p>
 </div>
 <div class="section" id="using-the-finetuning-rules">
 <h3>Using the finetuning rules<a class="headerlink" href="#using-the-finetuning-rules" title="Permalink to this headline">¶</a></h3>
 <p>An ELBE XML file can contain a set of finetuning rules. Finetuning is
 used to customize the target-rfs, e.g. remove man-pages. Here is an
 example finetuning from
-<code class="docutils literal notranslate"><span class="pre">/usr/share/doc/elbe-doc/examples/elbe-desktop.xml</span></code>:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+<code class="docutils literal"><span class="pre">/usr/share/doc/elbe-doc/examples/elbe-desktop.xml</span></code>:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/*.</span><span class="n">deb</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">adduser</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;elbe&quot;</span> <span class="n">shell</span><span class="o">=</span><span class="s2">&quot;/bin/bash&quot;</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">finetuning</span><span class="o">&gt;</span>
@@ -441,31 +441,31 @@ example finetuning from
 </div>
 <div class="section" id="rm">
 <h4>rm<a class="headerlink" href="#rm" title="Permalink to this headline">¶</a></h4>
-<p>The <code class="docutils literal notranslate"><span class="pre">&lt;rm&gt;</span></code> node removes files from the target-rfs.</p>
+<p>The <code class="docutils literal"><span class="pre">&lt;rm&gt;</span></code> node removes files from the target-rfs.</p>
 </div>
 <div class="section" id="adduser">
 <h4>adduser<a class="headerlink" href="#adduser" title="Permalink to this headline">¶</a></h4>
 <p>The adduser node allows to create a user. The following example creates
-the user <code class="docutils literal notranslate"><span class="pre">elbe</span></code> with the password <code class="docutils literal notranslate"><span class="pre">foo</span></code>.</p>
+the user <code class="docutils literal"><span class="pre">elbe</span></code> with the password <code class="docutils literal"><span class="pre">foo</span></code>.</p>
 <p>It is also possible to specify groups the new user should be part of:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">adduser</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="n">shell</span><span class="o">=</span><span class="s2">&quot;/bin/bash&quot;</span> <span class="n">groups</span><span class="o">=</span><span class="s2">&quot;audio,video,dialout&quot;</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">adduser</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="n">shell</span><span class="o">=</span><span class="s2">&quot;/bin/bash&quot;</span> <span class="n">groups</span><span class="o">=</span><span class="s2">&quot;audio,video,dialout&quot;</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="changing-ownership-of-directories-or-files">
 <h3>Changing ownership of directories or files<a class="headerlink" href="#changing-ownership-of-directories-or-files" title="Permalink to this headline">¶</a></h3>
-<p>There is currently no special finetuning node for <code class="docutils literal notranslate"><span class="pre">chmod</span></code> and
-<code class="docutils literal notranslate"><span class="pre">chown</span></code>. These commands needs to be specified via the command tag,
+<p>There is currently no special finetuning node for <code class="docutils literal"><span class="pre">chmod</span></code> and
+<code class="docutils literal"><span class="pre">chown</span></code>. These commands needs to be specified via the command tag,
 which allows running any command that is available in the target-rfs.</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">chown</span> <span class="n">elbe</span><span class="p">:</span><span class="n">elbe</span> <span class="o">/</span><span class="n">mnt</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">chown</span> <span class="n">elbe</span><span class="p">:</span><span class="n">elbe</span> <span class="o">/</span><span class="n">mnt</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">chmod</span> <span class="mi">777</span> <span class="o">/</span><span class="n">mnt</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="section" id="further-example">
 <h4>Further Example<a class="headerlink" href="#further-example" title="Permalink to this headline">¶</a></h4>
 <p>A more complete example can be found in the ELBE overview document that
-is installed at <code class="docutils literal notranslate"><span class="pre">/usr/share/doc/elbe-doc/elbeoverview-en.html</span></code></p>
+is installed at <code class="docutils literal"><span class="pre">/usr/share/doc/elbe-doc/elbeoverview-en.html</span></code></p>
 </div>
 </div>
 </div>
@@ -478,17 +478,17 @@ to satisfy build dependencies. Pbuilder will only build debianised
 Software.</p>
 <blockquote>
 <div><p><strong>Note</strong></p>
-<p>Currently only source formats <code class="docutils literal notranslate"><span class="pre">3.0</span> <span class="pre">(native)</span></code> and <code class="docutils literal notranslate"><span class="pre">3.0</span> <span class="pre">(git)</span></code> are
-supported and tested. <code class="docutils literal notranslate"><span class="pre">3.0</span> <span class="pre">(quilt)</span></code> does not work.</p>
+<p>Currently only source formats <code class="docutils literal"><span class="pre">3.0</span> <span class="pre">(native)</span></code> and <code class="docutils literal"><span class="pre">3.0</span> <span class="pre">(git)</span></code> are
+supported and tested. <code class="docutils literal"><span class="pre">3.0</span> <span class="pre">(quilt)</span></code> does not work.</p>
 </div></blockquote>
 <p>A pbuilder instance is always associated with a project inside the
-initvm. The <code class="docutils literal notranslate"><span class="pre">pbuilder</span> <span class="pre">create</span></code> command will write the project uuid to a
+initvm. The <code class="docutils literal"><span class="pre">pbuilder</span> <span class="pre">create</span></code> command will write the project uuid to a
 file, if instructed to do so.</p>
-<p><code class="docutils literal notranslate"><span class="pre">pbuilder</span> <span class="pre">build</span></code> works like <code class="docutils literal notranslate"><span class="pre">pdebuild</span></code>, in that it uploads the
+<p><code class="docutils literal"><span class="pre">pbuilder</span> <span class="pre">build</span></code> works like <code class="docutils literal"><span class="pre">pdebuild</span></code>, in that it uploads the
 current working directory into the initvm pbuilder project, and then
 builds it using the pbuilder instance created earlier.</p>
 <p>Here is an example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elbe pbuilder create --xmlfile fun.xml --writeproject fun.prj
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe pbuilder create --xmlfile fun.xml --writeproject fun.prj
 $ cd program
 $ elbe pbuilder build --project `cat ../fun.prj` --output ../out
 </pre></div>
@@ -501,9 +501,9 @@ image. This can be done with a custom repository. You can use
 <a class="reference external" href="https://mirrorer.alioth.debian.org/">reprepro</a> to create your own
 repository.</p>
 <p>To create your own repository with reprepro you need only the
-<code class="docutils literal notranslate"><span class="pre">distributions</span></code> configuration file. For an amd64 and source repository
+<code class="docutils literal"><span class="pre">distributions</span></code> configuration file. For an amd64 and source repository
 for Debian jessie it might look as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Origin</span><span class="p">:</span> <span class="n">mylocal</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Origin</span><span class="p">:</span> <span class="n">mylocal</span>
 <span class="n">Label</span><span class="p">:</span> <span class="n">mylocal</span>
 <span class="n">Suite</span><span class="p">:</span> <span class="n">stable</span>
 <span class="n">Codename</span><span class="p">:</span> <span class="n">jessie</span>
@@ -512,22 +512,22 @@ for Debian jessie it might look as follows:</p>
 <span class="n">Description</span><span class="p">:</span> <span class="n">my</span> <span class="n">local</span> <span class="n">repo</span>
 </pre></div>
 </div>
-<p>Now place the <code class="docutils literal notranslate"><span class="pre">distributions</span></code> file in a <code class="docutils literal notranslate"><span class="pre">conf</span></code> named directory.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>repo/
+<p>Now place the <code class="docutils literal"><span class="pre">distributions</span></code> file in a <code class="docutils literal"><span class="pre">conf</span></code> named directory.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>repo/
 ├── conf
 │   └── distributions
 </pre></div>
 </div>
 <p>To include packages in your repository you might use the following
-command from inside the <code class="docutils literal notranslate"><span class="pre">repo</span></code> directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ reprepro include jessie ../path/to/your/*.changes
+command from inside the <code class="docutils literal"><span class="pre">repo</span></code> directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ reprepro include jessie ../path/to/your/*.changes
 </pre></div>
 </div>
 <p>To use this repository from ELBE you need a webserver. Simply place the
 repository inside the document root of your webserver.</p>
 <p>If the webserver is running on the same machine as the initvm you can
 use the following to access the repository:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span> <span class="n">jessie</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span> <span class="n">jessie</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
@@ -536,13 +536,13 @@ use the following to access the repository:</p>
 <span class="o">&lt;/</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>ELBE replaces the string <code class="docutils literal notranslate"><span class="pre">LOCALMACHINE</span></code> with the ip address of your
+<p>ELBE replaces the string <code class="docutils literal"><span class="pre">LOCALMACHINE</span></code> with the ip address of your
 machine. If you use an external machine as webserver you need to replace
-<code class="docutils literal notranslate"><span class="pre">LOCALMACHINE</span></code> with the name or the ip of it.</p>
-<p>You need to sign your repository (see <code class="docutils literal notranslate"><span class="pre">SignWith</span></code> in the <a class="reference external" href="https://mirrorer.alioth.debian.org/reprepro.1.html">reprepro
+<code class="docutils literal"><span class="pre">LOCALMACHINE</span></code> with the name or the ip of it.</p>
+<p>You need to sign your repository (see <code class="docutils literal"><span class="pre">SignWith</span></code> in the <a class="reference external" href="https://mirrorer.alioth.debian.org/reprepro.1.html">reprepro
 manpage</a>), or you
 may set &lt;noauth/&gt; in your xml file. If you don’t sign your repository
-you don’t need the <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> tag.</p>
+you don’t need the <code class="docutils literal"><span class="pre">&lt;key&gt;</span></code> tag.</p>
 <p>Now you can install packages from your custom repository the same way
 you can install from any other repository.</p>
 </div>
@@ -595,6 +595,7 @@ you can install from any other repository.</p>
             <dd><a href="../devel_elbe-1.0/article-quickstart.html">devel/elbe-1.0</a></dd>
             <dd><a href="../devel_elbe-2.0/article-quickstart.html">devel/elbe-2.0</a></dd>
             <dd><a href="../devel_elbe-3.0/article-quickstart.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../devel_manut_pylint/article-quickstart.html">devel/manut/pylint</a></dd>
             <dd><a href="../master/article-quickstart.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/article-quickstart.html">releases/v1.0</a></dd>
@@ -609,9 +610,17 @@ you can install from any other repository.</p>
             <dd><a href="../releases_v2.1/article-quickstart.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/article-quickstart.html">releases/v2.2</a></dd>
             <dd><a href="../releases_v2.3/article-quickstart.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/article-quickstart.html">releases/v2.4</a></dd>
             <dd><a href="../releases_v2.9.1/article-quickstart.html">releases/v2.9.1</a></dd>
             <dd><a href="../releases_v2.9.10/article-quickstart.html">releases/v2.9.10</a></dd>
             <dd><a href="../releases_v2.9.11/article-quickstart.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/article-quickstart.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/article-quickstart.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/article-quickstart.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/article-quickstart.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/article-quickstart.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/article-quickstart.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/article-quickstart.html">releases/v2.9.18</a></dd>
             <dd><a href="../releases_v2.9.2/article-quickstart.html">releases/v2.9.2</a></dd>
             <dd><a href="article-quickstart.html">releases/v2.9.3</a></dd>
             <dd><a href="../releases_v2.9.4/article-quickstart.html">releases/v2.9.4</a></dd>
@@ -651,9 +660,7 @@ you can install from any other repository.</p>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

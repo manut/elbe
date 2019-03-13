@@ -259,29 +259,29 @@ package-management (apt) which also resolves package dependencies.</li>
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>Elbe is shipped as Debian package. This package will pull in the
 necessary dependencies.</p>
-<p>Configure <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d</span></code> appropriately:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;deb http://debian.linutronix.de/elbe jessie main&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elbe</span><span class="o">.</span><span class="n">list</span>
+<p>Configure <code class="docutils literal"><span class="pre">/etc/apt/sources.list.d</span></code> appropriately:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;deb http://debian.linutronix.de/elbe jessie main&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elbe</span><span class="o">.</span><span class="n">list</span>
 </pre></div>
 </div>
 <p>Optionally the public key for the repo can be installed:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">repo</span><span class="o">.</span><span class="n">pub</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="n">elbe</span><span class="o">-</span><span class="n">repo</span><span class="o">.</span><span class="n">pub</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">repo</span><span class="o">.</span><span class="n">pub</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="n">elbe</span><span class="o">-</span><span class="n">repo</span><span class="o">.</span><span class="n">pub</span>
 </pre></div>
 </div>
 <p>Update the package list:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aptitude</span> <span class="n">update</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">aptitude</span> <span class="n">update</span>
 </pre></div>
 </div>
 <p>and install elbe using the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aptitude</span> <span class="n">install</span> <span class="n">elbe</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">aptitude</span> <span class="n">install</span> <span class="n">elbe</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The Elbe system consists of the program <code class="docutils literal notranslate"><span class="pre">elbe</span></code> which is implemented in
+<p>The Elbe system consists of the program <code class="docutils literal"><span class="pre">elbe</span></code> which is implemented in
 Python. Similar to git, it can be called with several sub commands. For
 example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">example</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span>
 <span class="n">elbe</span> <span class="n">chg_archive</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span> <span class="n">archive</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
 </pre></div>
@@ -328,7 +328,7 @@ script and rely on the database server to be already running.</p>
 <h2>Create initvm and build a first xml file from the examples<a class="headerlink" href="#create-initvm-and-build-a-first-xml-file-from-the-examples" title="Permalink to this headline">¶</a></h2>
 <p>To create an initvm and make that initvm build a first Rootfilesystem,
 use the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">wheezy</span><span class="o">.</span><span class="n">xml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">wheezy</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
 <p>This will take quite a while.</p>
@@ -336,12 +336,12 @@ use the following command:</p>
 running in the background, this command will exit with a failure notice.</p>
 <p>The initvm will keep on running, after this command. Further xml Files
 may be built using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">submit</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">wheezy</span><span class="o">.</span><span class="n">xml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">submit</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">wheezy</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
 <p>The initvm will not be restarted upon a reboot of the machine.</p>
 <p>If you need to start the initvm again, use</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">start</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">start</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span>
 </pre></div>
 </div>
 <div class="section" id="example-xml-files">
@@ -350,9 +350,9 @@ may be built using</p>
 <p>Elbe ships with a set of example XML files.</p>
 <p>The following XML file describes a simple system in the default full
 copy mode. The root filesystem is essentially identical to the build
-environment and it will be saved as <code class="docutils literal notranslate"><span class="pre">nfsroot.tar.gz</span></code></p>
+environment and it will be saved as <code class="docutils literal"><span class="pre">nfsroot.tar.gz</span></code></p>
 <p><strong>example.xml.</strong></p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ns0</span><span class="p">:</span><span class="n">RootFileSystem</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">ns0</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe&quot;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ns0</span><span class="p">:</span><span class="n">RootFileSystem</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">ns0</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe&quot;</span>
         <span class="n">xmlns</span><span class="p">:</span><span class="n">xsi</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
         <span class="n">created</span><span class="o">=</span><span class="s2">&quot;2009-05-20T08:50:56&quot;</span> <span class="n">revision</span><span class="o">=</span><span class="s2">&quot;6&quot;</span>
         <span class="n">xsi</span><span class="p">:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe dbsfed.xsd&quot;</span><span class="o">&gt;</span>
@@ -399,12 +399,12 @@ environment and it will be saved as <code class="docutils literal notranslate"><
 </div>
 <p>To generate the project directory from the XML file the following
 command is used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">submit</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">submit</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
-<p>The directory <code class="docutils literal notranslate"><span class="pre">~/elbe-initvm</span></code> must contain a running initvm. If an
+<p>The directory <code class="docutils literal"><span class="pre">~/elbe-initvm</span></code> must contain a running initvm. If an
 initvm has not been created yet, use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
 </div>
@@ -426,7 +426,7 @@ subsets.</li>
 <p>The finetuning section allows to copy, move and delete files in the
 root-filesystem. Additionally it is possible to run commands. Here is an
 example finetuning section:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mkdir</span><span class="o">&gt;/</span><span class="n">mydir</span><span class="o">&lt;/</span><span class="n">mkdir</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mknod</span> <span class="n">opts</span><span class="o">=</span><span class="s2">&quot;c 1 5&quot;</span><span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">zero</span><span class="o">&lt;/</span><span class="n">mknod</span><span class="o">&gt;</span>
@@ -479,7 +479,7 @@ manuts login password is <em>huhu</em>. The <em>groups</em> attribute is optiona
 <h3>Useful directories to trim with finetuning<a class="headerlink" href="#useful-directories-to-trim-with-finetuning" title="Permalink to this headline">¶</a></h3>
 <p>This section provides some useful directories that can be safely removed
 to get a smaller target image.</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/*&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">pkgcache</span><span class="o">.</span><span class="n">bin</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
@@ -514,7 +514,7 @@ targets the kernel is normally loaded by the bootloader.</li>
 unpacked into the target root-filesystem after the finetuning step. This
 archive must be a bzip2 compressed tar (.tar.bz2) and the following
 command can be used to embed the archive into the XML file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">chg_archive</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span> <span class="n">archive</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">chg_archive</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span> <span class="n">archive</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
 </pre></div>
 </div>
 <p>This feature is useful to place custom configuration-files into the
@@ -527,7 +527,7 @@ final image.</p>
 <em>target</em> tag. It needs to be the tag before <em>finetuning</em>.</p>
 <p>The following commented example illustrates where the mode is
 configured.</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span><span class="n">example</span><span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">&lt;/</span><span class="n">domain</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">passwd</span><span class="o">&gt;</span><span class="n">foo</span><span class="o">&lt;/</span><span class="n">passwd</span><span class="o">&gt;</span>
@@ -579,14 +579,14 @@ installed.</p>
 <li>Run the image and use aptitude to purge unwanted packages.</li>
 <li>Maybe even use dpkg to remove apt and aptitude.</li>
 <li>Then generate the list of selected Packages using
-<code class="docutils literal notranslate"><span class="pre">dpkg</span> <span class="pre">--get-selections</span> <span class="pre">&gt;</span> <span class="pre">selections.list</span></code></li>
+<code class="docutils literal"><span class="pre">dpkg</span> <span class="pre">--get-selections</span> <span class="pre">&gt;</span> <span class="pre">selections.list</span></code></li>
 <li>Transfer this file to the host System.</li>
-<li>Use <code class="docutils literal notranslate"><span class="pre">elbe</span> <span class="pre">setsel</span> <span class="pre">&lt;xmlfile&gt;</span> <span class="pre">selections.list</span></code> to import the pkg-list
+<li>Use <code class="docutils literal"><span class="pre">elbe</span> <span class="pre">setsel</span> <span class="pre">&lt;xmlfile&gt;</span> <span class="pre">selections.list</span></code> to import the pkg-list
 into the XML file.</li>
 <li>Rebuild using setsel mode.</li>
 </ul>
 <p>The setsel mode works by feeding the pkg list to
-<code class="docutils literal notranslate"><span class="pre">dpkg</span> <span class="pre">--set-selections</span></code> in the target image copy. It has the advantage
+<code class="docutils literal"><span class="pre">dpkg</span> <span class="pre">--set-selections</span></code> in the target image copy. It has the advantage
 that there is no need to cope with some unregistered configuration
 files.</p>
 </div>
@@ -616,9 +616,9 @@ compatibility with old XML files, do not use in new elbe projects.</p>
 <div class="section" id="cdrom-functionality">
 <h2>CDROM Functionality<a class="headerlink" href="#cdrom-functionality" title="Permalink to this headline">¶</a></h2>
 <p>Elbe creates a CDROM iso image with all the installed packages. It is
-created in the build directory, and its filename is <code class="docutils literal notranslate"><span class="pre">install.iso</span></code> This
+created in the build directory, and its filename is <code class="docutils literal"><span class="pre">install.iso</span></code> This
 can also serve as an installation source.</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">mirror</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">mirror</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">cdrom</span><span class="o">&gt;/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">example</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">iso</span><span class="o">&lt;/</span><span class="n">cdrom</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">mirror</span><span class="o">&gt;</span>
 </pre></div>
@@ -627,9 +627,9 @@ can also serve as an installation source.</p>
 <div class="section" id="install-reports">
 <h2>Install Reports<a class="headerlink" href="#install-reports" title="Permalink to this headline">¶</a></h2>
 <p>The build process also creates a report file in asciidoc format:
-<code class="docutils literal notranslate"><span class="pre">elbe-report.txt</span></code> can be converted to html using the following
+<code class="docutils literal"><span class="pre">elbe-report.txt</span></code> can be converted to html using the following
 command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asciidoc</span> <span class="n">elbe</span><span class="o">-</span><span class="n">report</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">asciidoc</span> <span class="n">elbe</span><span class="o">-</span><span class="n">report</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>This report lists all files in the root-file-system, including the
@@ -637,25 +637,25 @@ origin Debian package.</p>
 </div>
 <div class="section" id="validation">
 <h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
-<p>After a build the <code class="docutils literal notranslate"><span class="pre">source.xml</span></code> file includes informations about all
+<p>After a build the <code class="docutils literal"><span class="pre">source.xml</span></code> file includes informations about all
 installed packages and versions. If this information is already present
-in a file used with <code class="docutils literal notranslate"><span class="pre">elbe</span> <span class="pre">create</span></code> the installed package versions and
+in a file used with <code class="docutils literal"><span class="pre">elbe</span> <span class="pre">create</span></code> the installed package versions and
 md5 hashes are validated and a report is printed and saved to
-<code class="docutils literal notranslate"><span class="pre">validation.txt</span></code>. This file is also in asciidoc format.</p>
+<code class="docutils literal"><span class="pre">validation.txt</span></code>. This file is also in asciidoc format.</p>
 </div>
 <div class="section" id="xml-reference">
 <h2>XML Reference<a class="headerlink" href="#xml-reference" title="Permalink to this headline">¶</a></h2>
 <p>This section is a step by step explanation of the ARM example.</p>
 <p>The XML file starts with the following header, which should always be
 the same:</p>
-<div class="code XML highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ns0</span><span class="p">:</span><span class="n">RootFileSystem</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">ns0</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe&quot;</span>
+<div class="code XML highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ns0</span><span class="p">:</span><span class="n">RootFileSystem</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">ns0</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe&quot;</span>
      <span class="n">xmlns</span><span class="p">:</span><span class="n">xsi</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
      <span class="n">created</span><span class="o">=</span><span class="s2">&quot;2009-05-20T08:50:56&quot;</span> <span class="n">revision</span><span class="o">=</span><span class="s2">&quot;6&quot;</span>
      <span class="n">xsi</span><span class="p">:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe dbsfed.xsd&quot;</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>After this header follows the project description.</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">ARMexample</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">08.15</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">mirror</span><span class="o">&gt;</span>
@@ -685,7 +685,7 @@ mirror.</li>
 <p>the <em>project</em> tag isn’t closed yet.</p>
 <p>The following section describes the virtual machine in which the
 debian-installer is executed and custom packages can be build.</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="n">buildimage</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="n">buildimage</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">arch</span><span class="o">&gt;</span><span class="n">armel</span><span class="o">&lt;/</span><span class="n">arch</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">20</span><span class="n">G</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">mem</span><span class="o">&gt;</span><span class="mi">256</span><span class="o">&lt;/</span><span class="n">mem</span><span class="o">&gt;</span>
@@ -742,7 +742,7 @@ defaults.</p>
 <p>If the optional parameters are not set, the buildtype can even be
 overridden by the flag –buildtype at <em>elbe create</em> to build the same
 configuration for a different architecture</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span><span class="n">myARM</span><span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="n">tec</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">&lt;/</span><span class="n">domain</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">passwd</span><span class="o">&gt;</span><span class="n">foo</span><span class="o">&lt;/</span><span class="n">passwd</span><span class="o">&gt;</span>
@@ -780,7 +780,7 @@ defined here. The format of this tag is explained above.</li>
 <h3>Building ubi images<a class="headerlink" href="#building-ubi-images" title="Permalink to this headline">¶</a></h3>
 <p>Elbe also has the ability to generate ubi images, including different
 partitions and mountpoints. Lets look at an example <em>target</em> section.</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span><span class="n">myARM</span><span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="n">tec</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">&lt;/</span><span class="n">domain</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">passwd</span><span class="o">&gt;</span><span class="n">foo</span><span class="o">&lt;/</span><span class="n">passwd</span><span class="o">&gt;</span>
@@ -904,7 +904,7 @@ this section. Entries for <em>/proc</em>, <em>/sys</em> etc. can be generated wi
 <h3>Building harddisk / sdcard images<a class="headerlink" href="#building-harddisk-sdcard-images" title="Permalink to this headline">¶</a></h3>
 <p>Elbe also has the ability to generate ubi images, including different
 partitions and mountpoints. Lets look at an example <em>target</em> section.</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">images</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">images</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">hd</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">sda</span><span class="o">.</span><span class="n">img</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">1900</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
@@ -971,8 +971,8 @@ file is also available.</p>
 </div>
 <div class="section" id="elbe-init-detailed-explanation">
 <h2>Elbe init (detailed Explanation)<a class="headerlink" href="#elbe-init-detailed-explanation" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">elbe</span> <span class="pre">init</span></code> is now considered a low-level command for advanced Users.
-Under normal circumstances <code class="docutils literal notranslate"><span class="pre">elbe</span> <span class="pre">initvm</span></code> should be used. This
+<p><code class="docutils literal"><span class="pre">elbe</span> <span class="pre">init</span></code> is now considered a low-level command for advanced Users.
+Under normal circumstances <code class="docutils literal"><span class="pre">elbe</span> <span class="pre">initvm</span></code> should be used. This
 paragraph is kept for reference.</p>
 <p>The <em>elbe init</em> command generates a project directory, which contains a
 hard disk image for a virtual build machine and a <em>Makefile</em> to install
@@ -1035,6 +1035,7 @@ the build VM.</p>
             <dd><a href="../devel_elbe-1.0/article-elbeoverview-en.html">devel/elbe-1.0</a></dd>
             <dd><a href="../devel_elbe-2.0/article-elbeoverview-en.html">devel/elbe-2.0</a></dd>
             <dd><a href="../devel_elbe-3.0/article-elbeoverview-en.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../devel_manut_pylint/article-elbeoverview-en.html">devel/manut/pylint</a></dd>
             <dd><a href="../master/article-elbeoverview-en.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/article-elbeoverview-en.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/article-elbeoverview-en.html">releases/v1.0</a></dd>
@@ -1049,9 +1050,17 @@ the build VM.</p>
             <dd><a href="../releases_v2.1/article-elbeoverview-en.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/article-elbeoverview-en.html">releases/v2.2</a></dd>
             <dd><a href="../releases_v2.3/article-elbeoverview-en.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/article-elbeoverview-en.html">releases/v2.4</a></dd>
             <dd><a href="../releases_v2.9.1/article-elbeoverview-en.html">releases/v2.9.1</a></dd>
             <dd><a href="../releases_v2.9.10/article-elbeoverview-en.html">releases/v2.9.10</a></dd>
             <dd><a href="../releases_v2.9.11/article-elbeoverview-en.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/article-elbeoverview-en.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/article-elbeoverview-en.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/article-elbeoverview-en.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/article-elbeoverview-en.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/article-elbeoverview-en.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/article-elbeoverview-en.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/article-elbeoverview-en.html">releases/v2.9.18</a></dd>
             <dd><a href="article-elbeoverview-en.html">releases/v2.9.2</a></dd>
             <dd><a href="../releases_v2.9.3/article-elbeoverview-en.html">releases/v2.9.3</a></dd>
             <dd><a href="../releases_v2.9.4/article-elbeoverview-en.html">releases/v2.9.4</a></dd>
@@ -1091,9 +1100,7 @@ the build VM.</p>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

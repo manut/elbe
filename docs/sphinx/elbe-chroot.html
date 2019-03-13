@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-chroot &mdash; ELBE 2.3 documentation</title>
+  <title>elbe-chroot &mdash; ELBE 2.4 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                2.3
+                2.4
               </div>
             
           
@@ -203,7 +203,7 @@
 <div class="section" id="synopsis">
 <h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">chroot</span> <span class="p">[</span><span class="o">--</span><span class="n">skip</span><span class="o">-</span><span class="n">validation</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">buildtype</span><span class="o">=</span><span class="n">TYPE</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">target</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">builddir</span><span class="o">&gt;</span> \
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">chroot</span> <span class="p">[</span><span class="o">--</span><span class="n">skip</span><span class="o">-</span><span class="n">validation</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">buildtype</span><span class="o">=</span><span class="n">TYPE</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">target</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">builddir</span><span class="o">&gt;</span> \
         <span class="p">[</span><span class="s2">&quot;command&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -244,7 +244,7 @@ schema. (Not recommended.)</td></tr>
 <h2>EXAMPLES<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Work with the root filesystem built in <em>/root/testrfs_arm</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># elbe chroot /root/testrfs_arm &quot;ls -lh /&quot;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># elbe chroot /root/testrfs_arm &quot;ls -lh /&quot;</span>
 <span class="n">work</span> <span class="n">on</span> <span class="n">existing</span> <span class="n">rfs</span>
 <span class="n">running</span> <span class="n">cmd</span> <span class="o">+</span><span class="n">chroot</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">testrfs_arm</span><span class="o">/</span><span class="n">chroot</span> <span class="n">debconf</span><span class="o">-</span><span class="nb">set</span><span class="o">-</span><span class="n">selections</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">testrfs_arm</span><span class="o">/</span><span class="n">chroot</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">elbe</span><span class="o">/</span><span class="n">preseed</span><span class="o">.</span><span class="n">txt</span><span class="o">+</span>
 <span class="n">total</span> <span class="mi">64</span><span class="n">K</span>
@@ -320,7 +320,7 @@ schema. (Not recommended.)</td></tr>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v2.3
+        v: releases/v2.4
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -329,6 +329,7 @@ schema. (Not recommended.)</td></tr>
             <dd><a href="devel_elbe-1.0/elbe-chroot.html">devel/elbe-1.0</a></dd>
             <dd><a href="devel_elbe-2.0/elbe-chroot.html">devel/elbe-2.0</a></dd>
             <dd><a href="devel_elbe-3.0/elbe-chroot.html">devel/elbe-3.0</a></dd>
+            <dd><a href="devel_manut_pylint/elbe-chroot.html">devel/manut/pylint</a></dd>
             <dd><a href="master/elbe-chroot.html">master</a></dd>
             <dd><a href="releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="releases_v1.0/elbe-chroot.html">releases/v1.0</a></dd>
@@ -343,9 +344,17 @@ schema. (Not recommended.)</td></tr>
             <dd><a href="releases_v2.1/elbe-chroot.html">releases/v2.1</a></dd>
             <dd><a href="releases_v2.2/elbe-chroot.html">releases/v2.2</a></dd>
             <dd><a href="releases_v2.3/elbe-chroot.html">releases/v2.3</a></dd>
+            <dd><a href="releases_v2.4/elbe-chroot.html">releases/v2.4</a></dd>
             <dd><a href="releases_v2.9.1/elbe-chroot.html">releases/v2.9.1</a></dd>
             <dd><a href="releases_v2.9.10/elbe-chroot.html">releases/v2.9.10</a></dd>
             <dd><a href="releases_v2.9.11/elbe-chroot.html">releases/v2.9.11</a></dd>
+            <dd><a href="releases_v2.9.12/elbe-chroot.html">releases/v2.9.12</a></dd>
+            <dd><a href="releases_v2.9.13/elbe-chroot.html">releases/v2.9.13</a></dd>
+            <dd><a href="releases_v2.9.14/elbe-chroot.html">releases/v2.9.14</a></dd>
+            <dd><a href="releases_v2.9.15/elbe-chroot.html">releases/v2.9.15</a></dd>
+            <dd><a href="releases_v2.9.16/elbe-chroot.html">releases/v2.9.16</a></dd>
+            <dd><a href="releases_v2.9.17/elbe-chroot.html">releases/v2.9.17</a></dd>
+            <dd><a href="releases_v2.9.18/elbe-chroot.html">releases/v2.9.18</a></dd>
             <dd><a href="releases_v2.9.2/elbe-chroot.html">releases/v2.9.2</a></dd>
             <dd><a href="releases_v2.9.3/elbe-chroot.html">releases/v2.9.3</a></dd>
             <dd><a href="releases_v2.9.4/elbe-chroot.html">releases/v2.9.4</a></dd>
@@ -364,7 +373,7 @@ schema. (Not recommended.)</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.3',
+            VERSION:'2.4',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -385,9 +394,7 @@ schema. (Not recommended.)</td></tr>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

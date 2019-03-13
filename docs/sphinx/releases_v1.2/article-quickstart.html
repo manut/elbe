@@ -217,7 +217,7 @@ root-filesystem from the XML file and to simple modifications.</p>
 <ol class="arabic simple">
 <li>install Debian 8 (Jessie) on your Host</li>
 <li>install ELBE on Host Linux</li>
-<li>generate the <code class="docutils literal notranslate"><span class="pre">initvm</span></code> running the buildenvironment</li>
+<li>generate the <code class="docutils literal"><span class="pre">initvm</span></code> running the buildenvironment</li>
 <li>build the root-filesystem inside the initvm</li>
 </ol>
 <p>Steps 1 and 2 need only be performed once.</p>
@@ -236,7 +236,7 @@ file, which needs to be different from the default Debian Install.</p>
 <p>This guide also explains how the archive can be extracted from the XML
 file, and vice versa.</p>
 <p>ELBE allows to manipulate the generated root-filesystem through a set of
-<code class="docutils literal notranslate"><span class="pre">&lt;finetuning&gt;</span></code> rules. We also describe, how these can be used to add a
+<code class="docutils literal"><span class="pre">&lt;finetuning&gt;</span></code> rules. We also describe, how these can be used to add a
 user, change directory permissions, and remove files from the
 root-filesystem.</p>
 </div>
@@ -249,16 +249,16 @@ on a Debian 8 (Jessie) system.</p>
 <div class="section" id="binary-debian-packages">
 <h3>Binary Debian packages<a class="headerlink" href="#binary-debian-packages" title="Permalink to this headline">¶</a></h3>
 <p>The latest packages for elbe reside in the following repository</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span>
 </pre></div>
 </div>
-<p>Create the file <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/elbe.list</span></code> with the following
+<p>Create the file <code class="docutils literal"><span class="pre">/etc/apt/sources.list.d/elbe.list</span></code> with the following
 contents:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">jessie</span> <span class="n">main</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">jessie</span> <span class="n">main</span>
 </pre></div>
 </div>
 <p>Then run (as root):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ apt-get update
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ apt-get update
 $ apt-get install elbe
 </pre></div>
 </div>
@@ -267,7 +267,7 @@ $ apt-get install elbe
 <h3>Git Version<a class="headerlink" href="#git-version" title="Permalink to this headline">¶</a></h3>
 <p>If you can not use Debian Jessie, you can also checkout the current ELBE
 source-code via git from github.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/Linutronix/elbe.git
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/Linutronix/elbe.git
 Cloning into &#39;elbe&#39;...
 remote: Counting objects: 5435, done.
 remote: Compressing objects: 100% (8/8), done.
@@ -283,7 +283,7 @@ examples INSTALL    Makefile README  setup.py    test  THANKS TODO
 </div>
 <p>ELBE can run without being installed from the git checkout. Just note
 that file paths are different under this situation.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="o">-&gt;</span> <span class="o">./</span><span class="n">elbe</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="o">-&gt;</span> <span class="o">./</span><span class="n">elbe</span>
 <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span> <span class="o">-&gt;</span> <span class="n">examples</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -296,7 +296,7 @@ generating root-filesystems.</p>
 <p>This virtual-machine is referred to as “initvm”. You will want your
 initvm to be the same architecture as your workstation. This allows
 using hardware accelerated virtualization implemented by kvm.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elbe initvm create --directory=initvm
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe initvm create --directory=initvm
 /home/torbenh/elbe/elbe/initvm
 gpg: keyring `/tmp/tmpPfPXt4/secring.gpg&#39; created
 gpg: keyring `/tmp/tmpPfPXt4/etc/apt/trusted.gpg.d/linutronix-elbe.gpg&#39; created
@@ -337,7 +337,7 @@ directory.</p>
 <p>Submitting an XML file triggers an image build inside the initvm. Once
 the initvm has been created and is running, you can submit XML files
 using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elbe initvm submit --directory=initvm /usr/share/doc/elbe-doc/examples/rescue.xml
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe initvm submit --directory=initvm /usr/share/doc/elbe-doc/examples/rescue.xml
 Build started, waiting till it finishes
 project still busy, waiting
 project still busy, waiting
@@ -385,12 +385,12 @@ tools on your host to communicate with the initvm.</p>
 <p>The ELBE XML file contains an archive which is extracted into the
 root-filesystem during the image generation phase.</p>
 <p>It is acessed with the following commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elbe get_archive fun.xml archive.tar.bz2
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe get_archive fun.xml archive.tar.bz2
 </pre></div>
 </div>
 <p>It is a normal tar.bz2 which can be manipulated and reinjected into the
 XML:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir arch
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir arch
 $ tar xvfj archive.tar.bz2 -C arch
 $ echo hello &gt; arch/hello
 $ elbe chg_archive fun.xml arch
@@ -399,20 +399,20 @@ $ elbe chg_archive fun.xml arch
 </div>
 <div class="section" id="adding-packages-to-the-list-of-packages-to-install">
 <h3>Adding packages to the “list of packages to install”<a class="headerlink" href="#adding-packages-to-the-list-of-packages-to-install" title="Permalink to this headline">¶</a></h3>
-<p>The XML file contains a <em>list of packages to install</em> <code class="docutils literal notranslate"><span class="pre">&lt;pkg-list&gt;</span></code> in
-the <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> XML node. Inserting a line containing</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">util</span><span class="o">-</span><span class="n">linux</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+<p>The XML file contains a <em>list of packages to install</em> <code class="docutils literal"><span class="pre">&lt;pkg-list&gt;</span></code> in
+the <code class="docutils literal"><span class="pre">&lt;target&gt;</span></code> XML node. Inserting a line containing</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">util</span><span class="o">-</span><span class="n">linux</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>will add the <code class="docutils literal notranslate"><span class="pre">util-linux</span></code> package to the target-rfs.</p>
+<p>will add the <code class="docutils literal"><span class="pre">util-linux</span></code> package to the target-rfs.</p>
 </div>
 <div class="section" id="using-the-finetuning-rules">
 <h3>Using the finetuning rules<a class="headerlink" href="#using-the-finetuning-rules" title="Permalink to this headline">¶</a></h3>
 <p>An ELBE XML file can contain a set of finetuning rules. Finetuning is
 used to customize the target-rfs, e.g. remove man-pages. Here is an
 example finetuning from
-<code class="docutils literal notranslate"><span class="pre">/usr/share/doc/elbe-doc/examples/elbe-desktop.xml</span></code>:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+<code class="docutils literal"><span class="pre">/usr/share/doc/elbe-doc/examples/elbe-desktop.xml</span></code>:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/*.</span><span class="n">deb</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">adduser</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;elbe&quot;</span> <span class="n">shell</span><span class="o">=</span><span class="s2">&quot;/bin/bash&quot;</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">finetuning</span><span class="o">&gt;</span>
@@ -420,31 +420,31 @@ example finetuning from
 </div>
 <div class="section" id="rm">
 <h4>rm<a class="headerlink" href="#rm" title="Permalink to this headline">¶</a></h4>
-<p>The <code class="docutils literal notranslate"><span class="pre">&lt;rm&gt;</span></code> node removes files from the target-rfs.</p>
+<p>The <code class="docutils literal"><span class="pre">&lt;rm&gt;</span></code> node removes files from the target-rfs.</p>
 </div>
 <div class="section" id="adduser">
 <h4>adduser<a class="headerlink" href="#adduser" title="Permalink to this headline">¶</a></h4>
 <p>The adduser node allows to create a user. The following example creates
-the user <code class="docutils literal notranslate"><span class="pre">elbe</span></code> with the password <code class="docutils literal notranslate"><span class="pre">foo</span></code>.</p>
+the user <code class="docutils literal"><span class="pre">elbe</span></code> with the password <code class="docutils literal"><span class="pre">foo</span></code>.</p>
 <p>It is also possible to specify groups the new user should be part of:</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">adduser</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="n">shell</span><span class="o">=</span><span class="s2">&quot;/bin/bash&quot;</span> <span class="n">groups</span><span class="o">=</span><span class="s2">&quot;audio,video,dialout&quot;</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">adduser</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="n">shell</span><span class="o">=</span><span class="s2">&quot;/bin/bash&quot;</span> <span class="n">groups</span><span class="o">=</span><span class="s2">&quot;audio,video,dialout&quot;</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="changing-ownership-of-directories-or-files">
 <h3>Changing ownership of directories or files<a class="headerlink" href="#changing-ownership-of-directories-or-files" title="Permalink to this headline">¶</a></h3>
-<p>There is currently no special finetuning node for <code class="docutils literal notranslate"><span class="pre">chmod</span></code> and
-<code class="docutils literal notranslate"><span class="pre">chown</span></code>. These commands needs to be specified via the command tag,
+<p>There is currently no special finetuning node for <code class="docutils literal"><span class="pre">chmod</span></code> and
+<code class="docutils literal"><span class="pre">chown</span></code>. These commands needs to be specified via the command tag,
 which allows running any command that is available in the target-rfs.</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">chown</span> <span class="n">elbe</span><span class="p">:</span><span class="n">elbe</span> <span class="o">/</span><span class="n">mnt</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">chown</span> <span class="n">elbe</span><span class="p">:</span><span class="n">elbe</span> <span class="o">/</span><span class="n">mnt</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">chmod</span> <span class="mi">777</span> <span class="o">/</span><span class="n">mnt</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="section" id="further-example">
 <h4>Further Example<a class="headerlink" href="#further-example" title="Permalink to this headline">¶</a></h4>
 <p>A more complete example can be found in the ELBE overview document that
-is installed at <code class="docutils literal notranslate"><span class="pre">/usr/share/doc/elbe-doc/elbeoverview-en.html</span></code></p>
+is installed at <code class="docutils literal"><span class="pre">/usr/share/doc/elbe-doc/elbeoverview-en.html</span></code></p>
 </div>
 </div>
 </div>
@@ -497,6 +497,7 @@ is installed at <code class="docutils literal notranslate"><span class="pre">/us
             <dd><a href="../devel_elbe-1.0/article-quickstart.html">devel/elbe-1.0</a></dd>
             <dd><a href="../devel_elbe-2.0/article-quickstart.html">devel/elbe-2.0</a></dd>
             <dd><a href="../devel_elbe-3.0/article-quickstart.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../devel_manut_pylint/article-quickstart.html">devel/manut/pylint</a></dd>
             <dd><a href="../master/article-quickstart.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/article-quickstart.html">releases/v1.0</a></dd>
@@ -511,9 +512,17 @@ is installed at <code class="docutils literal notranslate"><span class="pre">/us
             <dd><a href="../releases_v2.1/article-quickstart.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/article-quickstart.html">releases/v2.2</a></dd>
             <dd><a href="../releases_v2.3/article-quickstart.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/article-quickstart.html">releases/v2.4</a></dd>
             <dd><a href="../releases_v2.9.1/article-quickstart.html">releases/v2.9.1</a></dd>
             <dd><a href="../releases_v2.9.10/article-quickstart.html">releases/v2.9.10</a></dd>
             <dd><a href="../releases_v2.9.11/article-quickstart.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/article-quickstart.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/article-quickstart.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/article-quickstart.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/article-quickstart.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/article-quickstart.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/article-quickstart.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/article-quickstart.html">releases/v2.9.18</a></dd>
             <dd><a href="../releases_v2.9.2/article-quickstart.html">releases/v2.9.2</a></dd>
             <dd><a href="../releases_v2.9.3/article-quickstart.html">releases/v2.9.3</a></dd>
             <dd><a href="../releases_v2.9.4/article-quickstart.html">releases/v2.9.4</a></dd>
@@ -553,9 +562,7 @@ is installed at <code class="docutils literal notranslate"><span class="pre">/us
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

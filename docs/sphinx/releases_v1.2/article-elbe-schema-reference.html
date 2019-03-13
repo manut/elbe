@@ -426,7 +426,7 @@ build environemt and the definition of a elbe target rootfilesystem.</p>
 <p>includes all subelements to define the elbe project</p>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">RootFileSystemType</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">RootFileSystemType</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">initvm</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">initvm</span> <span class="o">&lt;/</span><span class="n">initvm</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">project</span> <span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">target</span> <span class="o">&lt;/</span><span class="n">target</span><span class="o">&gt;</span>
@@ -509,7 +509,7 @@ file</p>
 <p>e.g. “<a class="reference external" href="http://myhost/debian">http://myhost/debian</a> /” or “<a class="reference external" href="http://debian.org/debian">http://debian.org/debian</a> main”</p>
 <div class="section" id="id1">
 <h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
 </pre></div>
 </div>
 </div>
@@ -519,7 +519,7 @@ file</p>
 <p>links to one additional debian mirror</p>
 <div class="section" id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">binary</span><span class="o">-</span><span class="n">url</span> <span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
@@ -546,7 +546,7 @@ file</p>
 <p>links to additional debian mirrors</p>
 <div class="section" id="id4">
 <h3>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">url</span> <span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
 </pre></div>
@@ -565,7 +565,7 @@ file</p>
 <p>specify main and additional debian mirrors</p>
 <div class="section" id="id6">
 <h3>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">mirror</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">mirror</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">primary_host</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">primary_host</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">primary_path</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">primary_path</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">primary_proto</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">primary_proto</span><span class="o">&gt;</span>
@@ -601,7 +601,7 @@ file</p>
 <p>describes settings that apply to the creation of the initvm</p>
 <div class="section" id="id8">
 <h3>Example<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">initvm</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">initvm</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">buildtype</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">buildtype</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mirror</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">mirror</span> <span class="o">&lt;/</span><span class="n">mirror</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">noauth</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">noauth</span><span class="o">&gt;</span>
@@ -650,7 +650,7 @@ machine</dd>
 rootfilesystem and include the definition of the build environment</p>
 <div class="section" id="id10">
 <h3>Example<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">description</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">description</span><span class="o">&gt;</span>
@@ -703,7 +703,7 @@ rootfilesystem</dd>
 <p>describes a global pinning of debian packages</p>
 <div class="section" id="id12">
 <h3>Example<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
 </pre></div>
 </div>
 </div>
@@ -713,7 +713,7 @@ rootfilesystem</dd>
 <p>content is directly written to /etc/apt/preferences.</p>
 <div class="section" id="id13">
 <h3>Example<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
 </pre></div>
 </div>
 </div>
@@ -723,7 +723,7 @@ rootfilesystem</dd>
 <p>definition of the build environment</p>
 <div class="section" id="id14">
 <h3>Example<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">buildimage</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">buildimage</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">arch</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">arch</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mem</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">memory</span> <span class="o">&lt;/</span><span class="n">mem</span><span class="o">&gt;</span>
@@ -798,7 +798,7 @@ environment; not into the target root filesystem.</dd>
 <p>describes a virtual network interface</p>
 <div class="section" id="id18">
 <h3>Example<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">NIC</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">NIC</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">model</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">model</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">MAC</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">MAC</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">NIC</span><span class="o">&gt;</span>
@@ -845,7 +845,7 @@ environment; not into the target root filesystem.</dd>
 <p>forward a network port from the build environment to the host machine</p>
 <div class="section" id="id22">
 <h3>Example<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">forward</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">forward</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">proto</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">fw_proto</span> <span class="o">&lt;/</span><span class="n">proto</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">buildenv</span><span class="o">&gt;</span> <span class="n">integer</span> <span class="o">&lt;/</span><span class="n">buildenv</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">host</span><span class="o">&gt;</span> <span class="n">integer</span> <span class="o">&lt;/</span><span class="n">host</span><span class="o">&gt;</span>
@@ -870,7 +870,7 @@ environment; not into the target root filesystem.</dd>
 <p>forward network ports from the build environment to the host machine</p>
 <div class="section" id="id24">
 <h3>Example<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">portforwarding</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">portforwarding</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">forward</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">forward</span> <span class="o">&lt;/</span><span class="n">forward</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">portforwarding</span><span class="o">&gt;</span>
 </pre></div>
@@ -889,7 +889,7 @@ environment; not into the target root filesystem.</dd>
 <p>configuration of the target rootfilesystem</p>
 <div class="section" id="id26">
 <h3>Example<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">domain</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">passwd</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">passwd</span><span class="o">&gt;</span>
@@ -931,7 +931,7 @@ packages</dd>
 <dd>use reverse dependencies of the given debian packages to determine
 the rootfilesystem content; this is useful to get rid of dpkg/apt.</dd>
 <dt>setsel string <strong>optional</strong></dt>
-<dd>Elbe uses <code class="docutils literal notranslate"><span class="pre">dpkg</span> <span class="pre">--set-selections</span></code> to install packages in the
+<dd>Elbe uses <code class="docutils literal"><span class="pre">dpkg</span> <span class="pre">--set-selections</span></code> to install packages in the
 target. The rootfs still needs dpkg, and all dependencies need to be
 specified in the pkg-list. The target will contain all postinst
 generated scripts.</dd>
@@ -974,7 +974,7 @@ generated scripts.</dd>
 <p>describes a ubi volume</p>
 <div class="section" id="id30">
 <h3>Example<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ubi</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ubi</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">ubi_type</span> <span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="n">integer</span> <span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
@@ -1012,7 +1012,7 @@ volume.</dd>
 <p>container for all ubi volumes of a mtd device</p>
 <div class="section" id="id32">
 <h3>Example<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ubivg</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ubivg</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">miniosize</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">miniosize</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">maxlogicaleraseblockcount</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">maxlogicaleraseblockcount</span><span class="o">&gt;</span>
@@ -1047,7 +1047,7 @@ image file</dd>
 <p>describes a mtd device</p>
 <div class="section" id="id34">
 <h3>Example<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">mtd</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">mtd</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">nr</span><span class="o">&gt;</span> <span class="n">integer</span> <span class="o">&lt;/</span><span class="n">nr</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">part_size</span> <span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
@@ -1081,7 +1081,7 @@ to define them</dd>
 <p>describes a harddisk</p>
 <div class="section" id="id36">
 <h3>Example<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">gpthd</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">gpthd</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">part_size</span> <span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">grub</span><span class="o">-</span><span class="n">install</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">grub</span><span class="o">-</span><span class="n">install</span><span class="o">&gt;</span>
@@ -1111,7 +1111,7 @@ the image file</dd>
 <p>describes a harddisk</p>
 <div class="section" id="id38">
 <h3>Example<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">msdoshd</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">msdoshd</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">part_size</span> <span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">grub</span><span class="o">-</span><span class="n">install</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">grub</span><span class="o">-</span><span class="n">install</span><span class="o">&gt;</span>
@@ -1141,7 +1141,7 @@ the image file</dd>
 <p>container for all storage devices of the target</p>
 <div class="section" id="id40">
 <h3>Example<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">images</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">images</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mtd</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">mtd</span> <span class="o">&lt;/</span><span class="n">mtd</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">msdoshd</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">msdoshd</span> <span class="o">&lt;/</span><span class="n">msdoshd</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">gpthd</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">gpthd</span> <span class="o">&lt;/</span><span class="n">gpthd</span><span class="o">&gt;</span>
@@ -1169,7 +1169,7 @@ the image file</dd>
 <p>description of a linux filesystem</p>
 <div class="section" id="id42">
 <h3>Example<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">fs_type</span> <span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mkfs</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">mkfs</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">tune2fs</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">tune2fs</span><span class="o">&gt;</span>
@@ -1197,7 +1197,7 @@ the image file</dd>
 <p>mount storage by the label of the partition or volume</p>
 <div class="section" id="id44">
 <h3>Example<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">bylabel</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">bylabel</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">fs</span> <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
@@ -1225,7 +1225,7 @@ the image file</dd>
 <p>mount virtual filesystems or other storage devices device-node</p>
 <div class="section" id="id46">
 <h3>Example<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">bydev</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">bydev</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">fs</span> <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
@@ -1254,7 +1254,7 @@ mounted</dd>
 <p>container for mounts</p>
 <div class="section" id="id48">
 <h3>Example<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fstab</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fstab</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">bylabel</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">bylabel</span> <span class="o">&lt;/</span><span class="n">bylabel</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">bydev</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">bydev</span> <span class="o">&lt;/</span><span class="n">bydev</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">fstab</span><span class="o">&gt;</span>
@@ -1277,7 +1277,7 @@ filesystem like debugfs or tmpfs</dd>
 <p>list of packages, each contains the hole rootfilesystem</p>
 <div class="section" id="id50">
 <h3>Example<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">tar</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">tar</span> <span class="o">&lt;/</span><span class="n">tar</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">cpio</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">cpio</span> <span class="o">&lt;/</span><span class="n">cpio</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">squashfs</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">squashfs</span> <span class="o">&lt;/</span><span class="n">squashfs</span><span class="o">&gt;</span>
@@ -1302,7 +1302,7 @@ filesystem like debugfs or tmpfs</dd>
 <p>describes a tar package</p>
 <div class="section" id="id52">
 <h3>Example<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">tar</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">tar</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">tar</span><span class="o">&gt;</span>
@@ -1324,7 +1324,7 @@ filesystem like debugfs or tmpfs</dd>
 <p>describes a cpio package</p>
 <div class="section" id="id54">
 <h3>Example<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">cpio</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">cpio</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">cpio</span><span class="o">&gt;</span>
 </pre></div>
@@ -1343,7 +1343,7 @@ filesystem like debugfs or tmpfs</dd>
 <p>describes a squashfs image</p>
 <div class="section" id="id56">
 <h3>Example<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">squashfs</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">squashfs</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">squashfs</span><span class="o">&gt;</span>
 </pre></div>
@@ -1362,7 +1362,7 @@ filesystem like debugfs or tmpfs</dd>
 <p>describes a partition of a harddisk</p>
 <div class="section" id="id58">
 <h3>Example<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">partition</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">partition</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">part_size</span> <span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">bootable</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">bootable</span><span class="o">&gt;</span>
@@ -1543,7 +1543,7 @@ k</td>
 root of the target filesystem after the target filesystem was created</p>
 <div class="section" id="id68">
 <h3>Example<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">finetuning</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -1561,7 +1561,7 @@ the user is member of. The value of the tag describes the login name for
 the account.</p>
 <div class="section" id="id70">
 <h3>Example<a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
 </pre></div>
 </div>
 </div>
@@ -1571,7 +1571,7 @@ the account.</p>
 <p>describes a copy or move of an element in the rootfilesystem</p>
 <div class="section" id="id71">
 <h3>Example<a class="headerlink" href="#id71" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
 </pre></div>
 </div>
 </div>
@@ -1581,7 +1581,7 @@ the account.</p>
 <p>describes a mknod operaition in finetuning</p>
 <div class="section" id="id72">
 <h3>Example<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
 </pre></div>
 </div>
 </div>
@@ -1591,7 +1591,7 @@ the account.</p>
 <p>describes a git location of a debian source package</p>
 <div class="section" id="id73">
 <h3>Example<a class="headerlink" href="#id73" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">git_src</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">git_src</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">tag</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">tag</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">git_src</span><span class="o">&gt;</span>
@@ -1613,7 +1613,7 @@ the account.</p>
 <p>describes a svn location of a debian source package</p>
 <div class="section" id="id75">
 <h3>Example<a class="headerlink" href="#id75" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">svn_src</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">svn_src</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span> <span class="n">string</span> <span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">rev</span><span class="o">&gt;</span> <span class="n">integer</span> <span class="o">&lt;/</span><span class="n">rev</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">svn_src</span><span class="o">&gt;</span>
@@ -1635,7 +1635,7 @@ the account.</p>
 <p>describes a debian binary package</p>
 <div class="section" id="id77">
 <h3>Example<a class="headerlink" href="#id77" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
 </pre></div>
 </div>
 </div>
@@ -1645,7 +1645,7 @@ the account.</p>
 <p>container of debian packages</p>
 <div class="section" id="id78">
 <h3>Example<a class="headerlink" href="#id78" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">git</span><span class="o">-</span><span class="n">src</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">git_src</span> <span class="o">&lt;/</span><span class="n">git</span><span class="o">-</span><span class="n">src</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">svn</span><span class="o">-</span><span class="n">src</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">svn_src</span> <span class="o">&lt;/</span><span class="n">svn</span><span class="o">-</span><span class="n">src</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">pkg</span> <span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
@@ -1680,7 +1680,7 @@ the given mirrors into the target rootfilesystem.</dd>
 <p>List of packages to be validated against the installed list.</p>
 <div class="section" id="id80">
 <h3>Example<a class="headerlink" href="#id80" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fullpkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fullpkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">pkg</span> <span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">fullpkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
 </pre></div>
@@ -1700,7 +1700,7 @@ installed.</dd>
 <p>describes a preseeding entry</p>
 <div class="section" id="id82">
 <h3>Example<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">sequence</span>
 </pre></div>
 </div>
 </div>
@@ -1710,7 +1710,7 @@ installed.</dd>
 <p>container of config entries</p>
 <div class="section" id="id83">
 <h3>Example<a class="headerlink" href="#id83" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">preseed</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">preseed</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">conf</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">conf</span> <span class="o">&lt;/</span><span class="n">conf</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">preseed</span><span class="o">&gt;</span>
 </pre></div>
@@ -1773,6 +1773,7 @@ installed.</dd>
             <dd><a href="../devel_elbe-1.0/article-elbe-schema-reference.html">devel/elbe-1.0</a></dd>
             <dd><a href="../devel_elbe-2.0/article-elbe-schema-reference.html">devel/elbe-2.0</a></dd>
             <dd><a href="../devel_elbe-3.0/article-elbe-schema-reference.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../devel_manut_pylint/article-elbe-schema-reference.html">devel/manut/pylint</a></dd>
             <dd><a href="../master/article-elbe-schema-reference.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/article-elbe-schema-reference.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/article-elbe-schema-reference.html">releases/v1.0</a></dd>
@@ -1787,9 +1788,17 @@ installed.</dd>
             <dd><a href="../releases_v2.1/article-elbe-schema-reference.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/article-elbe-schema-reference.html">releases/v2.2</a></dd>
             <dd><a href="../releases_v2.3/article-elbe-schema-reference.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/article-elbe-schema-reference.html">releases/v2.4</a></dd>
             <dd><a href="../releases_v2.9.1/article-elbe-schema-reference.html">releases/v2.9.1</a></dd>
             <dd><a href="../releases_v2.9.10/article-elbe-schema-reference.html">releases/v2.9.10</a></dd>
             <dd><a href="../releases_v2.9.11/article-elbe-schema-reference.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/article-elbe-schema-reference.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/article-elbe-schema-reference.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/article-elbe-schema-reference.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/article-elbe-schema-reference.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/article-elbe-schema-reference.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/article-elbe-schema-reference.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/article-elbe-schema-reference.html">releases/v2.9.18</a></dd>
             <dd><a href="../releases_v2.9.2/article-elbe-schema-reference.html">releases/v2.9.2</a></dd>
             <dd><a href="../releases_v2.9.3/article-elbe-schema-reference.html">releases/v2.9.3</a></dd>
             <dd><a href="../releases_v2.9.4/article-elbe-schema-reference.html">releases/v2.9.4</a></dd>
@@ -1829,9 +1838,7 @@ installed.</dd>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 
