@@ -15,9 +15,11 @@ SYNOPSIS
         elbe control [options] list_projects
         elbe control [options] create_project
         elbe control [options] build_sysroot <build-dir>
+        elbe control [options] build_cdroms <build-dir>
         elbe control [options] set_pdebuild <project-dir> <pdebuild file>
         elbe control [options] get_files <build-dir>
         elbe control [options] build_chroot_tarball <build-dir>
+        elbe control [options] build_sdk <build-dir>
         elbe control [options] set_orig <build-dir>
         elbe control [options] set_cdrom <build-dir> <iso-img>
         elbe control [options] reset_project <build-dir>
@@ -31,6 +33,7 @@ SYNOPSIS
         elbe control [options] get_file <build-dir> <filename>
         elbe control [options] dump_file <build-dir> <filename>
         elbe control [options] shutdown_initvm
+        elbe control [options] install_elbe_version <version>
 
 DESCRIPTION
 ===========
@@ -78,6 +81,9 @@ OPTIONS
 --pbuilder-only
     Only list/download pbuilder files.
 
+--profile
+    Specify pbuilder profile to build.
+
 COMMANDS
 ========
 
@@ -95,6 +101,11 @@ COMMANDS
 
 The sysroot can be used with a toolchain for cross-compiles.
 
+*build\_cdroms* <build-dir>
+    Build ISO images containing the Debian binary or source packages
+    used by the given build-dir. Either --build-bin or --build-sources
+    or both needs to be specified.
+
 *set\_pdebuild* <build-dir> <pdebuild file>
 
 Build a Debian Project using a pbuilder.
@@ -110,10 +121,16 @@ a ./debian folder with a valid debianization.
     Get list of files in the <build-dir>.
 
     If the --output option is specified, the files are downloaded to the
-    directory specified in the option.
+    directory specified in the option. If the --matches option is
+    specified only files matching the wildcard expression are
+    shown/downloaded. Note that you have to put the wildcard expression
+    in quotation marks.
 
 *build\_chroot\_tarball* <build-dir>
     Creates a tarball of the chroot environment in <build\_dir>.
+
+*build\_sdk* <build-dir>
+    Creates a yocto-style SDK.
 
 *set\_orig* <build-dir> <orig-file>
     Uploads a quilt orig-file to the initvm.
@@ -137,6 +154,11 @@ a ./debian folder with a valid debianization.
 
 *list\_users*
     List configured users. Only admins may use this command.
+
+*add\_user* <name> <fullname> <password> <email>
+    Create a user inside the initvm. The user is not an Admin user. When
+    the user already exists, nothing is done. Only admins may use this
+    command.
 
 *wait\_busy* <build-dir>
     Wait, while <build-dir> is busy.
@@ -166,6 +188,11 @@ a ./debian folder with a valid debianization.
 
 *shutdown\_initvm*
     Make the initvm shutdown.
+
+*install\_elbe\_version* [version]
+    Make the initvm install a specific elbe version. Defaults to the
+    version of the elbe executable. This requires, that the initvm has
+    package sources configured properly.
 
 Examples
 ========

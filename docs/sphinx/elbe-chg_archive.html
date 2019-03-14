@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-chg_archive &mdash; ELBE 2.4 documentation</title>
+  <title>elbe-chg_archive &mdash; ELBE 3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                2.4
+                3
               </div>
             
           
@@ -94,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">elbe-chg_archive</a><ul>
@@ -111,6 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
@@ -121,6 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
@@ -304,16 +307,19 @@ $ elbe chg_archive mybsp.xml my-rfs-overlay
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v2.4
+        v: releases/v3
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="v3/elbe-chg_archive.html">v3</a></dd>
+        </dl>
         <dl>
             <dt>Branches</dt>
             <dd><a href="devel_elbe-1.0/elbe-chg_archive.html">devel/elbe-1.0</a></dd>
             <dd><a href="devel_elbe-2.0/elbe-chg_archive.html">devel/elbe-2.0</a></dd>
             <dd><a href="devel_elbe-3.0/elbe-chg_archive.html">devel/elbe-3.0</a></dd>
-            <dd><a href="devel_manut_pylint/elbe-chg_archive.html">devel/manut/pylint</a></dd>
             <dd><a href="master/elbe-chg_archive.html">master</a></dd>
             <dd><a href="releases_v0.5.8/elbe-chg_archive.html">releases/v0.5.8</a></dd>
             <dd><a href="releases_v1.0/elbe-chg_archive.html">releases/v1.0</a></dd>
@@ -347,6 +353,7 @@ $ elbe chg_archive mybsp.xml my-rfs-overlay
             <dd><a href="releases_v2.9.7/elbe-chg_archive.html">releases/v2.9.7</a></dd>
             <dd><a href="releases_v2.9.8/elbe-chg_archive.html">releases/v2.9.8</a></dd>
             <dd><a href="releases_v2.9.9/elbe-chg_archive.html">releases/v2.9.9</a></dd>
+            <dd><a href="releases_v3/elbe-chg_archive.html">releases/v3</a></dd>
         </dl>
     </div>
 </div>
@@ -357,7 +364,7 @@ $ elbe chg_archive mybsp.xml my-rfs-overlay
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.4',
+            VERSION:'3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

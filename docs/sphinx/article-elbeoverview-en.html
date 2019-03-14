@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE Overview &mdash; ELBE 2.4 documentation</title>
+  <title>ELBE Overview &mdash; ELBE 3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                2.4
+                3
               </div>
             
           
@@ -126,6 +126,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
@@ -135,6 +136,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
@@ -145,6 +147,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
@@ -326,6 +329,8 @@ script and rely on the database server to be already running.</p>
 </div>
 <div class="section" id="create-initvm-and-build-a-first-xml-file-from-the-examples">
 <h2>Create initvm and build a first xml file from the examples<a class="headerlink" href="#create-initvm-and-build-a-first-xml-file-from-the-examples" title="Permalink to this headline">¶</a></h2>
+<p>In order to use elbe, a user needs to be member of the <code class="docutils literal"><span class="pre">libvirt</span></code>
+system group.</p>
 <p>To create an initvm and make that initvm build a first Rootfilesystem,
 use the following command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">wheezy</span><span class="o">.</span><span class="n">xml</span>
@@ -373,9 +378,6 @@ environment and it will be saved as <code class="docutils literal"><span class="
                 <span class="o">&lt;/</span><span class="n">mirror</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">noauth</span> <span class="o">/&gt;</span>
                 <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span><span class="n">wheezy</span><span class="o">&lt;/</span><span class="n">suite</span><span class="o">&gt;</span>
-                <span class="o">&lt;</span><span class="n">buildimage</span><span class="o">&gt;</span>
-                        <span class="o">&lt;</span><span class="n">kinitrd</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">-</span><span class="n">bootstrap</span><span class="o">&lt;/</span><span class="n">kinitrd</span><span class="o">&gt;</span>
-                <span class="o">&lt;/</span><span class="n">buildimage</span><span class="o">&gt;</span>
         <span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span><span class="n">myARM</span><span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
@@ -690,7 +692,6 @@ debian-installer is executed and custom packages can be build.</p>
                 <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">20</span><span class="n">G</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">mem</span><span class="o">&gt;</span><span class="mi">256</span><span class="o">&lt;/</span><span class="n">mem</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">interpreter</span><span class="o">&gt;</span><span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">arm</span><span class="o">&lt;/</span><span class="n">interpreter</span><span class="o">&gt;</span>
-                <span class="o">&lt;</span><span class="n">kinitrd</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">-</span><span class="n">bootstrap</span><span class="o">&lt;/</span><span class="n">kinitrd</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">console</span><span class="o">&gt;</span><span class="n">ttyAMA0</span><span class="p">,</span><span class="mi">115200</span><span class="n">n1</span><span class="o">&lt;/</span><span class="n">console</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">machine</span><span class="o">&gt;</span><span class="n">versatilepb</span><span class="o">&lt;/</span><span class="n">machine</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">NIC</span><span class="o">&gt;</span>
@@ -718,11 +719,6 @@ debian-installer is executed and custom packages can be build.</p>
 machine. (optional)</li>
 <li>The <em>interpreter</em> is either <em>qemu-system-&lt;arch&gt;</em> or <em>qemu-kvm</em>. Usage
 of kvm is usually only possible, when the target is <em>x86</em>. (optional)</li>
-<li>The name of the elbe-bootstrap package. All package sources mentioned
-in the XML file are scanned for this package. It provides the
-debian-installer kernel and initrd. This package is not hosted on
-official Debian mirrors. So it makes sense additional add the
-&lt;noauth/&gt; tag to the &lt;mirror&gt; section.</li>
 <li>The <em>console</em> line needs special attention because it is different on
 different emulation targets. (optional)</li>
 <li>The <em>machine</em> tag contains the <em>-machine</em> parameter, that is provided
@@ -977,11 +973,9 @@ paragraph is kept for reference.</p>
 <p>The <em>elbe init</em> command generates a project directory, which contains a
 hard disk image for a virtual build machine and a <em>Makefile</em> to install
 the build VM and to work with it.</p>
-<p>During this process, <em>elbe init</em> will search the package repos mentioned
-in the mirror section of the XML file for the elbe-bootstrap package,
-which includes the debian-installer. You can use the packages provided
-by Linutronix from <a class="reference external" href="http://debian.linutronix.de/elbe">http://debian.linutronix.de/elbe</a> by adding this url
-to the mirror section.</p>
+<p>During this process, <em>elbe init</em> will download a linux kernel and
+initrd.gz from the debian mirror. In case of a local mirror, be sure,
+that <code class="docutils literal"><span class="pre">dists/jessie/main/installer-amd64/</span></code> is also mirrored.</p>
 <p>After <em>elbe init</em> has generated the project directory, change to the
 project directory and run <em>make</em>. This will start the installation of
 the build VM.</p>
@@ -1026,16 +1020,19 @@ the build VM.</p>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v2.4
+        v: releases/v3
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="v3/article-elbeoverview-en.html">v3</a></dd>
+        </dl>
         <dl>
             <dt>Branches</dt>
             <dd><a href="devel_elbe-1.0/article-elbeoverview-en.html">devel/elbe-1.0</a></dd>
             <dd><a href="devel_elbe-2.0/article-elbeoverview-en.html">devel/elbe-2.0</a></dd>
             <dd><a href="devel_elbe-3.0/article-elbeoverview-en.html">devel/elbe-3.0</a></dd>
-            <dd><a href="devel_manut_pylint/article-elbeoverview-en.html">devel/manut/pylint</a></dd>
             <dd><a href="master/article-elbeoverview-en.html">master</a></dd>
             <dd><a href="releases_v0.5.8/article-elbeoverview-en.html">releases/v0.5.8</a></dd>
             <dd><a href="releases_v1.0/article-elbeoverview-en.html">releases/v1.0</a></dd>
@@ -1069,6 +1066,7 @@ the build VM.</p>
             <dd><a href="releases_v2.9.7/article-elbeoverview-en.html">releases/v2.9.7</a></dd>
             <dd><a href="releases_v2.9.8/article-elbeoverview-en.html">releases/v2.9.8</a></dd>
             <dd><a href="releases_v2.9.9/article-elbeoverview-en.html">releases/v2.9.9</a></dd>
+            <dd><a href="releases_v3/article-elbeoverview-en.html">releases/v3</a></dd>
         </dl>
     </div>
 </div>
@@ -1079,7 +1077,7 @@ the build VM.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.4',
+            VERSION:'3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

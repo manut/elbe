@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-initvm &mdash; ELBE 2.0 documentation</title>
+  <title>elbe-initvm &mdash; ELBE 3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                2.0
+                3
               </div>
             
           
@@ -94,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
@@ -103,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
@@ -123,6 +125,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
@@ -212,15 +215,15 @@ an initvm and directly build Rootfilesystems using ELBE.</p>
 <span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">start</span>
 <span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">stop</span>
 <span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">ensure</span>
-<span class="n">elbe</span> <span class="n">initvm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">start_build</span>
 </pre></div>
 </div>
 </div></blockquote>
 </div>
 <div class="section" id="description">
 <h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>This command allows to build and manage an initvm. It makes use of the
-tmux Terminal multiplexer.</p>
+<p>This command allows to build and manage an initvm.</p>
+<p>Initvms are managed via libvirt, and its necessary, that a user is a
+member of the libvirt group.</p>
 </div>
 <div class="section" id="options">
 <h2>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
@@ -279,10 +282,7 @@ up (default is 10 times, yielding 10 seconds).</td></tr>
 <h2>COMMANDS<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt><em>attach</em></dt>
-<dd>Attach to the initvm running in a Background tmux session. When tmux
-is being used, it links the initvm window into the current tmux
-session. If tmux is not used, tmux is started and the Background
-session is attached.</dd>
+<dd>Attach to the initvm console, which is accessed via virsh.</dd>
 <dt><em>create</em> [ &lt;xmlfile&gt; | &lt;isoimage&gt; ]</dt>
 <dd><p class="first">This command triggers a complete rebuild of the Elbe XML File. it
 also includes rebuilding the initvm.</p>
@@ -306,9 +306,6 @@ iso will be used, and all the binary packages available also.</p>
 <dd>Shutdown running initvm.</dd>
 <dt><em>ensure</em></dt>
 <dd>Make sure an initvm is running in the Background.</dd>
-<dt><em>start_build</em></dt>
-<dd>Runs an initvm build in the Background. The build directory must
-have been created with <code class="docutils literal"><span class="pre">elbe</span> <span class="pre">init</span></code> beforehand.</dd>
 </dl>
 </div>
 <div class="section" id="examples">
@@ -329,7 +326,7 @@ xml</p>
 </div>
 <div class="section" id="see-also">
 <h2>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<p>elbe-control1 tmux1</p>
+<p>elbe-control1</p>
 </div>
 <div class="section" id="elbe">
 <h2>ELBE<a class="headerlink" href="#elbe" title="Permalink to this headline">¶</a></h2>
@@ -380,11 +377,14 @@ xml</p>
     </span>
     <div class="rst-other-versions">
         <dl>
+            <dt>Tags</dt>
+            <dd><a href="../v3/elbe-initvm.html">v3</a></dd>
+        </dl>
+        <dl>
             <dt>Branches</dt>
             <dd><a href="../devel_elbe-1.0/elbe-initvm.html">devel/elbe-1.0</a></dd>
             <dd><a href="../devel_elbe-2.0/elbe-initvm.html">devel/elbe-2.0</a></dd>
             <dd><a href="../devel_elbe-3.0/elbe-initvm.html">devel/elbe-3.0</a></dd>
-            <dd><a href="../devel_manut_pylint/elbe-initvm.html">devel/manut/pylint</a></dd>
             <dd><a href="elbe-initvm.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/elbe-initvm.html">releases/v1.0</a></dd>
@@ -418,6 +418,7 @@ xml</p>
             <dd><a href="../releases_v2.9.7/elbe-initvm.html">releases/v2.9.7</a></dd>
             <dd><a href="../releases_v2.9.8/elbe-initvm.html">releases/v2.9.8</a></dd>
             <dd><a href="../releases_v2.9.9/elbe-initvm.html">releases/v2.9.9</a></dd>
+            <dd><a href="../releases_v3/elbe-initvm.html">releases/v3</a></dd>
         </dl>
     </div>
 </div>
@@ -428,7 +429,7 @@ xml</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.0',
+            VERSION:'3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

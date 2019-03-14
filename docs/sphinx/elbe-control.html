@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-control &mdash; ELBE 2.4 documentation</title>
+  <title>elbe-control &mdash; ELBE 3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                2.4
+                3
               </div>
             
           
@@ -94,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
@@ -113,6 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
@@ -123,6 +125,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
@@ -208,9 +211,11 @@
 <div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">list_projects</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">create_project</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_sysroot</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_cdroms</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_pdebuild</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pdebuild</span> <span class="n">file</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">get_files</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_chroot_tarball</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_sdk</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_orig</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_cdrom</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">iso</span><span class="o">-</span><span class="n">img</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">reset_project</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
@@ -224,6 +229,7 @@
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">get_file</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">dump_file</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
 <span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">shutdown_initvm</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">install_elbe_version</span> <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -279,6 +285,9 @@ up (default is 10 times, yielding 10 seconds).</td></tr>
 <kbd><span class="option">--pbuilder-only</span></kbd></td>
 </tr>
 <tr><td>&#160;</td><td>Only list/download pbuilder files.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--profile</span></kbd></td>
+<td>Specify pbuilder profile to build.</td></tr>
 </tbody>
 </table>
 </div>
@@ -296,6 +305,12 @@ further reference in subsequent commands.</p>
 <dd>Build a sysroot for the specified project.</dd>
 </dl>
 <p>The sysroot can be used with a toolchain for cross-compiles.</p>
+<dl class="docutils">
+<dt><em>build_cdroms</em> &lt;build-dir&gt;</dt>
+<dd>Build ISO images containing the Debian binary or source packages
+used by the given build-dir. Either –build-bin or –build-sources
+or both needs to be specified.</dd>
+</dl>
 <p><em>set_pdebuild</em> &lt;build-dir&gt; &lt;pdebuild file&gt;</p>
 <p>Build a Debian Project using a pbuilder.</p>
 <p>The pdebuild file needs to be a .tar.gz archive of a project containing
@@ -308,10 +323,15 @@ a ./debian folder with a valid debianization.</p>
 <dt><em>get_files</em> &lt;build-dir&gt;</dt>
 <dd><p class="first">Get list of files in the &lt;build-dir&gt;.</p>
 <p class="last">If the –output option is specified, the files are downloaded to the
-directory specified in the option.</p>
+directory specified in the option. If the –matches option is
+specified only files matching the wildcard expression are
+shown/downloaded. Note that you have to put the wildcard expression
+in quotation marks.</p>
 </dd>
 <dt><em>build_chroot_tarball</em> &lt;build-dir&gt;</dt>
 <dd>Creates a tarball of the chroot environment in &lt;build_dir&gt;.</dd>
+<dt><em>build_sdk</em> &lt;build-dir&gt;</dt>
+<dd>Creates a yocto-style SDK.</dd>
 <dt><em>set_orig</em> &lt;build-dir&gt; &lt;orig-file&gt;</dt>
 <dd><p class="first">Uploads a quilt orig-file to the initvm.</p>
 <p class="last">This command shall be run before building a Debian package with
@@ -330,6 +350,10 @@ otherwise blocked project again.</p>
 </dd>
 <dt><em>list_users</em></dt>
 <dd>List configured users. Only admins may use this command.</dd>
+<dt><em>add_user</em> &lt;name&gt; &lt;fullname&gt; &lt;password&gt; &lt;email&gt;</dt>
+<dd>Create a user inside the initvm. The user is not an Admin user. When
+the user already exists, nothing is done. Only admins may use this
+command.</dd>
 <dt><em>wait_busy</em> &lt;build-dir&gt;</dt>
 <dd>Wait, while &lt;build-dir&gt; is busy.</dd>
 <dt><em>set_xml</em> &lt;build-dir&gt; &lt;xmlfile&gt;</dt>
@@ -350,6 +374,10 @@ likely going to change the status of the project to
 <dd>Dump a single File from the project to stdout.</dd>
 <dt><em>shutdown_initvm</em></dt>
 <dd>Make the initvm shutdown.</dd>
+<dt><em>install_elbe_version</em> [version]</dt>
+<dd>Make the initvm install a specific elbe version. Defaults to the
+version of the elbe executable. This requires, that the initvm has
+package sources configured properly.</dd>
 </dl>
 </div>
 <div class="section" id="examples">
@@ -431,16 +459,19 @@ log.txt         (Log file)
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v2.4
+        v: releases/v3
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="v3/elbe-control.html">v3</a></dd>
+        </dl>
         <dl>
             <dt>Branches</dt>
             <dd><a href="devel_elbe-1.0/elbe-control.html">devel/elbe-1.0</a></dd>
             <dd><a href="devel_elbe-2.0/elbe-control.html">devel/elbe-2.0</a></dd>
             <dd><a href="devel_elbe-3.0/elbe-control.html">devel/elbe-3.0</a></dd>
-            <dd><a href="devel_manut_pylint/elbe-control.html">devel/manut/pylint</a></dd>
             <dd><a href="master/elbe-control.html">master</a></dd>
             <dd><a href="releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="releases_v1.0/elbe-control.html">releases/v1.0</a></dd>
@@ -474,6 +505,7 @@ log.txt         (Log file)
             <dd><a href="releases_v2.9.7/elbe-control.html">releases/v2.9.7</a></dd>
             <dd><a href="releases_v2.9.8/elbe-control.html">releases/v2.9.8</a></dd>
             <dd><a href="releases_v2.9.9/elbe-control.html">releases/v2.9.9</a></dd>
+            <dd><a href="releases_v3/elbe-control.html">releases/v3</a></dd>
         </dl>
     </div>
 </div>
@@ -484,7 +516,7 @@ log.txt         (Log file)
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.4',
+            VERSION:'3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

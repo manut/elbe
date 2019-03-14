@@ -19,13 +19,14 @@ SYNOPSIS
         elbe initvm [options] start
         elbe initvm [options] stop
         elbe initvm [options] ensure
-        elbe initvm [options] start_build
 
 DESCRIPTION
 ===========
 
-This command allows to build and manage an initvm. It makes use of the
-tmux Terminal multiplexer.
+This command allows to build and manage an initvm.
+
+Initvms are managed via libvirt, and its necessary, that a user is a
+member of the libvirt group.
 
 OPTIONS
 =======
@@ -71,10 +72,7 @@ COMMANDS
 ========
 
 *attach*
-    Attach to the initvm running in a Background tmux session. When tmux
-    is being used, it links the initvm window into the current tmux
-    session. If tmux is not used, tmux is started and the Background
-    session is attached.
+    Attach to the initvm console, which is accessed via virsh.
 
 *create* [ <xmlfile> \| <isoimage> ]
     This command triggers a complete rebuild of the Elbe XML File. it
@@ -106,10 +104,6 @@ COMMANDS
 *ensure*
     Make sure an initvm is running in the Background.
 
-*start\_build*
-    Runs an initvm build in the Background. The build directory must
-    have been created with ``elbe init`` beforehand.
-
 Examples
 ========
 
@@ -129,7 +123,7 @@ Examples
 SEE ALSO
 ========
 
-elbe-control1 tmux1
+elbe-control1
 
 ELBE
 ====

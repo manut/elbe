@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-gen_update &mdash; ELBE 2.0 documentation</title>
+  <title>elbe-gen_update &mdash; ELBE 3 documentation</title>
   
 
   
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="elbe-genlicence" href="elbe-genlicence.html" />
-    <link rel="prev" title="elbe-diff" href="elbe-diff.html" /> 
+    <link rel="prev" title="elbe-fetch_initvm_pkgs" href="elbe-fetch_initvm_pkgs.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                2.0
+                3
               </div>
             
           
@@ -94,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
@@ -103,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">elbe-gen_update</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#name">NAME</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a></li>
@@ -121,6 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
@@ -290,7 +293,7 @@ with <em>v0.1.xml</em>. Write the update archive to <em>v0.1-v0.2.upd</em>.</p>
         <a href="elbe-genlicence.html" class="btn btn-neutral float-right" title="elbe-genlicence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="elbe-diff.html" class="btn btn-neutral" title="elbe-diff" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="elbe-fetch_initvm_pkgs.html" class="btn btn-neutral" title="elbe-fetch_initvm_pkgs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -322,11 +325,14 @@ with <em>v0.1.xml</em>. Write the update archive to <em>v0.1-v0.2.upd</em>.</p>
     </span>
     <div class="rst-other-versions">
         <dl>
+            <dt>Tags</dt>
+            <dd><a href="../v3/elbe-gen_update.html">v3</a></dd>
+        </dl>
+        <dl>
             <dt>Branches</dt>
             <dd><a href="../devel_elbe-1.0/elbe-gen_update.html">devel/elbe-1.0</a></dd>
             <dd><a href="../devel_elbe-2.0/elbe-gen_update.html">devel/elbe-2.0</a></dd>
             <dd><a href="../devel_elbe-3.0/elbe-gen_update.html">devel/elbe-3.0</a></dd>
-            <dd><a href="../devel_manut_pylint/elbe-gen_update.html">devel/manut/pylint</a></dd>
             <dd><a href="elbe-gen_update.html">master</a></dd>
             <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/elbe-gen_update.html">releases/v1.0</a></dd>
@@ -360,6 +366,7 @@ with <em>v0.1.xml</em>. Write the update archive to <em>v0.1-v0.2.upd</em>.</p>
             <dd><a href="../releases_v2.9.7/elbe-gen_update.html">releases/v2.9.7</a></dd>
             <dd><a href="../releases_v2.9.8/elbe-gen_update.html">releases/v2.9.8</a></dd>
             <dd><a href="../releases_v2.9.9/elbe-gen_update.html">releases/v2.9.9</a></dd>
+            <dd><a href="../releases_v3/elbe-gen_update.html">releases/v3</a></dd>
         </dl>
     </div>
 </div>
@@ -370,7 +377,7 @@ with <em>v0.1.xml</em>. Write the update archive to <em>v0.1-v0.2.upd</em>.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.0',
+            VERSION:'3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

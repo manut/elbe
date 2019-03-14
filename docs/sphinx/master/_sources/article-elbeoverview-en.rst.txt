@@ -143,6 +143,9 @@ script and rely on the database server to be already running.
 Create initvm and build a first xml file from the examples
 ==========================================================
 
+In order to use elbe, a user needs to be member of the ``libvirt``
+system group.
+
 To create an initvm and make that initvm build a first Rootfilesystem,
 use the following command:
 
@@ -206,9 +209,6 @@ environment and it will be saved as ``nfsroot.tar.gz``
                     </mirror>
                     <noauth />
                     <suite>wheezy</suite>
-                    <buildimage>
-                            <kinitrd>elbe-bootstrap</kinitrd>
-                    </buildimage>
             </project>
             <target>
                     <hostname>myARM</hostname>
@@ -591,7 +591,6 @@ debian-installer is executed and custom packages can be build.
                             <size>20G</size>                                
                             <mem>256</mem>                                  
                             <interpreter>qemu-system-arm</interpreter>      
-                            <kinitrd>elbe-bootstrap</kinitrd>               
                             <console>ttyAMA0,115200n1</console>             
                             <machine>versatilepb</machine>                  
                             <NIC>
@@ -620,12 +619,6 @@ debian-installer is executed and custom packages can be build.
 
 -  The *interpreter* is either *qemu-system-<arch>* or *qemu-kvm*. Usage
    of kvm is usually only possible, when the target is *x86*. (optional)
-
--  The name of the elbe-bootstrap package. All package sources mentioned
-   in the XML file are scanned for this package. It provides the
-   debian-installer kernel and initrd. This package is not hosted on
-   official Debian mirrors. So it makes sense additional add the
-   <noauth/> tag to the <mirror> section.
 
 -  The *console* line needs special attention because it is different on
    different emulation targets. (optional)
@@ -905,11 +898,9 @@ The *elbe init* command generates a project directory, which contains a
 hard disk image for a virtual build machine and a *Makefile* to install
 the build VM and to work with it.
 
-During this process, *elbe init* will search the package repos mentioned
-in the mirror section of the XML file for the elbe-bootstrap package,
-which includes the debian-installer. You can use the packages provided
-by Linutronix from http://debian.linutronix.de/elbe by adding this url
-to the mirror section.
+During this process, *elbe init* will download a linux kernel and
+initrd.gz from the debian mirror. In case of a local mirror, be sure,
+that ``dists/jessie/main/installer-amd64/`` is also mirrored.
 
 After *elbe init* has generated the project directory, change to the
 project directory and run *make*. This will start the installation of
