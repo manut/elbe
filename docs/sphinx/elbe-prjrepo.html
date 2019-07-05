@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-prjrepo &mdash; ELBE 8 documentation</title>
+  <title>elbe-prjrepo &mdash; ELBE 9 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                8
+                9
               </div>
             
           
@@ -209,7 +209,7 @@ project folder.</p>
 <h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">prjrepo</span> <span class="n">download</span> <span class="o">&lt;</span><span class="n">project_dir</span><span class="o">&gt;</span>
-<span class="n">elbe</span> <span class="n">prjrepo</span> <span class="n">upload_pkg</span> <span class="o">&lt;</span><span class="n">project_dir</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">debfile</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">dscfile</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">elbe</span> <span class="n">prjrepo</span> <span class="n">upload_pkg</span> <span class="o">&lt;</span><span class="n">project_dir</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">debfile</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">dscfile</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">changesfile</span><span class="o">&gt;</span><span class="p">]</span>
 <span class="n">elbe</span> <span class="n">prjrepo</span> <span class="n">list_packages</span> <span class="o">&lt;</span><span class="n">project_dir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -250,13 +250,15 @@ up (default is 10 times, yielding 10 seconds).</td></tr>
 <dt><em>download</em> &lt;project_dir&gt;</dt>
 <dd>Downloads the Debian repository of the project located in
 &lt;project_dir&gt; to the host machine.</dd>
-<dt><em>upload_pkg</em> &lt;project_dir&gt; [&lt;debfile&gt; | &lt;dscfile&gt;]</dt>
+<dt><em>upload_pkg</em> &lt;project_dir&gt; [&lt;debfile&gt; | &lt;dscfile&gt; | &lt;changesfile&gt;]</dt>
 <dd>Loads a Debian package into the Debian repository of an existing
 Elbe project in the initvm. Both binary and source packages are
 supported. In order to upload a source package you need to specify
 the dsc-file in the command as shown above. The actual source files
 which are required for the source package need to be located in the
-same directory as the dsc-file.</dd>
+same directory as the dsc-file. The same is true for a changes file.
+The actual files defined in the changes file need to reside in the
+same directory.</dd>
 <dt><em>list_packages</em> &lt;project_dir&gt;</dt>
 <dd>Lists all packages available in the Debian repository of the
 project.</dd>
@@ -317,7 +319,7 @@ project.</dd>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v8
+        v: releases/v9
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -330,6 +332,7 @@ project.</dd>
             <dd><a href="v6/elbe-prjrepo.html">v6</a></dd>
             <dd><a href="v7/elbe-prjrepo.html">v7</a></dd>
             <dd><a href="v8/elbe-prjrepo.html">v8</a></dd>
+            <dd><a href="v9/elbe-prjrepo.html">v9</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
@@ -376,6 +379,7 @@ project.</dd>
             <dd><a href="releases_v6/elbe-prjrepo.html">releases/v6</a></dd>
             <dd><a href="releases_v7/elbe-prjrepo.html">releases/v7</a></dd>
             <dd><a href="releases_v8/elbe-prjrepo.html">releases/v8</a></dd>
+            <dd><a href="releases_v9/elbe-prjrepo.html">releases/v9</a></dd>
         </dl>
     </div>
 </div>
@@ -386,7 +390,7 @@ project.</dd>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'8',
+            VERSION:'9',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

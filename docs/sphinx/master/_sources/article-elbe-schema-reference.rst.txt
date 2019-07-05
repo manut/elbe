@@ -961,6 +961,24 @@ Example
 
     no sequence
 
+TYPE: file
+==========
+
+write or append text to a file, the following parametersare
+avaible:'dst' - the destination to write to’encoding' - the (optional)
+encoding of the content’append="True"' - append the content to file
+instead of writing’owner' - (optional) set file owner’group' -
+(optional) set group ownership’mode' - (optional) set file mode bitsThe
+value of the tag is the raw/encoded content towrite/append to the
+destination
+
+Example
+-------
+
+::
+
+    no sequence
+
 TYPE: adduser
 =============
 
