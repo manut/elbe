@@ -2,18 +2,24 @@
 elbe-xsdtoasciidoc
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-xsdtoasciidoc - Create an asciidoc documentation from an annotated
 XML Schema file (xsd).
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe xsdtoasciidoc [options] <xmlfile>
+      elbe xsdtoasciidoc [options] <xmlfile>
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -22,13 +28,17 @@ This command generates documentation for the format of any ELBE XML
 file. It parses the ELBE schema file and creates an asciidoc
 documentation out of the annotations in the xsd file.
 
+.. __options:
+
 OPTIONS
 =======
 
 --output=FILE specify output filename
 
 <xsdfile>
-    The xsdfile to be used.
+   The xsdfile to be used.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -37,7 +47,9 @@ EXAMPLES
 
    ::
 
-       $ elbe xsdtoasciidoc /usr/share/elbe/dbsfed.xsd
+      $ elbe xsdtoasciidoc /usr/share/elbe/dbsfed.xsd
+
+.. __elbe:
 
 ELBE
 ====

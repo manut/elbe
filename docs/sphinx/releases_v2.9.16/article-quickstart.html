@@ -556,21 +556,21 @@ used to export the public key into a repo.pub file.</p>
 <p>To create your own repository with reprepro you need only the
 <code class="docutils literal"><span class="pre">distributions</span></code> configuration file. For an <code class="docutils literal"><span class="pre">amd64</span></code> and <code class="docutils literal"><span class="pre">source</span></code>
 repository for Debian <code class="docutils literal"><span class="pre">stretch</span></code> it might look as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Origin: mylocal
-Label: mylocal
-Suite: stable
-Codename: stretch
-Architectures: amd64 source
-Components: main
-Description: my local repo
-SignWith: CF837F1AAAC35E084062AE4468E68615BB6CB47C
-
-**Note**
-
-the ``SignWith:`` field needs to be the key of the previously
-generated key.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Origin</span><span class="p">:</span> <span class="n">mylocal</span>
+<span class="n">Label</span><span class="p">:</span> <span class="n">mylocal</span>
+<span class="n">Suite</span><span class="p">:</span> <span class="n">stable</span>
+<span class="n">Codename</span><span class="p">:</span> <span class="n">stretch</span>
+<span class="n">Architectures</span><span class="p">:</span> <span class="n">amd64</span> <span class="n">source</span>
+<span class="n">Components</span><span class="p">:</span> <span class="n">main</span>
+<span class="n">Description</span><span class="p">:</span> <span class="n">my</span> <span class="n">local</span> <span class="n">repo</span>
+<span class="n">SignWith</span><span class="p">:</span> <span class="n">CF837F1AAAC35E084062AE4468E68615BB6CB47C</span>
 </pre></div>
 </div>
+<blockquote>
+<div><p><strong>Note</strong></p>
+<p>the <code class="docutils literal"><span class="pre">SignWith:</span></code> field needs to be the key of the previously
+generated key.</p>
+</div></blockquote>
 <p>Now place the <code class="docutils literal"><span class="pre">distributions</span></code> file in a <code class="docutils literal"><span class="pre">conf</span></code> named directory. also
 put <code class="docutils literal"><span class="pre">repo.pub</span></code> into your <code class="docutils literal"><span class="pre">repo</span></code> directory.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>repo/
@@ -653,6 +653,7 @@ you can install from any other repository.</p>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
+            <dd><a href="../v10/article-quickstart.html">v10</a></dd>
             <dd><a href="../v2.5/article-quickstart.html">v2.5</a></dd>
             <dd><a href="../v3/article-quickstart.html">v3</a></dd>
             <dd><a href="../v4/article-quickstart.html">v4</a></dd>
@@ -677,6 +678,7 @@ you can install from any other repository.</p>
             <dd><a href="../releases_v1.9.23/article-quickstart.html">releases/v1.9.23</a></dd>
             <dd><a href="../releases_v1.9.24/article-quickstart.html">releases/v1.9.24</a></dd>
             <dd><a href="../releases_v1.9.25/article-quickstart.html">releases/v1.9.25</a></dd>
+            <dd><a href="../releases_v10/article-quickstart.html">releases/v10</a></dd>
             <dd><a href="../releases_v2.0/article-quickstart.html">releases/v2.0</a></dd>
             <dd><a href="../releases_v2.1/article-quickstart.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/article-quickstart.html">releases/v2.2</a></dd>

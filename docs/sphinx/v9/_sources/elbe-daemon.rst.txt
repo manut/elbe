@@ -2,35 +2,45 @@
 elbe-daemon
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-daemon - control the ELBE daemon.
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe daemon [options]
+      elbe daemon [options]
+
+.. __description:
 
 DESCRIPTION
 ===========
 
 This command controls the ELBE daemon and is run inside the inivm.
 
+.. __options:
+
 OPTIONS
 =======
 
 --host <hostname>
-    ip or hostname of the elbe-deamon (defaults to localhost, which is
-    the default, where an initvm would be listening).
+   ip or hostname of the elbe-deamon (defaults to localhost, which is
+   the default, where an initvm would be listening).
 
 --port <N>
-    Port of the soap interface on the elbe-daemon.
+   Port of the soap interface on the elbe-daemon.
 
 --<daemon>
-    Enable <daemon>.
+   Enable <daemon>.
+
+.. __elbe:
 
 ELBE
 ====

@@ -2,28 +2,33 @@
 elbe-gen_update
 ************************
 
+.. __name:
+
 NAME
 ====
 
-elbe-gen\_update - Generate an update archive to be used by
-elbe-updated.
+elbe-gen_update - Generate an update archive to be used by elbe-updated.
+
+.. __synopsis:
 
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe gen_update --target <targetdir> --output <outputfile> \
-                [ --buildtype <type> ] \
-                [ --debug ] \
-                [ --name <name> ] \
-                [ --skip-validation ] \
-                <base_sourcexml>
+      elbe gen_update --target <targetdir> --output <outputfile> \
+              [ --buildtype <type> ] \
+              [ --debug ] \
+              [ --name <name> ] \
+              [ --skip-validation ] \
+              <base_sourcexml>
+
+.. __description:
 
 DESCRIPTION
 ===========
 
-*elbe gen\_update* creates an update archive by comparing the packages
+*elbe gen_update* creates an update archive by comparing the packages
 installed in the given target project against the packages listed in the
 given base XML file. The resulting update archive will contain all new
 and all updated packages and can be used to update the target system
@@ -31,30 +36,34 @@ with elbe-updated1.
 
 This command has to be run as root **inside the Elbe build VM**.
 
+.. __options:
+
 OPTIONS
 =======
 
 --target <targetdir>
-    The project directory to generate the update for.
+   The project directory to generate the update for.
 
 --output <outputfile>
-    Name of the update archive to generate.
+   Name of the update archive to generate.
 
 --buildtype <type>
-    Override the build type specified in the XML file.
+   Override the build type specified in the XML file.
 
 --debug
-    Enable a few debug features.
+   Enable a few debug features.
 
 --name <name>
-    Override the name of the project.
+   Override the name of the project.
 
 --skip-validation
-    Skip validation of the passed XML file and of the *source.xml* file
-    in the target directory (Not recommended).
+   Skip validation of the passed XML file and of the *source.xml* file
+   in the target directory (Not recommended).
 
-<base\_sourcexml>
-    The *source.xml* file of the base version of the project.
+<base_sourcexml>
+   The *source.xml* file of the base version of the project.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -65,9 +74,11 @@ EXAMPLES
 
    ::
 
-       # elbe gen_update --target /root/myproject \
-           --output /root/v0.1-v0.2.upd \
-               /root/v0.1.xml
+      # elbe gen_update --target /root/myproject \
+          --output /root/v0.1-v0.2.upd \
+              /root/v0.1.xml
+
+.. __elbe:
 
 ELBE
 ====

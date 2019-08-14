@@ -2,17 +2,23 @@
 elbe-get_archive
 ************************
 
+.. __name:
+
 NAME
 ====
 
-elbe-get\_archive - Extract the archive from an xmlfile.
+elbe-get_archive - Extract the archive from an xmlfile.
+
+.. __synopsis:
 
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe get_archive <xmlfile> <archive>
+      elbe get_archive <xmlfile> <archive>
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -20,14 +26,18 @@ DESCRIPTION
 This command extracts the archive from an xml file. It will not
 overwrite anything.
 
+.. __options:
+
 OPTIONS
 =======
 
 <xmlfile>
-    The xml file to use.
+   The xml file to use.
 
 <archive>
-    Name of the extracted archive file. The archive must be a tar.bz2.
+   Name of the extracted archive file. The archive must be a tar.bz2.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -36,7 +46,9 @@ EXAMPLES
 
    ::
 
-       $ elbe get_archive mywheezy.xml archive.tar.bz2
+      $ elbe get_archive mywheezy.xml archive.tar.bz2
+
+.. __elbe:
 
 ELBE
 ====

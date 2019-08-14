@@ -2,20 +2,26 @@
 elbe-prjrepo
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-prjrepo - Provides access to the Debian repositories in each
 project folder.
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe prjrepo download <project_dir>
-        elbe prjrepo upload_pkg <project_dir> [<debfile> | <dscfile> | <changesfile>]
-        elbe prjrepo list_packages <project_dir>
+      elbe prjrepo download <project_dir>
+      elbe prjrepo upload_pkg <project_dir> [<debfile> | <dscfile> | <changesfile>]
+      elbe prjrepo list_packages <project_dir>
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -26,39 +32,44 @@ initvm. Packages in this repository can then be installed into a root
 file system. The ``elbe-prjrepo`` command allows the user to interact
 with this repository, i.e. list, upload and download packages.
 
+.. __options:
+
 OPTIONS
 =======
 
 --user <username>
-    Username to use for login (defaults to root).
+   Username to use for login (defaults to root).
 
 --pass <password>
-    Password for login (defaults to *foo*).
+   Password for login (defaults to *foo*).
 
 --retries <N>
-    How many times to retry the connection to the server before giving
-    up (default is 10 times, yielding 10 seconds).
+   How many times to retry the connection to the server before giving up
+   (default is 10 times, yielding 10 seconds).
+
+.. __commands:
 
 COMMANDS
 ========
 
-*download* <project\_dir>
-    Downloads the Debian repository of the project located in
-    <project\_dir> to the host machine.
+*download* <project_dir>
+   Downloads the Debian repository of the project located in
+   <project_dir> to the host machine.
 
-*upload\_pkg* <project\_dir> [<debfile> \| <dscfile> \| <changesfile>]
-    Loads a Debian package into the Debian repository of an existing
-    Elbe project in the initvm. Both binary and source packages are
-    supported. In order to upload a source package you need to specify
-    the dsc-file in the command as shown above. The actual source files
-    which are required for the source package need to be located in the
-    same directory as the dsc-file. The same is true for a changes file.
-    The actual files defined in the changes file need to reside in the
-    same directory.
+*upload_pkg* <project_dir> [<debfile> \| <dscfile> \| <changesfile>]
+   Loads a Debian package into the Debian repository of an existing Elbe
+   project in the initvm. Both binary and source packages are supported.
+   In order to upload a source package you need to specify the dsc-file
+   in the command as shown above. The actual source files which are
+   required for the source package need to be located in the same
+   directory as the dsc-file. The same is true for a changes file. The
+   actual files defined in the changes file need to reside in the same
+   directory.
 
-*list\_packages* <project\_dir>
-    Lists all packages available in the Debian repository of the
-    project.
+*list_packages* <project_dir>
+   Lists all packages available in the Debian repository of the project.
+
+.. __example:
 
 Example
 =======
@@ -68,7 +79,9 @@ Example
 
    ::
 
-       $ elbe prjrepo list_packages "/var/cache/elbe/38599ce2-4cad-4578-bfe1-06fa793b883a"
+      $ elbe prjrepo list_packages "/var/cache/elbe/38599ce2-4cad-4578-bfe1-06fa793b883a"
+
+.. __elbe:
 
 ELBE
 ====

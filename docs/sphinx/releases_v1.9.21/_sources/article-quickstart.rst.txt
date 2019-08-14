@@ -9,6 +9,8 @@ root-filesystem.
 This quickstart guide describes the steps necessary to rebuild the
 root-filesystem from the XML file and to simple modifications.
 
+.. __steps_necessary:
+
 Steps necessary
 ===============
 
@@ -22,10 +24,12 @@ Steps necessary
 
 Steps 1 and 2 need only be performed once.
 
-    **Note**
+   **Note**
 
-    When Debian is running inside a VM (vmware etc), you need to make
-    sure, that nested KVM is working.
+   When Debian is running inside a VM (vmware etc), you need to make
+   sure, that nested KVM is working.
+
+.. __customisation_of_the_build:
 
 Customisation of the build
 ==========================
@@ -43,6 +47,8 @@ ELBE allows to manipulate the generated root-filesystem through a set of
 user, change directory permissions, and remove files from the
 root-filesystem.
 
+.. __installing_elbe:
+
 Installing ELBE
 ===============
 
@@ -52,6 +58,8 @@ on a Debian 8 (Jessie) system.
 
 But ELBE can also be installed from git.
 
+.. __binary_debian_packages:
+
 Binary Debian packages
 ----------------------
 
@@ -59,23 +67,25 @@ The latest packages for elbe reside in the following repository
 
 ::
 
-    http://debian.linutronix.de/elbe-testing
-    http://debian.linutronix.de/elbe-common
+   http://debian.linutronix.de/elbe-testing
+   http://debian.linutronix.de/elbe-common
 
 Create the file ``/etc/apt/sources.list.d/elbe.list`` with the following
 contents:
 
 ::
 
-    deb http://debian.linutronix.de/elbe-testing jessie main
-    deb http://debian.linutronix.de/elbe-common jessie main
+   deb http://debian.linutronix.de/elbe-testing jessie main
+   deb http://debian.linutronix.de/elbe-common jessie main
 
 Then run (as root):
 
 ::
 
-    $ apt-get update
-    $ apt-get install elbe
+   $ apt-get update
+   $ apt-get install elbe
+
+.. __git_version:
 
 Git Version
 -----------
@@ -85,26 +95,28 @@ source-code via git from github.
 
 ::
 
-    $ git clone https://github.com/Linutronix/elbe.git
-    Cloning into 'elbe'...
-    remote: Counting objects: 5435, done.
-    remote: Compressing objects: 100% (8/8), done.
-    remote: Total 5435 (delta 1), reused 0 (delta 0), pack-reused 5427
-    Receiving objects: 100% (5435/5435), 1.94 MiB | 1.92 MiB/s, done.
-    Resolving deltas: 100% (3943/3943), done.
-    Checking connectivity... done.
-    $ cd elbe
-    $ ls
-    AUTHORS  ChangeLog  COPYING  debian  dockerfile  docs  elbe   elbepack
-    examples INSTALL    Makefile README  setup.py    test  THANKS TODO
+   $ git clone https://github.com/Linutronix/elbe.git
+   Cloning into 'elbe'...
+   remote: Counting objects: 5435, done.
+   remote: Compressing objects: 100% (8/8), done.
+   remote: Total 5435 (delta 1), reused 0 (delta 0), pack-reused 5427
+   Receiving objects: 100% (5435/5435), 1.94 MiB | 1.92 MiB/s, done.
+   Resolving deltas: 100% (3943/3943), done.
+   Checking connectivity... done.
+   $ cd elbe
+   $ ls
+   AUTHORS  ChangeLog  COPYING  debian  dockerfile  docs  elbe   elbepack
+   examples INSTALL    Makefile README  setup.py    test  THANKS TODO
 
 ELBE can run without being installed from the git checkout. Just note
 that file paths are different under this situation.
 
 ::
 
-    elbe -> ./elbe
-    /usr/share/doc/elbe-doc/examples -> examples/
+   elbe -> ./elbe
+   /usr/share/doc/elbe-doc/examples -> examples/
+
+.. __create_initvm_and_submit_xml_files:
 
 Create initvm and submit XML files
 ==================================
@@ -118,40 +130,42 @@ using hardware accelerated virtualization implemented by kvm.
 
 ::
 
-    $ elbe initvm create --directory=initvm
-    /home/torbenh/elbe/elbe/initvm
-    gpg: keyring `/tmp/tmpPfPXt4/secring.gpg' created
-    gpg: keyring `/tmp/tmpPfPXt4/etc/apt/trusted.gpg.d/linutronix-elbe.gpg' created
-    gpg: key 22BB8F84: public key "ELBE Devel (Linutronix ELBE developers) <elbe-devel@linutronix.de>" imported
-    gpg: Total number processed: 1
-    gpg:               imported: 1  (RSA: 1)
-    --2015-08-17 15:26:26--  http://debian.linutronix.de/elbe/elbe-repo.pub
-    Resolving debian.linutronix.de (debian.linutronix.de)... 2001:470:1f0b:db:abcd:42:0:1, 62.245.132.108
-    Connecting to debian.linutronix.de (debian.linutronix.de)|2001:470:1f0b:db:abcd:42:0:1|:80... connected.
-    HTTP request sent, awaiting response... 200 OK
-    Length: 1763 (1.7K)
-    Saving to: ‘/tmp/tmpPfPXt4/tmpkey.gpg’
+   $ elbe initvm create --directory=initvm
+   /home/torbenh/elbe/elbe/initvm
+   gpg: keyring `/tmp/tmpPfPXt4/secring.gpg' created
+   gpg: keyring `/tmp/tmpPfPXt4/etc/apt/trusted.gpg.d/linutronix-elbe.gpg' created
+   gpg: key 22BB8F84: public key "ELBE Devel (Linutronix ELBE developers) <elbe-devel@linutronix.de>" imported
+   gpg: Total number processed: 1
+   gpg:               imported: 1  (RSA: 1)
+   --2015-08-17 15:26:26--  http://debian.linutronix.de/elbe/elbe-repo.pub
+   Resolving debian.linutronix.de (debian.linutronix.de)... 2001:470:1f0b:db:abcd:42:0:1, 62.245.132.108
+   Connecting to debian.linutronix.de (debian.linutronix.de)|2001:470:1f0b:db:abcd:42:0:1|:80... connected.
+   HTTP request sent, awaiting response... 200 OK
+   Length: 1763 (1.7K)
+   Saving to: ‘/tmp/tmpPfPXt4/tmpkey.gpg’
 
-    /tmp/tmpPfPXt4/tmpkey.gpg             100%[========================================================================>]   1.72K  --.-KB/s   in 0s
+   /tmp/tmpPfPXt4/tmpkey.gpg             100%[========================================================================>]   1.72K  --.-KB/s   in 0s
 
-    2015-08-17 15:26:26 (346 MB/s) - ‘/tmp/tmpPfPXt4/tmpkey.gpg’ saved [1763/1763]
+   2015-08-17 15:26:26 (346 MB/s) - ‘/tmp/tmpPfPXt4/tmpkey.gpg’ saved [1763/1763]
 
-    ...
+   ...
 
-    Installing the base system  ... 17%... 20%... 30%... 40%... 50%... 60%... 70%... 83%... 91%... 100%
-    Configuring apt  ... 16%... 25%... 32%... 41%... 50%... 66%... 75%... 83%... 91%... 100%
-    Select and install software  ... 10%... 26%... 31%... 40%... 50%... 61%... 70%... 80%... 90%... 100%
-    Installing GRUB boot loader  ... 16%... 33%... 50%... 66%... 83%... 100%
-    The system is going down NOW!.. 14%... 23%... 33%... 42%... 52%... 61%... 71%... 80%... 90%
-    Sent SIGTERM to all processes
-    Sent SIGKILL to all processes
-    Requesting system reboot
-    [  589.432092] Restarting system.
-    mkdir -p .stamps
-    touch .stamps/stamp-install-initial-image
+   Installing the base system  ... 17%... 20%... 30%... 40%... 50%... 60%... 70%... 83%... 91%... 100%
+   Configuring apt  ... 16%... 25%... 32%... 41%... 50%... 66%... 75%... 83%... 91%... 100%
+   Select and install software  ... 10%... 26%... 31%... 40%... 50%... 61%... 70%... 80%... 90%... 100%
+   Installing GRUB boot loader  ... 16%... 33%... 50%... 66%... 83%... 100%
+   The system is going down NOW!.. 14%... 23%... 33%... 42%... 52%... 61%... 71%... 80%... 90%
+   Sent SIGTERM to all processes
+   Sent SIGKILL to all processes
+   Requesting system reboot
+   [  589.432092] Restarting system.
+   mkdir -p .stamps
+   touch .stamps/stamp-install-initial-image
 
 This creates an "initvm" subdirectory and builds the initvm inside this
 directory.
+
+.. __submitting_an_xml_file:
 
 Submitting an XML file
 ======================
@@ -162,40 +176,42 @@ using
 
 ::
 
-    $ elbe initvm submit --directory=initvm /usr/share/doc/elbe-doc/examples/rescue.xml
-    Build started, waiting till it finishes
-    project still busy, waiting
-    project still busy, waiting
+   $ elbe initvm submit --directory=initvm /usr/share/doc/elbe-doc/examples/rescue.xml
+   Build started, waiting till it finishes
+   project still busy, waiting
+   project still busy, waiting
 
-    ...
+   ...
 
-    project still busy, waiting
-    project still busy, waiting
-    project still busy, waiting
+   project still busy, waiting
+   project still busy, waiting
+   project still busy, waiting
 
-    Build finished !
-
-
-    ELBE Package validation
-    =======================
+   Build finished !
 
 
-    Package List validation
-     ----------------------
+   ELBE Package validation
+   =======================
 
-    No Errors found
 
-    Getting generated Files
+   Package List validation
+    ----------------------
 
-    Saving generated Files to /home/torbenh/elbe/elbe/elbe-build-20150817-155038
-    source.xml      (Current source.xml of the project)
-    rescue.cpio     (Image)
-    validation.txt  (Package list validation result)
-    elbe-report.txt         (Report)
-    log.txt         (Log file)
+   No Errors found
+
+   Getting generated Files
+
+   Saving generated Files to /home/torbenh/elbe/elbe/elbe-build-20150817-155038
+   source.xml      (Current source.xml of the project)
+   rescue.cpio     (Image)
+   validation.txt  (Package list validation result)
+   elbe-report.txt         (Report)
+   log.txt         (Log file)
 
 The result of the build is stored in elbe-build-<TIMESTAMP> below your
 current working directory.
+
+.. __ports_opened_by_initvm:
 
 Ports opened by initvm
 ======================
@@ -203,8 +219,12 @@ Ports opened by initvm
 The initvm will open port 7587 on localhost. This is used by the elbe
 tools on your host to communicate with the initvm.
 
+.. __advanced_usage:
+
 Advanced usage
 ==============
+
+.. __elbe_archive:
 
 ELBE Archive
 ------------
@@ -216,17 +236,19 @@ It is acessed with the following commands:
 
 ::
 
-    $ elbe get_archive fun.xml archive.tar.bz2
+   $ elbe get_archive fun.xml archive.tar.bz2
 
 It is a normal tar.bz2 which can be manipulated and reinjected into the
 XML:
 
 ::
 
-    $ mkdir arch
-    $ tar xvfj archive.tar.bz2 -C arch
-    $ echo hello > arch/hello
-    $ elbe chg_archive fun.xml arch
+   $ mkdir arch
+   $ tar xvfj archive.tar.bz2 -C arch
+   $ echo hello > arch/hello
+   $ elbe chg_archive fun.xml arch
+
+.. __adding_packages_to_the_list_of_packages_to_install:
 
 Adding packages to the "list of packages to install"
 ----------------------------------------------------
@@ -236,9 +258,11 @@ the ``<target>`` XML node. Inserting a line containing
 
 .. code:: xml
 
-    <pkg>util-linux</pkg>
+   <pkg>util-linux</pkg>
 
 will add the ``util-linux`` package to the target-rfs.
+
+.. __using_the_finetuning_rules:
 
 Using the finetuning rules
 --------------------------
@@ -250,15 +274,19 @@ example finetuning from
 
 .. code:: xml
 
-    <finetuning>
-            <rm>var/cache/apt/archives/*.deb</rm>
-            <adduser passwd="elbe" shell="/bin/bash">elbe</adduser>
-    </finetuning>
+   <finetuning>
+           <rm>var/cache/apt/archives/*.deb</rm>
+           <adduser passwd="elbe" shell="/bin/bash">elbe</adduser>
+   </finetuning>
+
+.. __rm:
 
 rm
 ~~
 
 The ``<rm>`` node removes files from the target-rfs.
+
+.. __adduser:
 
 adduser
 ~~~~~~~
@@ -270,7 +298,9 @@ It is also possible to specify groups the new user should be part of:
 
 .. code:: xml
 
-    <adduser passwd="foo" shell="/bin/bash" groups="audio,video,dialout">elbe</adduser>
+   <adduser passwd="foo" shell="/bin/bash" groups="audio,video,dialout">elbe</adduser>
+
+.. __changing_ownership_of_directories_or_files:
 
 Changing ownership of directories or files
 ------------------------------------------
@@ -281,14 +311,18 @@ which allows running any command that is available in the target-rfs.
 
 .. code:: xml
 
-    <command>chown elbe:elbe /mnt</command>
-    <command>chmod 777 /mnt</command>
+   <command>chown elbe:elbe /mnt</command>
+   <command>chmod 777 /mnt</command>
+
+.. __further_example:
 
 Further Example
 ~~~~~~~~~~~~~~~
 
 A more complete example can be found in the ELBE overview document that
 is installed at ``/usr/share/doc/elbe-doc/elbeoverview-en.html``
+
+.. __using_the_elbe_pbuilder_feature:
 
 Using the Elbe Pbuilder Feature
 ===============================
@@ -300,10 +334,10 @@ The repositories and architecture specified in the xml File will be used
 to satisfy build dependencies. Pbuilder will only build debianised
 Software.
 
-    **Note**
+   **Note**
 
-    Currently only source formats ``3.0 (native)`` and ``3.0 (git)`` are
-    supported and tested. ``3.0 (quilt)`` does not work.
+   Currently only source formats ``3.0 (native)`` and ``3.0 (git)`` are
+   supported and tested. ``3.0 (quilt)`` does not work.
 
 A pbuilder instance is always associated with a project inside the
 initvm. The ``pbuilder create`` command will write the project uuid to a
@@ -317,6 +351,6 @@ Here is an example:
 
 ::
 
-    $ elbe pbuilder create --xmlfile fun.xml --writeproject fun.prj
-    $ cd program
-    $ elbe pbuilder build --project `cat ../fun.prj` --output ../out
+   $ elbe pbuilder create --xmlfile fun.xml --writeproject fun.prj
+   $ cd program
+   $ elbe pbuilder build --project `cat ../fun.prj` --output ../out

@@ -2,21 +2,27 @@
 elbe-hdimg
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-hdimg - Create hard disk and flash images from the given XML file.
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe hdimg --target <dir> --output <out> \
-                [ --buildtype <type> ] \
-                [ --skip-validation ] \
-                [ --skip-grub ] \
-                <xmlfile>
+      elbe hdimg --target <dir> --output <out> \
+              [ --buildtype <type> ] \
+              [ --skip-validation ] \
+              [ --skip-grub ] \
+              <xmlfile>
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -25,27 +31,31 @@ DESCRIPTION
 section in the given XML file. The command has to be run as root
 **inside the Elbe build VM**.
 
+.. __options:
+
 OPTIONS
 =======
 
 --target <dir>
-    Operate on the given project directory.
+   Operate on the given project directory.
 
 --output <out>
-    Name of the log file.
+   Name of the log file.
 
 --buildtype <type>
-    Override the build type specified in the XML file.
+   Override the build type specified in the XML file.
 
 --skip-validation
-    Do not validate the XML file against the Elbe XML schema (Not
-    recommended).
+   Do not validate the XML file against the Elbe XML schema (Not
+   recommended).
 
 --skip-grub
-    Skip GRUB installation.
+   Skip GRUB installation.
 
 <xmlfile>
-    The XML file to use.
+   The XML file to use.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -54,8 +64,10 @@ EXAMPLES
 
    ::
 
-       elbe hdimg --target /root/myproject --output /root/hdimg.log \
-               /root/myproject/source.xml
+      elbe hdimg --target /root/myproject --output /root/hdimg.log \
+              /root/myproject/source.xml
+
+.. __elbe:
 
 ELBE
 ====

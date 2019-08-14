@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE docs &mdash; ELBE 9 documentation</title>
+  <title>ELBE docs &mdash; ELBE 10 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                9
+                10
               </div>
             
           
@@ -228,6 +228,8 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-mirror">TYPE: mirror</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-initvm">TYPE: initvm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-project">TYPE: project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-suite-initvm">SIMPLE TYPE: suite-initvm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-suite-proj">SIMPLE TYPE: suite-proj</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-preference">TYPE: preference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-raw-preference">TYPE: raw-preference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-buildimage">TYPE: buildimage</a></li>
@@ -269,14 +271,49 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-fs-type">TYPE: fs_type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-fs-type-restriction">SIMPLE TYPE: fs_type_restriction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-finetuning">TYPE: finetuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#group-action">GROUP : action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#addgroup-type-rfs-addgroup">addgroup type: <em>rfs:addgroup</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#adduser-type-rfs-adduser">adduser type: <em>rfs:adduser</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#file-type-rfs-file">file type: <em>rfs:file</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#rm-type-rfs-rm">rm type: <em>rfs:rm</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#cp-type-rfs-cpmv">cp type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#ln-type-rfs-cpmv">ln type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#buildenv-cp-type-rfs-cpmv">buildenv_cp type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#b2t-cp-type-rfs-cpmv">b2t_cp type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#t2b-cp-type-rfs-cpmv">t2b_cp type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#mv-type-rfs-cpmv">mv type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#buildenv-mv-type-rfs-cpmv">buildenv_mv type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#t2p-mv-type-rfs-cpmv">t2p_mv type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#mkdir-type-rfs-string">mkdir type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#buildenv-mkdir-type-rfs-string">buildenv_mkdir type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#mknod-type-rfs-mknod">mknod type: <em>rfs:mknod</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#purge-type-rfs-string">purge type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#raw-cmd-type-rfs-string">raw_cmd type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#command-type-rfs-string">command type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#buildenv-command-type-rfs-string">buildenv_command type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#updated-type-rfs-string">updated type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#artifact-type-rfs-string">artifact type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-project-finetuning">TYPE: project-finetuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#group-project-action">GROUP : project-action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id103">t2p_mv type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id104">artifact type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#rm-artifact-type-rfs-string">rm_artifact type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#losetup-type-rfs-losetup">losetup type: <em>rfs:losetup</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#img-convert-type-rfs-img-convert">img_convert type: <em>rfs:img_convert</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#set-packer-type-rfs-set-packer">set_packer type: <em>rfs:set_packer</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#unit-tests-type-rfs-unit-tests">unit-tests type: <em>rfs:unit-tests</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-losetup">TYPE: losetup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#group-image-action">GROUP : image_action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#extract-partition-type-rfs-extract-partition">extract_partition type: <em>rfs:extract_partition</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#copy-from-partition-type-rfs-copy-from-partition">copy_from_partition type: <em>rfs:copy_from_partition</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#copy-to-partition-type-rfs-copy-to-partition">copy_to_partition type: <em>rfs:copy_to_partition</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-extract-partition">TYPE: extract_partition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-copy-from-partition">TYPE: copy_from_partition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-copy-to-partition">TYPE: copy_to_partition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-addgroup">TYPE: addgroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-img-convert">TYPE: img_convert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-set-packer">TYPE: set_packer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-packer-type">SIMPLE TYPE: packer-type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-file">TYPE: file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-adduser">TYPE: adduser</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-cpmv">TYPE: cpmv</a></li>
@@ -293,6 +330,11 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-preseed">TYPE: preseed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-empty">TYPE: empty</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-string">TYPE: string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-iso-opts">TYPE: iso-opts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-unit-tests">TYPE: unit-tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-test-suite">TYPE: test-suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#group-test-case">GROUP : test-case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#file-exists-type-rfs-string">file-exists type: <em>rfs:string</em></a></li>
 </ul>
 </li>
 </ul>
@@ -388,6 +430,7 @@
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
+            <dd><a href="../v10/index.html">v10</a></dd>
             <dd><a href="../v2.5/index.html">v2.5</a></dd>
             <dd><a href="../v3/index.html">v3</a></dd>
             <dd><a href="../v4/index.html">v4</a></dd>
@@ -412,6 +455,7 @@
             <dd><a href="../releases_v1.9.23/index.html">releases/v1.9.23</a></dd>
             <dd><a href="../releases_v1.9.24/index.html">releases/v1.9.24</a></dd>
             <dd><a href="../releases_v1.9.25/index.html">releases/v1.9.25</a></dd>
+            <dd><a href="../releases_v10/index.html">releases/v10</a></dd>
             <dd><a href="../releases_v2.0/index.html">releases/v2.0</a></dd>
             <dd><a href="../releases_v2.1/index.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/index.html">releases/v2.2</a></dd>
@@ -453,7 +497,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'9',
+            VERSION:'10',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

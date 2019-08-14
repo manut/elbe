@@ -2,27 +2,33 @@
 elbe-check_updates
 ************************
 
+.. __name:
+
 NAME
 ====
 
-elbe-check\_updates - Check whether package updates are available for an
+elbe-check_updates - Check whether package updates are available for an
 Elbe project.
+
+.. __synopsis:
 
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe check_updates \
-                [ --script <script> ] \
-                [ --skip-validation ] \
-                <source-xmlfile>
+      elbe check_updates \
+              [ --script <script> ] \
+              [ --skip-validation ] \
+              <source-xmlfile>
+
+.. __description:
 
 DESCRIPTION
 ===========
 
-*elbe check\_updates* checks if package updates are available for a
-given Elbe project. The command will also detect package names that are
+*elbe check_updates* checks if package updates are available for a given
+Elbe project. The command will also detect package names that are
 specified in the package list of the project but missing in the package
 repositories.
 
@@ -30,31 +36,35 @@ Optionally the command can run a script if some packages are missing or
 have updates available. If at least one package is missing, the script
 will be invoked with the following command line:
 
-    ::
+   ::
 
-        <script> ERRORS <source-xmlfile>
+      <script> ERRORS <source-xmlfile>
 
 Otherwise, if at least one package can be updated, the script will be
 started like this:
 
-    ::
+   ::
 
-        <script> UPDATE <source-xmlfile>
+      <script> UPDATE <source-xmlfile>
 
 If none of the above is true, the script will not be started.
+
+.. __options:
 
 OPTIONS
 =======
 
 --script <script>
-    File name of a script to run, if an update is required or packages
-    are missing.
+   File name of a script to run, if an update is required or packages
+   are missing.
 
 --skip-validation
-    Skip the validation of the XML file. (Not recommended)
+   Skip the validation of the XML file. (Not recommended)
 
 <source-xmlfile>
-    Path to the *source.xml* file of the project.
+   Path to the *source.xml* file of the project.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -65,8 +75,10 @@ EXAMPLES
 
    ::
 
-       $ elbe check_updates --script /scratch/fixpackages.sh \
-               /scratch/example/source.xml
+      $ elbe check_updates --script /scratch/fixpackages.sh \
+              /scratch/example/source.xml
+
+.. __elbe:
 
 ELBE
 ====

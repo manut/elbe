@@ -2,25 +2,31 @@
 elbe-init
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-init - create a project for an Elbe build virtual machine
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe init \
-                [ --build-source ] \
-                [ --buildtype <buildtype> ] \
-                [ --debug ] \
-                [ --directory <directory> ] \
-                [ --proxy <addr> ] \
-                [ --skip-cds ] \
-                [ --skip-validation ] \
-                <xmlfile>
+      elbe init \
+              [ --build-source ] \
+              [ --buildtype <buildtype> ] \
+              [ --debug ] \
+              [ --directory <directory> ] \
+              [ --proxy <addr> ] \
+              [ --skip-cds ] \
+              [ --skip-validation ] \
+              <xmlfile>
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -38,38 +44,42 @@ if a serial console is enough). After that, the virtual machine can be
 used to work inside the generated root filesystem. To do so, please use
 the elbe-chroot1 command **inside the VM**.
 
+.. __options:
+
 OPTIONS
 =======
 
 --build-source
-    Build a Debian source CD-ROM image, containing the source packages
-    used by the project.
+   Build a Debian source CD-ROM image, containing the source packages
+   used by the project.
 
 --buildtype <buildtype>
-    Override the build type specified in the XML file.
+   Override the build type specified in the XML file.
 
 --debug
-    Enables a few features that allow for better debugging of the build
-    process.
+   Enables a few features that allow for better debugging of the build
+   process.
 
 --directory <dir>
-    The location of the project directory. If this option isn’t given, a
-    directory *build* is created in the current working directory. The
-    directory must not exist.
+   The location of the project directory. If this option isn’t given, a
+   directory *build* is created in the current working directory. The
+   directory must not exist.
 
 --proxy <addr>
-    Override the HTTP proxy setting specified in the XML file.
+   Override the HTTP proxy setting specified in the XML file.
 
 --skip-cds
-    Skip the generation of Debian binary cdroms. This makes the build
-    faster. Otherwise all used binary packages are stored on an ISO
-    cdrom image.
+   Skip the generation of Debian binary cdroms. This makes the build
+   faster. Otherwise all used binary packages are stored on an ISO cdrom
+   image.
 
 --skip-validation
-    Skip the validation of the XML file. (Not recommended)
+   Skip the validation of the XML file. (Not recommended)
 
 <xmlfile>
-    The XML describing the Elbe project.
+   The XML describing the Elbe project.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -79,9 +89,11 @@ EXAMPLES
 
    ::
 
-       $ elbe init --directory=/scratch/example mywheezy.xml
-       $ cd /scratch/example
-       $ make
+      $ elbe init --directory=/scratch/example mywheezy.xml
+      $ cd /scratch/example
+      $ make
+
+.. __elbe:
 
 ELBE
 ====

@@ -2,18 +2,24 @@
 elbe-diff
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-diff - Looks at 2 directories and makes Suggestions to modify the
 xml file.
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe diff <generated_dir> <fixed_dir>
+      elbe diff <generated_dir> <fixed_dir>
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -23,14 +29,18 @@ tweaks. It is supplied with the generated and the fixed rootfs, and will
 suggest a finetuning section and a commandline to generate an archive
 file.
 
+.. __options:
+
 OPTIONS
 =======
 
-<generated\_dir>
-    This should point to the originally generated directory.
+<generated_dir>
+   This should point to the originally generated directory.
 
-<fixed\_dir>
-    This should point to the fixed directory.
+<fixed_dir>
+   This should point to the fixed directory.
+
+.. __elbe:
 
 ELBE
 ====

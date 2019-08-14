@@ -2,17 +2,23 @@
 elbe-debianize
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-debianize - generate a debianization
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe debianize
+      elbe debianize
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -20,6 +26,8 @@ DESCRIPTION
 *elbe debianize* generates a *debian* folder inside e.g. a kernel source
 tree. This contains the informations needed to transfer the source into
 debian source and binary packages.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -31,11 +39,11 @@ commands.
 
 ::
 
-    $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
-    $ cd linux-stable
-    $ elbe debianize
-    $ git add -f debian
-    $ git commit -sm 'add the elbe generated debianization'
+   $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
+   $ cd linux-stable
+   $ elbe debianize
+   $ git add -f debian
+   $ git commit -sm 'add the elbe generated debianization'
 
 if you selected a cross compiler, the package could be build with
 
@@ -43,7 +51,7 @@ if you selected a cross compiler, the package could be build with
 
 ::
 
-    $ dpkg-buildpackage -a armhf
+   $ dpkg-buildpackage -a armhf
 
 otherwise use *elbe-pbuilder*
 
@@ -51,7 +59,9 @@ otherwise use *elbe-pbuilder*
 
 ::
 
-    $ elbe pbuilder build /var/cache/elbe/<uuid>
+   $ elbe pbuilder build /var/cache/elbe/<uuid>
+
+.. __elbe:
 
 ELBE
 ====

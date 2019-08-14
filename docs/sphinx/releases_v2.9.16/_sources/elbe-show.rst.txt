@@ -2,17 +2,23 @@
 elbe-show
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-show - Get a human readable representation of a ELBE XML file.
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe show [--verbose] <xmlfile>
+      elbe show [--verbose] <xmlfile>
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -22,15 +28,19 @@ file.
 
 It’s useful to get an idea for what is a specific XML file was designed.
 
+.. __options:
+
 OPTIONS
 =======
 
 --verbose
-    Give more informations, e.g. the package list of the target
-    root-filesystem.
+   Give more informations, e.g. the package list of the target
+   root-filesystem.
 
 <xmlfile>
-    The xmlfile to be shown.
+   The xmlfile to be shown.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -39,7 +49,9 @@ EXAMPLES
 
    ::
 
-       $ elbe show mywheezy.xml
+      $ elbe show mywheezy.xml
+
+.. __elbe:
 
 ELBE
 ====

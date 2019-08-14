@@ -2,17 +2,23 @@
 elbe-add
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-add - Insert new package(s) into the target package list.
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe add [options] <xmlfile> <package name> [<package name>]*
+      elbe add [options] <xmlfile> <package name> [<package name>]*
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -22,11 +28,15 @@ If more than one package name was given, all the packages are added to
 the list. If a package already exists in the list, the package isn’t
 added twice.
 
+.. __options:
+
 OPTIONS
 =======
 
 <xmlfile>
-    The xmlfile to be modified.
+   The xmlfile to be modified.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -35,7 +45,9 @@ EXAMPLES
 
    ::
 
-       $ elbe add mybsp.xml vim-nox mc
+      $ elbe add mybsp.xml vim-nox mc
+
+.. __elbe:
 
 ELBE
 ====

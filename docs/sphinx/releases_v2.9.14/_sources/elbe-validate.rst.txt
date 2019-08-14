@@ -2,28 +2,38 @@
 elbe-validate
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-validate - validate xml file.
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe validate <xmlfile>
+      elbe validate <xmlfile>
+
+.. __description:
 
 DESCRIPTION
 ===========
 
 This command validates the xmlfile provided, and prints out errors.
 
+.. __options:
+
 OPTIONS
 =======
 
 <xmlfile>
-    The xml file to validate.
+   The xml file to validate.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -32,7 +42,9 @@ EXAMPLES
 
    ::
 
-       $ elbe validate mywheezy.xml
+      $ elbe validate mywheezy.xml
+
+.. __elbe:
 
 ELBE
 ====

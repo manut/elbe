@@ -2,18 +2,24 @@
 elbe-pkgdiff
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe-pkgdiff - Compare two directories for differing packages and
 suggest how to modify the Elbe XML file.
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe pkgdiff <generated_dir> <fixed_dir>
+      elbe pkgdiff <generated_dir> <fixed_dir>
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -25,14 +31,18 @@ added packages and to exclude the removed ones. The command is supplied
 with the path to the originally generated directory and the path to the
 directory with the modified root filesystem.
 
+.. __options:
+
 OPTIONS
 =======
 
-<generated\_dir>
-    This should point to the originally generated directory.
+<generated_dir>
+   This should point to the originally generated directory.
 
-<fixed\_dir>
-    This should point to the fixed directory.
+<fixed_dir>
+   This should point to the fixed directory.
+
+.. __elbe:
 
 ELBE
 ====

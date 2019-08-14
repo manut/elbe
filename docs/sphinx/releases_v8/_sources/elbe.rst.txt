@@ -2,17 +2,23 @@
 elbe
 ************************
 
+.. __name:
+
 NAME
 ====
 
 elbe - Embedded Linux Build Environment
 
+.. __synopsis:
+
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe <command> [<args>]
+      elbe <command> [<args>]
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -22,81 +28,85 @@ also includes tools to modify xml files.
 
 The *<command>* is a name of an Elbe command (see below).
 
+.. __elbe_commands:
+
 Elbe COMMANDS
 =============
 
 elbe-initvm1
-    build and manage initvm. Also allows to submit xml Files into the
-    initvm
+   build and manage initvm. Also allows to submit xml Files into the
+   initvm
 
 elbe-control1
-    low-level interface to projects inside the initvm.
+   low-level interface to projects inside the initvm.
 
 elbe-buildchroot1
-    build a root filesystem.
+   build a root filesystem.
 
 elbe-buildsysroot1
-    build a sysroot archive.
+   build a sysroot archive.
 
-elbe-check\_updates1
-    check whether package updates are available for a given project.
+elbe-check_updates1
+   check whether package updates are available for a given project.
 
-elbe-chg\_archive1
-    insert a new config archive (.tbz) into a XML file.
+elbe-chg_archive1
+   insert a new config archive (.tbz) into a XML file.
 
 elbe-chroot1
-    enter a root filesystem with chroot.
+   enter a root filesystem with chroot.
 
 elbe-diff1
-    compare two root file systems for differing files.
+   compare two root file systems for differing files.
 
-elbe-gen\_update1
-    generate an update archive for elbe-updated.
+elbe-gen_update1
+   generate an update archive for elbe-updated.
 
 elbe-genlicence1
-    generate a file containing the licences of all packages included in
-    a project.
+   generate a file containing the licences of all packages included in a
+   project.
 
-elbe-get\_archive1
-    extract a config archive (.tbz) from a XML file.
+elbe-get_archive1
+   extract a config archive (.tbz) from a XML file.
 
 elbe-hdimg1
-    create a hard disk image from the given XML file.
+   create a hard disk image from the given XML file.
 
 elbe-init1
-    create a project for an Elbe build virtual machine.
+   create a project for an Elbe build virtual machine.
 
 elbe-mkcdrom1
-    create an ISO image containing all binary or source packages used in
-    the given project.
+   create an ISO image containing all binary or source packages used in
+   the given project.
 
 elbe-pbuilder1
-    generate a pbuilder environment and build packages within it
+   generate a pbuilder environment and build packages within it
 
 elbe-pkgdiff1
-    compare two root filesystems for differing packages.
+   compare two root filesystems for differing packages.
 
-elbe-remove\_sign1
-    verify a signed file and remove the signature.
+elbe-remove_sign1
+   verify a signed file and remove the signature.
 
 elbe-setsel1
-    update the packagelist from the output of dpkg-getselections.
+   update the packagelist from the output of dpkg-getselections.
 
 elbe-show1
-    show a textual information about the given XML file.
+   show a textual information about the given XML file.
 
 elbe-sign1
-    add a signature to the given file.
+   add a signature to the given file.
 
 elbe-updated1
-    start the Elbe update daemon.
+   start the Elbe update daemon.
 
 elbe-validate1
-    validate the given XML file against the Elbe XML Schema.
+   validate the given XML file against the Elbe XML Schema.
 
 elbe-xsdtoasciidoc1
-    create an asciidoc documentation from an annotated XML Schema file
-    (xsd).
+   create an asciidoc documentation from an annotated XML Schema file
+   (xsd).
+
+.. __authors:
 
 Authors
 =======
@@ -106,10 +116,14 @@ elbe was first implemented as dbsfed by Benedikt Spranger
 reimplementation in python. This is currently maintained by Manuel Traut
 <manut@linutronix.de>.
 
+.. __see_also:
+
 SEE ALSO
 ========
 
 elbe1
+
+.. __elbe:
 
 ELBE
 ====

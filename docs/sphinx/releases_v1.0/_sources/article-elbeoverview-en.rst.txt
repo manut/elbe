@@ -4,6 +4,8 @@ ELBE Overview
 
 Debian based system to generate root-filesystems for embedded devices.
 
+.. __general_notes:
+
 General Notes
 =============
 
@@ -46,6 +48,8 @@ Elbe takes a different approach for solving these problems:
 -  Updating, adding or removing a package is done via Debians
    package-management (apt) which also resolves package dependencies.
 
+.. __installation:
+
 Installation
 ============
 
@@ -56,25 +60,27 @@ Configure ``/etc/apt/sources.list.d`` appropriately:
 
 ::
 
-    echo 'deb http://debian.linutronix.de/elbe jessie main' >> /etc/apt/sources.list.d/elbe.list
+   echo 'deb http://debian.linutronix.de/elbe jessie main' >> /etc/apt/sources.list.d/elbe.list
 
 Optionally the public key for the repo can be installed:
 
 ::
 
-    wget http://debian.linutronix.de/elbe/elbe-repo.pub && apt-key add elbe-repo.pub
+   wget http://debian.linutronix.de/elbe/elbe-repo.pub && apt-key add elbe-repo.pub
 
 Update the package list:
 
 ::
 
-    aptitude update
+   aptitude update
 
 and install elbe using the following command:
 
 ::
 
-    aptitude install elbe
+   aptitude install elbe
+
+.. __overview:
 
 Overview
 ========
@@ -85,9 +91,9 @@ example:
 
 ::
 
-    elbe <command>
-    elbe initvm create --directory /scratch/example example.xml
-    elbe chg_archive example.xml archive.tar.bz2
+   elbe <command>
+   elbe initvm create --directory /scratch/example example.xml
+   elbe chg_archive example.xml archive.tar.bz2
 
 An Elbe project consists of an XML file that describes the project.
 
@@ -140,6 +146,8 @@ will cause problems during installation. This typically includes
 database application packages, which set up a database in their postinst
 script and rely on the database server to be already running.
 
+.. __create_initvm_and_build_a_first_xml_file_from_the_examples:
+
 Create initvm and build a first xml file from the examples
 ==========================================================
 
@@ -148,7 +156,7 @@ use the following command:
 
 ::
 
-    elbe initvm create --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/mini-wheezy-nfsroot.xml
+   elbe initvm create --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/mini-wheezy-nfsroot.xml
 
 This will take quite a while.
 
@@ -160,7 +168,7 @@ may be built using
 
 ::
 
-    elbe initvm submit --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/mini-wheezy-nfsroot.xml
+   elbe initvm submit --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/mini-wheezy-nfsroot.xml
 
 The initvm will not be restarted upon a reboot of the machine.
 
@@ -168,7 +176,9 @@ If you need to start the initvm again, use
 
 ::
 
-    elbe initvm start --directory ~/elbe-initvm
+   elbe initvm start --directory ~/elbe-initvm
+
+.. __example_xml_files:
 
 Example XML Files
 -----------------
@@ -185,63 +195,65 @@ environment and it will be saved as ``nfsroot.tar.gz``
 
 .. code:: xml
 
-    <ns0:RootFileSystem xmlns:ns0="https://www.linutronix.de/projects/Elbe"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            created="2009-05-20T08:50:56" revision="6"
-            xsi:schemaLocation="https://www.linutronix.de/projects/Elbe dbsfed.xsd">
-            <project>
-                    <name>ARMexample</name>
-                    <version>08.15</version>
-                    <description>full featured debian system</description>
-                    <buildtype>armel</buildtype>
-                    <mirror>
-                            <primary_host>debian.tu-bs.de</primary_host>
-                            <primary_path>/debian</primary_path>
-                            <primary_proto>http</primary_proto>
-                            <url-list>
-                                    <url>
-                                            <binary>http://debian.linutronix.de/elbe wheezy main</binary>
-                                    </url>
-                            </url-list>
-                    </mirror>
-                    <noauth />
-                    <suite>wheezy</suite>
-                    <buildimage>
-                            <kinitrd>elbe-bootstrap</kinitrd>
-                    </buildimage>
-            </project>
-            <target>
-                    <hostname>myARM</hostname>
-                    <domain>tec.linutronix.de</domain>
-                    <passwd>foo</passwd>
-                    <console>ttyS0,115200</console>
-                    <package>
-                            <tar>
-                                    <name>nfsroot.tar.gz</name>
-                            </tar>
-                    </package>
-                    <finetuning>
-                    </finetuning>
-                    <pkg-list>
-                            <pkg>bash</pkg>
-                            <pkg>openssh-server</pkg>
-                    </pkg-list>
-            </target>
-    </ns0:RootFileSystem>
+   <ns0:RootFileSystem xmlns:ns0="https://www.linutronix.de/projects/Elbe"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           created="2009-05-20T08:50:56" revision="6"
+           xsi:schemaLocation="https://www.linutronix.de/projects/Elbe dbsfed.xsd">
+           <project>
+                   <name>ARMexample</name>
+                   <version>08.15</version>
+                   <description>full featured debian system</description>
+                   <buildtype>armel</buildtype>
+                   <mirror>
+                           <primary_host>debian.tu-bs.de</primary_host>
+                           <primary_path>/debian</primary_path>
+                           <primary_proto>http</primary_proto>
+                           <url-list>
+                                   <url>
+                                           <binary>http://debian.linutronix.de/elbe wheezy main</binary>
+                                   </url>
+                           </url-list>
+                   </mirror>
+                   <noauth />
+                   <suite>wheezy</suite>
+                   <buildimage>
+                           <kinitrd>elbe-bootstrap</kinitrd>
+                   </buildimage>
+           </project>
+           <target>
+                   <hostname>myARM</hostname>
+                   <domain>tec.linutronix.de</domain>
+                   <passwd>foo</passwd>
+                   <console>ttyS0,115200</console>
+                   <package>
+                           <tar>
+                                   <name>nfsroot.tar.gz</name>
+                           </tar>
+                   </package>
+                   <finetuning>
+                   </finetuning>
+                   <pkg-list>
+                           <pkg>bash</pkg>
+                           <pkg>openssh-server</pkg>
+                   </pkg-list>
+           </target>
+   </ns0:RootFileSystem>
 
 To generate the project directory from the XML file the following
 command is used:
 
 ::
 
-    elbe initvm submit --directory ~/elbe-initvm example.xml
+   elbe initvm submit --directory ~/elbe-initvm example.xml
 
 The directory ``~/elbe-initvm`` must contain a running initvm. If an
 initvm has not been created yet, use:
 
 ::
 
-    elbe initvm create --directory ~/elbe-initvm example.xml
+   elbe initvm create --directory ~/elbe-initvm example.xml
+
+.. __changing_the_subset_that_is_extracted_as_the_root_filesystem:
 
 Changing the subset that is extracted as the root filesystem
 ============================================================
@@ -259,6 +271,8 @@ root-filesystem.
 
 -  The embedded archive.
 
+.. __finetuning:
+
 Finetuning
 ----------
 
@@ -268,24 +282,24 @@ example finetuning section:
 
 .. code:: xml
 
-      <finetuning>
-        <rm>/usr/share/doc</rm>                                             
-        <mkdir>/mydir</mkdir>                                               
-        <mknod opts="c 1 5">/dev/zero</mknod>                               
-        <buildenv_mkdir>/mydir</buildenv_mkdir>                             
-        <cp path="/copy/me">/my/destination</cp>                            
-        <buildenv_cp path="/copy/me">/my/destination</buildenv_cp>          
-        <b2t_cp path="/copy/me">/my/name/on/target</b2t_cp>                 
-        <t2b_cp path="/copy/me">/my/name/on/buildenv</b2t_cp>               
-        <mv path="/var">/var_ro</mv>                                        
-        <buildenv_mv path="/var">/var_ro</buildenv_mv>                      
-        <command>echo "T0:23:respawn:/sbin/getty -L ttyO0 115200 vt102" &gt;&gt; /etc/inittab</command>     
-        <buildenv_command>some_command</buildenv_command>                   
-        <purge>apt</purge>                                                  
-        <addgroup>mygroup</addgroup>                                                        
-        <adduser groups='mygroup,audio' passwd='huhu' shell='/bin/zsh'>manut</adduser>                                                      
-        <adduser passwd='test' shell='/bin/bash'>test</adduser>                                                     
-      </finetuning>
+     <finetuning>
+       <rm>/usr/share/doc</rm>                                             
+       <mkdir>/mydir</mkdir>                                               
+       <mknod opts="c 1 5">/dev/zero</mknod>                               
+       <buildenv_mkdir>/mydir</buildenv_mkdir>                             
+       <cp path="/copy/me">/my/destination</cp>                            
+       <buildenv_cp path="/copy/me">/my/destination</buildenv_cp>          
+       <b2t_cp path="/copy/me">/my/name/on/target</b2t_cp>                 
+       <t2b_cp path="/copy/me">/my/name/on/buildenv</b2t_cp>               
+       <mv path="/var">/var_ro</mv>                                        
+       <buildenv_mv path="/var">/var_ro</buildenv_mv>                      
+       <command>echo "T0:23:respawn:/sbin/getty -L ttyO0 115200 vt102" &gt;&gt; /etc/inittab</command>     
+       <buildenv_command>some_command</buildenv_command>                   
+       <purge>apt</purge>                                                  
+       <addgroup>mygroup</addgroup>                                                        
+       <adduser groups='mygroup,audio' passwd='huhu' shell='/bin/zsh'>manut</adduser>                                                      
+       <adduser passwd='test' shell='/bin/bash'>test</adduser>                                                     
+     </finetuning>
 
 -  Remove the directory */usr/share/doc* from the target.
 
@@ -314,7 +328,7 @@ example finetuning section:
    example a line is added to */etc/inittab* in order to permit logins
    via the serial console.
 
--  Execute *some\_command* in the build environment.
+-  Execute *some_command* in the build environment.
 
 -  Remove the *apt* package from the target root filesystem using *dpkg
    --purge*.
@@ -329,6 +343,8 @@ example finetuning section:
 
 The copy, mv, and rm commands operate on full directories.
 
+.. __useful_directories_to_trim_with_finetuning:
+
 Useful directories to trim with finetuning
 ------------------------------------------
 
@@ -337,22 +353,22 @@ to get a smaller target image.
 
 .. code:: xml
 
-    <finetuning>
-            <rm>/usr/share/doc</rm>                         
-            <rm>var/cache/apt/archives/*</rm>               
-            <rm>var/cache/apt/pkgcache.bin</rm>
-            <rm>var/cache/apt/srcpkgcache.bin</rm>
-            <rm>var/lib/apt/lists/*_Release</rm>
-            <rm>var/lib/apt/lists/*_Packages</rm>
-            <rm>var/lib/apt/lists/*_Sources</rm>
+   <finetuning>
+           <rm>/usr/share/doc</rm>                         
+           <rm>var/cache/apt/archives/*</rm>               
+           <rm>var/cache/apt/pkgcache.bin</rm>
+           <rm>var/cache/apt/srcpkgcache.bin</rm>
+           <rm>var/lib/apt/lists/*_Release</rm>
+           <rm>var/lib/apt/lists/*_Packages</rm>
+           <rm>var/lib/apt/lists/*_Sources</rm>
 
-            <rm>boot</rm>                                   
+           <rm>boot</rm>                                   
 
-            <rm>lib/modules/2.6.32-5-versatile/</rm>        
-            <rm>var/cache/man/*</rm>                        
-            <rm>var/cache/elbe</rm>                         
-            <rm>var/cache/debconf/*</rm>                    
-    </finetuning>
+           <rm>lib/modules/2.6.32-5-versatile/</rm>        
+           <rm>var/cache/man/*</rm>                        
+           <rm>var/cache/elbe</rm>                         
+           <rm>var/cache/debconf/*</rm>                    
+   </finetuning>
 
 -  The doc files are not necessary on an embedded target.
 
@@ -369,6 +385,8 @@ to get a smaller target image.
 
 -  debconf cache is also not necessary
 
+.. __archive:
+
 Archive
 -------
 
@@ -379,10 +397,12 @@ command can be used to embed the archive into the XML file:
 
 ::
 
-    elbe chg_archive <xmlfile> archive.tar.bz2
+   elbe chg_archive <xmlfile> archive.tar.bz2
 
 This feature is useful to place custom configuration-files into the
 final image.
+
+.. __slimming_the_root_filesystem_with_the_different_modes:
 
 Slimming the root filesystem with the different modes
 =====================================================
@@ -395,29 +415,31 @@ configured.
 
 .. code:: xml
 
-      <target>
-        <hostname>example</hostname>
-        <domain>example.com</domain>
-        <passwd>foo</passwd>
-        <package>
-                <tar>nfsroot.tar.gz</tar>
-        </package>
+     <target>
+       <hostname>example</hostname>
+       <domain>example.com</domain>
+       <passwd>foo</passwd>
+       <package>
+               <tar>nfsroot.tar.gz</tar>
+       </package>
 
-        <diet />        
+       <diet />        
 
-        <norecommend /> 
+       <norecommend /> 
 
-        <finetuning \>
-        <pkg-list>
-                <pkg>bash</pkg>
-        </pkg-list>
+       <finetuning \>
+       <pkg-list>
+               <pkg>bash</pkg>
+       </pkg-list>
 
-      </target>
+     </target>
 
 -  The mode is configured at this place, leaving it out, enables the
    default mode.
 
 -  *norecommend* should be placed here.
+
+.. __norecommend:
 
 norecommend
 -----------
@@ -431,12 +453,16 @@ This is not strictly a mode as described in the following paragraphs. It
 can be combined with any of them, and the following modes are mutually
 exclusive.
 
+.. __default:
+
 default
 -------
 
 The default mode generates a full copy of the build image. This mode is
 the easiest to use, but its not possible to generate images which have
 the Debian package management removed.
+
+.. __setsel:
 
 setsel
 ------
@@ -468,6 +494,8 @@ The setsel mode works by feeding the pkg list to
 that there is no need to cope with some unregistered configuration
 files.
 
+.. __diet:
+
 diet
 ----
 
@@ -489,12 +517,16 @@ Do not use this for normal filesystems.
 
 This also holds for the *tighten* mode.
 
+.. __tighten:
+
 tighten
 -------
 
 Tighten mode only extracts the files referenced by the packages in
 *pkg-list*. No dependencies are resolved. This mode is intended for
 compatibility with old XML files, do not use in new elbe projects.
+
+.. __cdrom_functionality:
 
 CDROM Functionality
 ===================
@@ -505,9 +537,11 @@ can also serve as an installation source.
 
 .. code:: xml
 
-        <mirror>
-                <cdrom>/home/user/elbe-example/install.iso</cdrom>
-        </mirror>
+       <mirror>
+               <cdrom>/home/user/elbe-example/install.iso</cdrom>
+       </mirror>
+
+.. __install_reports:
 
 Install Reports
 ===============
@@ -518,10 +552,12 @@ command:
 
 ::
 
-    asciidoc elbe-report.txt
+   asciidoc elbe-report.txt
 
 This report lists all files in the root-file-system, including the
 origin Debian package.
+
+.. __validation:
 
 Validation
 ==========
@@ -531,6 +567,8 @@ installed packages and versions. If this information is already present
 in a file used with ``elbe create`` the installed package versions and
 md5 hashes are validated and a report is printed and saved to
 ``validation.txt``. This file is also in asciidoc format.
+
+.. __xml_reference:
 
 XML Reference
 =============
@@ -542,34 +580,34 @@ the same:
 
 .. code:: XML
 
-    <ns0:RootFileSystem xmlns:ns0="https://www.linutronix.de/projects/Elbe"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         created="2009-05-20T08:50:56" revision="6"
-         xsi:schemaLocation="https://www.linutronix.de/projects/Elbe dbsfed.xsd">
+   <ns0:RootFileSystem xmlns:ns0="https://www.linutronix.de/projects/Elbe"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        created="2009-05-20T08:50:56" revision="6"
+        xsi:schemaLocation="https://www.linutronix.de/projects/Elbe dbsfed.xsd">
 
 After this header follows the project description.
 
 .. code:: xml
 
-            <project>
-                    <name>ARMexample</name>
-                    <version>08.15</version>
-                    <mirror>
-                            <primary_host>debian.tu-bs.de</primary_host>    
-                            <primary_path>/debian</primary_path>
-                            <primary_proto>http</primary_proto>
-                            <url-list>                                      
-                                    <url>
-                                            <binary>http://debian.linutronix.de/elbe wheezy main</binary>
-                                    </url>
-                            </url-list>
+           <project>
+                   <name>ARMexample</name>
+                   <version>08.15</version>
+                   <mirror>
+                           <primary_host>debian.tu-bs.de</primary_host>    
+                           <primary_path>/debian</primary_path>
+                           <primary_proto>http</primary_proto>
+                           <url-list>                                      
+                                   <url>
+                                           <binary>http://debian.linutronix.de/elbe wheezy main</binary>
+                                   </url>
+                           </url-list>
 
-                    </mirror>
-                    <noauth />                                              
-                    <suite>wheezy</suite>                                   
+                   </mirror>
+                   <noauth />                                              
+                   <suite>wheezy</suite>                                   
 
--  The *mirror* tag contains *primary\_host*, *primary\_path* and
-   *primary\_proto*. It describes the Debian mirror used.
+-  The *mirror* tag contains *primary_host*, *primary_path* and
+   *primary_proto*. It describes the Debian mirror used.
 
 -  The *url-list* can contain additional package sources.
 
@@ -586,30 +624,30 @@ debian-installer is exectued and custom packages can be build.
 
 .. code:: xml
 
-                    <buildimage>
-                            <arch>armel</arch>                              
-                            <size>20G</size>                                
-                            <mem>256</mem>                                  
-                            <interpreter>qemu-system-arm</interpreter>      
-                            <kinitrd>elbe-bootstrap</kinitrd>               
-                            <console>ttyAMA0,115200n1</console>             
-                            <machine>versatilepb</machine>                  
-                            <NIC>
-                                    <model>smc91c111</model>
-                                    <MAC>de:ad:be:ef:be:05</MAC>
-                            </NIC>
-                            <portforwarding>                                
-                                    <forward>
-                                            <proto>tcp</proto>
-                                            <buildenv>22</buildenv>
-                                            <host>5022</host>
-                                    </forward>
-                            </portforwarding>
-                            <pkg-list>                                      
-                                    <pkg>buildd</pkg>
-                            </pkg-list>
-                    </buildimage>
-            </project>
+                   <buildimage>
+                           <arch>armel</arch>                              
+                           <size>20G</size>                                
+                           <mem>256</mem>                                  
+                           <interpreter>qemu-system-arm</interpreter>      
+                           <kinitrd>elbe-bootstrap</kinitrd>               
+                           <console>ttyAMA0,115200n1</console>             
+                           <machine>versatilepb</machine>                  
+                           <NIC>
+                                   <model>smc91c111</model>
+                                   <MAC>de:ad:be:ef:be:05</MAC>
+                           </NIC>
+                           <portforwarding>                                
+                                   <forward>
+                                           <proto>tcp</proto>
+                                           <buildenv>22</buildenv>
+                                           <host>5022</host>
+                                   </forward>
+                           </portforwarding>
+                           <pkg-list>                                      
+                                   <pkg>buildd</pkg>
+                           </pkg-list>
+                   </buildimage>
+           </project>
 
 -  *arch* is the Debian architecture of the target. (optional)
 
@@ -653,28 +691,28 @@ configuration for a different architecture
 
 .. code:: xml
 
-            <target>
-                    <hostname>myARM</hostname>                      
-                    <domain>tec.linutronix.de</domain>              
-                    <passwd>foo</passwd>                            
-                    <console>ttyS0,115200</console>
-                    <package>
-                            <tar>
-                                    <name>nfsroot.tar.gz</name>     
-                            </tar>
-                    </package>
-                    <finetuning>                                    
-                    </finetuning>
-                    <pkg-list>                                      
-                            <pkg>build-essential</pkg>
-                            <pkg>bash</pkg>
-                            <pkg>less</pkg>
-                            <pkg>git</pkg>
-                            <pkg>debhelper</pkg>
-                            <pkg>nfs-common</pkg>
-                            <pkg>openssh-server</pkg>
-                    </pkg-list>
-            </target>
+           <target>
+                   <hostname>myARM</hostname>                      
+                   <domain>tec.linutronix.de</domain>              
+                   <passwd>foo</passwd>                            
+                   <console>ttyS0,115200</console>
+                   <package>
+                           <tar>
+                                   <name>nfsroot.tar.gz</name>     
+                           </tar>
+                   </package>
+                   <finetuning>                                    
+                   </finetuning>
+                   <pkg-list>                                      
+                           <pkg>build-essential</pkg>
+                           <pkg>bash</pkg>
+                           <pkg>less</pkg>
+                           <pkg>git</pkg>
+                           <pkg>debhelper</pkg>
+                           <pkg>nfs-common</pkg>
+                           <pkg>openssh-server</pkg>
+                   </pkg-list>
+           </target>
 
 -  The hostname
 
@@ -690,6 +728,8 @@ configuration for a different architecture
 
 -  The package list resides here.
 
+.. __building_ubi_images:
+
 Building ubi images
 -------------------
 
@@ -698,111 +738,111 @@ partitions and mountpoints. Lets look at an example *target* section.
 
 .. code:: xml
 
-    <target>
-            <hostname>myARM</hostname>
-            <domain>tec.linutronix.de</domain>
-            <passwd>foo</passwd>
-            <console>ttyS0,115200</console>
+   <target>
+           <hostname>myARM</hostname>
+           <domain>tec.linutronix.de</domain>
+           <passwd>foo</passwd>
+           <console>ttyS0,115200</console>
 
-            <images>
-                    <mtd>
-                            <name>linux.img</name>                  
-                            <nr>0</nr>
-                            <size>60MB</size>
-                            <ubivg>
-                                    <label>nand</label>
-                                    <miniosize>2048</miniosize>     
-                                    <maxlogicaleraseblockcount>1533</maxlogicaleraseblockcount>
-                                    <logicaleraseblocksize>126976</logicaleraseblocksize>
-                                    <physicaleraseblocksize>128KiB</physicaleraseblocksize>
-                                    <ubi>                           
-                                            <type>static</type>
-                                            <label>kernel</label>
-                                            <id>0</id>
-                                            <size>4MiB</size>
-                                            <binary>/boot/vmlinuz-2.6.33.9-rt31</binary>
-                                    </ubi>
-                                    <ubi>
-                                            <type>dynamic</type>
-                                            <label>rfs</label>
-                                            <id>1</id>
-                                            <size>26MiB</size>
-                                    </ubi>
-                                    <ubi>
-                                            <type>dynamic</type>
-                                            <label>data</label>
-                                            <id>2</id>
-                                            <size>30MiB</size>
-                                    </ubi>
-                            </ubivg>
-                    </mtd>
-            </images>
+           <images>
+                   <mtd>
+                           <name>linux.img</name>                  
+                           <nr>0</nr>
+                           <size>60MB</size>
+                           <ubivg>
+                                   <label>nand</label>
+                                   <miniosize>2048</miniosize>     
+                                   <maxlogicaleraseblockcount>1533</maxlogicaleraseblockcount>
+                                   <logicaleraseblocksize>126976</logicaleraseblocksize>
+                                   <physicaleraseblocksize>128KiB</physicaleraseblocksize>
+                                   <ubi>                           
+                                           <type>static</type>
+                                           <label>kernel</label>
+                                           <id>0</id>
+                                           <size>4MiB</size>
+                                           <binary>/boot/vmlinuz-2.6.33.9-rt31</binary>
+                                   </ubi>
+                                   <ubi>
+                                           <type>dynamic</type>
+                                           <label>rfs</label>
+                                           <id>1</id>
+                                           <size>26MiB</size>
+                                   </ubi>
+                                   <ubi>
+                                           <type>dynamic</type>
+                                           <label>data</label>
+                                           <id>2</id>
+                                           <size>30MiB</size>
+                                   </ubi>
+                           </ubivg>
+                   </mtd>
+           </images>
 
-            <fstab>                                                 
-                    <bylabel>                                       
-                            <label>data</label>
-                            <mountpoint>/opt</mountpoint>
-                            <fs>
-                                    <type>ubifs</type>
-                                    <mkfs>-x lzo</mkfs>
-                            </fs>
-                            <options>rw</options>
-                    </bylabel>
-                    <bylabel>
-                            <label>rfs</label>
-                            <mountpoint>/</mountpoint>
-                            <fs>
-                                    <type>ubifs</type>
-                                    <mkfs>-x lzo</mkfs>
-                            </fs>
-                            <options>ro</options>
-                    </bylabel>
-                    <bydev>                                         
-                            <source>proc</source>
-                            <mountpoint>/proc</mountpoint>
-                            <fs>
-                                    <type>proc</type>
-                            </fs>
-                    </bydev>
-                    <bydev>
-                            <source>sysfs</source>
-                            <mountpoint>/sys</mountpoint>
-                            <fs>
-                                    <type>sysfs</type>
-                            </fs>
-                    </bydev>
-                    <bydev>
-                            <source>tmpfs</source>
-                            <mountpoint>/tmp</mountpoint>
-                            <fs>
-                                    <type>tmpfs</type>
-                            </fs>
-                            <options>size=2M</options>
-                    </bydev>
-                    <bydev>
-                            <source>tmpfs</source>
-                            <mountpoint>/var/log</mountpoint>
-                            <fs>
-                                    <type>tmpfs</type>
-                            </fs>
-                            <options>size=4M</options>
-                    </bydev>
-                    <bydev>
-                            <source>tmpfs</source>
-                            <mountpoint>/var/run</mountpoint>
-                            <fs>
-                                    <type>tmpfs</type>
-                            </fs>
-                            <options>size=2M</options>
-                    </bydev>
-            </fstab>
+           <fstab>                                                 
+                   <bylabel>                                       
+                           <label>data</label>
+                           <mountpoint>/opt</mountpoint>
+                           <fs>
+                                   <type>ubifs</type>
+                                   <mkfs>-x lzo</mkfs>
+                           </fs>
+                           <options>rw</options>
+                   </bylabel>
+                   <bylabel>
+                           <label>rfs</label>
+                           <mountpoint>/</mountpoint>
+                           <fs>
+                                   <type>ubifs</type>
+                                   <mkfs>-x lzo</mkfs>
+                           </fs>
+                           <options>ro</options>
+                   </bylabel>
+                   <bydev>                                         
+                           <source>proc</source>
+                           <mountpoint>/proc</mountpoint>
+                           <fs>
+                                   <type>proc</type>
+                           </fs>
+                   </bydev>
+                   <bydev>
+                           <source>sysfs</source>
+                           <mountpoint>/sys</mountpoint>
+                           <fs>
+                                   <type>sysfs</type>
+                           </fs>
+                   </bydev>
+                   <bydev>
+                           <source>tmpfs</source>
+                           <mountpoint>/tmp</mountpoint>
+                           <fs>
+                                   <type>tmpfs</type>
+                           </fs>
+                           <options>size=2M</options>
+                   </bydev>
+                   <bydev>
+                           <source>tmpfs</source>
+                           <mountpoint>/var/log</mountpoint>
+                           <fs>
+                                   <type>tmpfs</type>
+                           </fs>
+                           <options>size=4M</options>
+                   </bydev>
+                   <bydev>
+                           <source>tmpfs</source>
+                           <mountpoint>/var/run</mountpoint>
+                           <fs>
+                                   <type>tmpfs</type>
+                           </fs>
+                           <options>size=2M</options>
+                   </bydev>
+           </fstab>
 
-            <finetuning>
-            </finetuning>
-            <pkg-list>
-                    <pkg>dash</pkg>
-            </pkg-list>
-    </target>
+           <finetuning>
+           </finetuning>
+           <pkg-list>
+                   <pkg>dash</pkg>
+           </pkg-list>
+   </target>
 
 -  This specifies an mtd image with 60MB size whose filename is
    linux.img
@@ -820,6 +860,8 @@ partitions and mountpoints. Lets look at an example *target* section.
    this section. Entries for */proc*, */sys* etc. can be generated with
    *bydev* nodes.
 
+.. __building_harddisk_sdcard_images:
+
 Building harddisk / sdcard images
 ---------------------------------
 
@@ -828,56 +870,56 @@ partitions and mountpoints. Lets look at an example *target* section.
 
 .. code:: xml
 
-            <images>
-                    <hd>
-                            <name>sda.img</name>                    
-                            <size>1900</size>                       
-                            <partitions>                            
-                                    <primary>
-                                            <part>1</part>
-                                            <size>remain</size>
-                                            <label>rfs</label>      
-                                            <parttype>linux</parttype>
-                                    </primary>
-                            </partitions>
-                    </hd>
-                    <hd>
-                            <name>sdb.img</name>                    
-                            <size>400</size>                        
-                            <partitions>                            
-                                    <primary>
-                                            <part>1</part>
-                                            <size>remain</size>
-                                            <label>config</label>   
-                                            <parttype>linux</parttype>
-                                    </primary>
-                            </partitions>
-                    </hd>
-            </images>
-            <fstab>                                                 
-                    <bylabel>
-                            <label>rfs</label>                      
-                            <mountpoint>/</mountpoint>
-                            <fs>
-                                    <type>ext4</type>
-                            </fs>
-                    </bylabel>
-                    <bylabel>
-                            <label>config</label>                   
-                            <mountpoint>/mnt/config</mountpoint>
-                            <fs>
-                                    <type>ext4</type>
-                            </fs>
-                            <options>ro</options>
-                    </bylabel>
-                    <bydev>
-                            <source>none</source>
-                            <mountpoint>/sys/kernel/debug</mountpoint>
-                            <fs>
-                                    <type>debug</type>
-                            </fs>
-                    </bydev>
-            </fstab>
+           <images>
+                   <hd>
+                           <name>sda.img</name>                    
+                           <size>1900</size>                       
+                           <partitions>                            
+                                   <primary>
+                                           <part>1</part>
+                                           <size>remain</size>
+                                           <label>rfs</label>      
+                                           <parttype>linux</parttype>
+                                   </primary>
+                           </partitions>
+                   </hd>
+                   <hd>
+                           <name>sdb.img</name>                    
+                           <size>400</size>                        
+                           <partitions>                            
+                                   <primary>
+                                           <part>1</part>
+                                           <size>remain</size>
+                                           <label>config</label>   
+                                           <parttype>linux</parttype>
+                                   </primary>
+                           </partitions>
+                   </hd>
+           </images>
+           <fstab>                                                 
+                   <bylabel>
+                           <label>rfs</label>                      
+                           <mountpoint>/</mountpoint>
+                           <fs>
+                                   <type>ext4</type>
+                           </fs>
+                   </bylabel>
+                   <bylabel>
+                           <label>config</label>                   
+                           <mountpoint>/mnt/config</mountpoint>
+                           <fs>
+                                   <type>ext4</type>
+                           </fs>
+                           <options>ro</options>
+                   </bylabel>
+                   <bydev>
+                           <source>none</source>
+                           <mountpoint>/sys/kernel/debug</mountpoint>
+                           <fs>
+                                   <type>debug</type>
+                           </fs>
+                   </bydev>
+           </fstab>
 
 -  this specifies an hd image
 
@@ -893,6 +935,8 @@ partitions and mountpoints. Lets look at an example *target* section.
 
 A complete reference that is automatically generated from the schema
 file is also available.
+
+.. __elbe_init_detailed_explanation:
 
 Elbe init (detailed Explanation)
 ================================

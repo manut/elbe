@@ -2,17 +2,23 @@
 elbe-remove_sign
 ************************
 
+.. __name:
+
 NAME
 ====
 
-elbe-remove\_sign - Verify a signed file and remove the signature.
+elbe-remove_sign - Verify a signed file and remove the signature.
+
+.. __synopsis:
 
 SYNOPSIS
 ========
 
-    ::
+   ::
 
-        elbe remove_sign <filename>
+      elbe remove_sign <filename>
+
+.. __description:
 
 DESCRIPTION
 ===========
@@ -22,11 +28,15 @@ This command checks the validity of a file signed with elbe-sign1 or
 to work the public key of the signer has to be added to the keyring.
 Note that to get *VALID (Trusted)*, the key has to have ultimate trust.
 
+.. __options:
+
 OPTIONS
 =======
 
 <filename>
-    The name of the file to sign.
+   The name of the file to sign.
+
+.. __examples:
 
 EXAMPLES
 ========
@@ -35,7 +45,9 @@ EXAMPLES
 
    ::
 
-       elbe remove_sign rfs.tar.bz2.gpg
+      elbe remove_sign rfs.tar.bz2.gpg
+
+.. __elbe:
 
 ELBE
 ====

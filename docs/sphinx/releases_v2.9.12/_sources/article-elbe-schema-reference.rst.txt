@@ -2,23 +2,31 @@
 ELBE XML Reference
 *************************
 
+.. __rootfilesystem_type_emphasis_rfs_rootfilesystemtype_emphasis:
+
 RootFileSystem type: *rfs:RootFileSystemType*
 =============================================
 
 describes one elbe project. An elbe project contains the creation of
 abuild environemt and the definition of a elbe target rootfilesystem.
 
+.. _RootFileSystemType:
+
 TYPE: RootFileSystemType
 ========================
 
 includes all subelements to define the elbe project
+
+.. __example:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _revisionNr:
 
 SIMPLE TYPE: revisionNr
 =======================
@@ -26,87 +34,115 @@ SIMPLE TYPE: revisionNr
 is used to decide if your elbe version is compatiblewith the given xml
 file
 
+.. __base_type:
+
 Base Type
 ---------
 
 *integer*
 
+.. __restrictions:
+
 Restrictions
 ------------
 
-+--------------------------------------+--------------------------------------+
-| *minInclusive*                       | 6                                    |
-+--------------------------------------+--------------------------------------+
-| *maxInclusive*                       | 6                                    |
-+--------------------------------------+--------------------------------------+
++-----------------------------------+-----------------------------------+
+| *minInclusive*                    | 6                                 |
++-----------------------------------+-----------------------------------+
+| *maxInclusive*                    | 6                                 |
++-----------------------------------+-----------------------------------+
+
+.. _binary-url:
 
 TYPE: binary-url
 ================
 
 e.g. "http://myhost/debian /" or "http://debian.org/debian main"
 
+.. __example_2:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _url:
 
 TYPE: url
 =========
 
 links to one additional debian mirror
 
+.. __example_3:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _url-list:
 
 TYPE: url-list
 ==============
 
 links to additional debian mirrors
 
+.. __example_4:
+
 Example
 -------
 
 .. code:: xml
 
-    <url-list>
-      <url> rfs:url </url>
-    </url-list>
+   <url-list>
+     <url> rfs:url </url>
+   </url-list>
+
+.. __element_description:
 
 Element description
 -------------------
 
 url `rfs:url <#type-url>`__
-    describes an additional debian mirror
+   describes an additional debian mirror
+
+.. _mirror:
 
 TYPE: mirror
 ============
 
 specify main and additional debian mirrors
 
+.. __example_5:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _initvm:
 
 TYPE: initvm
 ============
 
 describes settings that apply to the creation of the initvm
 
+.. __example_6:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _project:
 
 TYPE: project
 =============
@@ -114,678 +150,864 @@ TYPE: project
 describes elbe project settings that apply to the creation of the
 targetrootfilesystem and include the definition of the build environment
 
+.. __example_7:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _preference:
 
 TYPE: preference
 ================
 
 describes a global pinning of debian packages
 
+.. __example_8:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _raw-preference:
 
 TYPE: raw-preference
 ====================
 
 content is directly written to /etc/apt/preferences.
 
+.. __example_9:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _buildimage:
 
 TYPE: buildimage
 ================
 
 definition of the build environment
 
+.. __example_10:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _memory:
 
 TYPE: memory
 ============
 
-Helper around memory\_restriction to allow XML base attribute
+Helper around memory_restriction to allow XML base attribute
+
+.. __example_11:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
 
-SIMPLE TYPE: memory\_restriction
-================================
+.. _memory_restriction:
+
+SIMPLE TYPE: memory_restriction
+===============================
 
 Memory can be specified using binary unit prefixes like MiB and GiB,or
 SI prefixes like GB,MB or simply G or M.
+
+.. __base_type_2:
 
 Base Type
 ---------
 
 *string*
 
+.. __restrictions_2:
+
 Restrictions
 ------------
 
-+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+
-| *patter | (\\d+(k | M       | G       | kB      | MB      | GB      | kiB     | MiB     | GiB)?)  |
-| n*      |         |         |         |         |         |         |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+
++------+------+------+------+------+------+------+------+------+------+
+| *pat | (\d+ | M    | G    | kB   | MB   | GB   | kiB  | MiB  | GiB) |
+| tern | (k   |      |      |      |      |      |      |      | ?)   |
+| *    |      |      |      |      |      |      |      |      |      |
++------+------+------+------+------+------+------+------+------+------+
+
+.. _NIC:
 
 TYPE: NIC
 =========
 
 describes a virtual network interface
 
-Example
--------
-
-::
-
-    no sequence
-
-TYPE: fw\_proto
-===============
-
-Helper around fw\_proto\_restriction to allow XML base attribute
+.. __example_12:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
 
-SIMPLE TYPE: fw\_proto\_restriction
-===================================
+.. _fw_proto:
+
+TYPE: fw_proto
+==============
+
+Helper around fw_proto_restriction to allow XML base attribute
+
+.. __example_13:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _fw_proto_restriction:
+
+SIMPLE TYPE: fw_proto_restriction
+=================================
 
 only tcp and udp are allowed protocols for forwarding
+
+.. __base_type_3:
 
 Base Type
 ---------
 
 *string*
 
+.. __restrictions_3:
+
 Restrictions
 ------------
 
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | tcp                                  |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | udp                                  |
-+--------------------------------------+--------------------------------------+
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | tcp                               |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | udp                               |
++-----------------------------------+-----------------------------------+
+
+.. _forward:
 
 TYPE: forward
 =============
 
 forward a network port from the build environment to the host machine
 
+.. __example_14:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _portforwarding:
 
 TYPE: portforwarding
 ====================
 
 forward network ports from the build environment to the host machine
 
+.. __example_15:
+
 Example
 -------
 
 .. code:: xml
 
-    <portforwarding>
-      <forward> rfs:forward </forward>
-    </portforwarding>
+   <portforwarding>
+     <forward> rfs:forward </forward>
+   </portforwarding>
+
+.. __element_description_2:
 
 Element description
 -------------------
 
 forward `rfs:forward <#type-forward>`__
-    describes a single port forward
+   describes a single port forward
+
+.. _target:
 
 TYPE: target
 ============
 
 configuration of the target rootfilesystem
 
-Example
--------
-
-::
-
-    no sequence
-
-TYPE: ubi\_type
-===============
-
-Helper around ubi\_type\_restriction to allow XML base attribute
+.. __example_16:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
 
-SIMPLE TYPE: ubi\_type\_restriction
-===================================
+.. _ubi_type:
+
+TYPE: ubi_type
+==============
+
+Helper around ubi_type_restriction to allow XML base attribute
+
+.. __example_17:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _ubi_type_restriction:
+
+SIMPLE TYPE: ubi_type_restriction
+=================================
 
 a ubi volume can be either static or dynamic
+
+.. __base_type_4:
 
 Base Type
 ---------
 
 *string*
 
+.. __restrictions_4:
+
 Restrictions
 ------------
 
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | static                               |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | dynamic                              |
-+--------------------------------------+--------------------------------------+
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | static                            |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | dynamic                           |
++-----------------------------------+-----------------------------------+
+
+.. _ubi:
 
 TYPE: ubi
 =========
 
 describes a ubi volume
 
+.. __example_18:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _ubivg:
 
 TYPE: ubivg
 ===========
 
 container for all ubi volumes of a mtd device
 
+.. __example_19:
+
 Example
 -------
 
 .. code:: xml
 
-    <ubivg>
-      <label> rfs:string </label>
-      <miniosize> rfs:string </miniosize>
-      <maxlogicaleraseblockcount> rfs:string </maxlogicaleraseblockcount>
-      <logicaleraseblocksize> rfs:string </logicaleraseblocksize>
-      <physicaleraseblocksize> rfs:string </physicaleraseblocksize>
-      <subpagesize> rfs:string </subpagesize>
-    </ubivg>
+   <ubivg>
+     <label> rfs:string </label>
+     <miniosize> rfs:string </miniosize>
+     <maxlogicaleraseblockcount> rfs:string </maxlogicaleraseblockcount>
+     <logicaleraseblocksize> rfs:string </logicaleraseblocksize>
+     <physicaleraseblocksize> rfs:string </physicaleraseblocksize>
+     <subpagesize> rfs:string </subpagesize>
+   </ubivg>
+
+.. __element_description_3:
 
 Element description
 -------------------
 
 label `rfs:string <#type-string>`__
-    human readable name; used to generate filename for the flashable
-    image file
+   human readable name; used to generate filename for the flashable
+   image file
 
 miniosize `rfs:string <#type-string>`__
-    flash parameter minimal i/o size
+   flash parameter minimal i/o size
 
 maxlogicaleraseblockcount `rfs:string <#type-string>`__
-    flash parameter maximum logical erase block count
+   flash parameter maximum logical erase block count
 
 logicaleraseblocksize `rfs:string <#type-string>`__
-    flash parameter logical erase block size
+   flash parameter logical erase block size
 
 physicaleraseblocksize `rfs:string <#type-string>`__
-    flash parameter physical erase block size
+   flash parameter physical erase block size
 
 subpagesize `rfs:string <#type-string>`__
-    flash parameter subpagesize
+   flash parameter subpagesize
+
+.. _mtd:
 
 TYPE: mtd
 =========
 
 describes a mtd device
 
+.. __example_20:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _gpthd:
 
 TYPE: gpthd
 ===========
 
 describes a harddisk
 
+.. __example_21:
+
 Example
 -------
 
 .. code:: xml
 
-    <gpthd>
-      <name> rfs:string </name>
-      <size> rfs:part_size </size>
-      <grub-install> rfs:string </grub-install>
-      <partition> rfs:partition </partition>
-    </gpthd>
+   <gpthd>
+     <name> rfs:string </name>
+     <size> rfs:part_size </size>
+     <grub-install> rfs:string </grub-install>
+     <partition> rfs:partition </partition>
+   </gpthd>
+
+.. __element_description_4:
 
 Element description
 -------------------
 
 name `rfs:string <#type-string>`__
-    human readable name of the harddisk, this will be used as name for
-    the image file
+   human readable name of the harddisk, this will be used as name for
+   the image file
 
-size `rfs:part\_size <#type-part_size>`__
-    size of the harddisk
+size `rfs:part_size <#type-part_size>`__
+   size of the harddisk
 
 grub-install `rfs:string <#type-string>`__
-    human readable name of the harddisk, this will be used as name for
-    the image file
+   human readable name of the harddisk, this will be used as name for
+   the image file
 
 partition `rfs:partition <#type-partition>`__
-    Partition Entries of this harddisk
+   Partition Entries of this harddisk
+
+.. _binaryblob:
 
 TYPE: binaryblob
 ================
 
 a binary that is dd’ed to the specified offset
 
+.. __example_22:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _msdoshd:
 
 TYPE: msdoshd
 =============
 
 describes a harddisk
 
+.. __example_23:
+
 Example
 -------
 
 .. code:: xml
 
-    <msdoshd>
-      <name> rfs:string </name>
-      <size> rfs:part_size </size>
-      <grub-install> rfs:string </grub-install>
-      <binary> rfs:binaryblob </binary>
-      <partition> rfs:partition </partition>
-      <extended> rfs:extended </extended>
-      <partition> rfs:partition </partition>
-    </msdoshd>
+   <msdoshd>
+     <name> rfs:string </name>
+     <size> rfs:part_size </size>
+     <grub-install> rfs:string </grub-install>
+     <binary> rfs:binaryblob </binary>
+     <partition> rfs:partition </partition>
+     <extended> rfs:extended </extended>
+     <partition> rfs:partition </partition>
+   </msdoshd>
+
+.. __element_description_5:
 
 Element description
 -------------------
 
 name `rfs:string <#type-string>`__
-    human readable name of the harddisk, this will be used as name for
-    the image file
+   human readable name of the harddisk, this will be used as name for
+   the image file
 
-size `rfs:part\_size <#type-part_size>`__
-    size of the harddisk
+size `rfs:part_size <#type-part_size>`__
+   size of the harddisk
 
 grub-install `rfs:string <#type-string>`__
-    human readable name of the harddisk, this will be used as name for
-    the image file
+   human readable name of the harddisk, this will be used as name for
+   the image file
 
 binary `rfs:binaryblob <#type-binaryblob>`__ **optional**
-    binary blob that is dd’ed to the specified offset
+   binary blob that is dd’ed to the specified offset
 
 partition `rfs:partition <#type-partition>`__
-    Partition Entries of this harddisk (max: 4)
+   Partition Entries of this harddisk (max: 4)
 
 extended `rfs:extended <#type-extended>`__
-    Extended Partition Entries of this harddisk (max: 1)
+   Extended Partition Entries of this harddisk (max: 1)
 
 partition `rfs:partition <#type-partition>`__
-    Partition Entries of this harddisk (max: 3)
+   Partition Entries of this harddisk (max: 3)
+
+.. _images:
 
 TYPE: images
 ============
 
 container for all storage devices of the target
 
+.. __example_24:
+
 Example
 -------
 
 .. code:: xml
 
-    <images>
-      <mtd> rfs:mtd </mtd>
-      <msdoshd> rfs:msdoshd </msdoshd>
-      <gpthd> rfs:gpthd </gpthd>
-      <passno> rfs:string </passno>
-    </images>
+   <images>
+     <mtd> rfs:mtd </mtd>
+     <msdoshd> rfs:msdoshd </msdoshd>
+     <gpthd> rfs:gpthd </gpthd>
+     <passno> rfs:string </passno>
+   </images>
+
+.. __element_description_6:
 
 Element description
 -------------------
 
 mtd `rfs:mtd <#type-mtd>`__
-    container for all mtd devices of the target
+   container for all mtd devices of the target
 
 msdoshd `rfs:msdoshd <#type-msdoshd>`__
-    container for Harddisks with msdos Partitionlabel.
+   container for Harddisks with msdos Partitionlabel.
 
 gpthd `rfs:gpthd <#type-gpthd>`__
-    container for Harddisks with GPT Partitionlabel
+   container for Harddisks with GPT Partitionlabel
 
 passno `rfs:string <#type-string>`__
-    passno order for fsck
+   passno order for fsck
+
+.. _fs:
 
 TYPE: fs
 ========
 
 description of a linux filesystem
 
+.. __example_25:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _bylabel:
 
 TYPE: bylabel
 =============
 
 mount storage by the label of the partition or volume
 
+.. __example_26:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _bydev:
 
 TYPE: bydev
 ===========
 
 mount virtual filesystems or other storage devices device-node
 
+.. __example_27:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _fstab:
 
 TYPE: fstab
 ===========
 
 container for mounts
 
+.. __example_28:
+
 Example
 -------
 
 .. code:: xml
 
-    <fstab>
-      <bylabel> rfs:bylabel </bylabel>
-      <bydev> rfs:bydev </bydev>
-    </fstab>
+   <fstab>
+     <bylabel> rfs:bylabel </bylabel>
+     <bydev> rfs:bydev </bydev>
+   </fstab>
+
+.. __element_description_7:
 
 Element description
 -------------------
 
 bylabel `rfs:bylabel <#type-bylabel>`__
-    describes a mount by a volume or partition label
+   describes a mount by a volume or partition label
 
 bydev `rfs:bydev <#type-bydev>`__
-    describes a mount based on a device node or a mount of a virtual
-    filesystem like debugfs or tmpfs
+   describes a mount based on a device node or a mount of a virtual
+   filesystem like debugfs or tmpfs
+
+.. _package:
 
 TYPE: package
 =============
 
 list of packages, each contains the hole rootfilesystem
 
+.. __example_29:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _tar:
 
 TYPE: tar
 =========
 
 describes a tar package
 
+.. __example_30:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _cpio:
 
 TYPE: cpio
 ==========
 
 describes a cpio package
 
+.. __example_31:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _squashfs:
 
 TYPE: squashfs
 ==============
 
 describes a squashfs image
 
+.. __example_32:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _partition:
 
 TYPE: partition
 ===============
 
 describes a partition of a harddisk
 
+.. __example_33:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _extended:
 
 TYPE: extended
 ==============
 
 describes a extended partition of a harddisk
 
+.. __example_34:
+
 Example
 -------
 
 .. code:: xml
 
-    <extended>
-      <size> rfs:part_size </size>
-      <logical> rfs:partition </logical>
-    </extended>
+   <extended>
+     <size> rfs:part_size </size>
+     <logical> rfs:partition </logical>
+   </extended>
+
+.. __element_description_8:
 
 Element description
 -------------------
 
-size `rfs:part\_size <#type-part_size>`__
-    size of the partition
+size `rfs:part_size <#type-part_size>`__
+   size of the partition
 
 logical `rfs:partition <#type-partition>`__
-    logical partition of this extended partition
+   logical partition of this extended partition
 
-TYPE: part\_size
-================
+.. _part_size:
 
-Helper around part\_size\_restriction to allow XML base attribute
+TYPE: part_size
+===============
+
+Helper around part_size_restriction to allow XML base attribute
+
+.. __example_35:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
 
-SIMPLE TYPE: part\_size\_restriction
-====================================
+.. _part_size_restriction:
+
+SIMPLE TYPE: part_size_restriction
+==================================
 
 format of the partition size
+
+.. __base_type_5:
 
 Base Type
 ---------
 
 *string*
 
+.. __restrictions_5:
+
 Restrictions
 ------------
 
-+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| *patte | (\\d+( | M      | G      | kB     | MB     | GB     | kiB    | MiB    | GiB)?  | remain |
-| rn*    | k      |        |        |        |        |        |        |        |        | )      |
-+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| *pa | (\d | M   | G   | kB  | MB  | GB  | kiB | MiB | GiB | rem |
+| tte | +(k |     |     |     |     |     |     |     | )?  | ain |
+| rn* |     |     |     |     |     |     |     |     |     | )   |
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 
-TYPE: part\_nr
-==============
+.. _part_nr:
 
-Helper around part\_nr\_restriction to allow XML base attribute
+TYPE: part_nr
+=============
+
+Helper around part_nr_restriction to allow XML base attribute
+
+.. __example_36:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
 
-SIMPLE TYPE: part\_nr\_restriction
-==================================
+.. _part_nr_restriction:
+
+SIMPLE TYPE: part_nr_restriction
+================================
 
 allow maximum 4 primary partitions
+
+.. __base_type_6:
 
 Base Type
 ---------
 
 *integer*
 
+.. __restrictions_6:
+
 Restrictions
 ------------
 
-+--------------------------------------+--------------------------------------+
-| *minInclusive*                       | 1                                    |
-+--------------------------------------+--------------------------------------+
-| *maxInclusive*                       | 4                                    |
-+--------------------------------------+--------------------------------------+
++-----------------------------------+-----------------------------------+
+| *minInclusive*                    | 1                                 |
++-----------------------------------+-----------------------------------+
+| *maxInclusive*                    | 4                                 |
++-----------------------------------+-----------------------------------+
 
-TYPE: part\_type
-================
+.. _part_type:
 
-Helper around part\_type\_restriction to allow XML base attribute
+TYPE: part_type
+===============
+
+Helper around part_type_restriction to allow XML base attribute
+
+.. __example_37:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
 
-SIMPLE TYPE: part\_type\_restriction
-====================================
+.. _part_type_restriction:
+
+SIMPLE TYPE: part_type_restriction
+==================================
 
 list of supported partition types
 
+.. __base_type_7:
+
 Base Type
 ---------
 
 *string*
 
+.. __restrictions_7:
+
 Restrictions
 ------------
 
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | linux                                |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | swap                                 |
-+--------------------------------------+--------------------------------------+
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | linux                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | swap                              |
++-----------------------------------+-----------------------------------+
 
-TYPE: fs\_type
-==============
+.. _fs_type:
 
-Helper around fs\_type\_restriction to allow XML base attribute
+TYPE: fs_type
+=============
+
+Helper around fs_type_restriction to allow XML base attribute
+
+.. __example_38:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
 
-SIMPLE TYPE: fs\_type\_restriction
-==================================
+.. _fs_type_restriction:
+
+SIMPLE TYPE: fs_type_restriction
+================================
 
 list of supported filesystems
+
+.. __base_type_8:
 
 Base Type
 ---------
 
 *string*
 
+.. __restrictions_8:
+
 Restrictions
 ------------
 
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | ext2                                 |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | ext3                                 |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | ext4                                 |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | xfs                                  |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | ubifs                                |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | tmpfs                                |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | debugfs                              |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | configfs                             |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | devpts                               |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | proc                                 |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | sysfs                                |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | vfat                                 |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | btrfs                                |
-+--------------------------------------+--------------------------------------+
-| *enumeration*                        | devtmpfs                             |
-+--------------------------------------+--------------------------------------+
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | ext2                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | ext3                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | ext4                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | xfs                               |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | ubifs                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | tmpfs                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | debugfs                           |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | configfs                          |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | devpts                            |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | proc                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | sysfs                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | vfat                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | btrfs                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | devtmpfs                          |
++-----------------------------------+-----------------------------------+
+
+.. _finetuning:
 
 TYPE: finetuning
 ================
@@ -793,16 +1015,22 @@ TYPE: finetuning
 container for finetuning commands; these commands are executed in
 theroot of the target filesystem after the target filesystem was created
 
+.. __example_39:
+
 Example
 -------
 
 .. code:: xml
 
-    <finetuning>
-    </finetuning>
+   <finetuning>
+   </finetuning>
+
+.. __element_description_9:
 
 Element description
 -------------------
+
+.. _addgroup:
 
 TYPE: addgroup
 ==============
@@ -811,12 +1039,16 @@ describes an additional user group to be created. the following
 parameters areavailable:'gid' - group id.'system = "True" - system
 group.The value of the tag describes the group name namefor the account.
 
+.. __example_40:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _adduser:
 
 TYPE: adduser
 =============
@@ -827,28 +1059,36 @@ areavailable:'shell' - the login shell for the user.\ *passwd* - the
 groups the user is member of.\ *uid* - (optional) user of the
 user.\ *gid* - (optional) primary group, may be numeric or a
 name.\ *home* - home directory.\ *system="True"* - system
-user.\ *create\_home="False"* - do not create the home
-directory.\ *create\_group = "False"* - Do not create the primary
+user.\ *create_home="False"* - do not create the home
+directory.\ *create_group = "False"* - Do not create the primary
 group.The value of the tag describes the login name for the account.
+
+.. __example_41:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _cpmv:
 
 TYPE: cpmv
 ==========
 
 describes a copy or move of an element in the rootfilesystem
 
+.. __example_42:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _rm:
 
 TYPE: rm
 ========
@@ -856,205 +1096,265 @@ TYPE: rm
 describes a removal of a pattern from the rootfilesystem.Including an
 exclude pattern
 
+.. __example_43:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _mknod:
 
 TYPE: mknod
 ===========
 
 describes a mknod operaition in finetuning
 
+.. __example_44:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
 
-TYPE: git\_src
-==============
+.. _git_src:
+
+TYPE: git_src
+=============
 
 URI of the git repository, e.g. "git://myhost/myrepo.git"
 
-Example
--------
-
-::
-
-    no sequence
-
-TYPE: svn\_src
-==============
-
-URI of the svn repository, e.g. "svn://myhost/myrepo/tags/my\_tag"
+.. __example_45:
 
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _svn_src:
+
+TYPE: svn_src
+=============
+
+URI of the svn repository, e.g. "svn://myhost/myrepo/tags/my_tag"
+
+.. __example_46:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _pkg:
 
 TYPE: pkg
 =========
 
 describes a debian binary package
 
+.. __example_47:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _pbuilder:
 
 TYPE: pbuilder
 ==============
 
 reference to debian source packages
 
+.. __example_48:
+
 Example
 -------
 
 .. code:: xml
 
-    <pbuilder>
-      <git> rfs:git_src </git>
-      <svn> rfs:svn_src </svn>
-    </pbuilder>
+   <pbuilder>
+     <git> rfs:git_src </git>
+     <svn> rfs:svn_src </svn>
+   </pbuilder>
+
+.. __element_description_10:
 
 Element description
 -------------------
 
-git `rfs:git\_src <#type-git_src>`__
-    reference to a git tree hosting a debian source package. The source
-    will be build with a pbuilder before the image generation. Use the
-    *install* attribute to specify which binary packages should be
-    installed in the target image.
+git `rfs:git_src <#type-git_src>`__
+   reference to a git tree hosting a debian source package. The source
+   will be build with a pbuilder before the image generation. Use the
+   *install* attribute to specify which binary packages should be
+   installed in the target image.
 
-svn `rfs:svn\_src <#type-svn_src>`__
-    reference to a svn repository hosting a debian source package. The
-    source will be build with a pbuilder before the image generation.
-    Use the *install* attribute to specify which binary packages should
-    be installed in the target image.
+svn `rfs:svn_src <#type-svn_src>`__
+   reference to a svn repository hosting a debian source package. The
+   source will be build with a pbuilder before the image generation. Use
+   the *install* attribute to specify which binary packages should be
+   installed in the target image.
+
+.. _pkg-list:
 
 TYPE: pkg-list
 ==============
 
 container of debian packages
 
+.. __example_49:
+
 Example
 -------
 
 .. code:: xml
 
-    <pkg-list>
-      <pkg> rfs:pkg </pkg>
-    </pkg-list>
+   <pkg-list>
+     <pkg> rfs:pkg </pkg>
+   </pkg-list>
+
+.. __element_description_11:
 
 Element description
 -------------------
 
 pkg `rfs:pkg <#type-pkg>`__
-    reference to a binary debian package which will be installed from
-    the given mirrors into the target rootfilesystem.
+   reference to a binary debian package which will be installed from the
+   given mirrors into the target rootfilesystem.
+
+.. _blacklist:
 
 TYPE: blacklist
 ===============
 
 blacklists of debian packages
 
+.. __example_50:
+
 Example
 -------
 
 .. code:: xml
 
-    <blacklist>
-      <sysroot> rfs:pkg-list </sysroot>
-    </blacklist>
+   <blacklist>
+     <sysroot> rfs:pkg-list </sysroot>
+   </blacklist>
+
+.. __element_description_12:
 
 Element description
 -------------------
 
 sysroot `rfs:pkg-list <#type-pkg-list>`__
-    avoid installing the specified packages into the sysroot
+   avoid installing the specified packages into the sysroot
+
+.. _fullpkg-list:
 
 TYPE: fullpkg-list
 ==================
 
 List of packages to be validated against the installed list.
 
+.. __example_51:
+
 Example
 -------
 
 .. code:: xml
 
-    <fullpkg-list>
-      <pkg> rfs:pkg </pkg>
-    </fullpkg-list>
+   <fullpkg-list>
+     <pkg> rfs:pkg </pkg>
+   </fullpkg-list>
+
+.. __element_description_13:
 
 Element description
 -------------------
 
 pkg `rfs:pkg <#type-pkg>`__
-    Reference to a binary debian package which is supposed to be
-    installed.
+   Reference to a binary debian package which is supposed to be
+   installed.
+
+.. _conf:
 
 TYPE: conf
 ==========
 
 describes a preseeding entry
 
+.. __example_52:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _preseed:
 
 TYPE: preseed
 =============
 
 container of config entries
 
+.. __example_53:
+
 Example
 -------
 
 .. code:: xml
 
-    <preseed>
-      <conf> rfs:conf </conf>
-    </preseed>
+   <preseed>
+     <conf> rfs:conf </conf>
+   </preseed>
+
+.. __element_description_14:
 
 Element description
 -------------------
 
 conf `rfs:conf <#type-conf>`__
-    A config entry
+   A config entry
+
+.. _empty:
 
 TYPE: empty
 ===========
 
 This element just acts like a flag. It might be there, or not.
 
+.. __example_54:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence
+
+.. _string:
 
 TYPE: string
 ============
 
 E.L.B.E. standard string. Allow XML base attribute.
 
+.. __example_55:
+
 Example
 -------
 
 ::
 
-    no sequence
+   no sequence

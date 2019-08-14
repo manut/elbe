@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="https://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="https://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2019-07-05T13:02:58+02:00</updated>
+  <updated>2019-08-14T12:26:14+00:00</updated>
   <id>https://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -21,7 +21,7 @@
   <entry>
     <title>ELBE 3 release</title>
     <link href="https://elbe-rfs.org/news/v300/"/>
-    <updated>2019-03-14T00:00:00+01:00</updated>
+    <updated>2019-03-14T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/news/v300</id>
     <author>
       <name></name>
@@ -214,7 +214,7 @@ And a lot of pylint complains have been fixed.&lt;/p&gt;
   <entry>
     <title>elbe v2.0 released</title>
     <link href="https://elbe-rfs.org/news/v200/"/>
-    <updated>2017-08-09T00:00:00+02:00</updated>
+    <updated>2017-08-09T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/news/v200</id>
     <author>
       <name></name>
@@ -319,7 +319,7 @@ deb-src http://debian.linutronix.de/elbe-testing stretch main
   <entry>
     <title>elbe v1.0 released</title>
     <link href="https://elbe-rfs.org/news/v100/"/>
-    <updated>2015-12-24T00:00:00+01:00</updated>
+    <updated>2015-12-24T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/news/v100</id>
     <author>
       <name></name>
@@ -353,7 +353,7 @@ deb-src http://debian.linutronix.de/elbe-testing jessie main
   <entry>
     <title>elbe v0.9.8 released</title>
     <link href="https://elbe-rfs.org/news/v098/"/>
-    <updated>2015-12-14T00:00:00+01:00</updated>
+    <updated>2015-12-14T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/news/v098</id>
     <author>
       <name></name>
@@ -402,7 +402,7 @@ $ elbe pbuilder build --xmlfile /tmp/bbb.xml
   <entry>
     <title>ELBE technical Details</title>
     <link href="https://elbe-rfs.org/internals/"/>
-    <updated>2015-12-14T00:00:00+01:00</updated>
+    <updated>2015-12-14T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/internals</id>
     <author>
       <name></name>
@@ -471,7 +471,7 @@ individual processes and files of the inner environment.&lt;/p&gt;
   <entry>
     <title>ELBE in a nutshell</title>
     <link href="https://elbe-rfs.org/whatiselbe/"/>
-    <updated>2015-11-16T00:00:00+01:00</updated>
+    <updated>2015-11-16T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/whatiselbe</id>
     <author>
       <name></name>
@@ -556,7 +556,7 @@ reused in a way that will fulfill our needs.&lt;/p&gt;
   <entry>
     <title>Secure</title>
     <link href="https://elbe-rfs.org/feature/secure/"/>
-    <updated>2015-11-16T00:00:00+01:00</updated>
+    <updated>2015-11-16T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/feature/secure</id>
     <author>
       <name></name>
@@ -574,7 +574,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>Reproducable Images</title>
     <link href="https://elbe-rfs.org/feature/reproducable/"/>
-    <updated>2015-11-16T00:00:00+01:00</updated>
+    <updated>2015-11-16T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/feature/reproducable</id>
     <author>
       <name></name>
@@ -591,7 +591,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>Based on Debian</title>
     <link href="https://elbe-rfs.org/feature/debianbased/"/>
-    <updated>2015-11-16T00:00:00+01:00</updated>
+    <updated>2015-11-16T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/feature/debianbased</id>
     <author>
       <name></name>
@@ -608,7 +608,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>ELBE ADK</title>
     <link href="https://elbe-rfs.org/feature/adk/"/>
-    <updated>2015-11-16T00:00:00+01:00</updated>
+    <updated>2015-11-16T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/feature/adk</id>
     <author>
       <name></name>
@@ -625,7 +625,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>elbe v0.9.7 released</title>
     <link href="https://elbe-rfs.org/news/v097/"/>
-    <updated>2015-10-16T00:00:00+02:00</updated>
+    <updated>2015-10-16T00:00:00+00:00</updated>
     <id>https://elbe-rfs.org/news/v097</id>
     <author>
       <name></name>
