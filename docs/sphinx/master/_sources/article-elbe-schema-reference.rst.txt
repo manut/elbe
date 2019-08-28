@@ -48,6 +48,8 @@ Example
 
      <elbe_version> rfs:string </elbe_version>
 
+     <src-cdrom> rfs:src-cdrom </src-cdrom>
+
    </RootFileSystemType>
 
 .. __elements_description:
@@ -95,6 +97,9 @@ apt_prefs `rfs:string <#type-string>`__
    FIXME - I have no documentation
 
 elbe_version `rfs:string <#type-string>`__
+   FIXME - I have no documentation
+
+src-cdrom `rfs:src-cdrom <#type-src-cdrom>`__
    FIXME - I have no documentation
 
 .. _revisionNr:
@@ -853,8 +858,6 @@ Example
 
      <hostsdk-pkg-list> rfs:pkg-list </hostsdk-pkg-list>
 
-     <src-opts> rfs:iso-opts </src-opts>
-
    </target>
 
 .. __elements_description_16:
@@ -914,9 +917,6 @@ pkg-blacklist `rfs:blacklist <#type-blacklist>`__
    FIXME - I have no documentation
 
 hostsdk-pkg-list `rfs:pkg-list <#type-pkg-list>`__
-   FIXME - I have no documentation
-
-src-opts `rfs:iso-opts <#type-iso-opts>`__
    FIXME - I have no documentation
 
 .. _debootstrapvarianttype:
@@ -2918,6 +2918,100 @@ Example
 Elements description
 --------------------
 
+.. _unit-tests:
+
+TYPE: unit-tests
+================
+
+FIXME - I have no documentation
+
+.. __example_65:
+
+Example
+-------
+
+.. code:: xml
+
+   <unit-tests>
+     <test-suite> rfs:test-suite </test-suite>
+
+   </unit-tests>
+
+.. __elements_description_65:
+
+Elements description
+--------------------
+
+test-suite `rfs:test-suite <#type-test-suite>`__
+   FIXME - I have no documentation
+
+.. _test-suite:
+
+TYPE: test-suite
+================
+
+FIXME - I have no documentation
+
+.. __example_66:
+
+Example
+-------
+
+.. code:: xml
+
+   <test-suite>
+     <file-exists> rfs:string </file-exists>
+   </test-suite>
+
+.. __elements_description_66:
+
+Elements description
+--------------------
+
+[attr] name string
+   FIXME - I have no documentation
+
+.. _test-case:
+
+GROUP : test-case
+=================
+
+FIXME - I have no documentation
+
+.. __file_exists_type_emphasis_rfs_string_emphasis:
+
+file-exists type: *rfs:string*
+==============================
+
+FIXME - I have no documentation
+
+.. _src-cdrom:
+
+TYPE: src-cdrom
+===============
+
+FIXME - I have no documentation
+
+.. __example_67:
+
+Example
+-------
+
+.. code:: xml
+
+   <src-cdrom>
+     <src-opts> rfs:iso-opts </src-opts>
+
+   </src-cdrom>
+
+.. __elements_description_67:
+
+Elements description
+--------------------
+
+src-opts `rfs:iso-opts <#type-iso-opts>`__
+   FIXME - I have no documentation
+
 .. _iso-opts:
 
 TYPE: iso-opts
@@ -2925,7 +3019,7 @@ TYPE: iso-opts
 
 FIXME - I have no documentation
 
-.. __example_65:
+.. __example_68:
 
 Example
 -------
@@ -2953,7 +3047,7 @@ Example
 
    </iso-opts>
 
-.. __elements_description_65:
+.. __elements_description_68:
 
 Elements description
 --------------------
@@ -2987,70 +3081,3 @@ volid `rfs:string <#type-string>`__
 
 volset `rfs:string <#type-string>`__
    FIXME - I have no documentation
-
-.. _unit-tests:
-
-TYPE: unit-tests
-================
-
-FIXME - I have no documentation
-
-.. __example_66:
-
-Example
--------
-
-.. code:: xml
-
-   <unit-tests>
-     <test-suite> rfs:test-suite </test-suite>
-
-   </unit-tests>
-
-.. __elements_description_66:
-
-Elements description
---------------------
-
-test-suite `rfs:test-suite <#type-test-suite>`__
-   FIXME - I have no documentation
-
-.. _test-suite:
-
-TYPE: test-suite
-================
-
-FIXME - I have no documentation
-
-.. __example_67:
-
-Example
--------
-
-.. code:: xml
-
-   <test-suite>
-     <file-exists> rfs:string </file-exists>
-   </test-suite>
-
-.. __elements_description_67:
-
-Elements description
---------------------
-
-[attr] name string
-   FIXME - I have no documentation
-
-.. _test-case:
-
-GROUP : test-case
-=================
-
-FIXME - I have no documentation
-
-.. __file_exists_type_emphasis_rfs_string_emphasis:
-
-file-exists type: *rfs:string*
-==============================
-
-FIXME - I have no documentation

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE XML Reference &mdash; ELBE 10 documentation</title>
+  <title>ELBE XML Reference &mdash; ELBE 11 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                10
+                11
               </div>
             
           
@@ -503,23 +503,28 @@
 <li class="toctree-l3"><a class="reference internal" href="#id152">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-iso-opts">TYPE: iso-opts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-unit-tests">TYPE: unit-tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id153">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id154">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-unit-tests">TYPE: unit-tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-test-suite">TYPE: test-suite</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id155">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id156">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-test-suite">TYPE: test-suite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#group-test-case">GROUP : test-case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-exists-type-rfs-string">file-exists type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-src-cdrom">TYPE: src-cdrom</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id157">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id158">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#group-test-case">GROUP : test-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#file-exists-type-rfs-string">file-exists type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-iso-opts">TYPE: iso-opts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id159">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id160">Elements description</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -659,6 +664,8 @@
 
   <span class="o">&lt;</span><span class="n">elbe_version</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">elbe_version</span><span class="o">&gt;</span>
 
+  <span class="o">&lt;</span><span class="n">src</span><span class="o">-</span><span class="n">cdrom</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">src</span><span class="o">-</span><span class="n">cdrom</span> <span class="o">&lt;/</span><span class="n">src</span><span class="o">-</span><span class="n">cdrom</span><span class="o">&gt;</span>
+
 <span class="o">&lt;/</span><span class="n">RootFileSystemType</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -693,6 +700,8 @@
 <dt>apt_prefs <a class="reference external" href="#type-string">rfs:string</a></dt>
 <dd>FIXME - I have no documentation</dd>
 <dt>elbe_version <a class="reference external" href="#type-string">rfs:string</a></dt>
+<dd>FIXME - I have no documentation</dd>
+<dt>src-cdrom <a class="reference external" href="#type-src-cdrom">rfs:src-cdrom</a></dt>
 <dd>FIXME - I have no documentation</dd>
 </dl>
 </div>
@@ -1321,8 +1330,6 @@ tern
 
   <span class="o">&lt;</span><span class="n">hostsdk</span><span class="o">-</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span> <span class="o">&lt;/</span><span class="n">hostsdk</span><span class="o">-</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
 
-  <span class="o">&lt;</span><span class="n">src</span><span class="o">-</span><span class="n">opts</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">iso</span><span class="o">-</span><span class="n">opts</span> <span class="o">&lt;/</span><span class="n">src</span><span class="o">-</span><span class="n">opts</span><span class="o">&gt;</span>
-
 <span class="o">&lt;/</span><span class="n">target</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -1365,8 +1372,6 @@ tern
 <dt>pkg-blacklist <a class="reference external" href="#type-blacklist">rfs:blacklist</a></dt>
 <dd>FIXME - I have no documentation</dd>
 <dt>hostsdk-pkg-list <a class="reference external" href="#type-pkg-list">rfs:pkg-list</a></dt>
-<dd>FIXME - I have no documentation</dd>
-<dt>src-opts <a class="reference external" href="#type-iso-opts">rfs:iso-opts</a></dt>
 <dd>FIXME - I have no documentation</dd>
 </dl>
 </div>
@@ -2888,11 +2893,78 @@ ain
 <h3>Elements description<a class="headerlink" href="#id152" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
-<div class="section" id="type-iso-opts">
-<span id="iso-opts"></span><h2>TYPE: iso-opts<a class="headerlink" href="#type-iso-opts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="type-unit-tests">
+<span id="unit-tests"></span><h2>TYPE: unit-tests<a class="headerlink" href="#type-unit-tests" title="Permalink to this headline">¶</a></h2>
 <p>FIXME - I have no documentation</p>
 <div class="section" id="id153">
 <h3>Example<a class="headerlink" href="#id153" title="Permalink to this headline">¶</a></h3>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">unit</span><span class="o">-</span><span class="n">tests</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span> <span class="o">&lt;/</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span>
+
+<span class="o">&lt;/</span><span class="n">unit</span><span class="o">-</span><span class="n">tests</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id154">
+<h3>Elements description<a class="headerlink" href="#id154" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>test-suite <a class="reference external" href="#type-test-suite">rfs:test-suite</a></dt>
+<dd>FIXME - I have no documentation</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="type-test-suite">
+<span id="test-suite"></span><h2>TYPE: test-suite<a class="headerlink" href="#type-test-suite" title="Permalink to this headline">¶</a></h2>
+<p>FIXME - I have no documentation</p>
+<div class="section" id="id155">
+<h3>Example<a class="headerlink" href="#id155" title="Permalink to this headline">¶</a></h3>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">file</span><span class="o">-</span><span class="n">exists</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">file</span><span class="o">-</span><span class="n">exists</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id156">
+<h3>Elements description<a class="headerlink" href="#id156" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>[attr] name string</dt>
+<dd>FIXME - I have no documentation</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="group-test-case">
+<span id="test-case"></span><h2>GROUP : test-case<a class="headerlink" href="#group-test-case" title="Permalink to this headline">¶</a></h2>
+<p>FIXME - I have no documentation</p>
+</div>
+<div class="section" id="file-exists-type-rfs-string">
+<h2>file-exists type: <em>rfs:string</em><a class="headerlink" href="#file-exists-type-rfs-string" title="Permalink to this headline">¶</a></h2>
+<p>FIXME - I have no documentation</p>
+</div>
+<div class="section" id="type-src-cdrom">
+<span id="src-cdrom"></span><h2>TYPE: src-cdrom<a class="headerlink" href="#type-src-cdrom" title="Permalink to this headline">¶</a></h2>
+<p>FIXME - I have no documentation</p>
+<div class="section" id="id157">
+<h3>Example<a class="headerlink" href="#id157" title="Permalink to this headline">¶</a></h3>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">src</span><span class="o">-</span><span class="n">cdrom</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">src</span><span class="o">-</span><span class="n">opts</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">iso</span><span class="o">-</span><span class="n">opts</span> <span class="o">&lt;/</span><span class="n">src</span><span class="o">-</span><span class="n">opts</span><span class="o">&gt;</span>
+
+<span class="o">&lt;/</span><span class="n">src</span><span class="o">-</span><span class="n">cdrom</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id158">
+<h3>Elements description<a class="headerlink" href="#id158" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>src-opts <a class="reference external" href="#type-iso-opts">rfs:iso-opts</a></dt>
+<dd>FIXME - I have no documentation</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="type-iso-opts">
+<span id="iso-opts"></span><h2>TYPE: iso-opts<a class="headerlink" href="#type-iso-opts" title="Permalink to this headline">¶</a></h2>
+<p>FIXME - I have no documentation</p>
+<div class="section" id="id159">
+<h3>Example<a class="headerlink" href="#id159" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">iso</span><span class="o">-</span><span class="n">opts</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">abstract</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">abstract</span><span class="o">&gt;</span>
 
@@ -2916,8 +2988,8 @@ ain
 </pre></div>
 </div>
 </div>
-<div class="section" id="id154">
-<h3>Elements description<a class="headerlink" href="#id154" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id160">
+<h3>Elements description<a class="headerlink" href="#id160" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] strict boolean</dt>
 <dd>FIXME - I have no documentation</dd>
@@ -2941,53 +3013,6 @@ ain
 <dd>FIXME - I have no documentation</dd>
 </dl>
 </div>
-</div>
-<div class="section" id="type-unit-tests">
-<span id="unit-tests"></span><h2>TYPE: unit-tests<a class="headerlink" href="#type-unit-tests" title="Permalink to this headline">¶</a></h2>
-<p>FIXME - I have no documentation</p>
-<div class="section" id="id155">
-<h3>Example<a class="headerlink" href="#id155" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">unit</span><span class="o">-</span><span class="n">tests</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span> <span class="o">&lt;/</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span>
-
-<span class="o">&lt;/</span><span class="n">unit</span><span class="o">-</span><span class="n">tests</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id156">
-<h3>Elements description<a class="headerlink" href="#id156" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>test-suite <a class="reference external" href="#type-test-suite">rfs:test-suite</a></dt>
-<dd>FIXME - I have no documentation</dd>
-</dl>
-</div>
-</div>
-<div class="section" id="type-test-suite">
-<span id="test-suite"></span><h2>TYPE: test-suite<a class="headerlink" href="#type-test-suite" title="Permalink to this headline">¶</a></h2>
-<p>FIXME - I have no documentation</p>
-<div class="section" id="id157">
-<h3>Example<a class="headerlink" href="#id157" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">file</span><span class="o">-</span><span class="n">exists</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">file</span><span class="o">-</span><span class="n">exists</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id158">
-<h3>Elements description<a class="headerlink" href="#id158" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>[attr] name string</dt>
-<dd>FIXME - I have no documentation</dd>
-</dl>
-</div>
-</div>
-<div class="section" id="group-test-case">
-<span id="test-case"></span><h2>GROUP : test-case<a class="headerlink" href="#group-test-case" title="Permalink to this headline">¶</a></h2>
-<p>FIXME - I have no documentation</p>
-</div>
-<div class="section" id="file-exists-type-rfs-string">
-<h2>file-exists type: <em>rfs:string</em><a class="headerlink" href="#file-exists-type-rfs-string" title="Permalink to this headline">¶</a></h2>
-<p>FIXME - I have no documentation</p>
 </div>
 </div>
 
@@ -3036,6 +3061,7 @@ ain
         <dl>
             <dt>Tags</dt>
             <dd><a href="../v10/article-elbe-schema-reference.html">v10</a></dd>
+            <dd><a href="../v11/article-elbe-schema-reference.html">v11</a></dd>
             <dd><a href="../v2.5/index.html">v2.5</a></dd>
             <dd><a href="../v3/article-elbe-schema-reference.html">v3</a></dd>
             <dd><a href="../v4/article-elbe-schema-reference.html">v4</a></dd>
@@ -3061,6 +3087,7 @@ ain
             <dd><a href="../releases_v1.9.24/index.html">releases/v1.9.24</a></dd>
             <dd><a href="../releases_v1.9.25/index.html">releases/v1.9.25</a></dd>
             <dd><a href="../releases_v10/article-elbe-schema-reference.html">releases/v10</a></dd>
+            <dd><a href="../releases_v11/article-elbe-schema-reference.html">releases/v11</a></dd>
             <dd><a href="../releases_v2.0/index.html">releases/v2.0</a></dd>
             <dd><a href="../releases_v2.1/index.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/index.html">releases/v2.2</a></dd>
@@ -3102,7 +3129,7 @@ ain
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'10',
+            VERSION:'11',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
