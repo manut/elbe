@@ -7,14 +7,15 @@ ELBE XML Reference
 RootFileSystem type: *rfs:RootFileSystemType*
 =============================================
 
-FIXME - I have no documentation
+describes one elbe project. An elbe project contains the creation of
+abuild environemt and the definition of a elbe target rootfilesystem.
 
 .. _RootFileSystemType:
 
 TYPE: RootFileSystemType
 ========================
 
-FIXME - I have no documentation
+includes all subelements to define the elbe project
 
 .. __example:
 
@@ -58,56 +59,62 @@ Elements description
 --------------------
 
 [attr] created dateTime
-   FIXME - I have no documentation
+   timestamp of creation of the xml file
 
 [attr] revision `rfs:revisionNr <#type-revisionNr>`__
-   FIXME - I have no documentation
+   revision of the xml file (needs to match revision of the schema)
 
-initvm `rfs:initvm <#type-initvm>`__
-   FIXME - I have no documentation
+initvm `rfs:initvm <#type-initvm>`__ **optional**
+   Configurations that are used for creating the initvm e.g. the
+   definition of the used debian mirrors, suite and buildtype
 
-project `rfs:project <#type-project>`__
-   FIXME - I have no documentation
+project `rfs:project <#type-project>`__ **optional**
+   Configurations that are used for creating the buildenvironment and
+   the target rootfilesystem. e.g. the definition of the used debian
+   mirrors.
 
-target `rfs:target <#type-target>`__
-   FIXME - I have no documentation
+target `rfs:target <#type-target>`__ **optional**
+   Configurations that are used to create the target rootfilesystem
 
-archive base64Binary
-   FIXME - I have no documentation
+archive base64Binary **optional**
+   tar.bz2 file that contains configuration files for the target
+   rootfilesystem. To alter this node use *elbe chg_archive* and to get
+   the content of this node *elbe get_archive*.
 
 debootstrappkgs `rfs:fullpkg-list <#type-fullpkg-list>`__
-   FIXME - I have no documentation
+   List of packages installed right after debootstrap
 
 initvmpkgs `rfs:fullpkg-list <#type-fullpkg-list>`__
-   FIXME - I have no documentation
+   List of packages installed right after debootstrap
 
 initvm_sources_list `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   apt sources list.
 
 initvm_apt_prefs `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   apt preferences list
 
 fullpkgs `rfs:fullpkg-list <#type-fullpkg-list>`__
-   FIXME - I have no documentation
+   List of packages with their versions installed on the RFS
 
 sources_list `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   apt sources list.
 
 apt_prefs `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   apt preferences list
 
 elbe_version `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   Elbe Version that was used in the last build of this file.
 
 src-cdrom `rfs:src-cdrom <#type-src-cdrom>`__
-   FIXME - I have no documentation
+   Configurations of the source CDROM
 
 .. _revisionNr:
 
 SIMPLE TYPE: revisionNr
 =======================
 
-FIXME - I have no documentation
+is used to decide if your elbe version is compatiblewith the given xml
+file
 
 .. __base_type:
 
@@ -132,7 +139,7 @@ Restrictions
 TYPE: binary-url
 ================
 
-FIXME - I have no documentation
+e.g. "http://myhost/debian /" or "http://debian.org/debian main"
 
 .. __example_2:
 
@@ -150,17 +157,17 @@ Elements description
 --------------------
 
 [attr] pin string
-   FIXME - I have no documentation
+   Pin-Priority of packages from this source.
 
 [attr] package string
-   FIXME - I have no documentation
+   Packages that should be pinned.
 
 .. _url:
 
 TYPE: url
 =========
 
-FIXME - I have no documentation
+links to one additional debian mirror
 
 .. __example_3:
 
@@ -183,21 +190,21 @@ Example
 Elements description
 --------------------
 
-binary `rfs:binary-url <#type-binary-url>`__
-   FIXME - I have no documentation
+binary `rfs:binary-url <#type-binary-url>`__ **optional**
+   e.g. "http://myhost/debian /" or "http://debian.org/debian main"
 
-source string
-   FIXME - I have no documentation
+source string **optional**
+   e.g. "http://myhost/sources /" or "http://debian.org/debian main"
 
-raw-key `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+raw-key `rfs:string <#type-string>`__ **optional**
+   Raw Public Key used to sign this Repository
 
 .. _url-list:
 
 TYPE: url-list
 ==============
 
-FIXME - I have no documentation
+links to additional debian mirrors
 
 .. __example_4:
 
@@ -217,14 +224,14 @@ Elements description
 --------------------
 
 url `rfs:url <#type-url>`__
-   FIXME - I have no documentation
+   describes an additional debian mirror
 
 .. _mirror:
 
 TYPE: mirror
 ============
 
-FIXME - I have no documentation
+specify main and additional debian mirrors
 
 .. __example_5:
 
@@ -254,29 +261,31 @@ Elements description
 --------------------
 
 primary_host `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   IP address or hostname of the primary debian mirror e.g. "debian.org"
+   without a protocol or any slash
 
 primary_path `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   base path to the debian mirror on the given host e.g. "/debian"
 
 primary_proto `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   protocol to access the primary debian mirror e.g. "http" or "ftp"
 
 primary_proxy `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   proxy to access the debian mirror e.g.
+   "http://me:mypass@myproxy:8080"
 
 cdrom `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   iso image of a cdrom/dvd with debian packages.
 
-url-list `rfs:url-list <#type-url-list>`__
-   FIXME - I have no documentation
+url-list `rfs:url-list <#type-url-list>`__ **optional**
+   additional debian repositories, e.g. for own debian packages
 
 .. _initvm:
 
 TYPE: initvm
 ============
 
-FIXME - I have no documentation
+describes settings that apply to the creation of the initvm
 
 .. __example_6:
 
@@ -320,50 +329,58 @@ Elements description
 --------------------
 
 buildtype `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   Default buildtype like armel, ppc, and in the future armel-virtio
 
 mirror `rfs:mirror <#type-mirror>`__
-   FIXME - I have no documentation
+   used debian mirrors
 
-noauth `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+noauth `rfs:string <#type-string>`__ **optional**
+   allow installation of unsigned debian packages
 
-preference `rfs:preference <#type-preference>`__
-   FIXME - I have no documentation
+preference `rfs:preference <#type-preference>`__ **optional**
+   used for pinning of all packages TODO: example?
 
 suite `rfs:suite-initvm <#type-suite-initvm>`__
-   FIXME - I have no documentation
+   name of the debian suite that should be used to generate the initvm.
+   e.g. "lenny", "squeeze", "sid", ..
 
 pkg-list `rfs:pkg-list <#type-pkg-list>`__
-   FIXME - I have no documentation
+   additional packages that are installed into the initvm.
 
 preseed `rfs:preseed <#type-preseed>`__
-   FIXME - I have no documentation
+   Custom preseeding Values for apt
 
 size `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   size of the virtual harddisk used to run the build environment
 
 mem `rfs:memory <#type-memory>`__
-   FIXME - I have no documentation
+   amount of memory mapped into the virtual build environment
 
 swap-size `rfs:memory <#type-memory>`__
-   FIXME - I have no documentation
+   size of the virtual swap partition used in the build environment.
+   this size is subtracted from the size of the virtual harddisk.
+   Supports unit prefixes like GiB, GB, and G.
 
 max-cpus integer
-   FIXME - I have no documentation
+   The number of cpus used by the initvm is clamped to this value. This
+   shall protect the initvm from running out of memory, when running on
+   machines with large numbers of cores. When increasing this value, be
+   sure to also increase mem and maybe add some swap.
 
 img `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   hd image backend format: raw, qcow, vmdk, …
 
 portforwarding `rfs:portforwarding <#type-portforwarding>`__
-   FIXME - I have no documentation
+   network ports of the buildenvironment that are forwarded to the host
+   machine
 
 .. _project:
 
 TYPE: project
 =============
 
-FIXME - I have no documentation
+describes elbe project settings that apply to the creation of the
+targetrootfilesystem and include the definition of the build environment
 
 .. __example_7:
 
@@ -402,38 +419,42 @@ Example
 Elements description
 --------------------
 
-name `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+name `rfs:string <#type-string>`__ **optional**
+   name of the project this rootfilesystem is associated with
 
-version `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+version `rfs:string <#type-string>`__ **optional**
+   version of the rootfilesystem definition
 
-description `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+description `rfs:string <#type-string>`__ **optional**
+   human readable description of the project
 
 buildtype `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   Default buildtype like armel, ppc, and in the future armel-virtio
 
 mirror `rfs:mirror <#type-mirror>`__
-   FIXME - I have no documentation
+   used debian mirrors
 
-noauth `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+noauth `rfs:string <#type-string>`__ **optional**
+   allow installation of unsigned debian packages
 
-preference `rfs:preference <#type-preference>`__
-   FIXME - I have no documentation
+preference `rfs:preference <#type-preference>`__ **optional**
+   used for pinning of all packages TODO: example?
 
-raw-preference `rfs:raw-preference <#type-raw-preference>`__
-   FIXME - I have no documentation
+raw-preference `rfs:raw-preference <#type-raw-preference>`__ **optional**
+   gets dedented and striped and is then written to /etc/apt/preferences
+   TODO: example?
 
 suite `rfs:suite-proj <#type-suite-proj>`__
-   FIXME - I have no documentation
+   name of the debian suite that should be used to generate the
+   buildenvironment and the rootfilesystem. e.g. "lenny", "squeeze",
+   "sid", ..
 
-buildimage `rfs:buildimage <#type-buildimage>`__
-   FIXME - I have no documentation
+buildimage `rfs:buildimage <#type-buildimage>`__ **optional**
+   reference to the buildimage which is used to generate the
+   rootfilesystem
 
 preseed `rfs:preseed <#type-preseed>`__
-   FIXME - I have no documentation
+   Custom preseeding Values for apt
 
 .. _suite-initvm:
 
@@ -498,7 +519,7 @@ Restrictions
 TYPE: preference
 ================
 
-FIXME - I have no documentation
+describes a global pinning of debian packages
 
 .. __example_8:
 
@@ -516,14 +537,14 @@ Elements description
 --------------------
 
 [attr] pin string
-   FIXME - I have no documentation
+   **Q:** TODO: format?
 
 .. _raw-preference:
 
 TYPE: raw-preference
 ====================
 
-FIXME - I have no documentation
+content is directly written to /etc/apt/preferences.
 
 .. __example_9:
 
@@ -545,7 +566,7 @@ Elements description
 TYPE: buildimage
 ================
 
-FIXME - I have no documentation
+definition of the build environment
 
 .. __example_10:
 
@@ -585,44 +606,48 @@ Elements description
 --------------------
 
 arch `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   architecture of the target system. e.g. "amd64", "armel", "ppc", ..
 
 size `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   size of the virtual harddisk used to run the build environment
 
 interpreter `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   virtual machine interpreter, e.g. "kvm", "qemu-system-arm", …
 
 interpreterversion `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   virtual machine interpreter version, e.g. "2.8.0", "1.4.7", …
 
 kinitrd `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   pkg name of the initrd/kernel package. (obsolete and ignored)
 
 console `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   serial console of the virtual machine, e.g. "ttyAMA0,115200n1"
 
 machine `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   virtual platform to host the build environment, e.g. "versatilepb"
 
 NIC `rfs:NIC <#type-NIC>`__
-   FIXME - I have no documentation
+   network interface emulation
 
 portforwarding `rfs:portforwarding <#type-portforwarding>`__
-   FIXME - I have no documentation
+   network ports of the buildenvironment that are forwarded to the host
+   machine
 
 pkgversionlist `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   create /etc/elbe_pkglist on the target RFS. It includes all packages
+   that include files that are used in the target. The list also
+   contains the versions of the used packages.
 
 pkg-list `rfs:pkg-list <#type-pkg-list>`__
-   FIXME - I have no documentation
+   additional packages that are only installed into the build
+   environment; not into the target root filesystem.
 
 .. _memory:
 
 TYPE: memory
 ============
 
-FIXME - I have no documentation
+Helper around memory_restriction to allow XML base attribute
 
 .. __example_11:
 
@@ -644,7 +669,8 @@ Elements description
 SIMPLE TYPE: memory_restriction
 ===============================
 
-FIXME - I have no documentation
+Memory can be specified using binary unit prefixes like MiB and GiB,or
+SI prefixes like GB,MB or simply G or M.
 
 .. __base_type_4:
 
@@ -669,7 +695,7 @@ Restrictions
 TYPE: NIC
 =========
 
-FIXME - I have no documentation
+describes a virtual network interface
 
 .. __example_12:
 
@@ -691,17 +717,17 @@ Elements description
 --------------------
 
 model `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   hardware emulation of the network interface; e.g. "e1000"
 
 MAC `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   mac address of the virtual network interface
 
 .. _fw_proto:
 
 TYPE: fw_proto
 ==============
 
-FIXME - I have no documentation
+Helper around fw_proto_restriction to allow XML base attribute
 
 .. __example_13:
 
@@ -723,7 +749,7 @@ Elements description
 SIMPLE TYPE: fw_proto_restriction
 =================================
 
-FIXME - I have no documentation
+only tcp and udp are allowed protocols for forwarding
 
 .. __base_type_5:
 
@@ -748,7 +774,7 @@ Restrictions
 TYPE: forward
 =============
 
-FIXME - I have no documentation
+forward a network port from the build environment to the host machine
 
 .. __example_14:
 
@@ -772,20 +798,20 @@ Elements description
 --------------------
 
 proto `rfs:fw_proto <#type-fw_proto>`__
-   FIXME - I have no documentation
+   network protocol to forward either "udp" or "tcp"
 
 buildenv integer
-   FIXME - I have no documentation
+   port on the buildenvironment, e.g. "22" for ssh
 
 host integer
-   FIXME - I have no documentation
+   port on the host machine, e.g. "10022"
 
 .. _portforwarding:
 
 TYPE: portforwarding
 ====================
 
-FIXME - I have no documentation
+forward network ports from the build environment to the host machine
 
 .. __example_15:
 
@@ -805,14 +831,14 @@ Elements description
 --------------------
 
 forward `rfs:forward <#type-forward>`__
-   FIXME - I have no documentation
+   describes a single port forward
 
 .. _target:
 
 TYPE: target
 ============
 
-FIXME - I have no documentation
+configuration of the target rootfilesystem
 
 .. __example_16:
 
@@ -866,65 +892,82 @@ Elements description
 --------------------
 
 hostname `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   hostname of the system
 
 domain `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   domainname of the network the target system is part of
 
 passwd `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   root password
 
 console `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   serial console for getty
 
 debootstrapvariant `rfs:debootstrapvarianttype <#type-debootstrapvarianttype>`__
-   FIXME - I have no documentation
+   Name of the bootstrap script variant to use. Currently, the variants
+   supported are minbase, which only includes essential packages and
+   apt; buildd, which installs the buildessential packages into TARGET;
+   and fakechroot, which installs the packages without root privileges.
+   The default, with no --variant=X argument, is to create a base Debian
+   installation in TARGET. Some documentation mentioned the variant
+   scratchbox too, but this variant is not supported by the debootstrap
+   used and therefore not allowed.
 
 package `rfs:package <#type-package>`__
-   FIXME - I have no documentation
+   package rootfilesystem as a tarball, cpio or a squashfs image
 
 images `rfs:images <#type-images>`__
-   FIXME - I have no documentation
+   generate (flashable) images of the rootfilesystem
 
 fstab `rfs:fstab <#type-fstab>`__
-   FIXME - I have no documentation
+   specify which resources should be mounted
 
-tighten `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+tighten `rfs:string <#type-string>`__ **optional**
+   don’t install any dependencies; just the content of the given debian
+   packages
 
-diet `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+diet `rfs:string <#type-string>`__ **optional**
+   use reverse dependencies of the given debian packages to determine
+   the rootfilesystem content; this is useful to get rid of dpkg/apt.
 
-setsel `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+setsel `rfs:string <#type-string>`__ **optional**
+   Elbe uses ``dpkg --set-selections`` to install packages in the
+   target. The rootfs still needs dpkg, and all dependencies need to be
+   specified in the pkg-list. The target will contain all postinst
+   generated scripts.
 
-install-recommends `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+install-recommends `rfs:string <#type-string>`__ **optional**
+   Activate the installation of recommended Packages.
 
-finetuning `rfs:finetuning <#type-finetuning>`__
-   FIXME - I have no documentation
+finetuning `rfs:finetuning <#type-finetuning>`__ **optional**
+   apply the given commands to the target rootfilesystem
 
-project-finetuning `rfs:project-finetuning <#type-project-finetuning>`__
-   FIXME - I have no documentation
+project-finetuning `rfs:project-finetuning <#type-project-finetuning>`__ **optional**
+   apply the given commands to the project directory, after images have
+   been generated. Currently supported use-cases are: \* extract
+   partition from image and mark as build artifact. \* mark files as
+   build artifacts \* mv files from target directory to project
+   directory
 
 pbuilder `rfs:pbuilder <#type-pbuilder>`__
-   FIXME - I have no documentation
+   build and optionaly install debianized sources
 
 pkg-list `rfs:pkg-list <#type-pkg-list>`__
-   FIXME - I have no documentation
+   install the given packages into the rootfilesystem
 
 pkg-blacklist `rfs:blacklist <#type-blacklist>`__
-   FIXME - I have no documentation
+   avoid installation of packages into sysroot or target
 
 hostsdk-pkg-list `rfs:pkg-list <#type-pkg-list>`__
-   FIXME - I have no documentation
+   install the given packages into the hostsdk. (ignores pin and
+   versions, with the current implementation)
 
 .. _debootstrapvarianttype:
 
 TYPE: debootstrapvarianttype
 ============================
 
-FIXME - I have no documentation
+Enhanced restriction type specifying debootstrap variants.
 
 .. __example_17:
 
@@ -942,14 +985,16 @@ Elements description
 --------------------
 
 [attr] includepkgs string
-   FIXME - I have no documentation
+   A comma-separated list of additional packages at debootstrap runtime.
 
 .. _debootstrapvarianttype_restriction:
 
 SIMPLE TYPE: debootstrapvarianttype_restriction
 ===============================================
 
-FIXME - I have no documentation
+Restriction type specifying debootstrap variants.Supported debootstrap
+variants are minbase, buildd and fakechroot.The variant scratchbox is
+not supported by th used debootstrap.
 
 .. __base_type_6:
 
@@ -976,7 +1021,7 @@ Restrictions
 TYPE: ubi_type
 ==============
 
-FIXME - I have no documentation
+Helper around ubi_type_restriction to allow XML base attribute
 
 .. __example_18:
 
@@ -998,7 +1043,7 @@ Elements description
 SIMPLE TYPE: ubi_type_restriction
 =================================
 
-FIXME - I have no documentation
+a ubi volume can be either static or dynamic
 
 .. __base_type_7:
 
@@ -1023,7 +1068,7 @@ Restrictions
 TYPE: ubi
 =========
 
-FIXME - I have no documentation
+describes a ubi volume
 
 .. __example_19:
 
@@ -1053,29 +1098,33 @@ Elements description
 --------------------
 
 type `rfs:ubi_type <#type-ubi_type>`__
-   FIXME - I have no documentation
+   type of the ubi volume; either "static" or "dynamic"
 
 label `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   human readable name of the ubi volume (also used for mount by label)
 
 id integer
-   FIXME - I have no documentation
+   id of the ubi volume
 
 size `rfs:part_size <#type-part_size>`__
-   FIXME - I have no documentation
+   size of the ubi volume
 
 binary `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   path and filename of a binary image which will be used as a source
+   for this volume; this can be used for example to store the linux
+   kernel in a static ubi volume
 
 empty `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   if binary is used or a label was given that is also available in the
+   fstab this tag can be used to force the creation of an empty ubi
+   volume.
 
 .. _ubivg:
 
 TYPE: ubivg
 ===========
 
-FIXME - I have no documentation
+container for all ubi volumes of a mtd device
 
 .. __example_20:
 
@@ -1107,32 +1156,33 @@ Elements description
 --------------------
 
 label `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   human readable name; used to generate filename for the flashable
+   image file
 
 miniosize `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   flash parameter minimal i/o size
 
 maxlogicaleraseblockcount `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   flash parameter maximum logical erase block count
 
 logicaleraseblocksize `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   flash parameter logical erase block size
 
 physicaleraseblocksize `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   flash parameter physical erase block size
 
 subpagesize `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   flash parameter subpagesize
 
 ubi `rfs:ubi <#type-ubi>`__
-   FIXME - I have no documentation
+   list of ubi volumes
 
 .. _mtd:
 
 TYPE: mtd
 =========
 
-FIXME - I have no documentation
+describes a mtd device
 
 .. __example_21:
 
@@ -1160,26 +1210,29 @@ Elements description
 --------------------
 
 name `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   human readable name of the mtd device
 
 nr integer
-   FIXME - I have no documentation
+   number of the mtd device
 
 size `rfs:part_size <#type-part_size>`__
-   FIXME - I have no documentation
+   size of the mtd device
 
 binary `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   path and filename of a binary image which will be used as a source
+   for this mtd device; this can be used for example to store the
+   bootloader in the beginning of the flash (mtd0)
 
 ubivg `rfs:ubivg <#type-ubivg>`__
-   FIXME - I have no documentation
+   if the mtd will be used to store ubi volumes, this container is used
+   to define them
 
 .. _gpthd:
 
 TYPE: gpthd
 ===========
 
-FIXME - I have no documentation
+describes a harddisk
 
 .. __example_22:
 
@@ -1205,23 +1258,25 @@ Elements description
 --------------------
 
 name `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   human readable name of the harddisk, this will be used as name for
+   the image file
 
 size `rfs:part_size <#type-part_size>`__
-   FIXME - I have no documentation
+   size of the harddisk
 
 grub-install `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   human readable name of the harddisk, this will be used as name for
+   the image file
 
 partition `rfs:partition <#type-partition>`__
-   FIXME - I have no documentation
+   Partition Entries of this harddisk
 
 .. _binaryblob:
 
 TYPE: binaryblob
 ================
 
-FIXME - I have no documentation
+a binary that is dd’ed to the specified offset
 
 .. __example_23:
 
@@ -1239,17 +1294,17 @@ Elements description
 --------------------
 
 [attr] offset int
-   FIXME - I have no documentation
+   byteoffset from the beginning of the image
 
 [attr] blocksize int
-   FIXME - I have no documentation
+   blocksize in bytes for the bytewise copy (default 1)
 
 .. _msdoshd:
 
 TYPE: msdoshd
 =============
 
-FIXME - I have no documentation
+describes a harddisk
 
 .. __example_24:
 
@@ -1281,32 +1336,34 @@ Elements description
 --------------------
 
 name `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   human readable name of the harddisk, this will be used as name for
+   the image file
 
 size `rfs:part_size <#type-part_size>`__
-   FIXME - I have no documentation
+   size of the harddisk
 
 grub-install `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   human readable name of the harddisk, this will be used as name for
+   the image file
 
-binary `rfs:binaryblob <#type-binaryblob>`__
-   FIXME - I have no documentation
+binary `rfs:binaryblob <#type-binaryblob>`__ **optional**
+   binary blob that is dd’ed to the specified offset
 
 partition `rfs:partition <#type-partition>`__
-   FIXME - I have no documentation
+   Partition Entries of this harddisk (max: 4)
 
 extended `rfs:extended <#type-extended>`__
-   FIXME - I have no documentation
+   Extended Partition Entries of this harddisk (max: 1)
 
 partition `rfs:partition <#type-partition>`__
-   FIXME - I have no documentation
+   Partition Entries of this harddisk (max: 3)
 
 .. _images:
 
 TYPE: images
 ============
 
-FIXME - I have no documentation
+container for all storage devices of the target
 
 .. __example_25:
 
@@ -1332,23 +1389,23 @@ Elements description
 --------------------
 
 mtd `rfs:mtd <#type-mtd>`__
-   FIXME - I have no documentation
+   container for all mtd devices of the target
 
 msdoshd `rfs:msdoshd <#type-msdoshd>`__
-   FIXME - I have no documentation
+   container for Harddisks with msdos Partitionlabel.
 
 gpthd `rfs:gpthd <#type-gpthd>`__
-   FIXME - I have no documentation
+   container for Harddisks with GPT Partitionlabel
 
 passno `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   passno order for fsck
 
 .. _fs:
 
 TYPE: fs
 ========
 
-FIXME - I have no documentation
+description of a linux filesystem
 
 .. __example_26:
 
@@ -1374,23 +1431,23 @@ Elements description
 --------------------
 
 type `rfs:fs_type <#type-fs_type>`__
-   FIXME - I have no documentation
+   filesystemtype, e.g. "ext3", "ubifs", …
 
 mkfs `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   options passed to the mkfs command
 
 tune2fs `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   options passed to the tune2fs command
 
 passno `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   passno order for fsck
 
 .. _bylabel:
 
 TYPE: bylabel
 =============
 
-FIXME - I have no documentation
+mount storage by the label of the partition or volume
 
 .. __example_27:
 
@@ -1418,26 +1475,28 @@ Elements description
 --------------------
 
 label `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   label of the partition/volume to mount
 
 mountpoint `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   path in the rootfilesystem where the partition/volume is mounted
 
 fs `rfs:fs <#type-fs>`__
-   FIXME - I have no documentation
+   filesystem of the partition/volume to mount
 
 options `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   options passed to the mount command
 
 nofstab `rfs:empty <#type-empty>`__
-   FIXME - I have no documentation
+   This mountpoint shall not be inserted into fstab. Useful for
+   redundant filesystems, where two entries with identical mountpoint
+   would end up in the fstab.
 
 .. _bydev:
 
 TYPE: bydev
 ===========
 
-FIXME - I have no documentation
+mount virtual filesystems or other storage devices device-node
 
 .. __example_28:
 
@@ -1463,23 +1522,24 @@ Elements description
 --------------------
 
 source `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   either a device-node or "none" for virtual filesystems
 
 mountpoint `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   path in the rootfilesystem where the device or virtual filesystem is
+   mounted
 
 fs `rfs:fs <#type-fs>`__
-   FIXME - I have no documentation
+   filesystem of the device or the virtual filesystem name
 
 options `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   options passed to the mount command
 
 .. _fstab:
 
 TYPE: fstab
 ===========
 
-FIXME - I have no documentation
+container for mounts
 
 .. __example_29:
 
@@ -1501,17 +1561,18 @@ Elements description
 --------------------
 
 bylabel `rfs:bylabel <#type-bylabel>`__
-   FIXME - I have no documentation
+   describes a mount by a volume or partition label
 
 bydev `rfs:bydev <#type-bydev>`__
-   FIXME - I have no documentation
+   describes a mount based on a device node or a mount of a virtual
+   filesystem like debugfs or tmpfs
 
 .. _package:
 
 TYPE: package
 =============
 
-FIXME - I have no documentation
+list of packages, each contains the hole rootfilesystem
 
 .. __example_30:
 
@@ -1534,21 +1595,21 @@ Example
 Elements description
 --------------------
 
-tar `rfs:tar <#type-tar>`__
-   FIXME - I have no documentation
+tar `rfs:tar <#type-tar>`__ **optional**
+   tar package of the rootfilesystem
 
-cpio `rfs:cpio <#type-cpio>`__
-   FIXME - I have no documentation
+cpio `rfs:cpio <#type-cpio>`__ **optional**
+   cpio package of the rootfilesystem
 
-squashfs `rfs:squashfs <#type-squashfs>`__
-   FIXME - I have no documentation
+squashfs `rfs:squashfs <#type-squashfs>`__ **optional**
+   squashfs image of the rootfilesystem
 
 .. _tar:
 
 TYPE: tar
 =========
 
-FIXME - I have no documentation
+describes a tar package
 
 .. __example_31:
 
@@ -1569,18 +1630,18 @@ Example
 Elements description
 --------------------
 
-name `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+name `rfs:string <#type-string>`__ **optional**
+   filename of the tar package
 
-options `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+options `rfs:string <#type-string>`__ **optional**
+   options passed to the tar command
 
 .. _cpio:
 
 TYPE: cpio
 ==========
 
-FIXME - I have no documentation
+describes a cpio package
 
 .. __example_32:
 
@@ -1599,15 +1660,15 @@ Example
 Elements description
 --------------------
 
-name `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+name `rfs:string <#type-string>`__ **optional**
+   filename of the cpio package
 
 .. _squashfs:
 
 TYPE: squashfs
 ==============
 
-FIXME - I have no documentation
+describes a squashfs image
 
 .. __example_33:
 
@@ -1626,15 +1687,15 @@ Example
 Elements description
 --------------------
 
-name `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+name `rfs:string <#type-string>`__ **optional**
+   filename of the squashfs image
 
 .. _partition:
 
 TYPE: partition
 ===============
 
-FIXME - I have no documentation
+describes a partition of a harddisk
 
 .. __example_34:
 
@@ -1660,23 +1721,24 @@ Elements description
 --------------------
 
 size `rfs:part_size <#type-part_size>`__
-   FIXME - I have no documentation
+   size of the partition
 
 label `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+   human readable label of the partition used for mount by label and as
+   filename for the flashable image
 
-bootable `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+bootable `rfs:string <#type-string>`__ **optional**
+   Whether this partition is marked bootable.
 
-biosgrub `rfs:string <#type-string>`__
-   FIXME - I have no documentation
+biosgrub `rfs:string <#type-string>`__ **optional**
+   Whether this partition is marked as biosgrub partition.
 
 .. _extended:
 
 TYPE: extended
 ==============
 
-FIXME - I have no documentation
+describes a extended partition of a harddisk
 
 .. __example_35:
 
@@ -1698,17 +1760,17 @@ Elements description
 --------------------
 
 size `rfs:part_size <#type-part_size>`__
-   FIXME - I have no documentation
+   size of the partition
 
 logical `rfs:partition <#type-partition>`__
-   FIXME - I have no documentation
+   logical partition of this extended partition
 
 .. _part_size:
 
 TYPE: part_size
 ===============
 
-FIXME - I have no documentation
+Helper around part_size_restriction to allow XML base attribute
 
 .. __example_36:
 
@@ -1730,7 +1792,7 @@ Elements description
 SIMPLE TYPE: part_size_restriction
 ==================================
 
-FIXME - I have no documentation
+format of the partition size
 
 .. __base_type_8:
 
@@ -1755,7 +1817,7 @@ Restrictions
 TYPE: part_nr
 =============
 
-FIXME - I have no documentation
+Helper around part_nr_restriction to allow XML base attribute
 
 .. __example_37:
 
@@ -1777,7 +1839,7 @@ Elements description
 SIMPLE TYPE: part_nr_restriction
 ================================
 
-FIXME - I have no documentation
+allow maximum 4 primary partitions
 
 .. __base_type_9:
 
@@ -1802,7 +1864,7 @@ Restrictions
 TYPE: part_type
 ===============
 
-FIXME - I have no documentation
+Helper around part_type_restriction to allow XML base attribute
 
 .. __example_38:
 
@@ -1824,7 +1886,7 @@ Elements description
 SIMPLE TYPE: part_type_restriction
 ==================================
 
-FIXME - I have no documentation
+list of supported partition types
 
 .. __base_type_10:
 
@@ -1849,7 +1911,7 @@ Restrictions
 TYPE: fs_type
 =============
 
-FIXME - I have no documentation
+Helper around fs_type_restriction to allow XML base attribute
 
 .. __example_39:
 
@@ -1871,7 +1933,7 @@ Elements description
 SIMPLE TYPE: fs_type_restriction
 ================================
 
-FIXME - I have no documentation
+list of supported filesystems
 
 .. __base_type_11:
 
@@ -1920,7 +1982,8 @@ Restrictions
 TYPE: finetuning
 ================
 
-FIXME - I have no documentation
+container for finetuning commands; these commands are executed in
+theroot of the target filesystem after the target filesystem was created
 
 .. __example_40:
 
@@ -1963,161 +2026,164 @@ Elements description
 GROUP : action
 ==============
 
-FIXME - I have no documentation
+definition of finetuning commands
 
 .. __addgroup_type_emphasis_rfs_addgroup_emphasis:
 
 addgroup type: *rfs:addgroup*
 =============================
 
-FIXME - I have no documentation
+add a group by name
 
 .. __adduser_type_emphasis_rfs_adduser_emphasis:
 
 adduser type: *rfs:adduser*
 ===========================
 
-FIXME - I have no documentation
+add a user account by login name
 
 .. __file_type_emphasis_rfs_file_emphasis:
 
 file type: *rfs:file*
 =====================
 
-FIXME - I have no documentation
+write or append text to a file
 
 .. __rm_type_emphasis_rfs_rm_emphasis:
 
 rm type: *rfs:rm*
 =================
 
-FIXME - I have no documentation
+remove a file or directory (recursive). Also allows specifying an
+exclude pattern.
 
 .. __cp_type_emphasis_rfs_cpmv_emphasis:
 
 cp type: *rfs:cpmv*
 ===================
 
-FIXME - I have no documentation
+copy a file or directory (recursive)
 
 .. __ln_type_emphasis_rfs_cpmv_emphasis:
 
 ln type: *rfs:cpmv*
 ===================
 
-FIXME - I have no documentation
+create a symbolic link
 
 .. __buildenv_cp_type_emphasis_rfs_cpmv_emphasis:
 
 buildenv_cp type: *rfs:cpmv*
 ============================
 
-FIXME - I have no documentation
+copy a file or directory (recursive)
 
 .. __b2t_cp_type_emphasis_rfs_cpmv_emphasis:
 
 b2t_cp type: *rfs:cpmv*
 =======================
 
-FIXME - I have no documentation
+copy a file or directory (recursive)
 
 .. __t2b_cp_type_emphasis_rfs_cpmv_emphasis:
 
 t2b_cp type: *rfs:cpmv*
 =======================
 
-FIXME - I have no documentation
+copy a file or directory (recursive)
 
 .. __mv_type_emphasis_rfs_cpmv_emphasis:
 
 mv type: *rfs:cpmv*
 ===================
 
-FIXME - I have no documentation
+move a file or directory
 
 .. __buildenv_mv_type_emphasis_rfs_cpmv_emphasis:
 
 buildenv_mv type: *rfs:cpmv*
 ============================
 
-FIXME - I have no documentation
+move a file or directory
 
 .. __t2p_mv_type_emphasis_rfs_cpmv_emphasis:
 
 t2p_mv type: *rfs:cpmv*
 =======================
 
-FIXME - I have no documentation
+move a file from the target to the project directory
 
 .. __mkdir_type_emphasis_rfs_string_emphasis:
 
 mkdir type: *rfs:string*
 ========================
 
-FIXME - I have no documentation
+create a directory
 
 .. __buildenv_mkdir_type_emphasis_rfs_string_emphasis:
 
 buildenv_mkdir type: *rfs:string*
 =================================
 
-FIXME - I have no documentation
+create a directory
 
 .. __mknod_type_emphasis_rfs_mknod_emphasis:
 
 mknod type: *rfs:mknod*
 =======================
 
-FIXME - I have no documentation
+move a file or directory
 
 .. __purge_type_emphasis_rfs_string_emphasis:
 
 purge type: *rfs:string*
 ========================
 
-FIXME - I have no documentation
+purge a debian package out of the rootfilesystem
 
 .. __raw_cmd_type_emphasis_rfs_string_emphasis:
 
 raw_cmd type: *rfs:string*
 ==========================
 
-FIXME - I have no documentation
+execute the defined command
 
 .. __command_type_emphasis_rfs_string_emphasis:
 
 command type: *rfs:string*
 ==========================
 
-FIXME - I have no documentation
+execute the defined command in /bin/sh
 
 .. __buildenv_command_type_emphasis_rfs_string_emphasis:
 
 buildenv_command type: *rfs:string*
 ===================================
 
-FIXME - I have no documentation
+execute the defined command
 
 .. __updated_type_emphasis_rfs_string_emphasis:
 
 updated type: *rfs:string*
 ==========================
 
-FIXME - I have no documentation
+include the base debian repository in the target rfs to enabledowngrades
+via elbe-updated
 
 .. __artifact_type_emphasis_rfs_string_emphasis:
 
 artifact type: *rfs:string*
 ===========================
 
-FIXME - I have no documentation
+make the named file an artifact. The path is relative to thetarget root.
 
 .. _project-finetuning:
 
 TYPE: project-finetuning
 ========================
 
-FIXME - I have no documentation
+container for project-finetuning commands; these commands are executed
+in theproject directory, after the images have been generated.
 
 .. __example_41:
 
@@ -2146,63 +2212,68 @@ Elements description
 GROUP : project-action
 ======================
 
-FIXME - I have no documentation
+definition of finetuning commands
 
 .. __t2p_mv_type_emphasis_rfs_cpmv_emphasis_2:
 
 t2p_mv type: *rfs:cpmv*
 =======================
 
-FIXME - I have no documentation
+move a file from the target to the project directory
 
 .. __artifact_type_emphasis_rfs_string_emphasis_2:
 
 artifact type: *rfs:string*
 ===========================
 
-FIXME - I have no documentation
+make the named file an artifact. The path is relativeto the project
+directory.
 
 .. __rm_artifact_type_emphasis_rfs_string_emphasis:
 
 rm_artifact type: *rfs:string*
 ==============================
 
-FIXME - I have no documentation
+remove a project artifact from the list of artifacts.
 
 .. __losetup_type_emphasis_rfs_losetup_emphasis:
 
 losetup type: *rfs:losetup*
 ===========================
 
-FIXME - I have no documentation
+Setup the loop device with an image file. This node wraps
+image_finetuningActions, which access the loop device then.
 
 .. __img_convert_type_emphasis_rfs_img_convert_emphasis:
 
 img_convert type: *rfs:img_convert*
 ===================================
 
-FIXME - I have no documentation
+Convert a Partitionimage to another format. The new Image is added tothe
+list of artifacts.
 
 .. __set_packer_type_emphasis_rfs_set_packer_emphasis:
 
 set_packer type: *rfs:set_packer*
 =================================
 
-FIXME - I have no documentation
+Specify the packer to use for an artifact.
 
 .. __unit_tests_type_emphasis_rfs_unit_tests_emphasis:
 
 unit-tests type: *rfs:unit-tests*
 =================================
 
-FIXME - I have no documentation
+Allows to generate test suites for the project.
 
 .. _losetup:
 
 TYPE: losetup
 =============
 
-FIXME - I have no documentation
+Container for image_finetuning commands; these commands are executed in
+theproject directory, while a drive image is setup as a loop device.The
+loop device id is passed to the individual actions.
 
 .. __example_42:
 
@@ -2230,35 +2301,40 @@ Elements description
 GROUP : image_action
 ====================
 
-FIXME - I have no documentation
+definition of image finetuning commands
 
 .. __extract_partition_type_emphasis_rfs_extract_partition_emphasis:
 
 extract_partition type: *rfs:extract_partition*
 ===============================================
 
-FIXME - I have no documentation
+Extract a Partition from the currently mounted loop device.
 
 .. __copy_from_partition_type_emphasis_rfs_copy_from_partition_emphasis:
 
 copy_from_partition type: *rfs:copy_from_partition*
 ===================================================
 
-FIXME - I have no documentation
+Copy a file from a partition. The partition is mounted, and the file is
+thencopied from the mounted filesystem into the builddir. Its marked as
+an Artifact.
 
 .. __copy_to_partition_type_emphasis_rfs_copy_to_partition_emphasis:
 
 copy_to_partition type: *rfs:copy_to_partition*
 ===============================================
 
-FIXME - I have no documentation
+Copy an artifact onto a partition. The partition is mounted, and the
+file is thencopied into the mounted filesystem.
 
 .. _extract_partition:
 
 TYPE: extract_partition
 =======================
 
-FIXME - I have no documentation
+Describe the partition to be extracted (nr) and the destination
+filename.The value of the tag describes the filename of the generated
+Imagefile.The Image is per default compressed with gzip afterwards.
 
 .. __example_43:
 
@@ -2283,7 +2359,9 @@ Elements description
 TYPE: copy_from_partition
 =========================
 
-FIXME - I have no documentation
+Attribute *part* describes the partition to be mounted (nr).The value of
+the tag describes the filename to be copied from theFilesystem, after it
+has been mounted.Attribute *artifact* is the artifact name.
 
 .. __example_44:
 
@@ -2311,7 +2389,10 @@ Elements description
 TYPE: copy_to_partition
 =======================
 
-FIXME - I have no documentation
+Attribute *part* describes the partition to be mounted (nr).The value of
+the tag describes the filename where the artifact shallbe copied to,
+onto the filesystem, after it has been mounted.Attribute *artifact* is
+the artifact name.
 
 .. __example_45:
 
@@ -2339,7 +2420,9 @@ Elements description
 TYPE: addgroup
 ==============
 
-FIXME - I have no documentation
+describes an additional user group to be created. the following
+parameters areavailable:'gid' - group id.'system = "True" - system
+group.The value of the tag describes the group name namefor the account.
 
 .. __example_46:
 
@@ -2367,7 +2450,11 @@ Elements description
 TYPE: img_convert
 =================
 
-FIXME - I have no documentation
+Describe the Image to be converted.The value of the tag describes the
+filename of the source Imagefile.The dst attribute the destination
+filename, and the fmt attribute isthe format. (See *qemu-img --help* for
+a list of possible formats)The Image is per default compressed with gzip
+afterwards.
 
 .. __example_47:
 
@@ -2398,7 +2485,9 @@ Elements description
 TYPE: set_packer
 ================
 
-FIXME - I have no documentation
+Set the packer to use for an artifaxct.The value of the tag describes
+the filename of the Imagefile.The packer attribute may take the
+following values:(none, gzip, tar, targz, tarxz)
 
 .. __example_48:
 
@@ -2454,7 +2543,13 @@ Restrictions
 TYPE: file
 ==========
 
-FIXME - I have no documentation
+write or append text to a file, the following parametersare
+avaible:'dst' - the destination to write to’encoding' - the (optional)
+encoding of the content’append="True"' - append the content to file
+instead of writing’owner' - (optional) set file owner’group' -
+(optional) set group ownership’mode' - (optional) set file mode bitsThe
+value of the tag is the raw/encoded content towrite/append to the
+destination
 
 .. __example_49:
 
@@ -2494,7 +2589,15 @@ Elements description
 TYPE: adduser
 =============
 
-FIXME - I have no documentation
+describes an additional user account, the following parameters
+areavailable:'shell' - the login shell for the user.\ *passwd* - the
+(optional) password for the user.\ *groups* - a comma separated list of
+groups the user is member of.\ *uid* - (optional) user of the
+user.\ *gid* - (optional) primary group, may be numeric or a
+name.\ *home* - home directory.\ *system="True"* - system
+user.\ *create_home="False"* - do not create the home
+directory.\ *create_group = "False"* - Do not create the primary
+group.The value of the tag describes the login name for the account.
 
 .. __example_50:
 
@@ -2543,7 +2646,7 @@ Elements description
 TYPE: cpmv
 ==========
 
-FIXME - I have no documentation
+describes a copy or move of an element in the rootfilesystem
 
 .. __example_51:
 
@@ -2568,7 +2671,8 @@ Elements description
 TYPE: rm
 ========
 
-FIXME - I have no documentation
+describes a removal of a pattern from the rootfilesystem.Including an
+exclude pattern
 
 .. __example_52:
 
@@ -2593,7 +2697,7 @@ Elements description
 TYPE: mknod
 ===========
 
-FIXME - I have no documentation
+describes a mknod operaition in finetuning
 
 .. __example_53:
 
@@ -2618,7 +2722,7 @@ Elements description
 TYPE: git_src
 =============
 
-FIXME - I have no documentation
+URI of the git repository, e.g. "git://myhost/myrepo.git"
 
 .. __example_54:
 
@@ -2643,7 +2747,7 @@ Elements description
 TYPE: svn_src
 =============
 
-FIXME - I have no documentation
+URI of the svn repository, e.g. "svn://myhost/myrepo/tags/my_tag"
 
 .. __example_55:
 
@@ -2668,7 +2772,7 @@ Elements description
 TYPE: pkg
 =========
 
-FIXME - I have no documentation
+describes a debian binary package
 
 .. __example_56:
 
@@ -2686,26 +2790,27 @@ Elements description
 --------------------
 
 [attr] pin string
-   FIXME - I have no documentation
+   prefer the defined version of the debian package
 
 [attr] version string
-   FIXME - I have no documentation
+   version of the package
 
 [attr] auto boolean
-   FIXME - I have no documentation
+   installed automatically as a dependency
 
 [attr] md5 string
-   FIXME - I have no documentation
+   md5 sum of the package.
 
 [attr] on_src_cd string
-   FIXME - I have no documentation
+   If set to "False" the source will not be included on the source
+   cdrom.
 
 .. _pbuilder:
 
 TYPE: pbuilder
 ==============
 
-FIXME - I have no documentation
+reference to debian source packages
 
 .. __example_57:
 
@@ -2727,17 +2832,23 @@ Elements description
 --------------------
 
 git `rfs:git_src <#type-git_src>`__
-   FIXME - I have no documentation
+   reference to a git tree hosting a debian source package. The source
+   will be build with a pbuilder before the image generation. Use the
+   *install* attribute to specify which binary packages should be
+   installed in the target image.
 
 svn `rfs:svn_src <#type-svn_src>`__
-   FIXME - I have no documentation
+   reference to a svn repository hosting a debian source package. The
+   source will be build with a pbuilder before the image generation. Use
+   the *install* attribute to specify which binary packages should be
+   installed in the target image.
 
 .. _pkg-list:
 
 TYPE: pkg-list
 ==============
 
-FIXME - I have no documentation
+container of debian packages
 
 .. __example_58:
 
@@ -2757,14 +2868,15 @@ Elements description
 --------------------
 
 pkg `rfs:pkg <#type-pkg>`__
-   FIXME - I have no documentation
+   reference to a binary debian package which will be installed from the
+   given mirrors into the target rootfilesystem.
 
 .. _blacklist:
 
 TYPE: blacklist
 ===============
 
-FIXME - I have no documentation
+blacklists of debian packages
 
 .. __example_59:
 
@@ -2784,14 +2896,14 @@ Elements description
 --------------------
 
 sysroot `rfs:pkg-list <#type-pkg-list>`__
-   FIXME - I have no documentation
+   avoid installing the specified packages into the sysroot
 
 .. _fullpkg-list:
 
 TYPE: fullpkg-list
 ==================
 
-FIXME - I have no documentation
+List of packages to be validated against the installed list.
 
 .. __example_60:
 
@@ -2811,14 +2923,15 @@ Elements description
 --------------------
 
 pkg `rfs:pkg <#type-pkg>`__
-   FIXME - I have no documentation
+   Reference to a binary debian package which is supposed to be
+   installed.
 
 .. _conf:
 
 TYPE: conf
 ==========
 
-FIXME - I have no documentation
+describes a preseeding entry
 
 .. __example_61:
 
@@ -2836,23 +2949,23 @@ Elements description
 --------------------
 
 [attr] owner string
-   FIXME - I have no documentation
+   owner package of the config entry
 
 [attr] key string
-   FIXME - I have no documentation
+   key name of the entry
 
 [attr] type string
-   FIXME - I have no documentation
+   type of the config entry
 
 [attr] value string
-   FIXME - I have no documentation
+   value of the config entry
 
 .. _preseed:
 
 TYPE: preseed
 =============
 
-FIXME - I have no documentation
+container of config entries
 
 .. __example_62:
 
@@ -2872,14 +2985,14 @@ Elements description
 --------------------
 
 conf `rfs:conf <#type-conf>`__
-   FIXME - I have no documentation
+   A config entry
 
 .. _empty:
 
 TYPE: empty
 ===========
 
-FIXME - I have no documentation
+This element just acts like a flag. It might be there, or not.
 
 .. __example_63:
 
@@ -2901,7 +3014,7 @@ Elements description
 TYPE: string
 ============
 
-FIXME - I have no documentation
+E.L.B.E. standard string. Allow XML base attribute.
 
 .. __example_64:
 
@@ -2923,7 +3036,9 @@ Elements description
 TYPE: unit-tests
 ================
 
-FIXME - I have no documentation
+Sequence of test suites. The require attribute *dst* is thename of the
+file where the Junit XML file will be dumprelative to the project
+directory.
 
 .. __example_65:
 
@@ -2950,7 +3065,8 @@ test-suite `rfs:test-suite <#type-test-suite>`__
 TYPE: test-suite
 ================
 
-FIXME - I have no documentation
+A test suite is a sequence of test cases. The requiredattribute name is
+the an human readable identifier for thetest suite.
 
 .. __example_66:
 
@@ -2976,21 +3092,21 @@ Elements description
 GROUP : test-case
 =================
 
-FIXME - I have no documentation
+A test-case is a choice of a test to make on the target fs.
 
 .. __file_exists_type_emphasis_rfs_string_emphasis:
 
 file-exists type: *rfs:string*
 ==============================
 
-FIXME - I have no documentation
+Verify that a file exists.
 
 .. _src-cdrom:
 
 TYPE: src-cdrom
 ===============
 
-FIXME - I have no documentation
+Configuration of the src-cdrom
 
 .. __example_67:
 
@@ -3000,7 +3116,11 @@ Example
 .. code:: xml
 
    <src-cdrom>
+     <size> rfs:memory </size>
+
      <src-opts> rfs:iso-opts </src-opts>
+
+     <archive> rfs:src-cdrom-archive </archive>
 
    </src-cdrom>
 
@@ -3009,17 +3129,79 @@ Example
 Elements description
 --------------------
 
+size `rfs:memory <#type-memory>`__
+   The size limit for each source cdrom ISO image. The files are
+   distributed on several cdroms as needed. Omitting this element means
+   no size limit.
+
 src-opts `rfs:iso-opts <#type-iso-opts>`__
-   FIXME - I have no documentation
+   Options for the source cdrom ISO images.
+
+archive `rfs:src-cdrom-archive <#type-src-cdrom-archive>`__
+   tar.bz2 file that contains base64 encoded files for the source cdrom.
+
+.. _src-cdrom-archive:
+
+TYPE: src-cdrom-archive
+=======================
+
+Holds a base64 encoded tar.bz2 file that is added to the src-cdrom.
+
+.. __example_68:
+
+Example
+-------
+
+.. code:: xml
+
+   <src-cdrom-archive>
+   </src-cdrom-archive>
+
+.. __elements_description_68:
+
+Elements description
+--------------------
+
+[attr] volume `rfs:volume-type <#type-volume-type>`__
+   Use this to control where the archive is stored when using split
+   src-cdroms. It consists of a comma-separated list of volume numbers.
+   A volume number can be 0 to n-1 for n equals the number of volumes if
+   the src-cdrom is split. A volume number can also be negative to
+   identify a volume beginning from the last index. (-1: last, -2:
+   second last, …) If you do not specify this attribute, the archive is
+   added to each volume.
+
+.. _volume-type:
+
+SIMPLE TYPE: volume-type
+========================
+
+FIXME - I have no documentation
+
+.. __base_type_13:
+
+Base Type
+---------
+
+*string*
+
+.. __restrictions_13:
+
+Restrictions
+------------
+
++-----------------------+-----------------------+-----------------------+
+| *pattern*             | (-?\d+,)*-?\d+        | all                   |
++-----------------------+-----------------------+-----------------------+
 
 .. _iso-opts:
 
 TYPE: iso-opts
 ==============
 
-FIXME - I have no documentation
+ISO image options passed to genisoimage(1).
 
-.. __example_68:
+.. __example_69:
 
 Example
 -------
@@ -3047,13 +3229,14 @@ Example
 
    </iso-opts>
 
-.. __elements_description_68:
+.. __elements_description_69:
 
 Elements description
 --------------------
 
 [attr] strict boolean
-   FIXME - I have no documentation
+   If set to "true", fails in preprocessing stage if an option doesn’t
+   respect ISO-9660. The default is "false".
 
 abstract `rfs:string <#type-string>`__
    FIXME - I have no documentation

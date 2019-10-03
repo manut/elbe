@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ELBE Quickstart &mdash; ELBE 12.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="elbe" href="elbe.html" />
+    <link rel="prev" title="ELBE Overview" href="article-elbeoverview-en.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ELBE
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                12.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ELBE Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#steps-necessary">Steps necessary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customisation-of-the-build">Customisation of the build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-elbe">Installing ELBE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#binary-debian-packages">Binary Debian packages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#create-initvm-and-submit-xml-files">Create initvm and submit XML files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submitting-an-xml-file">Submitting an XML file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ports-opened-by-initvm">Ports opened by initvm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-usage">Advanced usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#elbe-archive">ELBE Archive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivedir">archivedir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-packages-to-the-list-of-packages-to-install">Adding packages to the “list of packages to install”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-finetuning-rules">Using the finetuning rules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rm">rm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adduser">adduser</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-ownership-of-directories-or-files">Changing ownership of directories or files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#further-example">Further Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-elbe-pbuilder-feature">Using the Elbe Pbuilder Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-contents-of-the-repository-with-the-following-command">List contents of the repository with the following command:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elbe-prjrepo-download-cat-repos-elbe-pbuilder-prj">$ elbe prjrepo download <code class="docutils literal"><span class="pre">cat</span> <span class="pre">~/repos/elbe/pbuilder.prj</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-repository">Custom Repository</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#repository-key">Repository Key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reprepro-configuration">reprepro configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#insert-pkgs-into-repo">insert pkgs into repo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbeoverview-en.html">ELBE Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbe-schema-reference.html">ELBE XML Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">man-pages</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-hdimg.html">elbe-hdimg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ELBE</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ELBE Quickstart</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/article-quickstart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elbe-quickstart">
+<h1>ELBE Quickstart<a class="headerlink" href="#elbe-quickstart" title="Permalink to this headline">¶</a></h1>
+<p>You have probably received a root-filesystem, which has been built with
+ELBE. Additionally you should have an XML file describing the
+root-filesystem.</p>
+<p>This quickstart guide describes the steps necessary to rebuild the
+root-filesystem from the XML file and to simple modifications.</p>
+<div class="section" id="steps-necessary">
+<h2>Steps necessary<a class="headerlink" href="#steps-necessary" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>install Debian 10 (Buster) on your Host</li>
+<li>install ELBE on Host Linux</li>
+<li>generate the <code class="docutils literal"><span class="pre">initvm</span></code> running the buildenvironment</li>
+<li>build the root-filesystem inside the initvm</li>
+</ol>
+<p>Steps 1,2 and 3 need only be performed once.</p>
+<blockquote>
+<div><p><strong>Note</strong></p>
+<p>When Debian is running inside a VM (vmware etc), you need to make
+sure, that nested KVM is working.</p>
+</div></blockquote>
+</div>
+<div class="section" id="customisation-of-the-build">
+<h2>Customisation of the build<a class="headerlink" href="#customisation-of-the-build" title="Permalink to this headline">¶</a></h2>
+<p>The ELBE XML can contain an archive, which can contain configuration
+files, and additional software. This archive is extracted onto the
+target-image during the buildprocess. It allows you to override any
+file, which needs to be different from the default Debian Install.</p>
+<p>This guide also explains how the archive can be extracted from the XML
+file, and vice versa.</p>
+<p>ELBE allows to manipulate the generated root-filesystem through a set of
+<code class="docutils literal"><span class="pre">&lt;finetuning&gt;</span></code> rules. We also describe, how these can be used to add a
+user, change directory permissions, and remove files from the
+root-filesystem.</p>
+</div>
+<div class="section" id="installing-elbe">
+<h2>Installing ELBE<a class="headerlink" href="#installing-elbe" title="Permalink to this headline">¶</a></h2>
+<p>There are several possibilities to install ELBE. The simplest method is
+by installing prebuilt binary packages via Linutronix package repository
+on a Debian 10 (Buster) system.</p>
+<p>But ELBE can also be installed from git.</p>
+<div class="section" id="binary-debian-packages">
+<h3>Binary Debian packages<a class="headerlink" href="#binary-debian-packages" title="Permalink to this headline">¶</a></h3>
+<p>The latest packages for elbe reside in the following repository</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">common</span>
+</pre></div>
+</div>
+<p>Create the file <code class="docutils literal"><span class="pre">/etc/apt/sources.list.d/elbe.list</span></code> with the following
+contents:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">buster</span> <span class="n">main</span>
+<span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">common</span> <span class="n">buster</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>Add a repository key to the list of trusted keys (as root):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ wget -q -O - http://debian.linutronix.de/elbe-common/elbe-repo.pub | apt-key add -
+</pre></div>
+</div>
+<p>Then run (as root):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ apt-get update
+$ apt-get install elbe
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-initvm-and-submit-xml-files">
+<h2>Create initvm and submit XML files<a class="headerlink" href="#create-initvm-and-submit-xml-files" title="Permalink to this headline">¶</a></h2>
+<p>The first thing you need to do is set up a virtual-machine for
+generating root-filesystems.</p>
+<p>This virtual-machine is referred to as “initvm”. You will want your
+initvm to be the same architecture as your workstation. This allows
+using hardware accelerated virtualization implemented by kvm.</p>
+<p>In order to be able to work with virtual machines as a regular user,
+that user needs to be added to libvirt groups:</p>
+<p>For Debian/stretch, buster, and newer:</p>
+<p>$ adduser &lt;youruser&gt; libvirt $ adduser &lt;youruser&gt; libvirt-qemu</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe initvm create
+Import debian-archive-buster-automatic.gpg:
+gpg: key DC30D7C23CBBABEE: 4 Beglaubigungen wegen fehlender Schlüssel nicht geprüft
+gpg: Schlüssel DC30D7C23CBBABEE: Öffentlicher Schlüssel &quot;Debian Archive Automatic Signing Key (10/buster) &lt;ftpmaster@debian.org&gt;&quot; importiert
+gpg: Anzahl insgesamt bearbeiteter Schlüssel: 1
+gpg:                              importiert: 1
+...
+
+Installing the base system  ... 17%... 20%... 30%... 40%... 50%... 60%... 70%... 83%... 91%
+           ... 100%
+Configuring apt  ... 14%... 21%... 35%... 40%... 50%... 64%... 71%... 85%... 92%... 100%
+Select and install software
+                             ... 10%... 20%... 30%... 40%... 50%... 61%... 71%... 81%... 78%... 80%... 90%
+                          ... 100%
+Installing GRUB boot loader  ... 16%... 33%... 50%... 66%... 83%... 100%
+The system is going down NOW!.. 12%... 20%... 33%... 41%... 50%... 62%... 70%... 83%... 91%
+Sent SIGKILL to all processes
+Requesting system reboot
+[  656.391904] reboot: Restarting system
+mkdir -p .stamps
+touch .stamps/stamp-install-initial-image
+*****
+</pre></div>
+</div>
+<p>This creates an “initvm” subdirectory and builds the initvm inside this
+directory.</p>
+</div>
+<div class="section" id="submitting-an-xml-file">
+<h2>Submitting an XML file<a class="headerlink" href="#submitting-an-xml-file" title="Permalink to this headline">¶</a></h2>
+<p>Submitting an XML file triggers an image build inside the initvm. Once
+the initvm has been created and is running, you can submit XML files
+using</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe initvm submit examples/x86_64-pc-rescue-busybox-dyn-cpio.xml
+Build started, waiting till it finishes
+[INFO] Build started
+[INFO] ELBE Report for Project x86_64-rescue-image
+Report timestamp: 20191001-135512
+[CMD] reprepro --basedir &quot;/var/cache/elbe/63e09968-c9e7-45d8-8dd2-82c1a8f54f8d/repo&quot; export stretch
+[CMD] mkdir -p &quot;/var/cache/elbe/63e09968-c9e7-45d8-8dd2-82c1a8f54f8d/chroot&quot;
+[INFO] Debootstrap log
+[CMD] dpkg --print-architecture
+[CMD] debootstrap  --include=&quot;gnupg&quot; --arch=amd64 &quot;stretch&quot; &quot;/var/cache/elbe/63e09968-c9e7-45d8-8dd2-82c1a8f54f8d/chroot&quot; &quot;http://ftp.de.debian.org//debian&quot;
+I: Retrieving InRelease
+I: Retrieving Release
+I: Retrieving Release.gpg
+I: Checking Release signature
+I: Valid Release signature (key id 067E3C456BAE240ACEE88F6FEF0F382A1A7B6500)
+I: Retrieving Packages
+I: Validating Packages
+I: Resolving dependencies of required packages...
+I: Resolving dependencies of base packages...
+I: Checking component main on http://ftp.de.debian.org//debian...
+I: Retrieving libacl1 2.2.52-3+b1
+I: Validating libacl1 2.2.52-3+b1
+
+...
+
+[INFO] Build finished successfully
+
+Build finished !
+
+ELBE Package validation
+=======================
+
+Package List validation
+
+No Errors found
+
+Getting generated Files
+
+Saving generated Files to elbe-build-20191001-164821
+source.xml      (Current source.xml of the project)
+rescue.cpio     (Image)
+licence.txt     (License file)
+licence.xml     (xml License file)
+validation.txt  (Package list validation result)
+elbe-report.txt         (Report)
+log.txt         (Log file)
+</pre></div>
+</div>
+<p>The result of the build is stored in elbe-build-&lt;TIMESTAMP&gt; below your
+current working directory.</p>
+</div>
+<div class="section" id="ports-opened-by-initvm">
+<h2>Ports opened by initvm<a class="headerlink" href="#ports-opened-by-initvm" title="Permalink to this headline">¶</a></h2>
+<p>The initvm will open port 7587 on localhost. This is used by the elbe
+tools on your host to communicate with the initvm.</p>
+</div>
+<div class="section" id="advanced-usage">
+<h2>Advanced usage<a class="headerlink" href="#advanced-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="elbe-archive">
+<h3>ELBE Archive<a class="headerlink" href="#elbe-archive" title="Permalink to this headline">¶</a></h3>
+<p>The ELBE XML file can contain an archivedir which is copied into the
+root-filesystem during the image generation phase.</p>
+<p>It is done with the following XML node:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">archivedir</span><span class="o">&gt;</span><span class="n">foo</span><span class="o">&lt;/</span><span class="n">archivedir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="archivedir">
+<h3>archivedir<a class="headerlink" href="#archivedir" title="Permalink to this headline">¶</a></h3>
+<p>The new XML element ‘archivedir’ points to a local directory and adds
+the content into a newly created archive. ‘archivedir’ can be specified
+more then once. The content of the direcories is copied in order of
+appearance. Existing files are overwritten by the later ones.</p>
+<p>Example snippet to use ‘archivedir’:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">archivedir</span><span class="o">&gt;</span><span class="n">foo</span><span class="o">&lt;/</span><span class="n">archivedir</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">archivedir</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;production&quot;</span><span class="o">&gt;</span><span class="n">bar</span><span class="o">&lt;/</span><span class="n">archivedir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-packages-to-the-list-of-packages-to-install">
+<h3>Adding packages to the “list of packages to install”<a class="headerlink" href="#adding-packages-to-the-list-of-packages-to-install" title="Permalink to this headline">¶</a></h3>
+<p>The XML file contains a <em>list of packages to install</em> <code class="docutils literal"><span class="pre">&lt;pkg-list&gt;</span></code> in
+the <code class="docutils literal"><span class="pre">&lt;target&gt;</span></code> XML node. Inserting a line containing</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">util</span><span class="o">-</span><span class="n">linux</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>will add the <code class="docutils literal"><span class="pre">util-linux</span></code> package to the target-rfs.</p>
+</div>
+<div class="section" id="using-the-finetuning-rules">
+<h3>Using the finetuning rules<a class="headerlink" href="#using-the-finetuning-rules" title="Permalink to this headline">¶</a></h3>
+<p>An ELBE XML file can contain a set of finetuning rules. Finetuning is
+used to customize the target-rfs, e.g. remove man-pages. Here is an
+example finetuning from
+<code class="docutils literal"><span class="pre">/usr/share/doc/elbe-doc/examples/elbe-desktop.xml</span></code>:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/*.</span><span class="n">deb</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">adduser</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;elbe&quot;</span> <span class="n">shell</span><span class="o">=</span><span class="s2">&quot;/bin/bash&quot;</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">finetuning</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="rm">
+<h4>rm<a class="headerlink" href="#rm" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal"><span class="pre">&lt;rm&gt;</span></code> node removes files from the target-rfs.</p>
+</div>
+<div class="section" id="adduser">
+<h4>adduser<a class="headerlink" href="#adduser" title="Permalink to this headline">¶</a></h4>
+<p>The adduser node allows to create a user. The following example creates
+the user <code class="docutils literal"><span class="pre">elbe</span></code> with the password <code class="docutils literal"><span class="pre">foo</span></code>.</p>
+<p>It is also possible to specify groups the new user should be part of:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">adduser</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="n">shell</span><span class="o">=</span><span class="s2">&quot;/bin/bash&quot;</span> <span class="n">groups</span><span class="o">=</span><span class="s2">&quot;audio,video,dialout&quot;</span><span class="o">&gt;</span><span class="n">elbe</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="changing-ownership-of-directories-or-files">
+<h3>Changing ownership of directories or files<a class="headerlink" href="#changing-ownership-of-directories-or-files" title="Permalink to this headline">¶</a></h3>
+<p>There is currently no special finetuning node for <code class="docutils literal"><span class="pre">chmod</span></code> and
+<code class="docutils literal"><span class="pre">chown</span></code>. These commands needs to be specified via the command tag,
+which allows running any command that is available in the target-rfs.</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">chown</span> <span class="n">elbe</span><span class="p">:</span><span class="n">elbe</span> <span class="o">/</span><span class="n">mnt</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">chmod</span> <span class="mi">777</span> <span class="o">/</span><span class="n">mnt</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="further-example">
+<h4>Further Example<a class="headerlink" href="#further-example" title="Permalink to this headline">¶</a></h4>
+<p>A more complete example can be found in the ELBE overview document that
+is installed at <code class="docutils literal"><span class="pre">/usr/share/doc/elbe-doc/elbeoverview-en.html</span></code></p>
+</div>
+</div>
+</div>
+<div class="section" id="using-the-elbe-pbuilder-feature">
+<h2>Using the Elbe Pbuilder Feature<a class="headerlink" href="#using-the-elbe-pbuilder-feature" title="Permalink to this headline">¶</a></h2>
+<p>Since Version 1.9.2, elbe is able to create a pbuilder Environment. You
+can create a pbuilder for a specific xml File inside the initvm.</p>
+<p>The repositories and architecture specified in the xml File will be used
+to satisfy build dependencies. Pbuilder will only build debianised
+Software.</p>
+<p>A pbuilder instance is always associated with a project inside the
+initvm. The <code class="docutils literal"><span class="pre">pbuilder</span> <span class="pre">create</span></code> command will write the project uuid to a
+file, if instructed to do so.</p>
+<p><code class="docutils literal"><span class="pre">pbuilder</span> <span class="pre">build</span></code> works like <code class="docutils literal"><span class="pre">pdebuild</span></code>, in that it uploads the
+current working directory into the initvm pbuilder project, and then
+builds it using the pbuilder instance created earlier.</p>
+<p>Here is an example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe pbuilder create --xmlfile examples/x86_64-pc-rescue-busybox-dyn-cpio.xml --writeproject ../pbuilder.prj
+$ git clone https://github.com/Linutronix/libgpio.git
+$ cd  libgpio/
+$ elbe pbuilder build --project `cat ~/repos/elbe/pbuilder.prj` --out ../out/
+</pre></div>
+</div>
+<p>With these steps, elbe builds the libgpio project inside the initvm and
+stores the built packages in an internal repository. Every package,
+built in this manner, will also be stored in that repository. This
+repository can be used for later RFS builds.</p>
+</div>
+<div class="section" id="list-contents-of-the-repository-with-the-following-command">
+<h2>List contents of the repository with the following command:<a class="headerlink" href="#list-contents-of-the-repository-with-the-following-command" title="Permalink to this headline">¶</a></h2>
+<p>$ elbe prjrepo list_packages <code class="docutils literal"><span class="pre">cat</span> <span class="pre">~/repos/elbe/pbuilder.prj</span></code>
+libgpio-dev_3.0.0_amd64.deb libgpio1_3.0.0_amd64.deb
+libgpio1-dbgsym_3.0.0_amd64.deb</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">use</span> <span class="n">this</span> <span class="n">repository</span> <span class="k">for</span> <span class="n">further</span> <span class="n">RFS</span> <span class="n">builds</span> <span class="n">download</span> <span class="n">the</span> <span class="n">repo</span> <span class="k">with</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="elbe-prjrepo-download-cat-repos-elbe-pbuilder-prj">
+<h2>$ elbe prjrepo download <code class="docutils literal"><span class="pre">cat</span> <span class="pre">~/repos/elbe/pbuilder.prj</span></code><a class="headerlink" href="#elbe-prjrepo-download-cat-repos-elbe-pbuilder-prj" title="Permalink to this headline">¶</a></h2>
+<p>The repository is download as elbe-projectrepo-20191002-114244.tar.gz.
+This should be unpacked in the DocumentRoot of your webserver and
+customized with your key as explained in the next chapter.</p>
+</div>
+<div class="section" id="custom-repository">
+<h2>Custom Repository<a class="headerlink" href="#custom-repository" title="Permalink to this headline">¶</a></h2>
+<p>You might have your own packages which should be installed into your
+image. This can be done with a custom repository. You can use
+<a class="reference external" href="https://mirrorer.alioth.debian.org/">reprepro</a> to create your own
+repository or the above mentioned pbuilder feature.</p>
+<div class="section" id="repository-key">
+<h3>Repository Key<a class="headerlink" href="#repository-key" title="Permalink to this headline">¶</a></h3>
+<p>Because the repository needs to be signed using <code class="docutils literal"><span class="pre">gpg</span></code>, a key needs to
+be generated.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>-&gt; gpg --default-new-key-algo rsa4096 --gen-key
+gpg (GnuPG) 2.1.18; Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Note: Use &quot;gpg --full-generate-key&quot; for a full featured key generation dialog.
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: Torben Hohn
+Email address: torben.hohn@linutronix.de
+You selected this USER-ID:
+    &quot;Torben Hohn &lt;torben.hohn@linutronix.de&gt;&quot;
+
+Change (N)ame, (E)mail, or (O)kay/(Q)uit? O
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: key 68E68615BB6CB47C marked as ultimately trusted
+gpg: directory &#39;/home/torbenh/.gnupg/openpgp-revocs.d&#39; created
+gpg: revocation certificate stored as &#39;/home/torbenh/.gnupg/openpgp-revocs.d/CF837F1AAAC35E084062AE4468E68615BB6CB47C.rev&#39;
+public and secret key created and signed.
+
+Note that this key cannot be used for encryption.  You may want to use
+the command &quot;--edit-key&quot; to generate a subkey for this purpose.
+pub   rsa4096 2018-10-08 [SC] [expires: 2020-10-07]
+      CF837F1AAAC35E084062AE4468E68615BB6CB47C
+      CF837F1AAAC35E084062AE4468E68615BB6CB47C
+uid                      Torben Hohn &lt;torben.hohn@linutronix.de&gt;
+</pre></div>
+</div>
+<p>Please note the keyname (here
+<code class="docutils literal"><span class="pre">CF837F1AAAC35E084062AE4468E68615BB6CB47C</span></code>). This keyname can then be
+used to export the public key into a repo.pub file.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="n">export</span> <span class="o">--</span><span class="n">armor</span> <span class="n">CF837F1AAAC35E084062AE4468E68615BB6CB47C</span> <span class="o">&gt;</span> <span class="n">repo</span><span class="o">.</span><span class="n">pub</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reprepro-configuration">
+<h3>reprepro configuration<a class="headerlink" href="#reprepro-configuration" title="Permalink to this headline">¶</a></h3>
+<p>To create your own repository with reprepro or the elbe pbuilder feature
+you need only the <code class="docutils literal"><span class="pre">distributions</span></code> configuration file. For an <code class="docutils literal"><span class="pre">amd64</span></code>
+and <code class="docutils literal"><span class="pre">source</span></code> repository for Debian <code class="docutils literal"><span class="pre">stretch</span></code> it might look as
+follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Origin</span><span class="p">:</span> <span class="n">mylocal</span>
+<span class="n">Label</span><span class="p">:</span> <span class="n">mylocal</span>
+<span class="n">Suite</span><span class="p">:</span> <span class="n">stable</span>
+<span class="n">Codename</span><span class="p">:</span> <span class="n">stretch</span>
+<span class="n">Architectures</span><span class="p">:</span> <span class="n">amd64</span> <span class="n">source</span>
+<span class="n">Components</span><span class="p">:</span> <span class="n">main</span>
+<span class="n">Description</span><span class="p">:</span> <span class="n">my</span> <span class="n">local</span> <span class="n">repo</span>
+<span class="n">SignWith</span><span class="p">:</span> <span class="n">CF837F1AAAC35E084062AE4468E68615BB6CB47C</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note</strong></p>
+<p>the <code class="docutils literal"><span class="pre">SignWith:</span></code> field needs to be the key of the previously
+generated key.</p>
+</div></blockquote>
+<p>Now place the <code class="docutils literal"><span class="pre">distributions</span></code> file in a <code class="docutils literal"><span class="pre">conf</span></code> named directory. also
+put <code class="docutils literal"><span class="pre">repo.pub</span></code> into your <code class="docutils literal"><span class="pre">repo</span></code> directory.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>repo/
+├── conf
+│   └── distributions
+└── repo.pub
+</pre></div>
+</div>
+</div>
+<div class="section" id="insert-pkgs-into-repo">
+<h3>insert pkgs into repo<a class="headerlink" href="#insert-pkgs-into-repo" title="Permalink to this headline">¶</a></h3>
+<p>To include packages in your repository you might use the following
+command from inside the <code class="docutils literal"><span class="pre">repo</span></code> directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ reprepro include stretch ../path/to/your/*.changes
+</pre></div>
+</div>
+<p>To use this repository from ELBE you need a webserver. Simply place the
+repository inside the document root of your webserver.</p>
+<p>If the webserver is running on the same machine as the initvm you can
+use the following to access the repository:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span> <span class="n">jessie</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span> <span class="n">jessie</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">LOCALMACHINE</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span><span class="n">repo</span><span class="o">.</span><span class="n">pub</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>ELBE replaces the string <code class="docutils literal"><span class="pre">LOCALMACHINE</span></code> with the ip address of your
+machine. If you use an external machine as webserver you need to replace
+<code class="docutils literal"><span class="pre">LOCALMACHINE</span></code> with the name or the ip of it.</p>
+<p>Now you can install packages from your custom repository the same way
+you can install from any other repository.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="elbe.html" class="btn btn-neutral float-right" title="elbe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="article-elbeoverview-en.html" class="btn btn-neutral" title="ELBE Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Linutronix GmbH.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: releases/v12.0
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../v10/article-quickstart.html">v10</a></dd>
+            <dd><a href="../v11/article-quickstart.html">v11</a></dd>
+            <dd><a href="../v12.0/article-quickstart.html">v12.0</a></dd>
+            <dd><a href="../v2.5/article-quickstart.html">v2.5</a></dd>
+            <dd><a href="../v3/article-quickstart.html">v3</a></dd>
+            <dd><a href="../v4/article-quickstart.html">v4</a></dd>
+            <dd><a href="../v5/article-quickstart.html">v5</a></dd>
+            <dd><a href="../v6/article-quickstart.html">v6</a></dd>
+            <dd><a href="../v7/article-quickstart.html">v7</a></dd>
+            <dd><a href="../v8/article-quickstart.html">v8</a></dd>
+            <dd><a href="../v9/article-quickstart.html">v9</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../devel_elbe-1.0/article-quickstart.html">devel/elbe-1.0</a></dd>
+            <dd><a href="../devel_elbe-2.0/article-quickstart.html">devel/elbe-2.0</a></dd>
+            <dd><a href="../devel_elbe-3.0/article-quickstart.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../master/article-quickstart.html">master</a></dd>
+            <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
+            <dd><a href="../releases_v1.0/article-quickstart.html">releases/v1.0</a></dd>
+            <dd><a href="../releases_v1.1/article-quickstart.html">releases/v1.1</a></dd>
+            <dd><a href="../releases_v1.2/article-quickstart.html">releases/v1.2</a></dd>
+            <dd><a href="../releases_v1.9.21/article-quickstart.html">releases/v1.9.21</a></dd>
+            <dd><a href="../releases_v1.9.22/article-quickstart.html">releases/v1.9.22</a></dd>
+            <dd><a href="../releases_v1.9.23/article-quickstart.html">releases/v1.9.23</a></dd>
+            <dd><a href="../releases_v1.9.24/article-quickstart.html">releases/v1.9.24</a></dd>
+            <dd><a href="../releases_v1.9.25/article-quickstart.html">releases/v1.9.25</a></dd>
+            <dd><a href="../releases_v10/article-quickstart.html">releases/v10</a></dd>
+            <dd><a href="../releases_v11/article-quickstart.html">releases/v11</a></dd>
+            <dd><a href="article-quickstart.html">releases/v12.0</a></dd>
+            <dd><a href="../releases_v2.0/article-quickstart.html">releases/v2.0</a></dd>
+            <dd><a href="../releases_v2.1/article-quickstart.html">releases/v2.1</a></dd>
+            <dd><a href="../releases_v2.2/article-quickstart.html">releases/v2.2</a></dd>
+            <dd><a href="../releases_v2.3/article-quickstart.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/article-quickstart.html">releases/v2.4</a></dd>
+            <dd><a href="../releases_v2.5/article-quickstart.html">releases/v2.5</a></dd>
+            <dd><a href="../releases_v2.9.1/article-quickstart.html">releases/v2.9.1</a></dd>
+            <dd><a href="../releases_v2.9.10/article-quickstart.html">releases/v2.9.10</a></dd>
+            <dd><a href="../releases_v2.9.11/article-quickstart.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/article-quickstart.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/article-quickstart.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/article-quickstart.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/article-quickstart.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/article-quickstart.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/article-quickstart.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/article-quickstart.html">releases/v2.9.18</a></dd>
+            <dd><a href="../releases_v2.9.2/article-quickstart.html">releases/v2.9.2</a></dd>
+            <dd><a href="../releases_v2.9.3/article-quickstart.html">releases/v2.9.3</a></dd>
+            <dd><a href="../releases_v2.9.4/article-quickstart.html">releases/v2.9.4</a></dd>
+            <dd><a href="../releases_v2.9.5/article-quickstart.html">releases/v2.9.5</a></dd>
+            <dd><a href="../releases_v2.9.6/article-quickstart.html">releases/v2.9.6</a></dd>
+            <dd><a href="../releases_v2.9.7/article-quickstart.html">releases/v2.9.7</a></dd>
+            <dd><a href="../releases_v2.9.8/article-quickstart.html">releases/v2.9.8</a></dd>
+            <dd><a href="../releases_v2.9.9/article-quickstart.html">releases/v2.9.9</a></dd>
+            <dd><a href="../releases_v3/article-quickstart.html">releases/v3</a></dd>
+            <dd><a href="../releases_v4/article-quickstart.html">releases/v4</a></dd>
+            <dd><a href="../releases_v5/article-quickstart.html">releases/v5</a></dd>
+            <dd><a href="../releases_v6/article-quickstart.html">releases/v6</a></dd>
+            <dd><a href="../releases_v7/article-quickstart.html">releases/v7</a></dd>
+            <dd><a href="../releases_v8/article-quickstart.html">releases/v8</a></dd>
+            <dd><a href="../releases_v9/article-quickstart.html">releases/v9</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'12.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

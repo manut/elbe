@@ -136,7 +136,7 @@
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				<p>The current elbe version is <em>11</em></p>
+				<p>The current elbe version is <em>12.0</em></p>
 
 <p>There are several ways to install a binary version of elbe.</p>
 
@@ -157,13 +157,13 @@ apt-key add elbe-repo.pub
 apt update
 apt install elbe</code></pre></div>
 
-<h4>Debian sid</h4>
+<h4>Debian buster</h4>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
 <span class="nb">cd</span> /tmp
 wget http://debian.linutronix.de/elbe/elbe-repo.pub
 apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe sid main&quot;</span> &gt;&gt; /etc/apt/sources.list
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe buster main&quot;</span> &gt;&gt; /etc/apt/sources.list
 apt update
 apt install elbe</code></pre></div>
 
