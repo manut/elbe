@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>elbe-pbuilder &mdash; ELBE 2.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="elbe-pkgdiff" href="elbe-pkgdiff.html" />
+    <link rel="prev" title="elbe-parselicence" href="elbe-parselicence.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ELBE
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.9.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="article-quickstart.html">ELBE Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbeoverview-en.html">ELBE Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbe-schema-reference.html">ELBE XML Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">man-pages</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-hdimg.html">elbe-hdimg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">elbe-pbuilder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#name">NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">DESCRIPTION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options">OPTIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commands">COMMANDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">EXAMPLES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">SEE ALSO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elbe">ELBE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ELBE</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>elbe-pbuilder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/elbe-pbuilder.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elbe-pbuilder">
+<h1>elbe-pbuilder<a class="headerlink" href="#elbe-pbuilder" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>NAME<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p>elbe-pbuilder - High Level Interface to the ELBE Package Build System.
+Allows to create a package builder for a project and to build Debian
+packages.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">pbuilder</span> <span class="n">build</span>  <span class="p">[</span><span class="o">--</span><span class="n">project</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">--</span><span class="n">xmlfile</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">elbe</span> <span class="n">pbuilder</span> <span class="n">create</span> <span class="p">[</span><span class="o">--</span><span class="n">project</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">--</span><span class="n">xmlfile</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">writeproject</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="description">
+<h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Creates a pbuilder for a specified project and builds the Debian package
+like pbuilder, but for the configured ELBE project.</p>
+<p>Currently only the source formats 3.0 (git) and 3.0 (native) are
+supported. 3.0 (quilt) requires Files in the parent directory, which are
+not uploaded, because only the curent Workdirectory is uploaded.</p>
+</div>
+<div class="section" id="options">
+<h2>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--project <var>&lt;dir&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td><em>key</em> (/var/cache/elbe/&lt;uuid&gt; for the project inside the initvm to
+use. Use <em>elbe control list_projects</em> to get a list of the available
+projects. Another option would be to use the –writeproject option,
+when the pbuilder is created.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--xmlfile <var>&lt;xmlfile&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>This file is used to create a new ELBE project including the pbuilder
+environment.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="commands">
+<h2>COMMANDS<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><em>create</em></dt>
+<dd>A pbuilder environment for the given project or xml File will be
+created.</dd>
+<dt><em>build</em></dt>
+<dd>Build the <em>Debianized Project</em> in the current working directory. (A
+valid ./debian directory needs to exist.) If –project was specified,
+the specified build environment will be used. If –xmlfile is
+specified a new build environment will be created for the given ELBE
+XML File and the <em>Debianized Project</em> in the current working
+directory will be build. The result of the package build is stored in
+../ like pbuilder does.</dd>
+</dl>
+</div>
+<div class="section" id="examples">
+<h2>EXAMPLES<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Build a pbuilder for <em>myarm.xml</em>. Save project name into myarm.prj</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># elbe pbuilder create --xmlfile myarm.xml --writeproject myarm.prj</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use the pbuilder we have built, to build <em>program</em>, using the prj
+File generated in parent directory</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># cd program</span>
+<span class="c1"># elbe pbuilder build --project `cat ../myarm.prj`</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h2>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p>elbe-control1 elbe-initvm1 pdebuild1</p>
+</div>
+<div class="section" id="elbe">
+<h2>ELBE<a class="headerlink" href="#elbe" title="Permalink to this headline">¶</a></h2>
+<p>Part of the elbe1 suite</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="elbe-pkgdiff.html" class="btn btn-neutral float-right" title="elbe-pkgdiff" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="elbe-parselicence.html" class="btn btn-neutral" title="elbe-parselicence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Linutronix GmbH.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: releases/v2.9.1
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../v10/elbe-pbuilder.html">v10</a></dd>
+            <dd><a href="../v11/elbe-pbuilder.html">v11</a></dd>
+            <dd><a href="../v12.0/elbe-pbuilder.html">v12.0</a></dd>
+            <dd><a href="../v12.1/elbe-pbuilder.html">v12.1</a></dd>
+            <dd><a href="../v2.5/elbe-pbuilder.html">v2.5</a></dd>
+            <dd><a href="../v3/elbe-pbuilder.html">v3</a></dd>
+            <dd><a href="../v4/elbe-pbuilder.html">v4</a></dd>
+            <dd><a href="../v5/elbe-pbuilder.html">v5</a></dd>
+            <dd><a href="../v6/elbe-pbuilder.html">v6</a></dd>
+            <dd><a href="../v7/elbe-pbuilder.html">v7</a></dd>
+            <dd><a href="../v8/elbe-pbuilder.html">v8</a></dd>
+            <dd><a href="../v9/elbe-pbuilder.html">v9</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../devel_elbe-1.0/elbe-pbuilder.html">devel/elbe-1.0</a></dd>
+            <dd><a href="../devel_elbe-2.0/elbe-pbuilder.html">devel/elbe-2.0</a></dd>
+            <dd><a href="../devel_elbe-3.0/elbe-pbuilder.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../master/elbe-pbuilder.html">master</a></dd>
+            <dd><a href="../releases_12.1/elbe-pbuilder.html">releases/12.1</a></dd>
+            <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
+            <dd><a href="../releases_v1.0/elbe-pbuilder.html">releases/v1.0</a></dd>
+            <dd><a href="../releases_v1.1/elbe-pbuilder.html">releases/v1.1</a></dd>
+            <dd><a href="../releases_v1.2/elbe-pbuilder.html">releases/v1.2</a></dd>
+            <dd><a href="../releases_v1.9.21/elbe-pbuilder.html">releases/v1.9.21</a></dd>
+            <dd><a href="../releases_v1.9.22/elbe-pbuilder.html">releases/v1.9.22</a></dd>
+            <dd><a href="../releases_v1.9.23/elbe-pbuilder.html">releases/v1.9.23</a></dd>
+            <dd><a href="../releases_v1.9.24/elbe-pbuilder.html">releases/v1.9.24</a></dd>
+            <dd><a href="../releases_v1.9.25/elbe-pbuilder.html">releases/v1.9.25</a></dd>
+            <dd><a href="../releases_v10/elbe-pbuilder.html">releases/v10</a></dd>
+            <dd><a href="../releases_v11/elbe-pbuilder.html">releases/v11</a></dd>
+            <dd><a href="../releases_v12.0/elbe-pbuilder.html">releases/v12.0</a></dd>
+            <dd><a href="../releases_v12.1/elbe-pbuilder.html">releases/v12.1</a></dd>
+            <dd><a href="../releases_v2.0/elbe-pbuilder.html">releases/v2.0</a></dd>
+            <dd><a href="../releases_v2.1/elbe-pbuilder.html">releases/v2.1</a></dd>
+            <dd><a href="../releases_v2.2/elbe-pbuilder.html">releases/v2.2</a></dd>
+            <dd><a href="../releases_v2.3/elbe-pbuilder.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/elbe-pbuilder.html">releases/v2.4</a></dd>
+            <dd><a href="../releases_v2.5/elbe-pbuilder.html">releases/v2.5</a></dd>
+            <dd><a href="elbe-pbuilder.html">releases/v2.9.1</a></dd>
+            <dd><a href="../releases_v2.9.10/elbe-pbuilder.html">releases/v2.9.10</a></dd>
+            <dd><a href="../releases_v2.9.11/elbe-pbuilder.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/elbe-pbuilder.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/elbe-pbuilder.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/elbe-pbuilder.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/elbe-pbuilder.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/elbe-pbuilder.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/elbe-pbuilder.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/elbe-pbuilder.html">releases/v2.9.18</a></dd>
+            <dd><a href="../releases_v2.9.2/elbe-pbuilder.html">releases/v2.9.2</a></dd>
+            <dd><a href="../releases_v2.9.3/elbe-pbuilder.html">releases/v2.9.3</a></dd>
+            <dd><a href="../releases_v2.9.4/elbe-pbuilder.html">releases/v2.9.4</a></dd>
+            <dd><a href="../releases_v2.9.5/elbe-pbuilder.html">releases/v2.9.5</a></dd>
+            <dd><a href="../releases_v2.9.6/elbe-pbuilder.html">releases/v2.9.6</a></dd>
+            <dd><a href="../releases_v2.9.7/elbe-pbuilder.html">releases/v2.9.7</a></dd>
+            <dd><a href="../releases_v2.9.8/elbe-pbuilder.html">releases/v2.9.8</a></dd>
+            <dd><a href="../releases_v2.9.9/elbe-pbuilder.html">releases/v2.9.9</a></dd>
+            <dd><a href="../releases_v3/elbe-pbuilder.html">releases/v3</a></dd>
+            <dd><a href="../releases_v4/elbe-pbuilder.html">releases/v4</a></dd>
+            <dd><a href="../releases_v5/elbe-pbuilder.html">releases/v5</a></dd>
+            <dd><a href="../releases_v6/elbe-pbuilder.html">releases/v6</a></dd>
+            <dd><a href="../releases_v7/elbe-pbuilder.html">releases/v7</a></dd>
+            <dd><a href="../releases_v8/elbe-pbuilder.html">releases/v8</a></dd>
+            <dd><a href="../releases_v9/elbe-pbuilder.html">releases/v9</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.9.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

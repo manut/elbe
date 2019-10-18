@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="https://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="https://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2019-10-03T00:12:24+00:00</updated>
+  <updated>2019-10-18T12:40:09+02:00</updated>
   <id>https://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -19,9 +19,40 @@
 
   
   <entry>
+    <title>ELBE 12.1 release</title>
+    <link href="https://elbe-rfs.org/news/v1201/"/>
+    <updated>2019-10-18T00:00:00+02:00</updated>
+    <id>https://elbe-rfs.org/news/v1201</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Debian packages for “ELBE 12.1” are available from linutronix.
+Add sth. like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;processing-license-files&quot;&gt;Processing License Files&lt;/h2&gt;
+&lt;p&gt;Fixed a bug in the license file processing which end up in a build failure is fixed.&lt;/p&gt;
+
+&lt;h2 id=&quot;pbuilder&quot;&gt;pbuilder&lt;/h2&gt;
+&lt;p&gt;If a pbuilder builded a broken package, the error was persisted in the logging
+queue, and it was never reseted. This bug is fixed in version 12.1.&lt;/p&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;examples&lt;/h2&gt;
+&lt;p&gt;The example x86_64-pc-hdimg-gnome3.xml is working again.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
     <title>ELBE 12.0 release</title>
     <link href="https://elbe-rfs.org/news/v1200/"/>
-    <updated>2019-10-02T00:00:00+00:00</updated>
+    <updated>2019-10-02T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v1200</id>
     <author>
       <name></name>
@@ -57,12 +88,14 @@ have been ignored before.&lt;/p&gt;
 the xml file.&lt;/p&gt;
 
 &lt;p&gt;Example:&lt;/p&gt;
-&lt;src-cdrom&gt;
-    &lt;size&gt;640M&lt;/size&gt;
-      &lt;src-opts&gt;
-        &lt;publisher&gt;Linutronix&lt;/publisher&gt;
-      &lt;/src-opts&gt;
-  &lt;/src-cdrom&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;src-cdrom&amp;gt;
+    &amp;lt;size&amp;gt;640M&amp;lt;/size&amp;gt;
+    &amp;lt;src-opts&amp;gt;
+        &amp;lt;publisher&amp;gt;Linutronix&amp;lt;/publisher&amp;gt;
+    &amp;lt;/src-opts&amp;gt;
+&amp;lt;/src-cdrom&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;customize-src-cdrom&quot;&gt;Customize src-cdrom&lt;/h2&gt;
 &lt;p&gt;It is possible to add custom specific files to the src-cdrom. This can be done
@@ -82,7 +115,7 @@ found at: examples/includes/devel/mirrors.xml&lt;/p&gt;
   <entry>
     <title>ELBE 3 release</title>
     <link href="https://elbe-rfs.org/news/v300/"/>
-    <updated>2019-03-14T00:00:00+00:00</updated>
+    <updated>2019-03-14T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v300</id>
     <author>
       <name></name>
@@ -275,7 +308,7 @@ And a lot of pylint complains have been fixed.&lt;/p&gt;
   <entry>
     <title>elbe v2.0 released</title>
     <link href="https://elbe-rfs.org/news/v200/"/>
-    <updated>2017-08-09T00:00:00+00:00</updated>
+    <updated>2017-08-09T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v200</id>
     <author>
       <name></name>
@@ -380,7 +413,7 @@ deb-src http://debian.linutronix.de/elbe-testing stretch main
   <entry>
     <title>elbe v1.0 released</title>
     <link href="https://elbe-rfs.org/news/v100/"/>
-    <updated>2015-12-24T00:00:00+00:00</updated>
+    <updated>2015-12-24T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v100</id>
     <author>
       <name></name>
@@ -414,7 +447,7 @@ deb-src http://debian.linutronix.de/elbe-testing jessie main
   <entry>
     <title>elbe v0.9.8 released</title>
     <link href="https://elbe-rfs.org/news/v098/"/>
-    <updated>2015-12-14T00:00:00+00:00</updated>
+    <updated>2015-12-14T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v098</id>
     <author>
       <name></name>
@@ -463,7 +496,7 @@ $ elbe pbuilder build --xmlfile /tmp/bbb.xml
   <entry>
     <title>ELBE technical Details</title>
     <link href="https://elbe-rfs.org/internals/"/>
-    <updated>2015-12-14T00:00:00+00:00</updated>
+    <updated>2015-12-14T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/internals</id>
     <author>
       <name></name>
@@ -532,7 +565,7 @@ individual processes and files of the inner environment.&lt;/p&gt;
   <entry>
     <title>ELBE in a nutshell</title>
     <link href="https://elbe-rfs.org/whatiselbe/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/whatiselbe</id>
     <author>
       <name></name>
@@ -617,7 +650,7 @@ reused in a way that will fulfill our needs.&lt;/p&gt;
   <entry>
     <title>Secure</title>
     <link href="https://elbe-rfs.org/feature/secure/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/secure</id>
     <author>
       <name></name>
@@ -635,7 +668,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>Reproducable Images</title>
     <link href="https://elbe-rfs.org/feature/reproducable/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/reproducable</id>
     <author>
       <name></name>
@@ -652,7 +685,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>Based on Debian</title>
     <link href="https://elbe-rfs.org/feature/debianbased/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/debianbased</id>
     <author>
       <name></name>
@@ -669,7 +702,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>ELBE ADK</title>
     <link href="https://elbe-rfs.org/feature/adk/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/adk</id>
     <author>
       <name></name>
@@ -686,7 +719,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>elbe v0.9.7 released</title>
     <link href="https://elbe-rfs.org/news/v097/"/>
-    <updated>2015-10-16T00:00:00+00:00</updated>
+    <updated>2015-10-16T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v097</id>
     <author>
       <name></name>

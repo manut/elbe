@@ -1,0 +1,63 @@
+************************
+elbe-genlicence
+************************
+
+.. __name:
+
+NAME
+====
+
+elbe-genlicence - Generate a file containing the licences of the
+packages included in a project.
+
+.. __synopsis:
+
+SYNOPSIS
+========
+
+   ::
+
+      elbe genlicence \
+              [ --output <filename> \
+              <builddir>
+
+.. __description:
+
+DESCRIPTION
+===========
+
+*elbe-genlicence* creates a file which will contain the licences of the
+packages included in a project, generated from the *copyright* files in
+the */usr/share/doc/\** directories of the root filesystem.
+
+This command has to be run **inside the Elbe build VM**.
+
+.. __options:
+
+OPTIONS
+=======
+
+--output <filename>
+   Write the result to <filename> instead of *licence.txt*.
+
+<builddir>
+   The build directory of the project to process.
+
+.. __examples:
+
+EXAMPLES
+========
+
+-  Generate a licence file for the project in *myproject* and name the
+   result *myproject-licences.txt*.
+
+   ::
+
+      # elbe genlicence --output myproject-licences.txt myproject
+
+.. __elbe:
+
+ELBE
+====
+
+Part of the elbe1 suite
