@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE XML Reference &mdash; ELBE 12.1 documentation</title>
+  <title>ELBE XML Reference &mdash; ELBE 12.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                12.1
+                12.3
               </div>
             
           
@@ -2858,6 +2858,8 @@ cdrom.</dd>
 <div class="section" id="id137">
 <h3>Example<a class="headerlink" href="#id137" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pbuilder</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">src</span><span class="o">-</span><span class="n">pkg</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">src</span><span class="o">-</span><span class="n">pkg</span><span class="o">&gt;</span>
+
   <span class="o">&lt;</span><span class="n">git</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">git_src</span> <span class="o">&lt;/</span><span class="n">git</span><span class="o">&gt;</span>
 
   <span class="o">&lt;</span><span class="n">svn</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">svn_src</span> <span class="o">&lt;/</span><span class="n">svn</span><span class="o">&gt;</span>
@@ -2869,16 +2871,15 @@ cdrom.</dd>
 <div class="section" id="id138">
 <h3>Elements description<a class="headerlink" href="#id138" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
+<dt>src-pkg <a class="reference external" href="#type-string">rfs:string</a></dt>
+<dd>reference to a debian source package from a deb-src archive. The
+source will be built with a pbuilder before the image generation.</dd>
 <dt>git <a class="reference external" href="#type-git_src">rfs:git_src</a></dt>
 <dd>reference to a git tree hosting a debian source package. The source
-will be build with a pbuilder before the image generation. Use the
-<em>install</em> attribute to specify which binary packages should be
-installed in the target image.</dd>
+will be built with a pbuilder before the image generation.</dd>
 <dt>svn <a class="reference external" href="#type-svn_src">rfs:svn_src</a></dt>
 <dd>reference to a svn repository hosting a debian source package. The
-source will be build with a pbuilder before the image generation. Use
-the <em>install</em> attribute to specify which binary packages should be
-installed in the target image.</dd>
+source will be built with a pbuilder before the image generation.</dd>
 </dl>
 </div>
 </div>
@@ -3250,6 +3251,7 @@ respect ISO-9660. The default is “false”.</dd>
             <dd><a href="../v12.0/article-elbe-schema-reference.html">v12.0</a></dd>
             <dd><a href="../v12.1/article-elbe-schema-reference.html">v12.1</a></dd>
             <dd><a href="../v12.2/article-elbe-schema-reference.html">v12.2</a></dd>
+            <dd><a href="../v12.3/article-elbe-schema-reference.html">v12.3</a></dd>
             <dd><a href="../v2.5/article-elbe-schema-reference.html">v2.5</a></dd>
             <dd><a href="../v3/article-elbe-schema-reference.html">v3</a></dd>
             <dd><a href="../v4/article-elbe-schema-reference.html">v4</a></dd>
@@ -3265,7 +3267,6 @@ respect ISO-9660. The default is “false”.</dd>
             <dd><a href="../devel_elbe-2.0/article-elbe-schema-reference.html">devel/elbe-2.0</a></dd>
             <dd><a href="../devel_elbe-3.0/article-elbe-schema-reference.html">devel/elbe-3.0</a></dd>
             <dd><a href="article-elbe-schema-reference.html">master</a></dd>
-            <dd><a href="../releases_12.1/article-elbe-schema-reference.html">releases/12.1</a></dd>
             <dd><a href="../releases_v0.5.8/article-elbe-schema-reference.html">releases/v0.5.8</a></dd>
             <dd><a href="../releases_v1.0/article-elbe-schema-reference.html">releases/v1.0</a></dd>
             <dd><a href="../releases_v1.1/article-elbe-schema-reference.html">releases/v1.1</a></dd>
@@ -3280,6 +3281,7 @@ respect ISO-9660. The default is “false”.</dd>
             <dd><a href="../releases_v12.0/article-elbe-schema-reference.html">releases/v12.0</a></dd>
             <dd><a href="../releases_v12.1/article-elbe-schema-reference.html">releases/v12.1</a></dd>
             <dd><a href="../releases_v12.2/article-elbe-schema-reference.html">releases/v12.2</a></dd>
+            <dd><a href="../releases_v12.3/article-elbe-schema-reference.html">releases/v12.3</a></dd>
             <dd><a href="../releases_v2.0/article-elbe-schema-reference.html">releases/v2.0</a></dd>
             <dd><a href="../releases_v2.1/article-elbe-schema-reference.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/article-elbe-schema-reference.html">releases/v2.2</a></dd>
@@ -3321,7 +3323,7 @@ respect ISO-9660. The default is “false”.</dd>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'12.1',
+            VERSION:'12.3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -2820,6 +2820,8 @@ Example
 .. code:: xml
 
    <pbuilder>
+     <src-pkg> rfs:string </src-pkg>
+
      <git> rfs:git_src </git>
 
      <svn> rfs:svn_src </svn>
@@ -2831,17 +2833,17 @@ Example
 Elements description
 --------------------
 
+src-pkg `rfs:string <#type-string>`__
+   reference to a debian source package from a deb-src archive. The
+   source will be built with a pbuilder before the image generation.
+
 git `rfs:git_src <#type-git_src>`__
    reference to a git tree hosting a debian source package. The source
-   will be build with a pbuilder before the image generation. Use the
-   *install* attribute to specify which binary packages should be
-   installed in the target image.
+   will be built with a pbuilder before the image generation.
 
 svn `rfs:svn_src <#type-svn_src>`__
    reference to a svn repository hosting a debian source package. The
-   source will be build with a pbuilder before the image generation. Use
-   the *install* attribute to specify which binary packages should be
-   installed in the target image.
+   source will be built with a pbuilder before the image generation.
 
 .. _pkg-list:
 

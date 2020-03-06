@@ -34,7 +34,7 @@ OPTIONS
 =======
 
 --verbose
-   Give more informations, e.g. the package list of the target
+   Give more information, e.g. the package list of the target
    root-filesystem.
 
 <xmlfile>
