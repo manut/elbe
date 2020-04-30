@@ -45,11 +45,11 @@ OPTIONS
 EXAMPLES
 ========
 
--  get a human readable representation of *mywheezy.xml*
+-  get a human readable representation of *project.xml*
 
    ::
 
-      $ elbe show mywheezy.xml
+      $ elbe show project.xml
 
 .. __elbe:
 

@@ -60,7 +60,7 @@ Configure ``/etc/apt/sources.list.d`` appropriately:
 
 ::
 
-   echo 'deb http://debian.linutronix.de/elbe jessie main' >> /etc/apt/sources.list.d/elbe.list
+   echo 'deb http://debian.linutronix.de/elbe buster main' >> /etc/apt/sources.list.d/elbe.list
 
 Optionally the public key for the repo can be installed:
 
@@ -159,7 +159,7 @@ use the following command:
 
 ::
 
-   elbe initvm create --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/x86_32-pc-hdimg-minimal-grub-wheezy.xml
+   elbe initvm create --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/x86_32-pc-hdimg-minimal-grub-buster.xml
 
 This will take quite a while.
 
@@ -171,7 +171,7 @@ may be built using
 
 ::
 
-   elbe initvm submit --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/x86_32-pc-hdimg-minimal-grub-wheezy.xml
+   elbe initvm submit --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/x86_32-pc-hdimg-minimal-grub-buster.xml
 
 The initvm will not be restarted upon a reboot of the machine.
 
@@ -211,14 +211,9 @@ environment and it will be saved as ``nfsroot.tar.gz``
                            <primary_host>debian.tu-bs.de</primary_host>
                            <primary_path>/debian</primary_path>
                            <primary_proto>http</primary_proto>
-                           <url-list>
-                                   <url>
-                                           <binary>http://debian.linutronix.de/elbe wheezy main</binary>
-                                   </url>
-                           </url-list>
                    </mirror>
                    <noauth />
-                   <suite>wheezy</suite>
+                   <suite>buster</suite>
            </project>
            <target>
                    <hostname>myARM</hostname>
@@ -598,13 +593,14 @@ After this header follows the project description.
                            <primary_proto>http</primary_proto>
                            <url-list>                                      
                                    <url>
-                                           <binary>http://debian.linutronix.de/elbe wheezy main</binary>
+                                           <binary>http://debian.linutronix.de/elbe buster main</binary>
+                                           <source>http://debian.linutronix.de/elbe buster main</source>
                                    </url>
                            </url-list>
 
                    </mirror>
                    <noauth />                                              
-                   <suite>wheezy</suite>                                   
+                   <suite>buster</suite>                                   
 
 -  The *mirror* tag contains *primary_host*, *primary_path* and
    *primary_proto*. It describes the Debian mirror used.
@@ -620,7 +616,7 @@ After this header follows the project description.
 the *project* tag isn’t closed yet.
 
 The following section describes the virtual machine in which the
-debian-installer is executed and custom packages can be build.
+debian-installer is executed and custom packages can be built.
 
 .. code:: xml
 
@@ -944,7 +940,7 @@ the build VM and to work with it.
 
 During this process, *elbe init* will download a linux kernel and
 initrd.gz from the debian mirror. In case of a local mirror, be sure,
-that ``dists/jessie/main/installer-amd64/`` is also mirrored.
+that ``dists/<codename>/main/installer-amd64/`` is also mirrored.
 
 After *elbe init* has generated the project directory, change to the
 project directory and run *make*. This will start the installation of

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE Overview &mdash; ELBE 12.3 documentation</title>
+  <title>ELBE Overview &mdash; ELBE 12.4 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                12.3
+                12.4
               </div>
             
           
@@ -263,7 +263,7 @@ package-management (apt) which also resolves package dependencies.</li>
 <p>Elbe is shipped as Debian package. This package will pull in the
 necessary dependencies.</p>
 <p>Configure <code class="docutils literal"><span class="pre">/etc/apt/sources.list.d</span></code> appropriately:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;deb http://debian.linutronix.de/elbe jessie main&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elbe</span><span class="o">.</span><span class="n">list</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;deb http://debian.linutronix.de/elbe buster main&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elbe</span><span class="o">.</span><span class="n">list</span>
 </pre></div>
 </div>
 <p>Optionally the public key for the repo can be installed:</p>
@@ -333,7 +333,7 @@ script and rely on the database server to be already running.</p>
 system group.</p>
 <p>To create an initvm and make that initvm build a first Rootfilesystem,
 use the following command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">wheezy</span><span class="o">.</span><span class="n">xml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">buster</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
 <p>This will take quite a while.</p>
@@ -341,7 +341,7 @@ use the following command:</p>
 running in the background, this command will exit with a failure notice.</p>
 <p>The initvm will keep on running, after this command. Further xml Files
 may be built using</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">submit</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">wheezy</span><span class="o">.</span><span class="n">xml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">submit</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">buster</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
 <p>The initvm will not be restarted upon a reboot of the machine.</p>
@@ -370,14 +370,9 @@ environment and it will be saved as <code class="docutils literal"><span class="
                         <span class="o">&lt;</span><span class="n">primary_host</span><span class="o">&gt;</span><span class="n">debian</span><span class="o">.</span><span class="n">tu</span><span class="o">-</span><span class="n">bs</span><span class="o">.</span><span class="n">de</span><span class="o">&lt;/</span><span class="n">primary_host</span><span class="o">&gt;</span>
                         <span class="o">&lt;</span><span class="n">primary_path</span><span class="o">&gt;/</span><span class="n">debian</span><span class="o">&lt;/</span><span class="n">primary_path</span><span class="o">&gt;</span>
                         <span class="o">&lt;</span><span class="n">primary_proto</span><span class="o">&gt;</span><span class="n">http</span><span class="o">&lt;/</span><span class="n">primary_proto</span><span class="o">&gt;</span>
-                        <span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
-                                <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
-                                        <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">wheezy</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
-                                <span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
-                        <span class="o">&lt;/</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
                 <span class="o">&lt;/</span><span class="n">mirror</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">noauth</span> <span class="o">/&gt;</span>
-                <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span><span class="n">wheezy</span><span class="o">&lt;/</span><span class="n">suite</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span><span class="n">buster</span><span class="o">&lt;/</span><span class="n">suite</span><span class="o">&gt;</span>
         <span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span><span class="n">myARM</span><span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
@@ -666,13 +661,14 @@ the same:</p>
                 <span class="o">&lt;</span><span class="n">primary_proto</span><span class="o">&gt;</span><span class="n">http</span><span class="o">&lt;/</span><span class="n">primary_proto</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
                         <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
-                                <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">wheezy</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">buster</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">buster</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
                         <span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
                 <span class="o">&lt;/</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
 
         <span class="o">&lt;/</span><span class="n">mirror</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">noauth</span> <span class="o">/&gt;</span>
-        <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span><span class="n">wheezy</span><span class="o">&lt;/</span><span class="n">suite</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span><span class="n">buster</span><span class="o">&lt;/</span><span class="n">suite</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -686,7 +682,7 @@ mirror.</li>
 </ul>
 <p>the <em>project</em> tag isn’t closed yet.</p>
 <p>The following section describes the virtual machine in which the
-debian-installer is executed and custom packages can be build.</p>
+debian-installer is executed and custom packages can be built.</p>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="n">buildimage</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">arch</span><span class="o">&gt;</span><span class="n">armel</span><span class="o">&lt;/</span><span class="n">arch</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">20</span><span class="n">G</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
@@ -975,7 +971,7 @@ hard disk image for a virtual build machine and a <em>Makefile</em> to install
 the build VM and to work with it.</p>
 <p>During this process, <em>elbe init</em> will download a linux kernel and
 initrd.gz from the debian mirror. In case of a local mirror, be sure,
-that <code class="docutils literal"><span class="pre">dists/jessie/main/installer-amd64/</span></code> is also mirrored.</p>
+that <code class="docutils literal"><span class="pre">dists/&lt;codename&gt;/main/installer-amd64/</span></code> is also mirrored.</p>
 <p>After <em>elbe init</em> has generated the project directory, change to the
 project directory and run <em>make</em>. This will start the installation of
 the build VM.</p>
@@ -1020,7 +1016,7 @@ the build VM.</p>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v12.3
+        v: releases/v12.4
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -1032,6 +1028,7 @@ the build VM.</p>
             <dd><a href="v12.1/article-elbeoverview-en.html">v12.1</a></dd>
             <dd><a href="v12.2/article-elbeoverview-en.html">v12.2</a></dd>
             <dd><a href="v12.3/article-elbeoverview-en.html">v12.3</a></dd>
+            <dd><a href="v12.4/article-elbeoverview-en.html">v12.4</a></dd>
             <dd><a href="v2.5/article-elbeoverview-en.html">v2.5</a></dd>
             <dd><a href="v3/article-elbeoverview-en.html">v3</a></dd>
             <dd><a href="v4/article-elbeoverview-en.html">v4</a></dd>
@@ -1062,6 +1059,7 @@ the build VM.</p>
             <dd><a href="releases_v12.1/article-elbeoverview-en.html">releases/v12.1</a></dd>
             <dd><a href="releases_v12.2/article-elbeoverview-en.html">releases/v12.2</a></dd>
             <dd><a href="releases_v12.3/article-elbeoverview-en.html">releases/v12.3</a></dd>
+            <dd><a href="releases_v12.4/article-elbeoverview-en.html">releases/v12.4</a></dd>
             <dd><a href="releases_v2.0/article-elbeoverview-en.html">releases/v2.0</a></dd>
             <dd><a href="releases_v2.1/article-elbeoverview-en.html">releases/v2.1</a></dd>
             <dd><a href="releases_v2.2/article-elbeoverview-en.html">releases/v2.2</a></dd>
@@ -1103,7 +1101,7 @@ the build VM.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'12.3',
+            VERSION:'12.4',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
