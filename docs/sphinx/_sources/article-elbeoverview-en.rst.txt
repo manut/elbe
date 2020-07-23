@@ -45,7 +45,7 @@ Elbe takes a different approach for solving these problems:
    chroot environment. This implicitly ensures, that the same toolchain
    is used on the development machine and on the target.
 
--  Updating, adding or removing a package is done via Debians
+-  Updating, adding or removing a package is done via Debian’s
    package-management (apt) which also resolves package dependencies.
 
 .. __installation:
@@ -60,7 +60,7 @@ Configure ``/etc/apt/sources.list.d`` appropriately:
 
 ::
 
-   echo 'deb http://debian.linutronix.de/elbe jessie main' >> /etc/apt/sources.list.d/elbe.list
+   echo 'deb http://debian.linutronix.de/elbe buster main' >> /etc/apt/sources.list.d/elbe.list
 
 Optionally the public key for the repo can be installed:
 
@@ -159,7 +159,7 @@ use the following command:
 
 ::
 
-   elbe initvm create --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/x86_32-pc-hdimg-minimal-grub-wheezy.xml
+   elbe initvm create --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/x86_32-pc-hdimg-minimal-grub-buster.xml
 
 This will take quite a while.
 
@@ -171,7 +171,7 @@ may be built using
 
 ::
 
-   elbe initvm submit --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/x86_32-pc-hdimg-minimal-grub-wheezy.xml
+   elbe initvm submit --directory ~/elbe-initvm /usr/share/doc/elbe-doc/examples/x86_32-pc-hdimg-minimal-grub-buster.xml
 
 The initvm will not be restarted upon a reboot of the machine.
 
@@ -211,14 +211,9 @@ environment and it will be saved as ``nfsroot.tar.gz``
                            <primary_host>debian.tu-bs.de</primary_host>
                            <primary_path>/debian</primary_path>
                            <primary_proto>http</primary_proto>
-                           <url-list>
-                                   <url>
-                                           <binary>http://debian.linutronix.de/elbe wheezy main</binary>
-                                   </url>
-                           </url-list>
                    </mirror>
                    <noauth />
-                   <suite>wheezy</suite>
+                   <suite>buster</suite>
            </project>
            <target>
                    <hostname>myARM</hostname>
@@ -264,7 +259,7 @@ root-filesystem.
 -  The finetuning section allows to remove, copy or move files before
    the archive will be extracted and the target image is generated.
 
--  The *norecommend* tag.
+-  The *install-recommends* tag.
 
 -  The initial copy has several modes, which allow to extract very small
    subsets.
@@ -425,7 +420,7 @@ configured.
 
        <diet />        
 
-       <norecommend /> 
+       <install-recommends /> 
 
        <finetuning \>
        <pkg-list>
@@ -437,17 +432,17 @@ configured.
 -  The mode is configured at this place, leaving it out, enables the
    default mode.
 
--  *norecommend* should be placed here.
+-  *install-recommends* should be placed here.
 
-.. __norecommend:
+.. __install_recommends:
 
-norecommend
------------
+install-recommends
+------------------
 
-*norecommend* disables installation of recommended packages. This is a
-frequent cause for big root-filesystems. Installed programs will still
-work, but some functionality requiring external programs might be
-disabled.
+*install-recommends* enables installation of recommended packages. This
+can make the root-filesystem a lot bigger. With the default setting,
+installed programs will still work, but some functionality requiring
+external programs might be disabled.
 
 This is not strictly a mode as described in the following paragraphs. It
 can be combined with any of them, and the following modes are mutually
@@ -562,7 +557,7 @@ origin Debian package.
 Validation
 ==========
 
-After a build the ``source.xml`` file includes informations about all
+After a build the ``source.xml`` file includes information about all
 installed packages and versions. If this information is already present
 in a file used with ``elbe create`` the installed package versions and
 md5 hashes are validated and a report is printed and saved to
@@ -598,18 +593,21 @@ After this header follows the project description.
                            <primary_proto>http</primary_proto>
                            <url-list>                                      
                                    <url>
-                                           <binary>http://debian.linutronix.de/elbe wheezy main</binary>
+                                           <binary>http://debian.linutronix.de/elbe buster main</binary>
+                                           <source>http://debian.linutronix.de/elbe buster main</source>
                                    </url>
                            </url-list>
 
                    </mirror>
                    <noauth />                                              
-                   <suite>wheezy</suite>                                   
+                   <suite>buster</suite>                                   
 
--  The *mirror* tag contains *primary_host*, *primary_path* and
-   *primary_proto*. It describes the Debian mirror used.
+-  The *mirror* tag contains *primary_host*, *primary_path*,
+   *primary_proto* and *host* *host* is optional, used in case of a
+   primary mirror different for the sdk architecture. It describes the
+   Debian mirror used.
 
--  The *url-list* can contain additional package sources.
+-  The *url-list* can contain additional package sources in *url* tag.
 
 -  The *noauth* tag can be used to disable authentication if custom
    unsigned packages are supposed to be installed.
@@ -620,7 +618,7 @@ After this header follows the project description.
 the *project* tag isn’t closed yet.
 
 The following section describes the virtual machine in which the
-debian-installer is executed and custom packages can be build.
+debian-installer is executed and custom packages can be built.
 
 .. code:: xml
 
@@ -944,7 +942,7 @@ the build VM and to work with it.
 
 During this process, *elbe init* will download a linux kernel and
 initrd.gz from the debian mirror. In case of a local mirror, be sure,
-that ``dists/jessie/main/installer-amd64/`` is also mirrored.
+that ``dists/<codename>/main/installer-amd64/`` is also mirrored.
 
 After *elbe init* has generated the project directory, change to the
 project directory and run *make*. This will start the installation of

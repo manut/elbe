@@ -21,7 +21,6 @@ SYNOPSIS
               [ --buildtype <buildtype> ] \
               [ --debug ] \
               [ --directory <directory> ] \
-              [ --proxy <addr> ] \
               [ --skip-cds ] \
               [ --skip-validation ] \
               <xmlfile>
@@ -65,9 +64,6 @@ OPTIONS
    directory *build* is created in the current working directory. The
    directory must not exist.
 
---proxy <addr>
-   Override the HTTP proxy setting specified in the XML file.
-
 --skip-cds
    Skip the generation of Debian binary cdroms. This makes the build
    faster. Otherwise all used binary packages are stored on an ISO cdrom
@@ -85,11 +81,11 @@ EXAMPLES
 ========
 
 -  Generate a build VM directory for the project specified in
-   *mywheezy.xml* and build the target root filesystem.
+   *project.xml* and build the target root filesystem.
 
    ::
 
-      $ elbe init --directory=/scratch/example mywheezy.xml
+      $ elbe init --directory=/scratch/example project.xml
       $ cd /scratch/example
       $ make
 

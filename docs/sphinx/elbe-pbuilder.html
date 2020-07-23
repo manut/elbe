@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-pbuilder &mdash; ELBE 3 documentation</title>
+  <title>elbe-pbuilder &mdash; ELBE 12.5 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                3
+                12.5
               </div>
             
           
@@ -118,7 +118,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">DESCRIPTION</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#options">OPTIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xml-options">XML OPTIONS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#commands">COMMANDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">NOTES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples">EXAMPLES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#see-also">SEE ALSO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#elbe">ELBE</a></li>
@@ -220,9 +222,6 @@ packages.</p>
 <h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Creates a pbuilder for a specified project and builds the Debian package
 like pbuilder, but for the configured ELBE project.</p>
-<p>Currently only the source formats 3.0 (git) and 3.0 (native) are
-supported. 3.0 (quilt) requires Files in the parent directory, which are
-not uploaded, because only the curent Workdirectory is uploaded.</p>
 </div>
 <div class="section" id="options">
 <h2>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
@@ -246,12 +245,45 @@ environment.</td></tr>
 <kbd><span class="option">--cpuset <var>&lt;int&gt;</var></span></kbd></td>
 <td>When this value is not -1 (the default), the pbuilder is run using
 <em>taskset &lt;cpuset&gt;</em> which allows to limit the number of cpus used for
-the build. This is usefule when multithreading and qemu-user yield
+the build. This is useful when multithreading and qemu-user yield
 problem with e.g. java.</td></tr>
 <tr><td class="option-group" colspan="2">
 <kbd><span class="option">--profile <var>string</var></span></kbd></td>
 </tr>
-<tr><td>&#160;</td><td>Specify the build profile to build. (dpkg-buildpackage -P&lt;profile&gt;)</td></tr>
+<tr><td>&#160;</td><td>Specify the build profile(s) to build. (dpkg-buildpackage
+-P&lt;profile&gt;) Provide multiple profiles as a comma separated list.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--cross</span></kbd></td>
+<td>Combined with the create command it creates a chroot environment to
+make crossbuilding possible. Combined with the build command it will
+use this environment for crossbuilding.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--no-ccache</span></kbd></td>
+<td>The compiler cache <em>ccache</em> is activated by default. Use this option
+with the <em>create</em> command to deactivate it.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--ccache-size <var>&lt;string&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Use this option to configure the limit of the compiler cache. Should
+be a number followed by an optional suffix: k, M, G, T. Use 0 for no
+limit.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="xml-options">
+<h2>XML OPTIONS<a class="headerlink" href="#xml-options" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--variant <var>&lt;variant&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>comma separated list of variants</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--proxy <var>&lt;proxy&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>add proxy to mirrors</td></tr>
 </tbody>
 </table>
 </div>
@@ -260,16 +292,40 @@ problem with e.g. java.</td></tr>
 <dl class="docutils">
 <dt><em>create</em></dt>
 <dd>A pbuilder environment for the given project or xml File will be
-created.</dd>
+created. If –cross is given the pbuilder environment will be created
+to crossbuild packages. (If –cross is given with the create command
+you have to use –cross with the build command also.) The compiler
+cache <code class="docutils literal"><span class="pre">ccache</span></code> gets installed by default to speed up
+recompilations. To deactivate use <code class="docutils literal"><span class="pre">--no-ccache</span></code> with the create
+command. It is possible to change the size with
+<code class="docutils literal"><span class="pre">--ccache-size</span> <span class="pre">&lt;string&gt;</span></code> where string should be a number followed
+by an optional suffix: k, M, G, T. For no limit use 0.</dd>
 <dt><em>build</em></dt>
 <dd>Build the <em>Debianized Project</em> in the current working directory. (A
 valid ./debian directory needs to exist.) If –project was specified,
 the specified build environment will be used. If –xmlfile is
-specified a new build environment will be created for the given ELBE
-XML File and the <em>Debianized Project</em> in the current working
-directory will be build. The result of the package build is stored in
+specified, a new build environment will be created for the given ELBE
+XML File, and the <em>Debianized Project</em> in the current working
+directory will be built. The result of the package build is stored in
 ../ like pbuilder does.</dd>
 </dl>
+</div>
+<div class="section" id="notes">
+<h2>NOTES<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>In this benchmark all opportunitys for creating a pbuilder environment
+and building a package with it were tested. All environments were
+created with the <em>armhf-ti-beaglebone-black.xml</em> example and with cross,
+ccache, no-cross or no-ccache in all possible variations. The build
+command was tested with the zlib package. All times are real-time
+captures. The build command with ccache was tested twice to see the
+impact of ccache.</p>
+<p>pbuilder no-ccache create 6m35,003s pbuilder no-ccache build 7m19,467s</p>
+<p>pbuilder no-ccache cross create 4m2,553s pbuilder no-ccache build
+2m39,151s</p>
+<p>pbuilder ccache create 6m44,117s pbuilder ccache build 1. 7m36,130s 2.
+4m47,050s</p>
+<p>pbuilder ccache cross create 4m4,190s pbuilder ccache cross build 1.
+2m40,159s 2. 2m32,650s</p>
 </div>
 <div class="section" id="examples">
 <h2>EXAMPLES<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -287,8 +343,8 @@ File generated in parent directory</p>
 </div>
 </li>
 <li><p class="first">Use the pbuilder we have built, to build <em>program</em>, using the prj
-File generated in parent directory. And dont use more than one CPU as
-a workaround for qemu-user and java problems.</p>
+File generated in parent directory. And don’t use more than one CPU
+as a workaround for qemu-user and java problems.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># cd program</span>
 <span class="c1"># elbe pbuilder build --project `cat ../myarm.prj` --cpuset 1</span>
 </pre></div>
@@ -344,7 +400,7 @@ a workaround for qemu-user and java problems.</p>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v3
+        v: releases/v12.5
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -431,7 +487,7 @@ a workaround for qemu-user and java problems.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3',
+            VERSION:'12.5',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

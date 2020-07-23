@@ -59,9 +59,6 @@ OPTIONS
    Build a Debian source CD-ROM image, containing the source packages
    used by the project.
 
---proxy <addr>
-   Override the HTTP proxy setting specified in the XML file.
-
 --debug
    Enables a few features that allow for better debugging of the build
    process.
@@ -78,7 +75,7 @@ OPTIONS
    Skip debootstrap.
 
 --skip-pkglist
-   Ignore changes to the pkglist, and dont rebuild the buildimage. (Not
+   Ignore changes to the pkglist, and don’t rebuild the buildimage. (Not
    recommended)
 
 --skip-cdrom
