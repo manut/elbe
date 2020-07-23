@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE docs &mdash; ELBE 12.4 documentation</title>
+  <title>ELBE docs &mdash; ELBE 12.5 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                12.4
+                12.5
               </div>
             
           
@@ -201,8 +201,6 @@
 <li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#ports-opened-by-initvm">Ports opened by initvm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#advanced-usage">Advanced usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#using-the-elbe-pbuilder-feature">Using the Elbe Pbuilder Feature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#list-contents-of-the-repository-with-the-following-command">List contents of the repository with the following command:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#elbe-prjrepo-download-cat-repos-elbe-pbuilder-prj">$ elbe prjrepo download <code class="docutils literal"><span class="pre">cat</span> <span class="pre">~/repos/elbe/pbuilder.prj</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-quickstart.html#custom-repository">Custom Repository</a></li>
 </ul>
 </li>
@@ -272,6 +270,9 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-part-type-restriction">SIMPLE TYPE: part_type_restriction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-fs-type">TYPE: fs_type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-fs-type-restriction">SIMPLE TYPE: fs_type_restriction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-initvm-finetuning">TYPE: initvm-finetuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#group-initvm-action">GROUP : initvm-action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#command-type-rfs-string">command type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-finetuning">TYPE: finetuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#group-action">GROUP : action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#addgroup-type-rfs-addgroup">addgroup type: <em>rfs:addgroup</em></a></li>
@@ -291,14 +292,14 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#mknod-type-rfs-mknod">mknod type: <em>rfs:mknod</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#purge-type-rfs-string">purge type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#raw-cmd-type-rfs-string">raw_cmd type: <em>rfs:string</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#command-type-rfs-string">command type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id103">command type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#buildenv-command-type-rfs-string">buildenv_command type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#updated-type-rfs-string">updated type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#artifact-type-rfs-string">artifact type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-project-finetuning">TYPE: project-finetuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#group-project-action">GROUP : project-action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id103">t2p_mv type: <em>rfs:cpmv</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id104">artifact type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id106">t2p_mv type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id107">artifact type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#rm-artifact-type-rfs-string">rm_artifact type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#losetup-type-rfs-losetup">losetup type: <em>rfs:losetup</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#img-convert-type-rfs-img-convert">img_convert type: <em>rfs:img_convert</em></a></li>
@@ -309,7 +310,9 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#extract-partition-type-rfs-extract-partition">extract_partition type: <em>rfs:extract_partition</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#copy-from-partition-type-rfs-copy-from-partition">copy_from_partition type: <em>rfs:copy_from_partition</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#copy-to-partition-type-rfs-copy-to-partition">copy_to_partition type: <em>rfs:copy_to_partition</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#command-type-rfs-partition-command">command type: <em>rfs:partition-command</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-extract-partition">TYPE: extract_partition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-partition-command">TYPE: partition-command</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-copy-from-partition">TYPE: copy_from_partition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-copy-to-partition">TYPE: copy_to_partition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-addgroup">TYPE: addgroup</a></li>
@@ -442,6 +445,7 @@
             <dd><a href="../v12.2/index.html">v12.2</a></dd>
             <dd><a href="../v12.3/index.html">v12.3</a></dd>
             <dd><a href="../v12.4/index.html">v12.4</a></dd>
+            <dd><a href="../v12.5/index.html">v12.5</a></dd>
             <dd><a href="../v2.5/index.html">v2.5</a></dd>
             <dd><a href="../v3/index.html">v3</a></dd>
             <dd><a href="../v4/index.html">v4</a></dd>
@@ -473,6 +477,7 @@
             <dd><a href="../releases_v12.2/index.html">releases/v12.2</a></dd>
             <dd><a href="../releases_v12.3/index.html">releases/v12.3</a></dd>
             <dd><a href="../releases_v12.4/index.html">releases/v12.4</a></dd>
+            <dd><a href="../releases_v12.5/index.html">releases/v12.5</a></dd>
             <dd><a href="../releases_v2.0/index.html">releases/v2.0</a></dd>
             <dd><a href="../releases_v2.1/index.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/index.html">releases/v2.2</a></dd>
@@ -514,7 +519,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'12.4',
+            VERSION:'12.5',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

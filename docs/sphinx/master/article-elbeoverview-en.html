@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE Overview &mdash; ELBE 12.4 documentation</title>
+  <title>ELBE Overview &mdash; ELBE 12.5 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                12.4
+                12.5
               </div>
             
           
@@ -672,9 +672,11 @@ the same:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li>The <em>mirror</em> tag contains <em>primary_host</em>, <em>primary_path</em> and
-<em>primary_proto</em>. It describes the Debian mirror used.</li>
-<li>The <em>url-list</em> can contain additional package sources.</li>
+<li>The <em>mirror</em> tag contains <em>primary_host</em>, <em>primary_path</em>,
+<em>primary_proto</em> and <em>host</em> <em>host</em> is optional, used in case of a
+primary mirror different for the sdk architecture. It describes the
+Debian mirror used.</li>
+<li>The <em>url-list</em> can contain additional package sources in <em>url</em> tag.</li>
 <li>The <em>noauth</em> tag can be used to disable authentication if custom
 unsigned packages are supposed to be installed.</li>
 <li>The <em>suite</em> selects the distribution codename used from the primary
@@ -1029,6 +1031,7 @@ the build VM.</p>
             <dd><a href="../v12.2/article-elbeoverview-en.html">v12.2</a></dd>
             <dd><a href="../v12.3/article-elbeoverview-en.html">v12.3</a></dd>
             <dd><a href="../v12.4/article-elbeoverview-en.html">v12.4</a></dd>
+            <dd><a href="../v12.5/article-elbeoverview-en.html">v12.5</a></dd>
             <dd><a href="../v2.5/article-elbeoverview-en.html">v2.5</a></dd>
             <dd><a href="../v3/article-elbeoverview-en.html">v3</a></dd>
             <dd><a href="../v4/article-elbeoverview-en.html">v4</a></dd>
@@ -1060,6 +1063,7 @@ the build VM.</p>
             <dd><a href="../releases_v12.2/article-elbeoverview-en.html">releases/v12.2</a></dd>
             <dd><a href="../releases_v12.3/article-elbeoverview-en.html">releases/v12.3</a></dd>
             <dd><a href="../releases_v12.4/article-elbeoverview-en.html">releases/v12.4</a></dd>
+            <dd><a href="../releases_v12.5/article-elbeoverview-en.html">releases/v12.5</a></dd>
             <dd><a href="../releases_v2.0/article-elbeoverview-en.html">releases/v2.0</a></dd>
             <dd><a href="../releases_v2.1/article-elbeoverview-en.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/article-elbeoverview-en.html">releases/v2.2</a></dd>
@@ -1101,7 +1105,7 @@ the build VM.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'12.4',
+            VERSION:'12.5',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

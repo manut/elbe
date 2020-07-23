@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-pbuilder &mdash; ELBE 12.4 documentation</title>
+  <title>elbe-pbuilder &mdash; ELBE 3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                12.4
+                3
               </div>
             
           
@@ -220,6 +220,9 @@ packages.</p>
 <h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Creates a pbuilder for a specified project and builds the Debian package
 like pbuilder, but for the configured ELBE project.</p>
+<p>Currently only the source formats 3.0 (git) and 3.0 (native) are
+supported. 3.0 (quilt) requires Files in the parent directory, which are
+not uploaded, because only the curent Workdirectory is uploaded.</p>
 </div>
 <div class="section" id="options">
 <h2>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
@@ -243,13 +246,12 @@ environment.</td></tr>
 <kbd><span class="option">--cpuset <var>&lt;int&gt;</var></span></kbd></td>
 <td>When this value is not -1 (the default), the pbuilder is run using
 <em>taskset &lt;cpuset&gt;</em> which allows to limit the number of cpus used for
-the build. This is useful when multithreading and qemu-user yield
+the build. This is usefule when multithreading and qemu-user yield
 problem with e.g. java.</td></tr>
 <tr><td class="option-group" colspan="2">
 <kbd><span class="option">--profile <var>string</var></span></kbd></td>
 </tr>
-<tr><td>&#160;</td><td>Specify the build profile(s) to build. (dpkg-buildpackage
--P&lt;profile&gt;) Provide multiple profiles as a comma separated list.</td></tr>
+<tr><td>&#160;</td><td>Specify the build profile to build. (dpkg-buildpackage -P&lt;profile&gt;)</td></tr>
 </tbody>
 </table>
 </div>
@@ -263,9 +265,9 @@ created.</dd>
 <dd>Build the <em>Debianized Project</em> in the current working directory. (A
 valid ./debian directory needs to exist.) If –project was specified,
 the specified build environment will be used. If –xmlfile is
-specified, a new build environment will be created for the given ELBE
-XML File, and the <em>Debianized Project</em> in the current working
-directory will be built. The result of the package build is stored in
+specified a new build environment will be created for the given ELBE
+XML File and the <em>Debianized Project</em> in the current working
+directory will be build. The result of the package build is stored in
 ../ like pbuilder does.</dd>
 </dl>
 </div>
@@ -285,8 +287,8 @@ File generated in parent directory</p>
 </div>
 </li>
 <li><p class="first">Use the pbuilder we have built, to build <em>program</em>, using the prj
-File generated in parent directory. And don’t use more than one CPU
-as a workaround for qemu-user and java problems.</p>
+File generated in parent directory. And dont use more than one CPU as
+a workaround for qemu-user and java problems.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># cd program</span>
 <span class="c1"># elbe pbuilder build --project `cat ../myarm.prj` --cpuset 1</span>
 </pre></div>
@@ -342,7 +344,7 @@ as a workaround for qemu-user and java problems.</p>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v12.4
+        v: releases/v3
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -355,6 +357,7 @@ as a workaround for qemu-user and java problems.</p>
             <dd><a href="v12.2/elbe-pbuilder.html">v12.2</a></dd>
             <dd><a href="v12.3/elbe-pbuilder.html">v12.3</a></dd>
             <dd><a href="v12.4/elbe-pbuilder.html">v12.4</a></dd>
+            <dd><a href="v12.5/elbe-pbuilder.html">v12.5</a></dd>
             <dd><a href="v2.5/elbe-pbuilder.html">v2.5</a></dd>
             <dd><a href="v3/elbe-pbuilder.html">v3</a></dd>
             <dd><a href="v4/elbe-pbuilder.html">v4</a></dd>
@@ -386,6 +389,7 @@ as a workaround for qemu-user and java problems.</p>
             <dd><a href="releases_v12.2/elbe-pbuilder.html">releases/v12.2</a></dd>
             <dd><a href="releases_v12.3/elbe-pbuilder.html">releases/v12.3</a></dd>
             <dd><a href="releases_v12.4/elbe-pbuilder.html">releases/v12.4</a></dd>
+            <dd><a href="releases_v12.5/elbe-pbuilder.html">releases/v12.5</a></dd>
             <dd><a href="releases_v2.0/elbe-pbuilder.html">releases/v2.0</a></dd>
             <dd><a href="releases_v2.1/elbe-pbuilder.html">releases/v2.1</a></dd>
             <dd><a href="releases_v2.2/elbe-pbuilder.html">releases/v2.2</a></dd>
@@ -427,7 +431,7 @@ as a workaround for qemu-user and java problems.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'12.4',
+            VERSION:'3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

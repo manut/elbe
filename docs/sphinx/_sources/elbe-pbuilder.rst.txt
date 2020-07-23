@@ -29,6 +29,10 @@ DESCRIPTION
 Creates a pbuilder for a specified project and builds the Debian package
 like pbuilder, but for the configured ELBE project.
 
+Currently only the source formats 3.0 (git) and 3.0 (native) are
+supported. 3.0 (quilt) requires Files in the parent directory, which are
+not uploaded, because only the curent Workdirectory is uploaded.
+
 .. __options:
 
 OPTIONS
@@ -47,12 +51,11 @@ OPTIONS
 --cpuset <int>
    When this value is not -1 (the default), the pbuilder is run using
    *taskset <cpuset>* which allows to limit the number of cpus used for
-   the build. This is useful when multithreading and qemu-user yield
+   the build. This is usefule when multithreading and qemu-user yield
    problem with e.g. java.
 
 --profile string
-   Specify the build profile(s) to build. (dpkg-buildpackage
-   -P<profile>) Provide multiple profiles as a comma separated list.
+   Specify the build profile to build. (dpkg-buildpackage -P<profile>)
 
 .. __commands:
 
@@ -67,9 +70,9 @@ COMMANDS
    Build the *Debianized Project* in the current working directory. (A
    valid ./debian directory needs to exist.) If --project was specified,
    the specified build environment will be used. If --xmlfile is
-   specified, a new build environment will be created for the given ELBE
-   XML File, and the *Debianized Project* in the current working
-   directory will be built. The result of the package build is stored in
+   specified a new build environment will be created for the given ELBE
+   XML File and the *Debianized Project* in the current working
+   directory will be build. The result of the package build is stored in
    ../ like pbuilder does.
 
 .. __examples:
@@ -92,8 +95,8 @@ EXAMPLES
       # elbe pbuilder build --project `cat ../myarm.prj`
 
 -  Use the pbuilder we have built, to build *program*, using the prj
-   File generated in parent directory. And don’t use more than one CPU
-   as a workaround for qemu-user and java problems.
+   File generated in parent directory. And dont use more than one CPU as
+   a workaround for qemu-user and java problems.
 
    ::
 

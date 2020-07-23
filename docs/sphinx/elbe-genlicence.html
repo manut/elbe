@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>elbe-genlicence &mdash; ELBE 12.4 documentation</title>
+  <title>elbe-genlicence &mdash; ELBE 3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                12.4
+                3
               </div>
             
           
@@ -208,9 +208,8 @@ packages included in a project.</p>
 <h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">genlicence</span> \
-        <span class="p">[</span> <span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> <span class="p">]</span> \
-        <span class="p">[</span> <span class="o">--</span><span class="n">xml</span> <span class="o">&lt;</span><span class="n">xmlfilename</span><span class="o">&gt;</span> <span class="p">]</span> \
-        <span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+        <span class="p">[</span> <span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> \
+        <span class="o">&lt;</span><span class="n">builddir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -232,31 +231,19 @@ the <em>/usr/share/doc/*</em> directories of the root filesystem.</p>
 <kbd><span class="option">--output <var>&lt;filename&gt;</var></span></kbd></td>
 </tr>
 <tr><td>&#160;</td><td>Write the result to &lt;filename&gt; instead of <em>licence.txt</em>.</td></tr>
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">--xml <var>&lt;xmlfilename&gt;</var></span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>Write an xml file with all the licenses to &lt;xmlfilename&gt;.</td></tr>
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">--buildtype <var>&lt;buildtype&gt;</var></span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>Override the buildtype.</td></tr>
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">--skip-validation</span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>Skip xml schema validation.</td></tr>
 </tbody>
 </table>
 <dl class="docutils">
-<dt>&lt;project&gt;</dt>
+<dt>&lt;builddir&gt;</dt>
 <dd>The build directory of the project to process.</dd>
 </dl>
 </div>
 <div class="section" id="examples">
 <h2>EXAMPLES<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first">Generate a licence file for the project in <em>/var/cache/elbe/&lt;uuid&gt;</em>
-and name the result <em>myproject-licences.txt</em>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># elbe genlicence --output myproject-licences.txt /var/cache/elbe/&lt;uuid&gt;</span>
+<li><p class="first">Generate a licence file for the project in <em>myproject</em> and name the
+result <em>myproject-licences.txt</em>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># elbe genlicence --output myproject-licences.txt myproject</span>
 </pre></div>
 </div>
 </li>
@@ -306,7 +293,7 @@ and name the result <em>myproject-licences.txt</em>.</p>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v12.4
+        v: releases/v3
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -319,6 +306,7 @@ and name the result <em>myproject-licences.txt</em>.</p>
             <dd><a href="v12.2/elbe-genlicence.html">v12.2</a></dd>
             <dd><a href="v12.3/elbe-genlicence.html">v12.3</a></dd>
             <dd><a href="v12.4/elbe-genlicence.html">v12.4</a></dd>
+            <dd><a href="v12.5/elbe-genlicence.html">v12.5</a></dd>
             <dd><a href="v2.5/elbe-genlicence.html">v2.5</a></dd>
             <dd><a href="v3/elbe-genlicence.html">v3</a></dd>
             <dd><a href="v4/elbe-genlicence.html">v4</a></dd>
@@ -350,6 +338,7 @@ and name the result <em>myproject-licences.txt</em>.</p>
             <dd><a href="releases_v12.2/elbe-genlicence.html">releases/v12.2</a></dd>
             <dd><a href="releases_v12.3/elbe-genlicence.html">releases/v12.3</a></dd>
             <dd><a href="releases_v12.4/elbe-genlicence.html">releases/v12.4</a></dd>
+            <dd><a href="releases_v12.5/elbe-genlicence.html">releases/v12.5</a></dd>
             <dd><a href="releases_v2.0/elbe-genlicence.html">releases/v2.0</a></dd>
             <dd><a href="releases_v2.1/elbe-genlicence.html">releases/v2.1</a></dd>
             <dd><a href="releases_v2.2/elbe-genlicence.html">releases/v2.2</a></dd>
@@ -391,7 +380,7 @@ and name the result <em>myproject-licences.txt</em>.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'12.4',
+            VERSION:'3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

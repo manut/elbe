@@ -39,7 +39,7 @@ OPTIONS
 =======
 
 --variant <variant>
-   comma separated list of variants
+   comma seperated list of variants
 
 --output <filename>
    preprocessed output file, defaults to preprocess.xml

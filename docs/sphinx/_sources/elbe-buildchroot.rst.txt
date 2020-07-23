@@ -78,7 +78,7 @@ OPTIONS
    Skip debootstrap.
 
 --skip-pkglist
-   Ignore changes to the pkglist, and don’t rebuild the buildimage. (Not
+   Ignore changes to the pkglist, and dont rebuild the buildimage. (Not
    recommended)
 
 --skip-cdrom

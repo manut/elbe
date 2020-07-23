@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>elbe-parselicence &mdash; ELBE 12.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="elbe-pbuilder" href="elbe-pbuilder.html" />
+    <link rel="prev" title="elbe-mkcdrom" href="elbe-mkcdrom.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ELBE
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                12.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="article-quickstart.html">ELBE Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbeoverview-en.html">ELBE Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbe-schema-reference.html">ELBE XML Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">man-pages</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-hdimg.html">elbe-hdimg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">elbe-parselicence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#name">NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">DESCRIPTION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options">OPTIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">WORKFLOW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license-xml-file">LICENSE.XML FILE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#copying-file-is-machinereadable">COPYING File is machinereadable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#some-information-can-be-extracted-via-heuristics">Some information can be extracted via heuristics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#no-information-can-be-extracted-automatically">No information can be extracted automatically</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mapping-file">MAPPING FILE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nomos">NOMOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elbe">ELBE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ELBE</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>elbe-parselicence</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/elbe-parselicence.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elbe-parselicence">
+<h1>elbe-parselicence<a class="headerlink" href="#elbe-parselicence" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>NAME<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p>elbe-parselicence - Generate a file containing the licences of the
+packages included in a project.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">parselicence</span> \
+        <span class="o">--</span><span class="n">mapping</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> \
+        <span class="p">[</span> <span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> \
+        <span class="p">[</span> <span class="o">--</span><span class="n">tvout</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> \
+        <span class="p">[</span> <span class="o">--</span><span class="n">use</span><span class="o">-</span><span class="n">nomos</span> <span class="p">]</span> \
+        <span class="p">[</span> <span class="o">--</span><span class="n">errors</span><span class="o">-</span><span class="n">only</span> <span class="p">]</span> \
+        <span class="o">&lt;</span><span class="n">licence</span><span class="o">.</span><span class="n">xml</span> <span class="n">filename</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="description">
+<h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><em>elbe-parselicence</em> parses an xml file with licence information. This
+xml file is generated during an elbe build. SPDX Licenses information is
+generated using mappings and overrides found in the mapping file.</p>
+<p>This information is written to an output xml File, and to a tagvalue
+based SPDX File.</p>
+</div>
+<div class="section" id="options">
+<h2>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--mapping <var>&lt;filename&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Use &lt;filename&gt; to aid with packages which contain non-machinereadable
+or incomplete Licence infos. The format is explained in the chapter
+MAPPING FILE.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--output <var>&lt;filename&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Write the xml result to &lt;filename&gt;.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--tvout <var>&lt;filename&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Write the tagvalue result to &lt;filename&gt;.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--use-nomos</span></kbd></td>
+<td>Also pipe licence text through nomos, and add this info to xml
+Datastructures.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--errors-only</span></kbd></td>
+<td>Only Output Packages with errors. This is useful during the Phase
+where the mapping file is setup.</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>&lt;licence.xml filename&gt;</dt>
+<dd>licence.xml File generated during elbe build.</dd>
+</dl>
+</div>
+<div class="section" id="workflow">
+<h2>WORKFLOW<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<p>Elbe generates a <code class="docutils literal"><span class="pre">license.xml</span></code> File. This file is then parsed using</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">parselicence</span> <span class="o">--</span><span class="n">mapping</span> <span class="n">my_mapping</span><span class="o">.</span><span class="n">xml</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">license</span><span class="o">.</span><span class="n">xml</span> <span class="o">--</span><span class="n">errors</span><span class="o">-</span><span class="n">only</span> <span class="o">--</span><span class="n">output</span> <span class="n">out</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note</strong></p>
+<p>an example mapping is still missing. Maybe you can use some text from
+this man page.</p>
+</div></blockquote>
+<p>The previous step will only output nodes into out.xml where an error
+happened. The errors need to be fixed by expanding <code class="docutils literal"><span class="pre">my_mapping.xml</span></code></p>
+<blockquote>
+<div><p><strong>Note</strong></p>
+<p><code class="docutils literal"><span class="pre">my_mapping.xml</span></code> is describe in it own chapter.</p>
+</div></blockquote>
+<p>When no more errors happen, one can remove the option <code class="docutils literal"><span class="pre">--errors-only</span></code>
+and use the out.xml or generate tag-value output using option
+<code class="docutils literal"><span class="pre">--tvout</span> <span class="pre">&lt;filename&gt;</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">parselicence</span> <span class="o">--</span><span class="n">mapping</span> <span class="n">my_mapping</span><span class="o">.</span><span class="n">xml</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">license</span><span class="o">.</span><span class="n">xml</span> <span class="o">--</span><span class="n">tvout</span> <span class="n">spdx_licenses</span><span class="o">.</span><span class="n">tagvalue</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="license-xml-file">
+<h2>LICENSE.XML FILE<a class="headerlink" href="#license-xml-file" title="Permalink to this headline">¶</a></h2>
+<p>When elbe builds an image, it will look at all /usr/share/doc/<a href="#id1"><span class="problematic" id="id2">*</span></a>/COPYING
+Files, and concatenate them into <code class="docutils literal"><span class="pre">license.txt</span></code>. New Versions of elbe
+will also generate <code class="docutils literal"><span class="pre">license.xml</span></code>, which also contains meta-data
+extracted from machinereadable COPYING files, or generated via
+heuristics.</p>
+<p>There are 3 possibitlities per Package:</p>
+<div class="section" id="copying-file-is-machinereadable">
+<h3>COPYING File is machinereadable<a class="headerlink" href="#copying-file-is-machinereadable" title="Permalink to this headline">¶</a></h3>
+<p>When the Copying File is machinereadable. The debian Licenses and all
+per file Information is put into the xml File.</p>
+<p>The <code class="docutils literal"><span class="pre">&lt;pkglicense&gt;</span></code> tag will contain a <code class="docutils literal"><span class="pre">&lt;machinereadable</span> <span class="pre">/&gt;</span></code> tag, and
+also <code class="docutils literal"><span class="pre">&lt;debian_licenses&gt;</span></code> and a <code class="docutils literal"><span class="pre">&lt;detailed&gt;</span></code> tag.</p>
+<p>Example:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>&lt;pkglicense name=&quot;liblogging-stdlog0&quot;&gt;&lt;text&gt;Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: liblogging
+Source: http://www.liblogging.org/
+
+Files: *
+Copyright: 2002-2014 Rainer Gerhards and Adiscon GmbH.
+License: BSD-2-Clause
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS&#39;&#39; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE HOLDERS OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+&lt;/text&gt;
+&lt;machinereadable /&gt;
+&lt;debian_licenses&gt;&lt;license&gt;BSD-2-Clause&lt;/license&gt;
+&lt;/debian_licenses&gt;
+&lt;detailed&gt;&lt;files&gt;&lt;glob&gt;*&lt;/glob&gt;
+&lt;license&gt;BSD-2-Clause&lt;/license&gt;
+&lt;copyright&gt;2002-2014 Rainer Gerhards and Adiscon GmbH.&lt;/copyright&gt;
+&lt;/files&gt;
+&lt;/detailed&gt;
+&lt;/pkglicense&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="some-information-can-be-extracted-via-heuristics">
+<h3>Some information can be extracted via heuristics<a class="headerlink" href="#some-information-can-be-extracted-via-heuristics" title="Permalink to this headline">¶</a></h3>
+<p>There are quite a COPYING Files, which almost adopted the new machine
+readable Format. But the parser does not accept it.</p>
+<p>The heuristic will look for lines containing <code class="docutils literal"><span class="pre">License:</span> <span class="pre">*</span></code> and will
+extract that info into a <code class="docutils literal"><span class="pre">&lt;debian_licenses&gt;</span></code> tag.</p>
+<p>Example:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkglicense</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;libapt-pkg4.12&quot;</span><span class="o">&gt;&lt;</span><span class="n">text</span><span class="o">&gt;</span><span class="n">Apt</span> <span class="ow">is</span> <span class="n">copyright</span> <span class="mi">1997</span><span class="p">,</span> <span class="mi">1998</span><span class="p">,</span> <span class="mi">1999</span> <span class="n">Jason</span> <span class="n">Gunthorpe</span> <span class="ow">and</span> <span class="n">others</span><span class="o">.</span>
+<span class="n">Apt</span> <span class="ow">is</span> <span class="n">currently</span> <span class="n">developed</span> <span class="n">by</span> <span class="n">APT</span> <span class="n">Development</span> <span class="n">Team</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">deity</span><span class="nd">@lists</span><span class="o">.</span><span class="n">debian</span><span class="o">.</span><span class="n">org</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">.</span>
+
+<span class="n">License</span><span class="p">:</span> <span class="n">GPLv2</span><span class="o">+</span>
+
+    <span class="n">This</span> <span class="n">program</span> <span class="ow">is</span> <span class="n">free</span> <span class="n">software</span><span class="p">;</span> <span class="n">you</span> <span class="n">can</span> <span class="n">redistribute</span> <span class="n">it</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">modify</span>
+    <span class="n">it</span> <span class="n">under</span> <span class="n">the</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="k">as</span> <span class="n">published</span> <span class="n">by</span>
+    <span class="n">the</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">;</span> <span class="n">either</span> <span class="n">version</span> <span class="mi">2</span> <span class="n">of</span> <span class="n">the</span> <span class="n">License</span><span class="p">,</span> <span class="ow">or</span>
+    <span class="p">(</span><span class="n">at</span> <span class="n">your</span> <span class="n">option</span><span class="p">)</span> <span class="nb">any</span> <span class="n">later</span> <span class="n">version</span><span class="o">.</span>
+
+    <span class="n">This</span> <span class="n">program</span> <span class="ow">is</span> <span class="n">distributed</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">hope</span> <span class="n">that</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">useful</span><span class="p">,</span>
+    <span class="n">but</span> <span class="n">WITHOUT</span> <span class="n">ANY</span> <span class="n">WARRANTY</span><span class="p">;</span> <span class="n">without</span> <span class="n">even</span> <span class="n">the</span> <span class="n">implied</span> <span class="n">warranty</span> <span class="n">of</span>
+    <span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span>  <span class="n">See</span> <span class="n">the</span>
+    <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="k">for</span> <span class="n">more</span> <span class="n">details</span><span class="o">.</span>
+
+    <span class="n">You</span> <span class="n">should</span> <span class="n">have</span> <span class="n">received</span> <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span>
+    <span class="n">along</span> <span class="k">with</span> <span class="n">this</span> <span class="n">program</span><span class="p">;</span> <span class="k">if</span> <span class="ow">not</span><span class="p">,</span> <span class="n">write</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Free</span> <span class="n">Software</span>
+    <span class="n">Foundation</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span><span class="p">,</span> <span class="mi">51</span> <span class="n">Franklin</span> <span class="n">St</span><span class="p">,</span> <span class="n">Fifth</span> <span class="n">Floor</span><span class="p">,</span> <span class="n">Boston</span><span class="p">,</span> <span class="n">MA</span> <span class="mi">02110</span><span class="o">-</span><span class="mi">1301</span><span class="p">,</span> <span class="n">USA</span><span class="o">.</span>
+
+<span class="n">See</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">common</span><span class="o">-</span><span class="n">licenses</span><span class="o">/</span><span class="n">GPL</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="ow">or</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">gnu</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">copyleft</span><span class="o">/</span><span class="n">gpl</span><span class="o">.</span><span class="n">txt</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="k">for</span> <span class="n">the</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">version</span>
+<span class="n">of</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span><span class="o">.</span>
+
+<span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">heuristics</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">debian_licenses</span><span class="o">&gt;&lt;</span><span class="n">license</span><span class="o">&gt;</span><span class="n">GPLv2</span><span class="o">+&lt;/</span><span class="n">license</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">debian_licenses</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">pkglicense</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="no-information-can-be-extracted-automatically">
+<h3>No information can be extracted automatically<a class="headerlink" href="#no-information-can-be-extracted-automatically" title="Permalink to this headline">¶</a></h3>
+<p>Only the text will be put into the xml File.</p>
+<p>Example:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>&lt;pkglicense name=&quot;bsd-mailx&quot;&gt;&lt;text&gt;This package was debianized by Loic Prylli &amp;lt;lprylli@graville.fdn.fr&amp;gt; on
+Mon, 23 Dec 1996 00:13:13 +0100.
+The package is currently maintained by Robert Luberda &amp;lt;robert@debian.org&amp;gt;
+
+It is now based on OpenBSD in directory src/usr.bin/mail on a lot of major
+ftp sites.
+See the README.Debian (and changelog.Debian) for the complicated history
+of the Debian package.
+
+Copyright (c) 1980, 1993 The Regents of the University of California.
+
+
+
+This software is licensed under the BSD License. The complete text of
+the license is included below:
+
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+   3. Neither the name of the University nor the names of its contributors
+      may be used to endorse or promote products derived from this software
+      without specific prior written permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS&#39;&#39; AND
+   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+   FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+   SUCH DAMAGE.
+&lt;/text&gt;
+&lt;/pkglicense&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mapping-file">
+<h2>MAPPING FILE<a class="headerlink" href="#mapping-file" title="Permalink to this headline">¶</a></h2>
+<p>In order to help <code class="docutils literal"><span class="pre">elbe</span> <span class="pre">parselicence</span></code> with decisions, which it can not
+make automatically, a mapping file is needed.</p>
+<p>It defines the following items:</p>
+<ul class="simple">
+<li>global mappings from Debian License to SPDX License Identifier in
+node <code class="docutils literal"><span class="pre">&lt;global&gt;</span></code></li>
+<li>per package mappings <code class="docutils literal"><span class="pre">&lt;perpackage&gt;</span> <span class="pre">&lt;package&gt;</span> <span class="pre">&lt;mapping&gt;</span></code></li>
+<li>per package override definitions</li>
+</ul>
+<p>Here is an example mapping.xml:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
+&lt;license_map&gt;
+        &lt;global&gt;
+                &lt;mapping name=&#39;GPL-1+&#39;&gt;GPL-1.0+&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-2&#39;&gt;GPL-2.0&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-2.0&#39;&gt;GPL-2.0&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-2+&#39;&gt;GPL-2.0+&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPLv2+&#39;&gt;GPL-2.0+&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-2.0+&#39;&gt;GPL-2.0+&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-2.1+&#39;&gt;GPL-2.1+&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-3+&#39;&gt;GPL-3.0+&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPLv3+&#39;&gt;GPL-3.0+&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-3.0+&#39;&gt;GPL-3.0+&lt;/mapping&gt;
+
+                &lt;mapping name=&#39;LGPL-2&#39;&gt;LGPL-2.0&lt;/mapping&gt;
+                &lt;mapping name=&#39;LGPL-2.0&#39;&gt;LGPL-2.0&lt;/mapping&gt;
+                &lt;mapping name=&#39;LGPL-2+&#39;&gt;LGPL-2.0+&lt;/mapping&gt;
+                &lt;mapping name=&#39;LGPL2.1&#39;&gt;LGPL-2.1&lt;/mapping&gt;
+                &lt;mapping name=&#39;LGPL-2.1&#39;&gt;LGPL-2.1&lt;/mapping&gt;
+                &lt;mapping name=&#39;LGPL-2.1+&#39;&gt;LGPL-2.1+&lt;/mapping&gt;
+                &lt;mapping name=&#39;LGPL-3+&#39;&gt;LGPL-3.0+&lt;/mapping&gt;
+                &lt;mapping name=&#39;LGPL-3.0+&#39;&gt;LGPL-3.0+&lt;/mapping&gt;
+                &lt;mapping name=&#39;LGPL&#39;&gt;LGPL-3.0+&lt;/mapping&gt;
+
+                &lt;mapping name=&#39;GFDL-1.2&#39;&gt;GFDL-1.2&lt;/mapping&gt;
+                &lt;mapping name=&#39;GFDL-1.2+&#39;&gt;GFDL-1.2+&lt;/mapping&gt;
+                &lt;mapping name=&#39;GFDL-1.3&#39;&gt;GFDL-1.3&lt;/mapping&gt;
+                &lt;mapping name=&#39;GFDL-1.3+&#39;&gt;GFDL-1.3+&lt;/mapping&gt;
+
+                &lt;mapping name=&#39;BSD-2-clause&#39;&gt;BSD-2-Clause&lt;/mapping&gt;
+                &lt;mapping name=&#39;BSD-2-Clause&#39;&gt;BSD-2-Clause&lt;/mapping&gt;
+                &lt;mapping name=&#39;BSD-3-clause&#39;&gt;BSD-3-Clause&lt;/mapping&gt;
+                &lt;mapping name=&#39;BSD-3-Clause&#39;&gt;BSD-3-Clause&lt;/mapping&gt;
+                &lt;mapping name=&#39;BSD-4-clause&#39;&gt;BSD-4-Clause&lt;/mapping&gt;
+                &lt;mapping name=&#39;BSD-4-Clause&#39;&gt;BSD-4-Clause&lt;/mapping&gt;
+                &lt;mapping name=&#39;MIT&#39;&gt;MIT&lt;/mapping&gt;
+                &lt;mapping name=&#39;CC-BY-SA-3.0&#39;&gt;CC-BY-SA-3.0&lt;/mapping&gt;
+
+                &lt;mapping name=&#39;ZLIB&#39;&gt;Zlib&lt;/mapping&gt;
+                &lt;mapping name=&#39;MPL-2.0&#39;&gt;MPL-2.0&lt;/mapping&gt;
+                &lt;mapping name=&#39;Apache-2.0&#39;&gt;Apache-2.0&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-3.0-with-GCC-exception&#39;&gt;GPL-3.0 WITH GCC-exception-3.1&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-3+ with GCC-Runtime-3.1 exception&#39;&gt;GPL-3.0+ WITH GCC-exception-3.1&lt;/mapping&gt;
+                &lt;mapping name=&#39;Artistic&#39;&gt;Artistic-1.0&lt;/mapping&gt;
+                &lt;mapping name=&#39;Artistic-2&#39;&gt;Artistic-2.0&lt;/mapping&gt;
+                &lt;mapping name=&#39;GPL-3+ with OpenSSL exception&#39;&gt;GPL-3.0+ WITH openvpn-openssl-exception&lt;/mapping&gt;
+                &lt;mapping name=&#39;FTL&#39;&gt;FTL&lt;/mapping&gt;
+                &lt;mapping name=&#39;ISC&#39;&gt;ISC&lt;/mapping&gt;
+                &lt;mapping name=&#39;Gzip&#39;&gt;Zlib&lt;/mapping&gt;
+
+                &lt;mapping name=&#39;X-Consortium&#39;&gt;X11&lt;/mapping&gt;
+
+                &lt;mapping name=&#39;Expat&#39;&gt;MIT&lt;/mapping&gt;
+                &lt;mapping name=&#39;public-domain&#39;&gt;CC-0&lt;/mapping&gt;
+        &lt;/global&gt;
+
+        &lt;perpackage&gt;
+                &lt;package name=&#39;grub-common&#39;&gt;
+                        &lt;!-- heuristics override, because of error in machine read--&gt;
+                        &lt;license&gt;GPL-3.0+&lt;/license&gt;
+                        &lt;license&gt;MIT&lt;/license&gt;
+                        &lt;license&gt;CC-BY-SA-3.0&lt;/license&gt;
+                &lt;/package&gt;
+                &lt;package name=&#39;init-system-helpers&#39;&gt;
+                        &lt;mapping name=&#39;BSD&#39;&gt;BSD-3-Clause&lt;/mapping&gt;
+                &lt;/package&gt;
+
+                &lt;package name=&#39;liblzo2-2&#39;&gt;
+                        &lt;license&gt;GPL-2.0+&lt;/license&gt;
+                &lt;/package&gt;
+                &lt;package name=&#39;logrotate&#39;&gt;
+                        &lt;license&gt;GPL-2.0+&lt;/license&gt;
+                &lt;/package&gt;
+        &lt;/perpackage&gt;
+&lt;/license_map&gt;
+</pre></div>
+</div>
+<p>As you can see, it is also necessary to add identity mappings, like
+<code class="docutils literal"><span class="pre">&lt;mapping</span> <span class="pre">name='GPL-2.0'&gt;GPL-2.0&lt;/mapping&gt;</span></code></p>
+<p>Its not allowed to mix <code class="docutils literal"><span class="pre">&lt;license&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;mapping&gt;</span></code> in a single
+&lt;package&gt; node.</p>
+</div>
+<div class="section" id="nomos">
+<h2>NOMOS<a class="headerlink" href="#nomos" title="Permalink to this headline">¶</a></h2>
+<p>Nomos is part of fossology. See
+<a class="reference external" href="http://www.fossology.org/projects/fossology/wiki/Debian_Install_2_5">http://www.fossology.org/projects/fossology/wiki/Debian_Install_2_5</a> to
+find out, how to install the nomos executable.</p>
+</div>
+<div class="section" id="elbe">
+<h2>ELBE<a class="headerlink" href="#elbe" title="Permalink to this headline">¶</a></h2>
+<p>Part of the elbe1 suite</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="elbe-pbuilder.html" class="btn btn-neutral float-right" title="elbe-pbuilder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="elbe-mkcdrom.html" class="btn btn-neutral" title="elbe-mkcdrom" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Linutronix GmbH.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: v12.5
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../v10/elbe-parselicence.html">v10</a></dd>
+            <dd><a href="../v11/elbe-parselicence.html">v11</a></dd>
+            <dd><a href="../v12.0/elbe-parselicence.html">v12.0</a></dd>
+            <dd><a href="../v12.1/elbe-parselicence.html">v12.1</a></dd>
+            <dd><a href="../v12.2/elbe-parselicence.html">v12.2</a></dd>
+            <dd><a href="../v12.3/elbe-parselicence.html">v12.3</a></dd>
+            <dd><a href="../v12.4/elbe-parselicence.html">v12.4</a></dd>
+            <dd><a href="elbe-parselicence.html">v12.5</a></dd>
+            <dd><a href="../v2.5/elbe-parselicence.html">v2.5</a></dd>
+            <dd><a href="../v3/elbe-parselicence.html">v3</a></dd>
+            <dd><a href="../v4/elbe-parselicence.html">v4</a></dd>
+            <dd><a href="../v5/elbe-parselicence.html">v5</a></dd>
+            <dd><a href="../v6/elbe-parselicence.html">v6</a></dd>
+            <dd><a href="../v7/elbe-parselicence.html">v7</a></dd>
+            <dd><a href="../v8/elbe-parselicence.html">v8</a></dd>
+            <dd><a href="../v9/elbe-parselicence.html">v9</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../devel_elbe-1.0/index.html">devel/elbe-1.0</a></dd>
+            <dd><a href="../devel_elbe-2.0/elbe-parselicence.html">devel/elbe-2.0</a></dd>
+            <dd><a href="../devel_elbe-3.0/elbe-parselicence.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../master/elbe-parselicence.html">master</a></dd>
+            <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
+            <dd><a href="../releases_v1.0/index.html">releases/v1.0</a></dd>
+            <dd><a href="../releases_v1.1/index.html">releases/v1.1</a></dd>
+            <dd><a href="../releases_v1.2/index.html">releases/v1.2</a></dd>
+            <dd><a href="../releases_v1.9.21/elbe-parselicence.html">releases/v1.9.21</a></dd>
+            <dd><a href="../releases_v1.9.22/elbe-parselicence.html">releases/v1.9.22</a></dd>
+            <dd><a href="../releases_v1.9.23/elbe-parselicence.html">releases/v1.9.23</a></dd>
+            <dd><a href="../releases_v1.9.24/elbe-parselicence.html">releases/v1.9.24</a></dd>
+            <dd><a href="../releases_v1.9.25/elbe-parselicence.html">releases/v1.9.25</a></dd>
+            <dd><a href="../releases_v10/elbe-parselicence.html">releases/v10</a></dd>
+            <dd><a href="../releases_v11/elbe-parselicence.html">releases/v11</a></dd>
+            <dd><a href="../releases_v12.0/elbe-parselicence.html">releases/v12.0</a></dd>
+            <dd><a href="../releases_v12.1/elbe-parselicence.html">releases/v12.1</a></dd>
+            <dd><a href="../releases_v12.2/elbe-parselicence.html">releases/v12.2</a></dd>
+            <dd><a href="../releases_v12.3/elbe-parselicence.html">releases/v12.3</a></dd>
+            <dd><a href="../releases_v12.4/elbe-parselicence.html">releases/v12.4</a></dd>
+            <dd><a href="../releases_v12.5/elbe-parselicence.html">releases/v12.5</a></dd>
+            <dd><a href="../releases_v2.0/elbe-parselicence.html">releases/v2.0</a></dd>
+            <dd><a href="../releases_v2.1/elbe-parselicence.html">releases/v2.1</a></dd>
+            <dd><a href="../releases_v2.2/elbe-parselicence.html">releases/v2.2</a></dd>
+            <dd><a href="../releases_v2.3/elbe-parselicence.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/elbe-parselicence.html">releases/v2.4</a></dd>
+            <dd><a href="../releases_v2.5/elbe-parselicence.html">releases/v2.5</a></dd>
+            <dd><a href="../releases_v2.9.1/elbe-parselicence.html">releases/v2.9.1</a></dd>
+            <dd><a href="../releases_v2.9.10/elbe-parselicence.html">releases/v2.9.10</a></dd>
+            <dd><a href="../releases_v2.9.11/elbe-parselicence.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/elbe-parselicence.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/elbe-parselicence.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/elbe-parselicence.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/elbe-parselicence.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/elbe-parselicence.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/elbe-parselicence.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/elbe-parselicence.html">releases/v2.9.18</a></dd>
+            <dd><a href="../releases_v2.9.2/elbe-parselicence.html">releases/v2.9.2</a></dd>
+            <dd><a href="../releases_v2.9.3/elbe-parselicence.html">releases/v2.9.3</a></dd>
+            <dd><a href="../releases_v2.9.4/elbe-parselicence.html">releases/v2.9.4</a></dd>
+            <dd><a href="../releases_v2.9.5/elbe-parselicence.html">releases/v2.9.5</a></dd>
+            <dd><a href="../releases_v2.9.6/elbe-parselicence.html">releases/v2.9.6</a></dd>
+            <dd><a href="../releases_v2.9.7/elbe-parselicence.html">releases/v2.9.7</a></dd>
+            <dd><a href="../releases_v2.9.8/elbe-parselicence.html">releases/v2.9.8</a></dd>
+            <dd><a href="../releases_v2.9.9/elbe-parselicence.html">releases/v2.9.9</a></dd>
+            <dd><a href="../releases_v3/elbe-parselicence.html">releases/v3</a></dd>
+            <dd><a href="../releases_v4/elbe-parselicence.html">releases/v4</a></dd>
+            <dd><a href="../releases_v5/elbe-parselicence.html">releases/v5</a></dd>
+            <dd><a href="../releases_v6/elbe-parselicence.html">releases/v6</a></dd>
+            <dd><a href="../releases_v7/elbe-parselicence.html">releases/v7</a></dd>
+            <dd><a href="../releases_v8/elbe-parselicence.html">releases/v8</a></dd>
+            <dd><a href="../releases_v9/elbe-parselicence.html">releases/v9</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'12.5',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

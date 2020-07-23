@@ -41,13 +41,7 @@ OPTIONS
 
 --directory <dir>
    Directory where the initvm resides, or is supposed to reside.
-   (Defaults to *./initvm*)
-
---cdrom <CDROM>
-   ISO image of Binary cdrom.
-
---devel
-   Install elbe Version from the current working into initvm.
+   (Defaults to *./build*)
 
 --skip-download
    After the build has finished, the generated Files are downloaded from
@@ -59,6 +53,16 @@ OPTIONS
    saved. The default is to generate a directory with a timestamp in the
    current working directory.
 
+--user <username>
+   Username to use for login (defaults to root).
+
+--pass <password>
+   Password for login (defaults to *foo*).
+
+--retries <N>
+   How many times to retry the connection to the server before giving up
+   (default is 10 times, yielding 10 seconds).
+
 --skip-build-bin
    Skip building binary repository CDROM, for exact reproduction.
 
@@ -69,18 +73,8 @@ OPTIONS
    Output downloaded files to <directory>.
 
 --keep-files
-   Don’t delete elbe project files after a build in the initvm use *elbe
+   don’t delete elbe project files after a build in the initvm use *elbe
    control list_projects* to get a list of available projects
-
---writeproject <file>
-   Write project name to <file>.
-
---nesting
-   Allow initvm to support nested kvm. This makes /proc/cpuinfo inside
-   initvm differ per host.
-
---build-sdk
-   Also make *initvm submit* build an SDK.
 
 .. __commands:
 
@@ -91,7 +85,7 @@ COMMANDS
    Attach to the initvm console, which is accessed via virsh.
 
 *create* [ <xmlfile> \| <isoimage> ]
-   This command triggers a complete rebuild of the Elbe XML File. It
+   This command triggers a complete rebuild of the Elbe XML File. it
    also includes rebuilding the initvm.
 
    If an initvm is already available, you should use the *submit*

@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="https://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="https://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2020-04-30T17:27:08+02:00</updated>
+  <updated>2020-07-23T10:21:06+02:00</updated>
   <id>https://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -17,100 +17,6 @@
     
   </author>
 
-  
-  <entry>
-    <title>ELBE 12.1 release</title>
-    <link href="https://elbe-rfs.org/news/v1201/"/>
-    <updated>2019-10-18T00:00:00+02:00</updated>
-    <id>https://elbe-rfs.org/news/v1201</id>
-    <author>
-      <name></name>
-      <uri>https://elbe-rfs.org/</uri>
-      
-    </author>
-    <content type="html">
-      
-      &lt;p&gt;Debian packages for “ELBE 12.1” are available from linutronix.
-Add sth. like this to your sources.list:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;processing-license-files&quot;&gt;Processing License Files&lt;/h2&gt;
-&lt;p&gt;Fixed a bug in the license file processing which end up in a build failure is fixed.&lt;/p&gt;
-
-&lt;h2 id=&quot;pbuilder&quot;&gt;pbuilder&lt;/h2&gt;
-&lt;p&gt;If a pbuilder builded a broken package, the error was persisted in the logging
-queue, and it was never reseted. This bug is fixed in version 12.1.&lt;/p&gt;
-
-&lt;h2 id=&quot;examples&quot;&gt;examples&lt;/h2&gt;
-&lt;p&gt;The example x86_64-pc-hdimg-gnome3.xml is working again.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>ELBE 12.0 release</title>
-    <link href="https://elbe-rfs.org/news/v1200/"/>
-    <updated>2019-10-02T00:00:00+02:00</updated>
-    <id>https://elbe-rfs.org/news/v1200</id>
-    <author>
-      <name></name>
-      <uri>https://elbe-rfs.org/</uri>
-      
-    </author>
-    <content type="html">
-      
-      &lt;p&gt;ELBE 12.0 is released. The XML format is compatible.&lt;/p&gt;
-
-&lt;p&gt;Debian packages for “ELBE 12.0” are available from linutronix.
-Add sth. like this to your sources.list:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;versioning-schema&quot;&gt;Versioning Schema&lt;/h2&gt;
-&lt;p&gt;The last ELBE versions had a lot of minor bug fixes. As result, the version
-numbers increased very fast. Therefore we switch to a version schema with major
-and minor numbers.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-logging&quot;&gt;New Logging&lt;/h2&gt;
-&lt;p&gt;The logging and error handling code is completely new. The logging output is
-improved and a build failure now results in error return codes, and no files
-will be downloaded. This is especially the case for finetuning errors which
-have been ignored before.&lt;/p&gt;
-
-&lt;h2 id=&quot;initvm-version-buster&quot;&gt;INITVM Version Buster&lt;/h2&gt;
-&lt;p&gt;The initvm is now using Debian 10 (Buster)&lt;/p&gt;
-
-&lt;h2 id=&quot;limit-src-cdrom-size&quot;&gt;Limit src-cdrom size&lt;/h2&gt;
-&lt;p&gt;The src-cdrom can be split up in multiple cd-roms. This can be configured in
-the xml file.&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;src-cdrom&amp;gt;
-    &amp;lt;size&amp;gt;640M&amp;lt;/size&amp;gt;
-    &amp;lt;src-opts&amp;gt;
-        &amp;lt;publisher&amp;gt;Linutronix&amp;lt;/publisher&amp;gt;
-    &amp;lt;/src-opts&amp;gt;
-&amp;lt;/src-cdrom&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;customize-src-cdrom&quot;&gt;Customize src-cdrom&lt;/h2&gt;
-&lt;p&gt;It is possible to add custom specific files to the src-cdrom. This can be done
-with ‘archivedir’ tags in the ‘src-cdrom’ section.&lt;/p&gt;
-
-&lt;h2 id=&quot;repository-key-in-xml-file&quot;&gt;Repository Key in xml file&lt;/h2&gt;
-&lt;p&gt;The key of a repository is now stored in the ELBE xml file using the tag ‘raw-key’.
-The old key tags are replaced by the preprocessor now.&lt;/p&gt;
-
-&lt;p&gt;An example of the usage of ‘raw-key’, can be
-found at: examples/includes/devel/mirrors.xml&lt;/p&gt;
-
-
-    </content>
-  </entry>
   
   <entry>
     <title>ELBE 3 release</title>

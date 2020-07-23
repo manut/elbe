@@ -38,11 +38,11 @@ OPTIONS
 EXAMPLES
 ========
 
--  Validate *project.xml*
+-  Validate *mywheezy.xml*
 
    ::
 
-      $ elbe validate project.xml
+      $ elbe validate mywheezy.xml
 
 .. __elbe:
 

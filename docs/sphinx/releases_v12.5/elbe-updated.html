@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>elbe-updated &mdash; ELBE 12.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="elbe-validate" href="elbe-validate.html" />
+    <link rel="prev" title="elbe-toolchainextract" href="elbe-toolchainextract.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ELBE
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                12.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="article-quickstart.html">ELBE Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbeoverview-en.html">ELBE Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbe-schema-reference.html">ELBE XML Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">man-pages</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-hdimg.html">elbe-hdimg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">elbe-updated</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#name">NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">DESCRIPTION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options">OPTIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">EXAMPLES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elbe">ELBE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ELBE</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>elbe-updated</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/elbe-updated.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elbe-updated">
+<h1>elbe-updated<a class="headerlink" href="#elbe-updated" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>NAME<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p>elbe-updated - Elbe update daemon.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">updated</span> \
+        <span class="p">[</span> <span class="o">--</span><span class="n">directory</span> <span class="o">&lt;</span><span class="n">update_dir</span><span class="o">&gt;</span> <span class="p">]</span> \
+        <span class="p">[</span> <span class="o">--</span><span class="n">host</span> <span class="o">&lt;</span><span class="n">host</span><span class="o">&gt;</span> <span class="p">]</span> \
+        <span class="p">[</span> <span class="o">--</span><span class="n">nosign</span> <span class="p">]</span> \
+        <span class="p">[</span> <span class="o">--</span><span class="n">port</span> <span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span> <span class="p">]</span> \
+        <span class="p">[</span> <span class="o">--</span><span class="n">usb</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="description">
+<h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><em>elbe updated</em> is the Elbe update daemon, which runs on the target
+system. It watches a directory for incoming update packages (which have
+been created with elbe-gen_update1 in the build VM) and applies them to
+the system. By default, only signed update packages are allowed. To sign
+an update package, please use elbe-sign1. It is also possible to monitor
+the USB bus and to install updates located on an USB drive.</p>
+<p><em>elbe updated</em> also has a built in SOAP interface which can be used to
+monitor the status of the update daemon and to initiate downgrades.</p>
+<p>This command has to be run as root <strong>on the target system</strong>. Please note
+that <em>elbe updated</em> is usually started by the init script of its
+package, so in most cases there should be no need to start it by
+invoking this command directly.</p>
+</div>
+<div class="section" id="options">
+<h2>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--directory <var>&lt;update_dir&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Monitor the given directory for incoming update packages. Default is:
+<em>/var/cache/elbe/updates</em></td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--host <var>&lt;host&gt;</var></span></kbd></td>
+<td>Bind address for the SOAP interface. Default is to bind to all
+network interfaces.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--nosign</span></kbd></td>
+<td>Accept update packages without signatures.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--port <var>&lt;port&gt;</var></span></kbd></td>
+<td>Port for the SOAP interface. Default is 8088.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--usb</span></kbd></td>
+<td>Enable the USB monitor. This option requires pyudev module and an
+automount system for the usb drives (e.g. usbmount).</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examples">
+<h2>EXAMPLES<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Start the update daemon, watch <em>/updates</em> for updates and accept
+update packages without a signature.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># elbe updated --directory /updates --nosign</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="elbe">
+<h2>ELBE<a class="headerlink" href="#elbe" title="Permalink to this headline">¶</a></h2>
+<p>Part of the elbe1 suite</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="elbe-validate.html" class="btn btn-neutral float-right" title="elbe-validate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="elbe-toolchainextract.html" class="btn btn-neutral" title="elbe-toolchainextract" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Linutronix GmbH.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: releases/v12.5
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../v10/elbe-updated.html">v10</a></dd>
+            <dd><a href="../v11/elbe-updated.html">v11</a></dd>
+            <dd><a href="../v12.0/elbe-updated.html">v12.0</a></dd>
+            <dd><a href="../v12.1/elbe-updated.html">v12.1</a></dd>
+            <dd><a href="../v12.2/elbe-updated.html">v12.2</a></dd>
+            <dd><a href="../v12.3/elbe-updated.html">v12.3</a></dd>
+            <dd><a href="../v12.4/elbe-updated.html">v12.4</a></dd>
+            <dd><a href="../v12.5/elbe-updated.html">v12.5</a></dd>
+            <dd><a href="../v2.5/elbe-updated.html">v2.5</a></dd>
+            <dd><a href="../v3/elbe-updated.html">v3</a></dd>
+            <dd><a href="../v4/elbe-updated.html">v4</a></dd>
+            <dd><a href="../v5/elbe-updated.html">v5</a></dd>
+            <dd><a href="../v6/elbe-updated.html">v6</a></dd>
+            <dd><a href="../v7/elbe-updated.html">v7</a></dd>
+            <dd><a href="../v8/elbe-updated.html">v8</a></dd>
+            <dd><a href="../v9/elbe-updated.html">v9</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../devel_elbe-1.0/elbe-updated.html">devel/elbe-1.0</a></dd>
+            <dd><a href="../devel_elbe-2.0/elbe-updated.html">devel/elbe-2.0</a></dd>
+            <dd><a href="../devel_elbe-3.0/elbe-updated.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../master/elbe-updated.html">master</a></dd>
+            <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
+            <dd><a href="../releases_v1.0/elbe-updated.html">releases/v1.0</a></dd>
+            <dd><a href="../releases_v1.1/elbe-updated.html">releases/v1.1</a></dd>
+            <dd><a href="../releases_v1.2/elbe-updated.html">releases/v1.2</a></dd>
+            <dd><a href="../releases_v1.9.21/elbe-updated.html">releases/v1.9.21</a></dd>
+            <dd><a href="../releases_v1.9.22/elbe-updated.html">releases/v1.9.22</a></dd>
+            <dd><a href="../releases_v1.9.23/elbe-updated.html">releases/v1.9.23</a></dd>
+            <dd><a href="../releases_v1.9.24/elbe-updated.html">releases/v1.9.24</a></dd>
+            <dd><a href="../releases_v1.9.25/elbe-updated.html">releases/v1.9.25</a></dd>
+            <dd><a href="../releases_v10/elbe-updated.html">releases/v10</a></dd>
+            <dd><a href="../releases_v11/elbe-updated.html">releases/v11</a></dd>
+            <dd><a href="../releases_v12.0/elbe-updated.html">releases/v12.0</a></dd>
+            <dd><a href="../releases_v12.1/elbe-updated.html">releases/v12.1</a></dd>
+            <dd><a href="../releases_v12.2/elbe-updated.html">releases/v12.2</a></dd>
+            <dd><a href="../releases_v12.3/elbe-updated.html">releases/v12.3</a></dd>
+            <dd><a href="../releases_v12.4/elbe-updated.html">releases/v12.4</a></dd>
+            <dd><a href="elbe-updated.html">releases/v12.5</a></dd>
+            <dd><a href="../releases_v2.0/elbe-updated.html">releases/v2.0</a></dd>
+            <dd><a href="../releases_v2.1/elbe-updated.html">releases/v2.1</a></dd>
+            <dd><a href="../releases_v2.2/elbe-updated.html">releases/v2.2</a></dd>
+            <dd><a href="../releases_v2.3/elbe-updated.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/elbe-updated.html">releases/v2.4</a></dd>
+            <dd><a href="../releases_v2.5/elbe-updated.html">releases/v2.5</a></dd>
+            <dd><a href="../releases_v2.9.1/elbe-updated.html">releases/v2.9.1</a></dd>
+            <dd><a href="../releases_v2.9.10/elbe-updated.html">releases/v2.9.10</a></dd>
+            <dd><a href="../releases_v2.9.11/elbe-updated.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/elbe-updated.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/elbe-updated.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/elbe-updated.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/elbe-updated.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/elbe-updated.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/elbe-updated.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/elbe-updated.html">releases/v2.9.18</a></dd>
+            <dd><a href="../releases_v2.9.2/elbe-updated.html">releases/v2.9.2</a></dd>
+            <dd><a href="../releases_v2.9.3/elbe-updated.html">releases/v2.9.3</a></dd>
+            <dd><a href="../releases_v2.9.4/elbe-updated.html">releases/v2.9.4</a></dd>
+            <dd><a href="../releases_v2.9.5/elbe-updated.html">releases/v2.9.5</a></dd>
+            <dd><a href="../releases_v2.9.6/elbe-updated.html">releases/v2.9.6</a></dd>
+            <dd><a href="../releases_v2.9.7/elbe-updated.html">releases/v2.9.7</a></dd>
+            <dd><a href="../releases_v2.9.8/elbe-updated.html">releases/v2.9.8</a></dd>
+            <dd><a href="../releases_v2.9.9/elbe-updated.html">releases/v2.9.9</a></dd>
+            <dd><a href="../releases_v3/elbe-updated.html">releases/v3</a></dd>
+            <dd><a href="../releases_v4/elbe-updated.html">releases/v4</a></dd>
+            <dd><a href="../releases_v5/elbe-updated.html">releases/v5</a></dd>
+            <dd><a href="../releases_v6/elbe-updated.html">releases/v6</a></dd>
+            <dd><a href="../releases_v7/elbe-updated.html">releases/v7</a></dd>
+            <dd><a href="../releases_v8/elbe-updated.html">releases/v8</a></dd>
+            <dd><a href="../releases_v9/elbe-updated.html">releases/v9</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'12.5',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -24,7 +24,7 @@ DESCRIPTION
 ===========
 
 *elbe debianize* generates a *debian* folder inside e.g. a kernel source
-tree. This contains the information needed to transfer the source into
+tree. This contains the informations needed to transfer the source into
 debian source and binary packages.
 
 .. __examples:
@@ -45,7 +45,7 @@ commands.
    $ git add -f debian
    $ git commit -sm 'add the elbe generated debianization'
 
-if you selected a cross compiler, the package could be built with
+if you selected a cross compiler, the package could be build with
 
 +
 

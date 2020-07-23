@@ -90,8 +90,7 @@ OPTIONS
    Only list/download pbuilder files.
 
 --profile
-   Specify pbuilder profile(s) to build. Provide multiple profiles as a
-   comma separated list.
+   Specify pbuilder profile to build.
 
 .. __commands:
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE Quickstart &mdash; ELBE 12.4 documentation</title>
+  <title>ELBE Quickstart &mdash; ELBE 12.5 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                12.4
+                12.5
               </div>
             
           
@@ -111,8 +111,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#using-the-elbe-pbuilder-feature">Using the Elbe Pbuilder Feature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-contents-of-the-repository-with-the-following-command">List contents of the repository with the following command:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#elbe-prjrepo-download-cat-repos-elbe-pbuilder-prj">$ elbe prjrepo download <code class="docutils literal"><span class="pre">cat</span> <span class="pre">~/repos/elbe/pbuilder.prj</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#custom-repository">Custom Repository</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#repository-key">Repository Key</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reprepro-configuration">reprepro configuration</a></li>
@@ -293,13 +291,18 @@ $ apt-get install elbe
 <h2>Create initvm and submit XML files<a class="headerlink" href="#create-initvm-and-submit-xml-files" title="Permalink to this headline">¶</a></h2>
 <p>The first thing you need to do is set up a virtual-machine for
 generating root-filesystems.</p>
-<p>This virtual-machine is referred to as “initvm”. You will want your
+<p>This virtual-machine is referred to as <code class="docutils literal"><span class="pre">initvm</span></code>. You will want your
 initvm to be the same architecture as your workstation. This allows
 using hardware accelerated virtualization implemented by kvm.</p>
 <p>In order to be able to work with virtual machines as a regular user,
 that user needs to be added to libvirt groups:</p>
-<p>For Debian/stretch, buster, and newer:</p>
-<p>$ adduser &lt;youruser&gt; libvirt $ adduser &lt;youruser&gt; libvirt-qemu</p>
+<p>For Debian 9 (Stretch) or newer, run (as root):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ adduser &lt;youruser&gt; libvirt
+$ adduser &lt;youruser&gt; libvirt-qemu
+</pre></div>
+</div>
+<p>Now create an <code class="docutils literal"><span class="pre">initvm</span></code> subdirectory and builds the initvm inside this
+directory.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe initvm create
 Import debian-archive-buster-automatic.gpg:
 gpg: key DC30D7C23CBBABEE: 4 Beglaubigungen wegen fehlender Schlüssel nicht geprüft
@@ -324,8 +327,6 @@ touch .stamps/stamp-install-initial-image
 *****
 </pre></div>
 </div>
-<p>This creates an “initvm” subdirectory and builds the initvm inside this
-directory.</p>
 </div>
 <div class="section" id="submitting-an-xml-file">
 <h2>Submitting an XML file<a class="headerlink" href="#submitting-an-xml-file" title="Permalink to this headline">¶</a></h2>
@@ -467,8 +468,16 @@ is installed at <code class="docutils literal"><span class="pre">/usr/share/doc/
 <p>Since Version 1.9.2, elbe is able to create a pbuilder Environment. You
 can create a pbuilder for a specific xml File inside the initvm.</p>
 <p>The repositories and architecture specified in the xml File will be used
-to satisfy build dependencies. Pbuilder will only build debianised
-Software.</p>
+to satisfy build dependencies. It is possible to crosscompile packages
+for a foreign architecture. To do so use the <em>elbe pbuilder create</em>
+command with the –cross option. This will setup the right environment
+for crosscompiling. To use this environment you have to use the –cross
+option with the build command. (If the environment was created with the
+–cross option, the build command must be used with –cross too.
+Otherwise it will throw an error.) By creating an environment the
+compiler cache <code class="docutils literal"><span class="pre">ccache</span></code> gets installed by default to speed up
+recompilations. It is possible to change the size or to deactivate it if
+it is not needed. Pbuilder will only build debianised Software.</p>
 <p>A pbuilder instance is always associated with a project inside the
 initvm. The <code class="docutils literal"><span class="pre">pbuilder</span> <span class="pre">create</span></code> command will write the project uuid to a
 file, if instructed to do so.</p>
@@ -486,21 +495,28 @@ $ elbe pbuilder build --project `cat ~/repos/elbe/pbuilder.prj` --out ../out/
 stores the built packages in an internal repository. Every package,
 built in this manner, will also be stored in that repository. This
 repository can be used for later RFS builds.</p>
-</div>
-<div class="section" id="list-contents-of-the-repository-with-the-following-command">
-<h2>List contents of the repository with the following command:<a class="headerlink" href="#list-contents-of-the-repository-with-the-following-command" title="Permalink to this headline">¶</a></h2>
-<p>$ elbe prjrepo list_packages <code class="docutils literal"><span class="pre">cat</span> <span class="pre">~/repos/elbe/pbuilder.prj</span></code>
-libgpio-dev_3.0.0_amd64.deb libgpio1_3.0.0_amd64.deb
-libgpio1-dbgsym_3.0.0_amd64.deb</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">use</span> <span class="n">this</span> <span class="n">repository</span> <span class="k">for</span> <span class="n">further</span> <span class="n">RFS</span> <span class="n">builds</span> <span class="n">download</span> <span class="n">the</span> <span class="n">repo</span> <span class="k">with</span><span class="p">:</span>
+<p>List contents of the repository with the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe prjrepo list_packages `cat ~/repos/elbe/pbuilder.prj`
+libgpio-dev_3.0.0_amd64.deb
+libgpio1_3.0.0_amd64.deb
+libgpio1-dbgsym_3.0.0_amd64.deb
 </pre></div>
 </div>
+<p>To use this repository for further RFS builds download the repo with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe prjrepo download `cat ~/repos/elbe/pbuilder.prj`
+</pre></div>
 </div>
-<div class="section" id="elbe-prjrepo-download-cat-repos-elbe-pbuilder-prj">
-<h2>$ elbe prjrepo download <code class="docutils literal"><span class="pre">cat</span> <span class="pre">~/repos/elbe/pbuilder.prj</span></code><a class="headerlink" href="#elbe-prjrepo-download-cat-repos-elbe-pbuilder-prj" title="Permalink to this headline">¶</a></h2>
 <p>The repository is download as elbe-projectrepo-20191002-114244.tar.gz.
 This should be unpacked in the DocumentRoot of your webserver and
 customized with your key as explained in the next chapter.</p>
+<p>Here is an example for crosscompiling a linux kernel with debian
+profiles:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe pbuilder --cross create --xmlfile examples/armhf-ti-beaglebone-black.xml --writeproject pbuilder.prj
+$ apt source linux
+$ cd linux*/
+$ ../elbe pbuilder --cross --origfile ../linux*.orig.tar.xz --profile nodoc,nopython build --project `cat ../pbuilder.prj`
+</pre></div>
+</div>
 </div>
 <div class="section" id="custom-repository">
 <h2>Custom Repository<a class="headerlink" href="#custom-repository" title="Permalink to this headline">¶</a></h2>
@@ -661,6 +677,7 @@ you can install from any other repository.</p>
             <dd><a href="../v12.2/article-quickstart.html">v12.2</a></dd>
             <dd><a href="../v12.3/article-quickstart.html">v12.3</a></dd>
             <dd><a href="../v12.4/article-quickstart.html">v12.4</a></dd>
+            <dd><a href="../v12.5/article-quickstart.html">v12.5</a></dd>
             <dd><a href="../v2.5/article-quickstart.html">v2.5</a></dd>
             <dd><a href="../v3/article-quickstart.html">v3</a></dd>
             <dd><a href="../v4/article-quickstart.html">v4</a></dd>
@@ -692,6 +709,7 @@ you can install from any other repository.</p>
             <dd><a href="../releases_v12.2/article-quickstart.html">releases/v12.2</a></dd>
             <dd><a href="../releases_v12.3/article-quickstart.html">releases/v12.3</a></dd>
             <dd><a href="../releases_v12.4/article-quickstart.html">releases/v12.4</a></dd>
+            <dd><a href="../releases_v12.5/article-quickstart.html">releases/v12.5</a></dd>
             <dd><a href="../releases_v2.0/article-quickstart.html">releases/v2.0</a></dd>
             <dd><a href="../releases_v2.1/article-quickstart.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/article-quickstart.html">releases/v2.2</a></dd>
@@ -733,7 +751,7 @@ you can install from any other repository.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'12.4',
+            VERSION:'12.5',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
