@@ -211,8 +211,10 @@ environment and it will be saved as ``nfsroot.tar.gz``
                            <primary_host>debian.tu-bs.de</primary_host>
                            <primary_path>/debian</primary_path>
                            <primary_proto>http</primary_proto>
+                           <options>
+                                   <option>trusted=yes</option>
+                           </options>
                    </mirror>
-                   <noauth />
                    <suite>buster</suite>
            </project>
            <target>
@@ -591,15 +593,21 @@ After this header follows the project description.
                            <primary_host>debian.tu-bs.de</primary_host>    
                            <primary_path>/debian</primary_path>
                            <primary_proto>http</primary_proto>
+                           <options>
+                                   <option>trusted=yes</option>            
+                                   <option>check-valid-until=no</option>   
+                           </options>
                            <url-list>                                      
                                    <url>
                                            <binary>http://debian.linutronix.de/elbe buster main</binary>
                                            <source>http://debian.linutronix.de/elbe buster main</source>
+                                           <options>
+                                                   <option>trusted=yes</option> 
+                                           </options>
                                    </url>
                            </url-list>
 
                    </mirror>
-                   <noauth />                                              
                    <suite>buster</suite>                                   
 
 -  The *mirror* tag contains *primary_host*, *primary_path*,
@@ -607,10 +615,10 @@ After this header follows the project description.
    primary mirror different for the sdk architecture. It describes the
    Debian mirror used.
 
--  The *url-list* can contain additional package sources in *url* tag.
+-  The *options* tags can be used to set a list of *option* tag. Each
+   'option tag can contain an option of the form NAME=VALUE.
 
--  The *noauth* tag can be used to disable authentication if custom
-   unsigned packages are supposed to be installed.
+-  The *url-list* can contain additional package sources.
 
 -  The *suite* selects the distribution codename used from the primary
    mirror.

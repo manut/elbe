@@ -1,0 +1,59 @@
+************************
+elbe-show
+************************
+
+.. __name:
+
+NAME
+====
+
+elbe-show - Get a human readable representation of a ELBE XML file.
+
+.. __synopsis:
+
+SYNOPSIS
+========
+
+   ::
+
+      elbe show [--verbose] <xmlfile>
+
+.. __description:
+
+DESCRIPTION
+===========
+
+This command generates a human readable overview of a given ELBE XML
+file.
+
+It’s useful to get an idea for what is a specific XML file was designed.
+
+.. __options:
+
+OPTIONS
+=======
+
+--verbose
+   Give more information, e.g. the package list of the target
+   root-filesystem.
+
+<xmlfile>
+   The xmlfile to be shown.
+
+.. __examples:
+
+EXAMPLES
+========
+
+-  get a human readable representation of *project.xml*
+
+   ::
+
+      $ elbe show project.xml
+
+.. __elbe:
+
+ELBE
+====
+
+Part of the elbe1 suite

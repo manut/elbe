@@ -1,0 +1,49 @@
+************************
+elbe-buildsdk
+************************
+
+.. __name:
+
+NAME
+====
+
+elbe-buildsdk - Build a yocto style sdk.
+
+.. __synopsis:
+
+SYNOPSIS
+========
+
+   ::
+
+      elbe buildsdk <directory>
+
+<directory>
+   directory containing the elbe project.
+
+.. __description:
+
+DESCRIPTION
+===========
+
+creates a yocto style SDK
+
+.. __examples:
+
+EXAMPLES
+========
+
+-  Build a root filesystem from *myarm.xml* in */root/myarm*. Log to
+   *myarm.txt*. Then create a SDK for this RFS.
+
+   ::
+
+      # elbe buildchroot --output myarm.txt --target /root/myarm myarm.xml
+      # elbe buildsdk /root/myarm
+
+.. __elbe:
+
+ELBE
+====
+
+Part of the elbe1 suite

@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>elbe-control &mdash; ELBE 13.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="elbe-daemon" href="elbe-daemon.html" />
+    <link rel="prev" title="elbe-chroot" href="elbe-chroot.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ELBE
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                13.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="article-quickstart.html">ELBE Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbeoverview-en.html">ELBE Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbe-schema-reference.html">ELBE XML Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">man-pages</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">elbe-control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#name">NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">DESCRIPTION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options">OPTIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commands">COMMANDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">SEE ALSO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elbe">ELBE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-hdimg.html">elbe-hdimg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ELBE</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>elbe-control</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/elbe-control.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elbe-control">
+<h1>elbe-control<a class="headerlink" href="#elbe-control" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>NAME<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p>elbe-control - Low level interface to elbe Soap Daemon running in initvm</p>
+</div>
+<div class="section" id="synopsis">
+<h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">list_projects</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">create_project</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_sysroot</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_cdroms</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_pdebuild</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pdebuild</span> <span class="n">file</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">get_files</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_chroot_tarball</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_sdk</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_orig</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_cdrom</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">iso</span><span class="o">-</span><span class="n">img</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">reset_project</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">list_users</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">wait_busy</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">set_xml</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">del_project</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build_pbuilder</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">build</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">rm_log</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">get_file</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">dump_file</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">shutdown_initvm</span>
+<span class="n">elbe</span> <span class="n">control</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">install_elbe_version</span> <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="description">
+<h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Low Level interface to control an elbe daemon running inside an initvm.
+It allows one to submit xml files etc.</p>
+<p>For the high level interface, see <em>elbe initvm</em></p>
+<p>Please take notice, that a single user can only have a single project
+opened inside the soap server. So it is not possible to have a single
+user build 2 projects at once.</p>
+<p>You can only wait on the project, that you are currently building.</p>
+</div>
+<div class="section" id="options">
+<h2>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--host <var>&lt;hostname&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>ip or hostname of the elbe-deamon (defaults to localhost, which is
+the default, where an initvm would be listening).</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--port <var>&lt;N&gt;</var></span></kbd></td>
+<td>Port of the soap interface on the elbe-daemon.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--user <var>&lt;username&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Username to use for login (defaults to root).</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--pass <var>&lt;password&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Password for login (defaults to <em>foo</em>).</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--retries <var>&lt;N&gt;</var></span></kbd></td>
+<td>How many times to retry the connection to the server before giving up
+(default is 10 times, yielding 10 seconds).</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--build-bin</span></kbd></td>
+<td>Build binary repository CDROM, for exact reproduction.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--build-sources</span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Build source CDROM.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--output <var>&lt;directory&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Output downloaded files to &lt;directory&gt;.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--pbuilder-only</span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Only list/download pbuilder files.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--profile</span></kbd></td>
+<td>Specify pbuilder profile(s) to build. Provide multiple profiles as a
+comma separated list.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="commands">
+<h2>COMMANDS<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><em>list_projects</em></dt>
+<dd>List projects available on the elbe daemon.</dd>
+<dt><em>create_project</em></dt>
+<dd><p class="first">Create a new project on soap server. a new build-dir is created.</p>
+<p class="last">The name of the created &lt;build-dir&gt; is printed to stdout, for further
+reference in subsequent commands.</p>
+</dd>
+<dt><em>build_sysroot</em> &lt;build-dir&gt;</dt>
+<dd>Build a sysroot for the specified project.</dd>
+</dl>
+<p>The sysroot can be used with a toolchain for cross-compiles.</p>
+<dl class="docutils">
+<dt><em>build_cdroms</em> &lt;build-dir&gt;</dt>
+<dd>Build ISO images containing the Debian binary or source packages used
+by the given build-dir. Either –build-bin or –build-sources or both
+needs to be specified.</dd>
+</dl>
+<p><em>set_pdebuild</em> &lt;build-dir&gt; &lt;pdebuild file&gt;</p>
+<p>Build a Debian Project using a pbuilder.</p>
+<p>The pdebuild file needs to be a .tar.gz archive of a project containing
+a ./debian folder with a valid debianization.</p>
+<ul class="simple">
+<li>The generated debian packages are stored inside the initvm.</li>
+<li>Use get_files to retrieve them.</li>
+</ul>
+<dl class="docutils">
+<dt><em>get_files</em> &lt;build-dir&gt;</dt>
+<dd><p class="first">Get list of files in the &lt;build-dir&gt;.</p>
+<p class="last">If the –output option is specified, the files are downloaded to the
+directory specified in the option. If the –matches option is
+specified only files matching the wildcard expression are
+shown/downloaded. Note that you have to put the wildcard expression
+in quotation marks.</p>
+</dd>
+<dt><em>build_chroot_tarball</em> &lt;build-dir&gt;</dt>
+<dd>Creates a tarball of the chroot environment in &lt;build_dir&gt;.</dd>
+<dt><em>build_sdk</em> &lt;build-dir&gt;</dt>
+<dd>Creates a yocto-style SDK.</dd>
+<dt><em>set_orig</em> &lt;build-dir&gt; &lt;orig-file&gt;</dt>
+<dd><p class="first">Uploads a quilt orig-file to the initvm.</p>
+<p class="last">This command shall be run before building a Debian package with
+<code class="docutils literal"><span class="pre">elbe</span> <span class="pre">pbuilder</span>
+<span class="pre">build</span></code> if the package is given in the quilt source format.</p>
+</dd>
+<dt><em>set_cdrom</em> &lt;build-dir&gt; &lt;iso-img&gt;</dt>
+<dd>Set the cdrom iso image. The &lt;iso-img&gt; is uploaded into the intivm.
+And the source.xml in the &lt;build-dir&gt; is modified, that it builds
+from the cdrom mirror now.</dd>
+<dt><em>reset_project</em> &lt;build-dir&gt;</dt>
+<dd><p class="first">Reset project database status for &lt;build-dir&gt;.</p>
+<p>When the database becomes inconsistent, this allows us to access an
+otherwise blocked project again.</p>
+<p class="last">Use with care.</p>
+</dd>
+<dt><em>list_users</em></dt>
+<dd>List configured users. Only admins may use this command.</dd>
+<dt><em>add_user</em> &lt;name&gt; &lt;fullname&gt; &lt;password&gt; &lt;email&gt;</dt>
+<dd>Create a user inside the initvm. The user is not an Admin user. When
+the user already exists, nothing is done. Only admins may use this
+command.</dd>
+<dt><em>wait_busy</em> &lt;build-dir&gt;</dt>
+<dd>Wait, while &lt;build-dir&gt; is busy.</dd>
+<dt><em>set_xml</em> &lt;build-dir&gt; &lt;xmlfile&gt;</dt>
+<dd>Upload a new xml File into the given &lt;build-dir&gt;. This is most likely
+going to change the status of the project to <em>needs_rebuild</em>.</dd>
+<dt><em>del_project</em> &lt;build-dir&gt;</dt>
+<dd>Delete project in &lt;build-dir&gt;</dd>
+<dt><em>build_pbuilder</em> &lt;build-dir&gt;</dt>
+<dd>Build a pbuilder environment for the given project &lt;build-dir&gt;.</dd>
+<dt><em>build</em> &lt;build-dir&gt;</dt>
+<dd>Trigger building the project. Status will change to busy.</dd>
+<dt><em>rm_log</em> &lt;build-dir&gt;</dt>
+<dd>Deletes log file for the given project &lt;build-dir&gt;</dd>
+<dt><em>get_file</em> &lt;build-dir&gt; &lt;filename&gt;</dt>
+<dd>Download a single file from the project.</dd>
+<dt><em>dump_file</em> &lt;build-dir&gt; &lt;filename&gt;</dt>
+<dd>Dump a single File from the project to stdout.</dd>
+<dt><em>shutdown_initvm</em></dt>
+<dd>Make the initvm shutdown.</dd>
+<dt><em>install_elbe_version</em> [version]</dt>
+<dd>Make the initvm install a specific elbe version. Defaults to the
+version of the elbe executable. This requires, that the initvm has
+package sources configured properly.</dd>
+</dl>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">List current Projects</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe control list_projects
+/var/cache/elbe/982d64de-e69f-48c7-8942-66d8d480f3dc    rescue image    1.0     build_done      2015-06-08 15:29:29.613620
+/var/cache/elbe/dd37a03e-31bd-45db-afd4-fc51d51fa90a    rescue image    1.0     build_done      2015-06-09 08:53:26.658500
+/var/cache/elbe/8d62928f-4e75-47cf-aec9-d2365ca59003    rescue image    1.0     build_done      2015-06-09 09:14:15.371456
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a new Project, trigger build, and wait till it finishes.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ elbe control create_project examples/rescue.xml
+/var/cache/elbe/f310dcbc-f5fc-423e-99e4-fb72d7b9dd5f
+$ elbe control build /var/cache/elbe/f310dcbc-f5fc-423e-99e4-fb72d7b9dd5f
+$ elbe control wait_busy /var/cache/elbe/f310dcbc-f5fc-423e-99e4-fb72d7b9dd5f
+project still busy, waiting
+project still busy, waiting
+...
+project still busy, waiting
+$ elbe control get_files /var/cache/elbe/f310dcbc-f5fc-423e-99e4-fb72d7b9dd5f
+source.xml      (Current source.xml of the project)
+rescue.cpio     (Image)
+validation.txt  (Package list validation result)
+elbe-report.txt         (Report)
+log.txt         (Log file)
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h2>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p>elbe-initvm1 git-daemon1</p>
+</div>
+<div class="section" id="elbe">
+<h2>ELBE<a class="headerlink" href="#elbe" title="Permalink to this headline">¶</a></h2>
+<p>Part of the elbe1 suite</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="elbe-daemon.html" class="btn btn-neutral float-right" title="elbe-daemon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="elbe-chroot.html" class="btn btn-neutral" title="elbe-chroot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Linutronix GmbH.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: releases/v13.0
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../v10/elbe-control.html">v10</a></dd>
+            <dd><a href="../v11/elbe-control.html">v11</a></dd>
+            <dd><a href="../v12.0/elbe-control.html">v12.0</a></dd>
+            <dd><a href="../v12.1/elbe-control.html">v12.1</a></dd>
+            <dd><a href="../v12.2/elbe-control.html">v12.2</a></dd>
+            <dd><a href="../v12.3/elbe-control.html">v12.3</a></dd>
+            <dd><a href="../v12.4/elbe-control.html">v12.4</a></dd>
+            <dd><a href="../v12.5/elbe-control.html">v12.5</a></dd>
+            <dd><a href="../v13.0/elbe-control.html">v13.0</a></dd>
+            <dd><a href="../v2.5/index.html">v2.5</a></dd>
+            <dd><a href="../v3/elbe-control.html">v3</a></dd>
+            <dd><a href="../v4/elbe-control.html">v4</a></dd>
+            <dd><a href="../v5/elbe-control.html">v5</a></dd>
+            <dd><a href="../v6/elbe-control.html">v6</a></dd>
+            <dd><a href="../v7/elbe-control.html">v7</a></dd>
+            <dd><a href="../v8/elbe-control.html">v8</a></dd>
+            <dd><a href="../v9/elbe-control.html">v9</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../devel_elbe-1.0/elbe-control.html">devel/elbe-1.0</a></dd>
+            <dd><a href="../devel_elbe-2.0/index.html">devel/elbe-2.0</a></dd>
+            <dd><a href="../devel_elbe-3.0/elbe-control.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../master/elbe-control.html">master</a></dd>
+            <dd><a href="../releases_v0.5.8/index.html">releases/v0.5.8</a></dd>
+            <dd><a href="../releases_v1.0/elbe-control.html">releases/v1.0</a></dd>
+            <dd><a href="../releases_v1.1/elbe-control.html">releases/v1.1</a></dd>
+            <dd><a href="../releases_v1.2/elbe-control.html">releases/v1.2</a></dd>
+            <dd><a href="../releases_v1.9.21/index.html">releases/v1.9.21</a></dd>
+            <dd><a href="../releases_v1.9.22/index.html">releases/v1.9.22</a></dd>
+            <dd><a href="../releases_v1.9.23/index.html">releases/v1.9.23</a></dd>
+            <dd><a href="../releases_v1.9.24/index.html">releases/v1.9.24</a></dd>
+            <dd><a href="../releases_v1.9.25/index.html">releases/v1.9.25</a></dd>
+            <dd><a href="../releases_v10/elbe-control.html">releases/v10</a></dd>
+            <dd><a href="../releases_v11/elbe-control.html">releases/v11</a></dd>
+            <dd><a href="../releases_v12.0/elbe-control.html">releases/v12.0</a></dd>
+            <dd><a href="../releases_v12.1/elbe-control.html">releases/v12.1</a></dd>
+            <dd><a href="../releases_v12.2/elbe-control.html">releases/v12.2</a></dd>
+            <dd><a href="../releases_v12.3/elbe-control.html">releases/v12.3</a></dd>
+            <dd><a href="../releases_v12.4/elbe-control.html">releases/v12.4</a></dd>
+            <dd><a href="../releases_v12.5/elbe-control.html">releases/v12.5</a></dd>
+            <dd><a href="elbe-control.html">releases/v13.0</a></dd>
+            <dd><a href="../releases_v2.0/index.html">releases/v2.0</a></dd>
+            <dd><a href="../releases_v2.1/index.html">releases/v2.1</a></dd>
+            <dd><a href="../releases_v2.2/index.html">releases/v2.2</a></dd>
+            <dd><a href="../releases_v2.3/index.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/index.html">releases/v2.4</a></dd>
+            <dd><a href="../releases_v2.5/index.html">releases/v2.5</a></dd>
+            <dd><a href="../releases_v2.9.1/index.html">releases/v2.9.1</a></dd>
+            <dd><a href="../releases_v2.9.10/elbe-control.html">releases/v2.9.10</a></dd>
+            <dd><a href="../releases_v2.9.11/elbe-control.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/elbe-control.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/elbe-control.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/elbe-control.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/elbe-control.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/elbe-control.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/elbe-control.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/elbe-control.html">releases/v2.9.18</a></dd>
+            <dd><a href="../releases_v2.9.2/elbe-control.html">releases/v2.9.2</a></dd>
+            <dd><a href="../releases_v2.9.3/elbe-control.html">releases/v2.9.3</a></dd>
+            <dd><a href="../releases_v2.9.4/elbe-control.html">releases/v2.9.4</a></dd>
+            <dd><a href="../releases_v2.9.5/elbe-control.html">releases/v2.9.5</a></dd>
+            <dd><a href="../releases_v2.9.6/elbe-control.html">releases/v2.9.6</a></dd>
+            <dd><a href="../releases_v2.9.7/elbe-control.html">releases/v2.9.7</a></dd>
+            <dd><a href="../releases_v2.9.8/elbe-control.html">releases/v2.9.8</a></dd>
+            <dd><a href="../releases_v2.9.9/elbe-control.html">releases/v2.9.9</a></dd>
+            <dd><a href="../releases_v3/elbe-control.html">releases/v3</a></dd>
+            <dd><a href="../releases_v4/elbe-control.html">releases/v4</a></dd>
+            <dd><a href="../releases_v5/elbe-control.html">releases/v5</a></dd>
+            <dd><a href="../releases_v6/elbe-control.html">releases/v6</a></dd>
+            <dd><a href="../releases_v7/elbe-control.html">releases/v7</a></dd>
+            <dd><a href="../releases_v8/elbe-control.html">releases/v8</a></dd>
+            <dd><a href="../releases_v9/elbe-control.html">releases/v9</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'13.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
