@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ELBE 13.1 release • ELBE</title>
+    <meta name="description" content="bugfix pointrelease">
+    <meta name="keywords" content="">
+    
+      
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="ELBE 13.1 release">
+	<meta name="twitter:description" content="bugfix pointrelease">
+	
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="https://elbe-rfs.org/images/elbe-icon.png">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US.UTF-8">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="ELBE 13.1 release">
+	<meta property="og:description" content="bugfix pointrelease">
+	<meta property="og:url" content="https://elbe-rfs.org/news/v1301/">
+	<meta property="og:site_name" content="ELBE">
+
+    <link rel="canonical" href="https://elbe-rfs.org/news/v1301/">
+
+    <link href="https://elbe-rfs.org/atom.xml" type="application/atom+xml" rel="alternate" title="ELBE Atom Feed">
+    <link href="https://elbe-rfs.org/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="https://elbe-rfs.org/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="https://elbe-rfs.org/js/vendor/html5shiv.min.js"></script>
+      <script src="https://elbe-rfs.org/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="https://elbe-rfs.org/" class="site-title"><img src="https://elbe-rfs.org/images/elbe-logo-small.png"></a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">ELBE</a></li>
+	
+    
+        
+    
+    <li><a href="https://elbe-rfs.org/download" >Download</a></li>
+  
+    
+        
+    
+    <li><a href="https://elbe-rfs.org/docs" >Docs</a></li>
+  
+    
+        
+    
+    <li><a href="https://elbe-rfs.org/support" >Support</a></li>
+  
+    
+        
+    
+    <li><a href="https://elbe-rfs.org/devel" >Devel</a></li>
+  
+    
+        
+    
+    <li><a href="https://elbe-rfs.org/imprint" >Imprint</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>ELBE <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="https://elbe-rfs.org/download">
+        
+        <div class="title">Download</div>
+        <p class="excerpt">Get Binary and Source packages</p>
+      </a>
+    </li><li>
+      <a href="https://elbe-rfs.org/docs">
+        
+        <div class="title">Docs</div>
+        <p class="excerpt">Documentation and man-pages</p>
+      </a>
+    </li><li>
+      <a href="https://elbe-rfs.org/support">
+        
+        <div class="title">Support</div>
+        <p class="excerpt">Community and commercial support</p>
+      </a>
+    </li><li>
+      <a href="https://elbe-rfs.org/devel">
+        
+        <div class="title">Devel</div>
+        <p class="excerpt">Development details</p>
+      </a>
+    </li><li>
+      <a href="https://elbe-rfs.org/imprint">
+        
+        <div class="title">Imprint</div>
+        <p class="excerpt">Imprint</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="https://elbe-rfs.org" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="https://elbe-rfs.org/news/" itemprop="url">
+        <span itemprop="title">News</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+		<div class="page-title">
+			<h1>ELBE 13.1 release</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<p>Debian packages for “ELBE 13.1” are available from linutronix.
+Add sth. like this to your sources.list:</p>
+
+<pre><code>deb http://debian.linutronix.de/elbe buster main
+</code></pre>
+
+<h2 id="python2-conversion-fallout">Python2 conversion fallout</h2>
+<p>The python2 conversion produced a little bit of fallout.
+The passwd from the xml file was expanded with <code>b'passwd'</code>
+elbe-updated now checks for the correct new package name
+<code>python3-elbe-updated</code>.</p>
+
+
+				<hr />
+				<footer class="page-footer">
+					
+	
+
+
+
+
+<div class="author-content">
+	<div class="author-name">
+		Written by
+		
+			<span itemprop="author">Torben Hohn</span>
+		
+	</div>
+	<p class="author-bio"></p>
+</div>
+
+					<div class="page-meta">
+	<p>Updated <time datetime="2020-10-28T00:00:00Z" itemprop="datePublished">October 28, 2020</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="https://elbe-rfs.org" ></a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">
+		&#169; 2020
+		<a href="https://elbe-rfs.org">ELBE</a> by
+		<a href="https://linutronix.de">Linutronix GmbH</a> -
+		ELBE is not affiliated with Debian, Debian is a registered trademark owned by SPI
+	</p>
+</footer>
+
+
+
+    </div>
+
+    <script src="https://elbe-rfs.org/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="https://elbe-rfs.org/js/main.js"></script>
+
+  </body>
+
+</html>
