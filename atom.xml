@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="https://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="https://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2020-10-01T11:51:40+00:00</updated>
+  <updated>2020-10-29T12:15:25+01:00</updated>
   <id>https://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -19,173 +19,9 @@
 
   
   <entry>
-    <title>ELBE 12.5 release</title>
-    <link href="https://elbe-rfs.org/news/v1205/"/>
-    <updated>2020-07-23T00:00:00+00:00</updated>
-    <id>https://elbe-rfs.org/news/v1205</id>
-    <author>
-      <name></name>
-      <uri>https://elbe-rfs.org/</uri>
-      
-    </author>
-    <content type="html">
-      
-      &lt;p&gt;Debian packages for “ELBE 12.5” are available from linutronix.
-Add sth. like this to your sources.list:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;processing-license-files&quot;&gt;Processing License Files&lt;/h2&gt;
-&lt;p&gt;There are now more than one License File.
-Packages which are not installed on the target will not show up in licence-target.xml.&lt;/p&gt;
-
-&lt;h2 id=&quot;pbuilder-speedup&quot;&gt;pbuilder speedup&lt;/h2&gt;
-&lt;p&gt;Pbuilder now supports cross builds, and ccache.&lt;/p&gt;
-
-&lt;h2 id=&quot;ubuntu&quot;&gt;Ubuntu&lt;/h2&gt;
-&lt;p&gt;Building ubuntu targets is now supported.&lt;/p&gt;
-
-&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
-
-&lt;p&gt;Some parts of the new unittesting are merged.&lt;/p&gt;
-
-&lt;h2 id=&quot;full-changelog&quot;&gt;Full changelog&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Fix building sdk for amd64&lt;/li&gt;
-  &lt;li&gt;Add cross build support to pbuilder.&lt;/li&gt;
-  &lt;li&gt;Add ccache support to pbuilder.&lt;/li&gt;
-  &lt;li&gt;Limited finetuning support for initvm.&lt;/li&gt;
-  &lt;li&gt;First part of the elbe test suite
-    &lt;ul&gt;
-      &lt;li&gt;doctests for filesystem&lt;/li&gt;
-      &lt;li&gt;doctests for shellhelper&lt;/li&gt;
-      &lt;li&gt;pylint as unittest&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;schema: Add possibility to add multiple binary blobs&lt;/li&gt;
-  &lt;li&gt;debianize: kernel: Add lzop build dependency&lt;/li&gt;
-  &lt;li&gt;initvmaction: Add sync action&lt;/li&gt;
-  &lt;li&gt;Include Source Packages for Built-Using: Entries into src-cdrom.&lt;/li&gt;
-  &lt;li&gt;src-cdrom now sorts packages in components for sysroot, host-sysroot,
-target, etc.&lt;/li&gt;
-  &lt;li&gt;Source packages only show up in target component if files from the
-package are contained in the target.&lt;/li&gt;
-  &lt;li&gt;Python3 is now used on the host side. (initvm is still waiting for
-python3-spyne)&lt;/li&gt;
-  &lt;li&gt;The preprocessor now handles proxy setup.&lt;/li&gt;
-  &lt;li&gt;initvm: create: Add COW logic for initvm&lt;/li&gt;
-  &lt;li&gt;initvmaction: Fix soap host (Fixes: #271)&lt;/li&gt;
-  &lt;li&gt;finetuning: Add command action in image context&lt;/li&gt;
-  &lt;li&gt;elbeproject: cope with incremental build without initvm node&lt;/li&gt;
-  &lt;li&gt;Fix bin-cdrom.iso signature validation in initvm-create (Fixes: #260)&lt;/li&gt;
-  &lt;li&gt;hdimg: Add support for specifying the first partition offset&lt;/li&gt;
-  &lt;li&gt;Basic Support for building ubuntu targets.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>ELBE 12.1 release</title>
-    <link href="https://elbe-rfs.org/news/v1201/"/>
-    <updated>2019-10-18T00:00:00+00:00</updated>
-    <id>https://elbe-rfs.org/news/v1201</id>
-    <author>
-      <name></name>
-      <uri>https://elbe-rfs.org/</uri>
-      
-    </author>
-    <content type="html">
-      
-      &lt;p&gt;Debian packages for “ELBE 12.1” are available from linutronix.
-Add sth. like this to your sources.list:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;processing-license-files&quot;&gt;Processing License Files&lt;/h2&gt;
-&lt;p&gt;Fixed a bug in the license file processing which end up in a build failure is fixed.&lt;/p&gt;
-
-&lt;h2 id=&quot;pbuilder&quot;&gt;pbuilder&lt;/h2&gt;
-&lt;p&gt;If a pbuilder builded a broken package, the error was persisted in the logging
-queue, and it was never reseted. This bug is fixed in version 12.1.&lt;/p&gt;
-
-&lt;h2 id=&quot;examples&quot;&gt;examples&lt;/h2&gt;
-&lt;p&gt;The example x86_64-pc-hdimg-gnome3.xml is working again.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>ELBE 12.0 release</title>
-    <link href="https://elbe-rfs.org/news/v1200/"/>
-    <updated>2019-10-02T00:00:00+00:00</updated>
-    <id>https://elbe-rfs.org/news/v1200</id>
-    <author>
-      <name></name>
-      <uri>https://elbe-rfs.org/</uri>
-      
-    </author>
-    <content type="html">
-      
-      &lt;p&gt;ELBE 12.0 is released. The XML format is compatible.&lt;/p&gt;
-
-&lt;p&gt;Debian packages for “ELBE 12.0” are available from linutronix.
-Add sth. like this to your sources.list:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;versioning-schema&quot;&gt;Versioning Schema&lt;/h2&gt;
-&lt;p&gt;The last ELBE versions had a lot of minor bug fixes. As result, the version
-numbers increased very fast. Therefore we switch to a version schema with major
-and minor numbers.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-logging&quot;&gt;New Logging&lt;/h2&gt;
-&lt;p&gt;The logging and error handling code is completely new. The logging output is
-improved and a build failure now results in error return codes, and no files
-will be downloaded. This is especially the case for finetuning errors which
-have been ignored before.&lt;/p&gt;
-
-&lt;h2 id=&quot;initvm-version-buster&quot;&gt;INITVM Version Buster&lt;/h2&gt;
-&lt;p&gt;The initvm is now using Debian 10 (Buster)&lt;/p&gt;
-
-&lt;h2 id=&quot;limit-src-cdrom-size&quot;&gt;Limit src-cdrom size&lt;/h2&gt;
-&lt;p&gt;The src-cdrom can be split up in multiple cd-roms. This can be configured in
-the xml file.&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;src-cdrom&amp;gt;
-    &amp;lt;size&amp;gt;640M&amp;lt;/size&amp;gt;
-    &amp;lt;src-opts&amp;gt;
-        &amp;lt;publisher&amp;gt;Linutronix&amp;lt;/publisher&amp;gt;
-    &amp;lt;/src-opts&amp;gt;
-&amp;lt;/src-cdrom&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;customize-src-cdrom&quot;&gt;Customize src-cdrom&lt;/h2&gt;
-&lt;p&gt;It is possible to add custom specific files to the src-cdrom. This can be done
-with ‘archivedir’ tags in the ‘src-cdrom’ section.&lt;/p&gt;
-
-&lt;h2 id=&quot;repository-key-in-xml-file&quot;&gt;Repository Key in xml file&lt;/h2&gt;
-&lt;p&gt;The key of a repository is now stored in the ELBE xml file using the tag ‘raw-key’.
-The old key tags are replaced by the preprocessor now.&lt;/p&gt;
-
-&lt;p&gt;An example of the usage of ‘raw-key’, can be
-found at: examples/includes/devel/mirrors.xml&lt;/p&gt;
-
-
-    </content>
-  </entry>
-  
-  <entry>
     <title>ELBE 3 release</title>
     <link href="https://elbe-rfs.org/news/v300/"/>
-    <updated>2019-03-14T00:00:00+00:00</updated>
+    <updated>2019-03-14T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v300</id>
     <author>
       <name></name>
@@ -378,7 +214,7 @@ And a lot of pylint complains have been fixed.&lt;/p&gt;
   <entry>
     <title>elbe v2.0 released</title>
     <link href="https://elbe-rfs.org/news/v200/"/>
-    <updated>2017-08-09T00:00:00+00:00</updated>
+    <updated>2017-08-09T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v200</id>
     <author>
       <name></name>
@@ -483,7 +319,7 @@ deb-src http://debian.linutronix.de/elbe-testing stretch main
   <entry>
     <title>elbe v1.0 released</title>
     <link href="https://elbe-rfs.org/news/v100/"/>
-    <updated>2015-12-24T00:00:00+00:00</updated>
+    <updated>2015-12-24T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v100</id>
     <author>
       <name></name>
@@ -517,7 +353,7 @@ deb-src http://debian.linutronix.de/elbe-testing jessie main
   <entry>
     <title>elbe v0.9.8 released</title>
     <link href="https://elbe-rfs.org/news/v098/"/>
-    <updated>2015-12-14T00:00:00+00:00</updated>
+    <updated>2015-12-14T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v098</id>
     <author>
       <name></name>
@@ -566,7 +402,7 @@ $ elbe pbuilder build --xmlfile /tmp/bbb.xml
   <entry>
     <title>ELBE technical Details</title>
     <link href="https://elbe-rfs.org/internals/"/>
-    <updated>2015-12-14T00:00:00+00:00</updated>
+    <updated>2015-12-14T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/internals</id>
     <author>
       <name></name>
@@ -635,7 +471,7 @@ individual processes and files of the inner environment.&lt;/p&gt;
   <entry>
     <title>ELBE in a nutshell</title>
     <link href="https://elbe-rfs.org/whatiselbe/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/whatiselbe</id>
     <author>
       <name></name>
@@ -720,7 +556,7 @@ reused in a way that will fulfill our needs.&lt;/p&gt;
   <entry>
     <title>Secure</title>
     <link href="https://elbe-rfs.org/feature/secure/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/secure</id>
     <author>
       <name></name>
@@ -738,7 +574,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>Reproducable Images</title>
     <link href="https://elbe-rfs.org/feature/reproducable/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/reproducable</id>
     <author>
       <name></name>
@@ -755,7 +591,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>Based on Debian</title>
     <link href="https://elbe-rfs.org/feature/debianbased/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/debianbased</id>
     <author>
       <name></name>
@@ -772,7 +608,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>ELBE ADK</title>
     <link href="https://elbe-rfs.org/feature/adk/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/adk</id>
     <author>
       <name></name>
@@ -789,7 +625,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>elbe v0.9.7 released</title>
     <link href="https://elbe-rfs.org/news/v097/"/>
-    <updated>2015-10-16T00:00:00+00:00</updated>
+    <updated>2015-10-16T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v097</id>
     <author>
       <name></name>

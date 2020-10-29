@@ -136,7 +136,7 @@
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				<p>The current elbe version is <em>13.0</em></p>
+				<p>The current elbe version is <em>13.1</em></p>
 
 <p>There are several ways to install a binary version of elbe.</p>
 
@@ -157,22 +157,32 @@ apt-key add elbe-repo.pub
 apt update
 apt install elbe</code></pre></div>
 
-<h4>Debian buster (or later)</h4>
+<h4>Debian sid</h4>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
 <span class="nb">cd</span> /tmp
 wget http://debian.linutronix.de/elbe/elbe-repo.pub
 apt-key add elbe-repo.pub
-<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe buster main&quot;</span> &gt;&gt; /etc/apt/sources.list
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe sid main&quot;</span> &gt;&gt; /etc/apt/sources.list
 apt update
 apt install elbe</code></pre></div>
+
+<h4>Debian jessie</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
+<span class="nb">cd</span> /tmp
+wget http://debian.linutronix.de/elbe/elbe-repo.pub
+apt-key add elbe-repo.pub
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe jessie main&quot;</span> &gt;&gt; /etc/apt/sources.list
+apt-get update
+apt-get install elbe</code></pre></div>
 
 
 				<hr />
 				<footer class="page-footer">
 					
 					<div class="page-meta">
-	<p>Updated <time datetime="2019-03-14T14:05:42Z" itemprop="datePublished">March 14, 2019</time></p>
+	<p>Updated <time datetime="2019-03-14T15:05:42Z" itemprop="datePublished">March 14, 2019</time></p>
 </div><!-- /.page-meta -->
 				</footer><!-- /.footer -->
 				<aside>
