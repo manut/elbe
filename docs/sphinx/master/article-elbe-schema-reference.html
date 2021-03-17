@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE XML Reference &mdash; ELBE 13.1 documentation</title>
+  <title>ELBE XML Reference &mdash; ELBE 13.2 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                13.1
+                13.2
               </div>
             
           
@@ -425,6 +425,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#extract-partition-type-rfs-extract-partition">extract_partition type: <em>rfs:extract_partition</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#copy-from-partition-type-rfs-copy-from-partition">copy_from_partition type: <em>rfs:copy_from_partition</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#copy-to-partition-type-rfs-copy-to-partition">copy_to_partition type: <em>rfs:copy_to_partition</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-partition-type-type-rfs-set-partition-type">set_partition_type type: <em>rfs:set_partition_type</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#command-type-rfs-partition-command">command type: <em>rfs:partition-command</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#type-extract-partition">TYPE: extract_partition</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id120">Example</a></li>
@@ -446,136 +447,141 @@
 <li class="toctree-l3"><a class="reference internal" href="#id127">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-addgroup">TYPE: addgroup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-set-partition-type">TYPE: set_partition_type</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id128">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id129">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-img-convert">TYPE: img_convert</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-addgroup">TYPE: addgroup</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id130">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id131">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-set-packer">TYPE: set_packer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-img-convert">TYPE: img_convert</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id132">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id133">Elements description</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#type-set-packer">TYPE: set_packer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id134">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id135">Elements description</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#simple-type-packer-type">SIMPLE TYPE: packer-type</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id134">Base Type</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id135">Restrictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id136">Base Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id137">Restrictions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#type-file">TYPE: file</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id136">Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id137">Elements description</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#type-adduser">TYPE: adduser</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id138">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id139">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-cpmv">TYPE: cpmv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-adduser">TYPE: adduser</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id140">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id141">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-rm">TYPE: rm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-cpmv">TYPE: cpmv</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id142">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id143">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-mknod">TYPE: mknod</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-rm">TYPE: rm</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id144">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id145">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-git-src">TYPE: git_src</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-mknod">TYPE: mknod</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id146">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id147">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-svn-src">TYPE: svn_src</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-git-src">TYPE: git_src</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id148">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id149">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-pkg">TYPE: pkg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-svn-src">TYPE: svn_src</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id150">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id151">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-pbuilder">TYPE: pbuilder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-pkg">TYPE: pkg</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id152">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id153">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-pkg-list">TYPE: pkg-list</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-pbuilder">TYPE: pbuilder</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id154">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id155">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-blacklist">TYPE: blacklist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-pkg-list">TYPE: pkg-list</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id156">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id157">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-fullpkg-list">TYPE: fullpkg-list</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-blacklist">TYPE: blacklist</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id158">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id159">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-conf">TYPE: conf</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-fullpkg-list">TYPE: fullpkg-list</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id160">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id161">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-preseed">TYPE: preseed</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-conf">TYPE: conf</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id162">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id163">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-empty">TYPE: empty</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-preseed">TYPE: preseed</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id164">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id165">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-string">TYPE: string</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-empty">TYPE: empty</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id166">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id167">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-unit-tests">TYPE: unit-tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-string">TYPE: string</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id168">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id169">Elements description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#type-test-suite">TYPE: test-suite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#type-unit-tests">TYPE: unit-tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id170">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id171">Elements description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#type-test-suite">TYPE: test-suite</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id172">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id173">Elements description</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#group-test-case">GROUP : test-case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-exists-type-rfs-string">file-exists type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#type-src-cdrom">TYPE: src-cdrom</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id172">Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id173">Elements description</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#type-src-cdrom-archive">TYPE: src-cdrom-archive</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id174">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id175">Elements description</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#type-src-cdrom-archive">TYPE: src-cdrom-archive</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id176">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id177">Elements description</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#simple-type-volume-type">SIMPLE TYPE: volume-type</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id176">Base Type</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id177">Restrictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id178">Base Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id179">Restrictions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#type-iso-opts">TYPE: iso-opts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id178">Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id179">Elements description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id180">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id181">Elements description</a></li>
 </ul>
 </li>
 </ul>
@@ -1327,6 +1333,8 @@ the sequence.</p>
 
   <span class="o">&lt;</span><span class="n">machine</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">machine</span><span class="o">&gt;</span>
 
+  <span class="o">&lt;</span><span class="n">triplet</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">triplet</span><span class="o">&gt;</span>
+
   <span class="o">&lt;</span><span class="n">NIC</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">NIC</span> <span class="o">&lt;/</span><span class="n">NIC</span><span class="o">&gt;</span>
 
   <span class="o">&lt;</span><span class="n">portforwarding</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">portforwarding</span> <span class="o">&lt;/</span><span class="n">portforwarding</span><span class="o">&gt;</span>
@@ -1356,6 +1364,8 @@ the sequence.</p>
 <dd>serial console of the virtual machine, e.g. “ttyAMA0,115200n1”</dd>
 <dt>machine <a class="reference external" href="#type-string">rfs:string</a></dt>
 <dd>virtual platform to host the build environment, e.g. “versatilepb”</dd>
+<dt>triplet <a class="reference external" href="#type-string">rfs:string</a></dt>
+<dd>The triplet that is used to generate the SDK environment.</dd>
 <dt>NIC <a class="reference external" href="#type-NIC">rfs:NIC</a></dt>
 <dd>network interface emulation</dd>
 <dt>portforwarding <a class="reference external" href="#type-portforwarding">rfs:portforwarding</a></dt>
@@ -2229,6 +2239,8 @@ filesystem like debugfs or tmpfs</dd>
 
   <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
 
+  <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
+
   <span class="o">&lt;</span><span class="n">bootable</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">bootable</span><span class="o">&gt;</span>
 
   <span class="o">&lt;</span><span class="n">biosgrub</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">biosgrub</span><span class="o">&gt;</span>
@@ -2245,6 +2257,10 @@ filesystem like debugfs or tmpfs</dd>
 <dt>label <a class="reference external" href="#type-string">rfs:string</a></dt>
 <dd>human readable label of the partition used for mount by label and as
 filename for the flashable image</dd>
+<dt>binary <a class="reference external" href="#type-string">rfs:string</a> <strong>optional</strong></dt>
+<dd>path and filename of a binary image which will be used as a source
+for this volume; this can be used for example to store a bootloader
+in a partition.</dd>
 <dt>bootable <a class="reference external" href="#type-string">rfs:string</a> <strong>optional</strong></dt>
 <dd>Whether this partition is marked bootable.</dd>
 <dt>biosgrub <a class="reference external" href="#type-string">rfs:string</a> <strong>optional</strong></dt>
@@ -2712,6 +2728,7 @@ loop device id is passed to the individual actions.</p>
   <span class="o">&lt;</span><span class="n">extract_partition</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">extract_partition</span> <span class="o">&lt;/</span><span class="n">extract_partition</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">copy_from_partition</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">copy_from_partition</span> <span class="o">&lt;/</span><span class="n">copy_from_partition</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">copy_to_partition</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">copy_to_partition</span> <span class="o">&lt;/</span><span class="n">copy_to_partition</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">set_partition_type</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">set_partition_type</span> <span class="o">&lt;/</span><span class="n">set_partition_type</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">partition</span><span class="o">-</span><span class="n">command</span> <span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">losetup</span><span class="o">&gt;</span>
 </pre></div>
@@ -2743,6 +2760,11 @@ an Artifact.</p>
 <h2>copy_to_partition type: <em>rfs:copy_to_partition</em><a class="headerlink" href="#copy-to-partition-type-rfs-copy-to-partition" title="Permalink to this headline">¶</a></h2>
 <p>Copy an artifact onto a partition. The partition is mounted, and the
 file is thencopied into the mounted filesystem.</p>
+</div>
+<div class="section" id="set-partition-type-type-rfs-set-partition-type">
+<h2>set_partition_type type: <em>rfs:set_partition_type</em><a class="headerlink" href="#set-partition-type-type-rfs-set-partition-type" title="Permalink to this headline">¶</a></h2>
+<p>Set the type of a partition via fdisk. (to support esoteric partition
+types,that parted does not support.)</p>
 </div>
 <div class="section" id="command-type-rfs-partition-command">
 <h2>command type: <em>rfs:partition-command</em><a class="headerlink" href="#command-type-rfs-partition-command" title="Permalink to this headline">¶</a></h2>
@@ -2833,20 +2855,41 @@ the artifact name.</p>
 </dl>
 </div>
 </div>
-<div class="section" id="type-addgroup">
-<span id="addgroup"></span><h2>TYPE: addgroup<a class="headerlink" href="#type-addgroup" title="Permalink to this headline">¶</a></h2>
-<p>describes an additional user group to be created. the following
-parameters areavailable:’gid’ - group id.’system = “True” - system
-group.The value of the tag describes the group name namefor the account.</p>
+<div class="section" id="type-set-partition-type">
+<span id="set-partition-type"></span><h2>TYPE: set_partition_type<a class="headerlink" href="#type-set-partition-type" title="Permalink to this headline">¶</a></h2>
+<p>Attribute <em>part</em> describes the partition to be modified (nr).Attribute
+<em>type</em> is the numerical partition id, as understood byfdisk.</p>
 <div class="section" id="id128">
 <h3>Example<a class="headerlink" href="#id128" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">addgroup</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">addgroup</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">set_partition_type</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">set_partition_type</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id129">
 <h3>Elements description<a class="headerlink" href="#id129" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>[attr] part integer</dt>
+<dd>FIXME - I have no documentation</dd>
+<dt>[attr] type string</dt>
+<dd>FIXME - I have no documentation</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="type-addgroup">
+<span id="addgroup"></span><h2>TYPE: addgroup<a class="headerlink" href="#type-addgroup" title="Permalink to this headline">¶</a></h2>
+<p>describes an additional user group to be created. the following
+parameters areavailable:’gid’ - group id.’system = “True” - system
+group.The value of the tag describes the group name namefor the account.</p>
+<div class="section" id="id130">
+<h3>Example<a class="headerlink" href="#id130" title="Permalink to this headline">¶</a></h3>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">addgroup</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">addgroup</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id131">
+<h3>Elements description<a class="headerlink" href="#id131" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] gid string</dt>
 <dd>FIXME - I have no documentation</dd>
@@ -2862,15 +2905,15 @@ filename of the source Imagefile.The dst attribute the destination
 filename, and the fmt attribute isthe format. (See <em>qemu-img –help</em> for
 a list of possible formats)The Image is per default compressed with gzip
 afterwards.</p>
-<div class="section" id="id130">
-<h3>Example<a class="headerlink" href="#id130" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id132">
+<h3>Example<a class="headerlink" href="#id132" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">img_convert</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">img_convert</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id131">
-<h3>Elements description<a class="headerlink" href="#id131" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id133">
+<h3>Elements description<a class="headerlink" href="#id133" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] dst string</dt>
 <dd>FIXME - I have no documentation</dd>
@@ -2886,15 +2929,15 @@ afterwards.</p>
 <p>Set the packer to use for an artifaxct.The value of the tag describes
 the filename of the Imagefile.The packer attribute may take the
 following values:(none, gzip, tar, targz, tarxz)</p>
-<div class="section" id="id132">
-<h3>Example<a class="headerlink" href="#id132" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id134">
+<h3>Example<a class="headerlink" href="#id134" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">set_packer</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">set_packer</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id133">
-<h3>Elements description<a class="headerlink" href="#id133" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id135">
+<h3>Elements description<a class="headerlink" href="#id135" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] packer <a class="reference external" href="#type-packer-type">rfs:packer-type</a></dt>
 <dd>FIXME - I have no documentation</dd>
@@ -2904,12 +2947,12 @@ following values:(none, gzip, tar, targz, tarxz)</p>
 <div class="section" id="simple-type-packer-type">
 <span id="packer-type"></span><h2>SIMPLE TYPE: packer-type<a class="headerlink" href="#simple-type-packer-type" title="Permalink to this headline">¶</a></h2>
 <p>FIXME - I have no documentation</p>
-<div class="section" id="id134">
-<h3>Base Type<a class="headerlink" href="#id134" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id136">
+<h3>Base Type<a class="headerlink" href="#id136" title="Permalink to this headline">¶</a></h3>
 <p><em>string</em></p>
 </div>
-<div class="section" id="id135">
-<h3>Restrictions<a class="headerlink" href="#id135" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id137">
+<h3>Restrictions<a class="headerlink" href="#id137" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
@@ -2944,15 +2987,15 @@ instead of writing’owner’ - (optional) set file owner’group’ -
 (optional) set group ownership’mode’ - (optional) set file mode bitsThe
 value of the tag is the raw/encoded content towrite/append to the
 destination</p>
-<div class="section" id="id136">
-<h3>Example<a class="headerlink" href="#id136" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id138">
+<h3>Example<a class="headerlink" href="#id138" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">file</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id137">
-<h3>Elements description<a class="headerlink" href="#id137" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id139">
+<h3>Elements description<a class="headerlink" href="#id139" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] dst string</dt>
 <dd>FIXME - I have no documentation</dd>
@@ -2980,15 +3023,15 @@ name.<em>home</em> - home directory.<em>system=”True”</em> - system
 user.<em>create_home=”False”</em> - do not create the home
 directory.<em>create_group = “False”</em> - Do not create the primary
 group.The value of the tag describes the login name for the account.</p>
-<div class="section" id="id138">
-<h3>Example<a class="headerlink" href="#id138" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id140">
+<h3>Example<a class="headerlink" href="#id140" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">adduser</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id139">
-<h3>Elements description<a class="headerlink" href="#id139" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id141">
+<h3>Elements description<a class="headerlink" href="#id141" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] shell string</dt>
 <dd>FIXME - I have no documentation</dd>
@@ -3014,15 +3057,15 @@ group.The value of the tag describes the login name for the account.</p>
 <div class="section" id="type-cpmv">
 <span id="cpmv"></span><h2>TYPE: cpmv<a class="headerlink" href="#type-cpmv" title="Permalink to this headline">¶</a></h2>
 <p>describes a copy or move of an element in the rootfilesystem</p>
-<div class="section" id="id140">
-<h3>Example<a class="headerlink" href="#id140" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id142">
+<h3>Example<a class="headerlink" href="#id142" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">cpmv</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">cpmv</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id141">
-<h3>Elements description<a class="headerlink" href="#id141" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id143">
+<h3>Elements description<a class="headerlink" href="#id143" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] path string</dt>
 <dd>FIXME - I have no documentation</dd>
@@ -3033,15 +3076,15 @@ group.The value of the tag describes the login name for the account.</p>
 <span id="rm"></span><h2>TYPE: rm<a class="headerlink" href="#type-rm" title="Permalink to this headline">¶</a></h2>
 <p>describes a removal of a pattern from the rootfilesystem.Including an
 exclude pattern</p>
-<div class="section" id="id142">
-<h3>Example<a class="headerlink" href="#id142" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id144">
+<h3>Example<a class="headerlink" href="#id144" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id143">
-<h3>Elements description<a class="headerlink" href="#id143" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id145">
+<h3>Elements description<a class="headerlink" href="#id145" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] exclude string</dt>
 <dd>FIXME - I have no documentation</dd>
@@ -3051,15 +3094,15 @@ exclude pattern</p>
 <div class="section" id="type-mknod">
 <span id="mknod"></span><h2>TYPE: mknod<a class="headerlink" href="#type-mknod" title="Permalink to this headline">¶</a></h2>
 <p>describes a mknod operaition in finetuning</p>
-<div class="section" id="id144">
-<h3>Example<a class="headerlink" href="#id144" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id146">
+<h3>Example<a class="headerlink" href="#id146" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">mknod</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">mknod</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id145">
-<h3>Elements description<a class="headerlink" href="#id145" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id147">
+<h3>Elements description<a class="headerlink" href="#id147" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] opts string</dt>
 <dd>FIXME - I have no documentation</dd>
@@ -3069,28 +3112,10 @@ exclude pattern</p>
 <div class="section" id="type-git-src">
 <span id="git-src"></span><h2>TYPE: git_src<a class="headerlink" href="#type-git-src" title="Permalink to this headline">¶</a></h2>
 <p>URI of the git repository, e.g. “git://myhost/myrepo.git”</p>
-<div class="section" id="id146">
-<h3>Example<a class="headerlink" href="#id146" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">git_src</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">git_src</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id147">
-<h3>Elements description<a class="headerlink" href="#id147" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>[attr] revision string</dt>
-<dd>FIXME - I have no documentation</dd>
-</dl>
-</div>
-</div>
-<div class="section" id="type-svn-src">
-<span id="svn-src"></span><h2>TYPE: svn_src<a class="headerlink" href="#type-svn-src" title="Permalink to this headline">¶</a></h2>
-<p>URI of the svn repository, e.g. “svn://myhost/myrepo/tags/my_tag”</p>
 <div class="section" id="id148">
 <h3>Example<a class="headerlink" href="#id148" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">svn_src</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">svn_src</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">git_src</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">git_src</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -3102,18 +3127,36 @@ exclude pattern</p>
 </dl>
 </div>
 </div>
-<div class="section" id="type-pkg">
-<span id="pkg"></span><h2>TYPE: pkg<a class="headerlink" href="#type-pkg" title="Permalink to this headline">¶</a></h2>
-<p>describes a debian binary package</p>
+<div class="section" id="type-svn-src">
+<span id="svn-src"></span><h2>TYPE: svn_src<a class="headerlink" href="#type-svn-src" title="Permalink to this headline">¶</a></h2>
+<p>URI of the svn repository, e.g. “svn://myhost/myrepo/tags/my_tag”</p>
 <div class="section" id="id150">
 <h3>Example<a class="headerlink" href="#id150" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">svn_src</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">svn_src</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id151">
 <h3>Elements description<a class="headerlink" href="#id151" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>[attr] revision string</dt>
+<dd>FIXME - I have no documentation</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="type-pkg">
+<span id="pkg"></span><h2>TYPE: pkg<a class="headerlink" href="#type-pkg" title="Permalink to this headline">¶</a></h2>
+<p>describes a debian binary package</p>
+<div class="section" id="id152">
+<h3>Example<a class="headerlink" href="#id152" title="Permalink to this headline">¶</a></h3>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id153">
+<h3>Elements description<a class="headerlink" href="#id153" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] pin string</dt>
 <dd>prefer the defined version of the debian package</dd>
@@ -3123,6 +3166,8 @@ exclude pattern</p>
 <dd>installed automatically as a dependency</dd>
 <dt>[attr] md5 string</dt>
 <dd>md5 sum of the package.</dd>
+<dt>[attr] prio string</dt>
+<dd>priority of the package in the original repository.</dd>
 <dt>[attr] on_src_cd string</dt>
 <dd>If set to “False” the source will not be included on the source
 cdrom.</dd>
@@ -3132,8 +3177,8 @@ cdrom.</dd>
 <div class="section" id="type-pbuilder">
 <span id="pbuilder"></span><h2>TYPE: pbuilder<a class="headerlink" href="#type-pbuilder" title="Permalink to this headline">¶</a></h2>
 <p>reference to debian source packages</p>
-<div class="section" id="id152">
-<h3>Example<a class="headerlink" href="#id152" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id154">
+<h3>Example<a class="headerlink" href="#id154" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pbuilder</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">src</span><span class="o">-</span><span class="n">pkg</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">src</span><span class="o">-</span><span class="n">pkg</span><span class="o">&gt;</span>
 
@@ -3145,8 +3190,8 @@ cdrom.</dd>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id153">
-<h3>Elements description<a class="headerlink" href="#id153" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id155">
+<h3>Elements description<a class="headerlink" href="#id155" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>src-pkg <a class="reference external" href="#type-string">rfs:string</a></dt>
 <dd>reference to a debian source package from a deb-src archive. The
@@ -3163,8 +3208,8 @@ source will be built with a pbuilder before the image generation.</dd>
 <div class="section" id="type-pkg-list">
 <span id="pkg-list"></span><h2>TYPE: pkg-list<a class="headerlink" href="#type-pkg-list" title="Permalink to this headline">¶</a></h2>
 <p>container of debian packages</p>
-<div class="section" id="id154">
-<h3>Example<a class="headerlink" href="#id154" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id156">
+<h3>Example<a class="headerlink" href="#id156" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">pkg</span> <span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
 
@@ -3172,8 +3217,8 @@ source will be built with a pbuilder before the image generation.</dd>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id155">
-<h3>Elements description<a class="headerlink" href="#id155" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id157">
+<h3>Elements description<a class="headerlink" href="#id157" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>pkg <a class="reference external" href="#type-pkg">rfs:pkg</a></dt>
 <dd>reference to a binary debian package which will be installed from the
@@ -3184,8 +3229,8 @@ given mirrors into the target rootfilesystem.</dd>
 <div class="section" id="type-blacklist">
 <span id="blacklist"></span><h2>TYPE: blacklist<a class="headerlink" href="#type-blacklist" title="Permalink to this headline">¶</a></h2>
 <p>blacklists of debian packages</p>
-<div class="section" id="id156">
-<h3>Example<a class="headerlink" href="#id156" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id158">
+<h3>Example<a class="headerlink" href="#id158" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">blacklist</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">sysroot</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span> <span class="o">&lt;/</span><span class="n">sysroot</span><span class="o">&gt;</span>
 
@@ -3193,8 +3238,8 @@ given mirrors into the target rootfilesystem.</dd>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id157">
-<h3>Elements description<a class="headerlink" href="#id157" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id159">
+<h3>Elements description<a class="headerlink" href="#id159" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>sysroot <a class="reference external" href="#type-pkg-list">rfs:pkg-list</a></dt>
 <dd>avoid installing the specified packages into the sysroot</dd>
@@ -3204,8 +3249,8 @@ given mirrors into the target rootfilesystem.</dd>
 <div class="section" id="type-fullpkg-list">
 <span id="fullpkg-list"></span><h2>TYPE: fullpkg-list<a class="headerlink" href="#type-fullpkg-list" title="Permalink to this headline">¶</a></h2>
 <p>List of packages to be validated against the installed list.</p>
-<div class="section" id="id158">
-<h3>Example<a class="headerlink" href="#id158" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id160">
+<h3>Example<a class="headerlink" href="#id160" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fullpkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">pkg</span> <span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
 
@@ -3213,8 +3258,8 @@ given mirrors into the target rootfilesystem.</dd>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id159">
-<h3>Elements description<a class="headerlink" href="#id159" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id161">
+<h3>Elements description<a class="headerlink" href="#id161" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>pkg <a class="reference external" href="#type-pkg">rfs:pkg</a></dt>
 <dd>Reference to a binary debian package which is supposed to be
@@ -3225,15 +3270,15 @@ installed.</dd>
 <div class="section" id="type-conf">
 <span id="conf"></span><h2>TYPE: conf<a class="headerlink" href="#type-conf" title="Permalink to this headline">¶</a></h2>
 <p>describes a preseeding entry</p>
-<div class="section" id="id160">
-<h3>Example<a class="headerlink" href="#id160" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id162">
+<h3>Example<a class="headerlink" href="#id162" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">conf</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">conf</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id161">
-<h3>Elements description<a class="headerlink" href="#id161" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id163">
+<h3>Elements description<a class="headerlink" href="#id163" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] owner string</dt>
 <dd>owner package of the config entry</dd>
@@ -3249,8 +3294,8 @@ installed.</dd>
 <div class="section" id="type-preseed">
 <span id="preseed"></span><h2>TYPE: preseed<a class="headerlink" href="#type-preseed" title="Permalink to this headline">¶</a></h2>
 <p>container of config entries</p>
-<div class="section" id="id162">
-<h3>Example<a class="headerlink" href="#id162" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id164">
+<h3>Example<a class="headerlink" href="#id164" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">preseed</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">conf</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">conf</span> <span class="o">&lt;/</span><span class="n">conf</span><span class="o">&gt;</span>
 
@@ -3258,8 +3303,8 @@ installed.</dd>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id163">
-<h3>Elements description<a class="headerlink" href="#id163" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id165">
+<h3>Elements description<a class="headerlink" href="#id165" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>conf <a class="reference external" href="#type-conf">rfs:conf</a></dt>
 <dd>A config entry</dd>
@@ -3269,24 +3314,10 @@ installed.</dd>
 <div class="section" id="type-empty">
 <span id="empty"></span><h2>TYPE: empty<a class="headerlink" href="#type-empty" title="Permalink to this headline">¶</a></h2>
 <p>This element just acts like a flag. It might be there, or not.</p>
-<div class="section" id="id164">
-<h3>Example<a class="headerlink" href="#id164" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">empty</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id165">
-<h3>Elements description<a class="headerlink" href="#id165" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="type-string">
-<span id="string"></span><h2>TYPE: string<a class="headerlink" href="#type-string" title="Permalink to this headline">¶</a></h2>
-<p>E.L.B.E. standard string. Allow XML base attribute.</p>
 <div class="section" id="id166">
 <h3>Example<a class="headerlink" href="#id166" title="Permalink to this headline">¶</a></h3>
-<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">empty</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -3294,13 +3325,27 @@ installed.</dd>
 <h3>Elements description<a class="headerlink" href="#id167" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
+<div class="section" id="type-string">
+<span id="string"></span><h2>TYPE: string<a class="headerlink" href="#type-string" title="Permalink to this headline">¶</a></h2>
+<p>E.L.B.E. standard string. Allow XML base attribute.</p>
+<div class="section" id="id168">
+<h3>Example<a class="headerlink" href="#id168" title="Permalink to this headline">¶</a></h3>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id169">
+<h3>Elements description<a class="headerlink" href="#id169" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 <div class="section" id="type-unit-tests">
 <span id="unit-tests"></span><h2>TYPE: unit-tests<a class="headerlink" href="#type-unit-tests" title="Permalink to this headline">¶</a></h2>
 <p>Sequence of test suites. The require attribute <em>dst</em> is thename of the
 file where the Junit XML file will be dumprelative to the project
 directory.</p>
-<div class="section" id="id168">
-<h3>Example<a class="headerlink" href="#id168" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id170">
+<h3>Example<a class="headerlink" href="#id170" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">unit</span><span class="o">-</span><span class="n">tests</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span> <span class="o">&lt;/</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span>
 
@@ -3308,8 +3353,8 @@ directory.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id169">
-<h3>Elements description<a class="headerlink" href="#id169" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id171">
+<h3>Elements description<a class="headerlink" href="#id171" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>test-suite <a class="reference external" href="#type-test-suite">rfs:test-suite</a></dt>
 <dd>FIXME - I have no documentation</dd>
@@ -3320,16 +3365,16 @@ directory.</p>
 <span id="test-suite"></span><h2>TYPE: test-suite<a class="headerlink" href="#type-test-suite" title="Permalink to this headline">¶</a></h2>
 <p>A test suite is a sequence of test cases. The requiredattribute name is
 the an human readable identifier for thetest suite.</p>
-<div class="section" id="id170">
-<h3>Example<a class="headerlink" href="#id170" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id172">
+<h3>Example<a class="headerlink" href="#id172" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">file</span><span class="o">-</span><span class="n">exists</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">file</span><span class="o">-</span><span class="n">exists</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">test</span><span class="o">-</span><span class="n">suite</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id171">
-<h3>Elements description<a class="headerlink" href="#id171" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id173">
+<h3>Elements description<a class="headerlink" href="#id173" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] name string</dt>
 <dd>FIXME - I have no documentation</dd>
@@ -3347,8 +3392,8 @@ the an human readable identifier for thetest suite.</p>
 <div class="section" id="type-src-cdrom">
 <span id="src-cdrom"></span><h2>TYPE: src-cdrom<a class="headerlink" href="#type-src-cdrom" title="Permalink to this headline">¶</a></h2>
 <p>Configuration of the src-cdrom</p>
-<div class="section" id="id172">
-<h3>Example<a class="headerlink" href="#id172" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id174">
+<h3>Example<a class="headerlink" href="#id174" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">src</span><span class="o">-</span><span class="n">cdrom</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">memory</span> <span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
 
@@ -3360,8 +3405,8 @@ the an human readable identifier for thetest suite.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id173">
-<h3>Elements description<a class="headerlink" href="#id173" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id175">
+<h3>Elements description<a class="headerlink" href="#id175" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>size <a class="reference external" href="#type-memory">rfs:memory</a></dt>
 <dd>The size limit for each source cdrom ISO image. The files are
@@ -3377,15 +3422,15 @@ no size limit.</dd>
 <div class="section" id="type-src-cdrom-archive">
 <span id="src-cdrom-archive"></span><h2>TYPE: src-cdrom-archive<a class="headerlink" href="#type-src-cdrom-archive" title="Permalink to this headline">¶</a></h2>
 <p>Holds a base64 encoded tar.bz2 file that is added to the src-cdrom.</p>
-<div class="section" id="id174">
-<h3>Example<a class="headerlink" href="#id174" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id176">
+<h3>Example<a class="headerlink" href="#id176" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">src</span><span class="o">-</span><span class="n">cdrom</span><span class="o">-</span><span class="n">archive</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">src</span><span class="o">-</span><span class="n">cdrom</span><span class="o">-</span><span class="n">archive</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id175">
-<h3>Elements description<a class="headerlink" href="#id175" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id177">
+<h3>Elements description<a class="headerlink" href="#id177" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] volume <a class="reference external" href="#type-volume-type">rfs:volume-type</a></dt>
 <dd>Use this to control where the archive is stored when using split
@@ -3401,12 +3446,12 @@ added to each volume.</dd>
 <div class="section" id="simple-type-volume-type">
 <span id="volume-type"></span><h2>SIMPLE TYPE: volume-type<a class="headerlink" href="#simple-type-volume-type" title="Permalink to this headline">¶</a></h2>
 <p>FIXME - I have no documentation</p>
-<div class="section" id="id176">
-<h3>Base Type<a class="headerlink" href="#id176" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id178">
+<h3>Base Type<a class="headerlink" href="#id178" title="Permalink to this headline">¶</a></h3>
 <p><em>string</em></p>
 </div>
-<div class="section" id="id177">
-<h3>Restrictions<a class="headerlink" href="#id177" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id179">
+<h3>Restrictions<a class="headerlink" href="#id179" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -3425,8 +3470,8 @@ added to each volume.</dd>
 <div class="section" id="type-iso-opts">
 <span id="iso-opts"></span><h2>TYPE: iso-opts<a class="headerlink" href="#type-iso-opts" title="Permalink to this headline">¶</a></h2>
 <p>ISO image options passed to genisoimage(1).</p>
-<div class="section" id="id178">
-<h3>Example<a class="headerlink" href="#id178" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id180">
+<h3>Example<a class="headerlink" href="#id180" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">iso</span><span class="o">-</span><span class="n">opts</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">abstract</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">abstract</span><span class="o">&gt;</span>
 
@@ -3450,8 +3495,8 @@ added to each volume.</dd>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id179">
-<h3>Elements description<a class="headerlink" href="#id179" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id181">
+<h3>Elements description<a class="headerlink" href="#id181" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>[attr] strict boolean</dt>
 <dd>If set to “true”, fails in preprocessing stage if an option doesn’t
@@ -3533,6 +3578,7 @@ respect ISO-9660. The default is “false”.</dd>
             <dd><a href="../v12.5/article-elbe-schema-reference.html">v12.5</a></dd>
             <dd><a href="../v13.0/article-elbe-schema-reference.html">v13.0</a></dd>
             <dd><a href="../v13.1/article-elbe-schema-reference.html">v13.1</a></dd>
+            <dd><a href="../v13.2/article-elbe-schema-reference.html">v13.2</a></dd>
             <dd><a href="../v2.5/index.html">v2.5</a></dd>
             <dd><a href="../v3/article-elbe-schema-reference.html">v3</a></dd>
             <dd><a href="../v4/article-elbe-schema-reference.html">v4</a></dd>
@@ -3567,6 +3613,7 @@ respect ISO-9660. The default is “false”.</dd>
             <dd><a href="../releases_v12.5/article-elbe-schema-reference.html">releases/v12.5</a></dd>
             <dd><a href="../releases_v13.0/article-elbe-schema-reference.html">releases/v13.0</a></dd>
             <dd><a href="../releases_v13.1/article-elbe-schema-reference.html">releases/v13.1</a></dd>
+            <dd><a href="../releases_v13.2/article-elbe-schema-reference.html">releases/v13.2</a></dd>
             <dd><a href="../releases_v2.0/index.html">releases/v2.0</a></dd>
             <dd><a href="../releases_v2.1/index.html">releases/v2.1</a></dd>
             <dd><a href="../releases_v2.2/index.html">releases/v2.2</a></dd>
@@ -3608,7 +3655,7 @@ respect ISO-9660. The default is “false”.</dd>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'13.1',
+            VERSION:'13.2',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
