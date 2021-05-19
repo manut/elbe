@@ -1,0 +1,61 @@
+************************
+elbe-chg_archive
+************************
+
+.. __name:
+
+NAME
+====
+
+elbe-chg_archive - Insert a new config archive (.tbz) into a XML file.
+
+.. __synopsis:
+
+SYNOPSIS
+========
+
+   ::
+
+      elbe chg_archive <xmlfile> <archive.tar.bz2>
+
+.. __description:
+
+DESCRIPTION
+===========
+
+This command exchanges the archive file inside the xml file with the one
+specified.
+
+The archive tbz is used to insert configuration files into the
+root-filesystem.
+
+.. __options:
+
+OPTIONS
+=======
+
+<xmlfile>
+   The xmlfile to be modified.
+
+<archive.tar.bz2>
+   The archive which must be a tar.bz2. The archive is uuencoded and
+   swapped with the archive in the xml file. If no archive exists, the
+   archive xmlnode will be created.
+
+.. __examples:
+
+EXAMPLES
+========
+
+-  Insert *myarch.tar.bz2* into *mysqueeze.xml*
+
+   ::
+
+      $ elbe chg_archive mysqueeze.xml myarch.tar.bz2
+
+.. __elbe:
+
+ELBE
+====
+
+Part of the elbe1 suite

@@ -1,0 +1,1942 @@
+*************************
+ELBE XML Reference
+*************************
+
+.. __rootfilesystem_type_emphasis_rfs_rootfilesystemtype_emphasis:
+
+RootFileSystem type: *rfs:RootFileSystemType*
+=============================================
+
+describes one elbe project. An elbe project contains the creation of
+abuild environemt and the definition of a elbe target rootfilesystem.
+
+.. _RootFileSystemType:
+
+TYPE: RootFileSystemType
+========================
+
+includes all subelements to define the elbe project
+
+.. __example:
+
+Example
+-------
+
+.. code:: xml
+
+   <RootFileSystemType>
+     <initvm> rfs:initvm </initvm>
+     <project> rfs:project </project>
+     <target> rfs:target </target>
+     <archive> base64Binary </archive>
+     <debootstrappkgs> rfs:fullpkg-list </debootstrappkgs>
+     <initvmpkgs> rfs:fullpkg-list </initvmpkgs>
+     <initvm_sources_list> rfs:string </initvm_sources_list>
+     <initvm_apt_prefs> rfs:string </initvm_apt_prefs>
+     <fullpkgs> rfs:fullpkg-list </fullpkgs>
+     <sources_list> rfs:string </sources_list>
+     <apt_prefs> rfs:string </apt_prefs>
+     <elbe_version> rfs:string </elbe_version>
+   </RootFileSystemType>
+
+.. __element_description:
+
+Element description
+-------------------
+
+initvm `rfs:initvm <#type-initvm>`__ **optional**
+   Configurations that are used for creating the initvm e.g. the
+   definition of the used debian mirrors, suite and buildtype
+
+project `rfs:project <#type-project>`__ **optional**
+   Configurations that are used for creating the buildenvironment and
+   the target rootfilesystem. e.g. the definition of the used debian
+   mirrors.
+
+target `rfs:target <#type-target>`__ **optional**
+   Configurations that are used to create the target rootfilesystem
+
+archive base64Binary **optional**
+   tar.bz2 file that contains configuration files for the target
+   rootfilesystem. To alter this node use *elbe chg_archive* and to get
+   the content of this node *elbe get_archive*.
+
+debootstrappkgs `rfs:fullpkg-list <#type-fullpkg-list>`__
+   List of packages installed right after debootstrap
+
+initvmpkgs `rfs:fullpkg-list <#type-fullpkg-list>`__
+   List of packages installed right after debootstrap
+
+initvm_sources_list `rfs:string <#type-string>`__
+   apt sources list.
+
+initvm_apt_prefs `rfs:string <#type-string>`__
+   apt preferences list
+
+fullpkgs `rfs:fullpkg-list <#type-fullpkg-list>`__
+   List of packages with their versions installed on the RFS
+
+sources_list `rfs:string <#type-string>`__
+   apt sources list.
+
+apt_prefs `rfs:string <#type-string>`__
+   apt preferences list
+
+elbe_version `rfs:string <#type-string>`__
+   Elbe Version that was used in the last build of this file.
+
+.. _revisionNr:
+
+SIMPLE TYPE: revisionNr
+=======================
+
+is used to decide if your elbe version is compatiblewith the given xml
+file
+
+.. __base_type:
+
+Base Type
+---------
+
+*integer*
+
+.. __restrictions:
+
+Restrictions
+------------
+
++-----------------------------------+-----------------------------------+
+| *minInclusive*                    | 6                                 |
++-----------------------------------+-----------------------------------+
+| *maxInclusive*                    | 6                                 |
++-----------------------------------+-----------------------------------+
+
+.. _binary-url:
+
+TYPE: binary-url
+================
+
+e.g. "http://myhost/debian /" or "http://debian.org/debian main"
+
+.. __example_2:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _url:
+
+TYPE: url
+=========
+
+links to one additional debian mirror
+
+.. __example_3:
+
+Example
+-------
+
+.. code:: xml
+
+   <url>
+     <binary> rfs:binary-url </binary>
+     <source> string </source>
+     <key> rfs:string </key>
+   </url>
+
+.. __element_description_2:
+
+Element description
+-------------------
+
+binary `rfs:binary-url <#type-binary-url>`__ **optional**
+   e.g. "http://myhost/debian /" or "http://debian.org/debian main"
+
+source string **optional**
+   e.g. "http://myhost/sources /" or "http://debian.org/debian main"
+
+key `rfs:string <#type-string>`__ **optional**
+   URL of the Public Key used to sign this Repository e.g
+   "http://myhost/key.pub" or
+   "http://debian.linutronix.de/elbe/elbe-repo.pub"
+
+.. _url-list:
+
+TYPE: url-list
+==============
+
+links to additional debian mirrors
+
+.. __example_4:
+
+Example
+-------
+
+.. code:: xml
+
+   <url-list>
+     <url> rfs:url </url>
+   </url-list>
+
+.. __element_description_3:
+
+Element description
+-------------------
+
+url `rfs:url <#type-url>`__
+   describes an additional debian mirror
+
+.. _mirror:
+
+TYPE: mirror
+============
+
+specify main and additional debian mirrors
+
+.. __example_5:
+
+Example
+-------
+
+.. code:: xml
+
+   <mirror>
+     <primary_host> rfs:string </primary_host>
+     <primary_path> rfs:string </primary_path>
+     <primary_proto> rfs:string </primary_proto>
+     <primary_proxy> rfs:string </primary_proxy>
+     <cdrom> rfs:string </cdrom>
+     <url-list> rfs:url-list </url-list>
+   </mirror>
+
+.. __element_description_4:
+
+Element description
+-------------------
+
+primary_host `rfs:string <#type-string>`__
+   IP address or hostname of the primary debian mirror e.g. "debian.org"
+   without a protocol or any slash
+
+primary_path `rfs:string <#type-string>`__
+   base path to the debian mirror on the given host e.g. "/debian"
+
+primary_proto `rfs:string <#type-string>`__
+   protocol to access the primary debian mirror e.g. "http" or "ftp"
+
+primary_proxy `rfs:string <#type-string>`__
+   proxy to access the debian mirror e.g.
+   "http://me:mypass@myproxy:8080"
+
+cdrom `rfs:string <#type-string>`__
+   iso image of a cdrom/dvd with debian packages.
+
+url-list `rfs:url-list <#type-url-list>`__ **optional**
+   additional debian repositories, e.g. for own debian packages
+
+.. _initvm:
+
+TYPE: initvm
+============
+
+describes settings that apply to the creation of the initvm
+
+.. __example_6:
+
+Example
+-------
+
+.. code:: xml
+
+   <initvm>
+     <buildtype> rfs:string </buildtype>
+     <mirror> rfs:mirror </mirror>
+     <noauth> rfs:string </noauth>
+     <preference> rfs:preference </preference>
+     <suite> rfs:string </suite>
+     <pkg-list> rfs:pkg-list </pkg-list>
+     <preseed> rfs:preseed </preseed>
+     <size> rfs:string </size>
+     <img> rfs:string </img>
+     <portforwarding> rfs:portforwarding </portforwarding>
+   </initvm>
+
+.. __element_description_5:
+
+Element description
+-------------------
+
+buildtype `rfs:string <#type-string>`__
+   Default buildtype like armel, ppc, and in the future armel-virtio
+
+mirror `rfs:mirror <#type-mirror>`__
+   used debian mirrors
+
+noauth `rfs:string <#type-string>`__ **optional**
+   allow installation of unsigned debian packages
+
+preference `rfs:preference <#type-preference>`__ **optional**
+   used for pinning of all packages TODO: example?
+
+suite `rfs:string <#type-string>`__
+   name of the debian suite that should be used to generate the initvm.
+   e.g. "lenny", "squeeze", "sid", ..
+
+pkg-list `rfs:pkg-list <#type-pkg-list>`__
+   additional packages that are installed into the initvm.
+
+preseed `rfs:preseed <#type-preseed>`__
+   Custom preseeding Values for apt
+
+size `rfs:string <#type-string>`__
+   size of the virtual harddisk used to run the build environment
+
+img `rfs:string <#type-string>`__
+   hd image backend format: raw, qcow, vmdk, …
+
+portforwarding `rfs:portforwarding <#type-portforwarding>`__
+   network ports of the buildenvironment that are forwarded to the host
+   machine
+
+.. _project:
+
+TYPE: project
+=============
+
+describes elbe project settings that apply to the creation of the
+targetrootfilesystem and include the definition of the build environment
+
+.. __example_7:
+
+Example
+-------
+
+.. code:: xml
+
+   <project>
+     <name> rfs:string </name>
+     <version> rfs:string </version>
+     <description> rfs:string </description>
+     <buildtype> rfs:string </buildtype>
+     <mirror> rfs:mirror </mirror>
+     <noauth> rfs:string </noauth>
+     <preference> rfs:preference </preference>
+     <raw-preference> rfs:raw-preference </raw-preference>
+     <suite> rfs:string </suite>
+     <buildimage> rfs:buildimage </buildimage>
+     <preseed> rfs:preseed </preseed>
+   </project>
+
+.. __element_description_6:
+
+Element description
+-------------------
+
+name `rfs:string <#type-string>`__ **optional**
+   name of the project this rootfilesystem is associated with
+
+version `rfs:string <#type-string>`__ **optional**
+   version of the rootfilesystem definition
+
+description `rfs:string <#type-string>`__ **optional**
+   human readable description of the project
+
+buildtype `rfs:string <#type-string>`__
+   Default buildtype like armel, ppc, and in the future armel-virtio
+
+mirror `rfs:mirror <#type-mirror>`__
+   used debian mirrors
+
+noauth `rfs:string <#type-string>`__ **optional**
+   allow installation of unsigned debian packages
+
+preference `rfs:preference <#type-preference>`__ **optional**
+   used for pinning of all packages TODO: example?
+
+raw-preference `rfs:raw-preference <#type-raw-preference>`__
+   gets dedented and striped and is then written to /etc/apt/preferences
+   TODO: example?
+
+suite `rfs:string <#type-string>`__
+   name of the debian suite that should be used to generate the
+   buildenvironment and the rootfilesystem. e.g. "lenny", "squeeze",
+   "sid", ..
+
+buildimage `rfs:buildimage <#type-buildimage>`__ **optional**
+   reference to the buildimage which is used to generate the
+   rootfilesystem
+
+preseed `rfs:preseed <#type-preseed>`__
+   Custom preseeding Values for apt
+
+.. _preference:
+
+TYPE: preference
+================
+
+describes a global pinning of debian packages
+
+.. __example_8:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _raw-preference:
+
+TYPE: raw-preference
+====================
+
+content is directly written to /etc/apt/preferences.
+
+.. __example_9:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _buildimage:
+
+TYPE: buildimage
+================
+
+definition of the build environment
+
+.. __example_10:
+
+Example
+-------
+
+.. code:: xml
+
+   <buildimage>
+     <arch> rfs:string </arch>
+     <size> rfs:string </size>
+     <mem> rfs:memory </mem>
+     <interpreter> rfs:string </interpreter>
+     <interpreterversion> rfs:string </interpreterversion>
+     <kinitrd> rfs:string </kinitrd>
+     <console> rfs:string </console>
+     <machine> rfs:string </machine>
+     <NIC> rfs:NIC </NIC>
+     <portforwarding> rfs:portforwarding </portforwarding>
+     <pkgversionlist> rfs:string </pkgversionlist>
+     <pkg-list> rfs:pkg-list </pkg-list>
+   </buildimage>
+
+.. __element_description_7:
+
+Element description
+-------------------
+
+arch `rfs:string <#type-string>`__
+   architecture of the target system. e.g. "amd64", "armel", "ppc", ..
+
+size `rfs:string <#type-string>`__
+   size of the virtual harddisk used to run the build environment
+
+mem `rfs:memory <#type-memory>`__
+   amount of memory mapped into the virtual build environment
+
+interpreter `rfs:string <#type-string>`__
+   virtual machine interpreter, e.g. "kvm", "qemu-system-arm", …
+
+interpreterversion `rfs:string <#type-string>`__
+   virtual machine interpreter version, e.g. "2.8.0", "1.4.7", …
+
+kinitrd `rfs:string <#type-string>`__
+   pkg name of the initrd/kernel package.
+
+console `rfs:string <#type-string>`__
+   serial console of the virtual machine, e.g. "ttyAMA0,115200n1"
+
+machine `rfs:string <#type-string>`__
+   virtual platform to host the build environment, e.g. "versatilepb"
+
+NIC `rfs:NIC <#type-NIC>`__
+   network interface emulation
+
+portforwarding `rfs:portforwarding <#type-portforwarding>`__
+   network ports of the buildenvironment that are forwarded to the host
+   machine
+
+pkgversionlist `rfs:string <#type-string>`__
+   create /etc/elbe_pkglist on the target RFS. It includes all packages
+   that include files that are used in the target. The list also
+   contains the versions of the used packages.
+
+pkg-list `rfs:pkg-list <#type-pkg-list>`__
+   additional packages that are only installed into the build
+   environment; not into the target root filesystem.
+
+.. _memory:
+
+TYPE: memory
+============
+
+Helper around memory_restriction to allow XML base attribute
+
+.. __example_11:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _memory_restriction:
+
+SIMPLE TYPE: memory_restriction
+===============================
+
+at least 128 MB of memory are needed to run the debian-installer
+
+.. __base_type_2:
+
+Base Type
+---------
+
+*integer*
+
+.. __restrictions_2:
+
+Restrictions
+------------
+
++-----------------------------------+-----------------------------------+
+| *minInclusive*                    | 128                               |
++-----------------------------------+-----------------------------------+
+
+.. _NIC:
+
+TYPE: NIC
+=========
+
+describes a virtual network interface
+
+.. __example_12:
+
+Example
+-------
+
+.. code:: xml
+
+   <NIC>
+     <model> rfs:string </model>
+     <MAC> rfs:string </MAC>
+   </NIC>
+
+.. __element_description_8:
+
+Element description
+-------------------
+
+model `rfs:string <#type-string>`__
+   hardware emulation of the network interface; e.g. "e1000"
+
+MAC `rfs:string <#type-string>`__
+   mac address of the virtual network interface
+
+.. _fw_proto:
+
+TYPE: fw_proto
+==============
+
+Helper around fw_proto_restriction to allow XML base attribute
+
+.. __example_13:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _fw_proto_restriction:
+
+SIMPLE TYPE: fw_proto_restriction
+=================================
+
+only tcp and udp are allowed protocols for forwarding
+
+.. __base_type_3:
+
+Base Type
+---------
+
+*string*
+
+.. __restrictions_3:
+
+Restrictions
+------------
+
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | tcp                               |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | udp                               |
++-----------------------------------+-----------------------------------+
+
+.. _forward:
+
+TYPE: forward
+=============
+
+forward a network port from the build environment to the host machine
+
+.. __example_14:
+
+Example
+-------
+
+.. code:: xml
+
+   <forward>
+     <proto> rfs:fw_proto </proto>
+     <buildenv> integer </buildenv>
+     <host> integer </host>
+   </forward>
+
+.. __element_description_9:
+
+Element description
+-------------------
+
+proto `rfs:fw_proto <#type-fw_proto>`__
+   network protocol to forward either "udp" or "tcp"
+
+buildenv integer
+   port on the buildenvironment, e.g. "22" for ssh
+
+host integer
+   port on the host machine, e.g. "10022"
+
+.. _portforwarding:
+
+TYPE: portforwarding
+====================
+
+forward network ports from the build environment to the host machine
+
+.. __example_15:
+
+Example
+-------
+
+.. code:: xml
+
+   <portforwarding>
+     <forward> rfs:forward </forward>
+   </portforwarding>
+
+.. __element_description_10:
+
+Element description
+-------------------
+
+forward `rfs:forward <#type-forward>`__
+   describes a single port forward
+
+.. _target:
+
+TYPE: target
+============
+
+configuration of the target rootfilesystem
+
+.. __example_16:
+
+Example
+-------
+
+.. code:: xml
+
+   <target>
+     <hostname> rfs:string </hostname>
+     <domain> rfs:string </domain>
+     <passwd> rfs:string </passwd>
+     <console> rfs:string </console>
+     <package> rfs:package </package>
+     <images> rfs:images </images>
+     <fstab> rfs:fstab </fstab>
+     <tighten> rfs:string </tighten>
+     <diet> rfs:string </diet>
+     <setsel> rfs:string </setsel>
+     <norecommend> rfs:string </norecommend>
+     <finetuning> rfs:finetuning </finetuning>
+     <pbuilder> rfs:pbuilder </pbuilder>
+     <pkg-list> rfs:pkg-list </pkg-list>
+     <pkg-blacklist> rfs:blacklist </pkg-blacklist>
+   </target>
+
+.. __element_description_11:
+
+Element description
+-------------------
+
+hostname `rfs:string <#type-string>`__
+   hostname of the system
+
+domain `rfs:string <#type-string>`__
+   domainname of the network the target system is part of
+
+passwd `rfs:string <#type-string>`__
+   root password
+
+console `rfs:string <#type-string>`__
+   serial console for getty
+
+package `rfs:package <#type-package>`__
+   package rootfilesystem as a tarball, cpio or a squashfs image
+
+images `rfs:images <#type-images>`__
+   generate (flashable) images of the rootfilesystem
+
+fstab `rfs:fstab <#type-fstab>`__
+   specify which resources should be mounted
+
+tighten `rfs:string <#type-string>`__ **optional**
+   don’t install any dependencies; just the content of the given debian
+   packages
+
+diet `rfs:string <#type-string>`__ **optional**
+   use reverse dependencies of the given debian packages to determine
+   the rootfilesystem content; this is useful to get rid of dpkg/apt.
+
+setsel `rfs:string <#type-string>`__ **optional**
+   Elbe uses ``dpkg --set-selections`` to install packages in the
+   target. The rootfs still needs dpkg, and all dependencies need to be
+   specified in the pkg-list. The target will contain all postinst
+   generated scripts.
+
+norecommend `rfs:string <#type-string>`__ **optional**
+   Turn off the installation of recommended Packages.
+
+finetuning `rfs:finetuning <#type-finetuning>`__ **optional**
+   apply the given commands to the target rootfilesystem
+
+pbuilder `rfs:pbuilder <#type-pbuilder>`__
+   build and optionaly install debianized sources
+
+pkg-list `rfs:pkg-list <#type-pkg-list>`__
+   install the given packages into the rootfilesystem
+
+pkg-blacklist `rfs:blacklist <#type-blacklist>`__
+   avoid installation of packages into sysroot or target
+
+.. _ubi_type:
+
+TYPE: ubi_type
+==============
+
+Helper around ubi_type_restriction to allow XML base attribute
+
+.. __example_17:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _ubi_type_restriction:
+
+SIMPLE TYPE: ubi_type_restriction
+=================================
+
+a ubi volume can be either static or dynamic
+
+.. __base_type_4:
+
+Base Type
+---------
+
+*string*
+
+.. __restrictions_4:
+
+Restrictions
+------------
+
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | static                            |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | dynamic                           |
++-----------------------------------+-----------------------------------+
+
+.. _ubi:
+
+TYPE: ubi
+=========
+
+describes a ubi volume
+
+.. __example_18:
+
+Example
+-------
+
+.. code:: xml
+
+   <ubi>
+     <type> rfs:ubi_type </type>
+     <label> rfs:string </label>
+     <id> integer </id>
+     <size> rfs:part_size </size>
+     <binary> rfs:string </binary>
+     <empty> rfs:string </empty>
+   </ubi>
+
+.. __element_description_12:
+
+Element description
+-------------------
+
+type `rfs:ubi_type <#type-ubi_type>`__
+   type of the ubi volume; either "static" or "dynamic"
+
+label `rfs:string <#type-string>`__
+   human readable name of the ubi volume (also used for mount by label)
+
+id integer
+   id of the ubi volume
+
+size `rfs:part_size <#type-part_size>`__
+   size of the ubi volume
+
+binary `rfs:string <#type-string>`__
+   path and filename of a binary image which will be used as a source
+   for this volume; this can be used for example to store the linux
+   kernel in a static ubi volume
+
+empty `rfs:string <#type-string>`__
+   if binary is used or a label was given that is also available in the
+   fstab this tag can be used to force the creation of an empty ubi
+   volume.
+
+.. _ubivg:
+
+TYPE: ubivg
+===========
+
+container for all ubi volumes of a mtd device
+
+.. __example_19:
+
+Example
+-------
+
+.. code:: xml
+
+   <ubivg>
+     <label> rfs:string </label>
+     <miniosize> rfs:string </miniosize>
+     <maxlogicaleraseblockcount> rfs:string </maxlogicaleraseblockcount>
+     <logicaleraseblocksize> rfs:string </logicaleraseblocksize>
+     <physicaleraseblocksize> rfs:string </physicaleraseblocksize>
+     <subpagesize> rfs:string </subpagesize>
+   </ubivg>
+
+.. __element_description_13:
+
+Element description
+-------------------
+
+label `rfs:string <#type-string>`__
+   human readable name; used to generate filename for the flashable
+   image file
+
+miniosize `rfs:string <#type-string>`__
+   flash parameter minimal i/o size
+
+maxlogicaleraseblockcount `rfs:string <#type-string>`__
+   flash parameter maximum logical erase block count
+
+logicaleraseblocksize `rfs:string <#type-string>`__
+   flash parameter logical erase block size
+
+physicaleraseblocksize `rfs:string <#type-string>`__
+   flash parameter physical erase block size
+
+subpagesize `rfs:string <#type-string>`__
+   flash parameter subpagesize
+
+.. _mtd:
+
+TYPE: mtd
+=========
+
+describes a mtd device
+
+.. __example_20:
+
+Example
+-------
+
+.. code:: xml
+
+   <mtd>
+     <name> rfs:string </name>
+     <nr> integer </nr>
+     <size> rfs:part_size </size>
+     <binary> rfs:string </binary>
+     <ubivg> rfs:ubivg </ubivg>
+   </mtd>
+
+.. __element_description_14:
+
+Element description
+-------------------
+
+name `rfs:string <#type-string>`__
+   human readable name of the mtd device
+
+nr integer
+   number of the mtd device
+
+size `rfs:part_size <#type-part_size>`__
+   size of the mtd device
+
+binary `rfs:string <#type-string>`__
+   path and filename of a binary image which will be used as a source
+   for this mtd device; this can be used for example to store the
+   bootloader in the beginning of the flash (mtd0)
+
+ubivg `rfs:ubivg <#type-ubivg>`__
+   if the mtd will be used to store ubi volumes, this container is used
+   to define them
+
+.. _gpthd:
+
+TYPE: gpthd
+===========
+
+describes a harddisk
+
+.. __example_21:
+
+Example
+-------
+
+.. code:: xml
+
+   <gpthd>
+     <name> rfs:string </name>
+     <size> rfs:part_size </size>
+     <grub-install> rfs:string </grub-install>
+     <partition> rfs:partition </partition>
+   </gpthd>
+
+.. __element_description_15:
+
+Element description
+-------------------
+
+name `rfs:string <#type-string>`__
+   human readable name of the harddisk, this will be used as name for
+   the image file
+
+size `rfs:part_size <#type-part_size>`__
+   size of the harddisk
+
+grub-install `rfs:string <#type-string>`__
+   human readable name of the harddisk, this will be used as name for
+   the image file
+
+partition `rfs:partition <#type-partition>`__
+   Partition Entries of this harddisk
+
+.. _binaryblob:
+
+TYPE: binaryblob
+================
+
+a binary that is dd’ed to the specified offset
+
+.. __example_22:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _msdoshd:
+
+TYPE: msdoshd
+=============
+
+describes a harddisk
+
+.. __example_23:
+
+Example
+-------
+
+.. code:: xml
+
+   <msdoshd>
+     <name> rfs:string </name>
+     <size> rfs:part_size </size>
+     <grub-install> rfs:string </grub-install>
+     <binary> rfs:binaryblob </binary>
+     <partition> rfs:partition </partition>
+     <extended> rfs:extended </extended>
+     <partition> rfs:partition </partition>
+   </msdoshd>
+
+.. __element_description_16:
+
+Element description
+-------------------
+
+name `rfs:string <#type-string>`__
+   human readable name of the harddisk, this will be used as name for
+   the image file
+
+size `rfs:part_size <#type-part_size>`__
+   size of the harddisk
+
+grub-install `rfs:string <#type-string>`__
+   human readable name of the harddisk, this will be used as name for
+   the image file
+
+binary `rfs:binaryblob <#type-binaryblob>`__ **optional**
+   binary blob that is dd’ed to the specified offset
+
+partition `rfs:partition <#type-partition>`__
+   Partition Entries of this harddisk (max: 4)
+
+extended `rfs:extended <#type-extended>`__
+   Extended Partition Entries of this harddisk (max: 1)
+
+partition `rfs:partition <#type-partition>`__
+   Partition Entries of this harddisk (max: 3)
+
+.. _images:
+
+TYPE: images
+============
+
+container for all storage devices of the target
+
+.. __example_24:
+
+Example
+-------
+
+.. code:: xml
+
+   <images>
+     <mtd> rfs:mtd </mtd>
+     <msdoshd> rfs:msdoshd </msdoshd>
+     <gpthd> rfs:gpthd </gpthd>
+     <passno> rfs:string </passno>
+   </images>
+
+.. __element_description_17:
+
+Element description
+-------------------
+
+mtd `rfs:mtd <#type-mtd>`__
+   container for all mtd devices of the target
+
+msdoshd `rfs:msdoshd <#type-msdoshd>`__
+   container for Harddisks with msdos Partitionlabel.
+
+gpthd `rfs:gpthd <#type-gpthd>`__
+   container for Harddisks with GPT Partitionlabel
+
+passno `rfs:string <#type-string>`__
+   passno order for fsck
+
+.. _fs:
+
+TYPE: fs
+========
+
+description of a linux filesystem
+
+.. __example_25:
+
+Example
+-------
+
+.. code:: xml
+
+   <fs>
+     <type> rfs:fs_type </type>
+     <mkfs> rfs:string </mkfs>
+     <tune2fs> rfs:string </tune2fs>
+     <passno> rfs:string </passno>
+   </fs>
+
+.. __element_description_18:
+
+Element description
+-------------------
+
+type `rfs:fs_type <#type-fs_type>`__
+   filesystemtype, e.g. "ext3", "ubifs", …
+
+mkfs `rfs:string <#type-string>`__
+   options passed to the mkfs command
+
+tune2fs `rfs:string <#type-string>`__
+   options passed to the tune2fs command
+
+passno `rfs:string <#type-string>`__
+   passno order for fsck
+
+.. _bylabel:
+
+TYPE: bylabel
+=============
+
+mount storage by the label of the partition or volume
+
+.. __example_26:
+
+Example
+-------
+
+.. code:: xml
+
+   <bylabel>
+     <label> rfs:string </label>
+     <mountpoint> rfs:string </mountpoint>
+     <fs> rfs:fs </fs>
+     <options> rfs:string </options>
+     <nofstab> rfs:empty </nofstab>
+   </bylabel>
+
+.. __element_description_19:
+
+Element description
+-------------------
+
+label `rfs:string <#type-string>`__
+   label of the partition/volume to mount
+
+mountpoint `rfs:string <#type-string>`__
+   path in the rootfilesystem where the partition/volume is mounted
+
+fs `rfs:fs <#type-fs>`__
+   filesystem of the partition/volume to mount
+
+options `rfs:string <#type-string>`__
+   options passed to the mount command
+
+nofstab `rfs:empty <#type-empty>`__
+   This mountpoint shall not be inserted into fstab. Useful for
+   redundant filesystems, where two entries with identical mountpoint
+   would end up in the fstab.
+
+.. _bydev:
+
+TYPE: bydev
+===========
+
+mount virtual filesystems or other storage devices device-node
+
+.. __example_27:
+
+Example
+-------
+
+.. code:: xml
+
+   <bydev>
+     <source> rfs:string </source>
+     <mountpoint> rfs:string </mountpoint>
+     <fs> rfs:fs </fs>
+     <options> rfs:string </options>
+   </bydev>
+
+.. __element_description_20:
+
+Element description
+-------------------
+
+source `rfs:string <#type-string>`__
+   either a device-node or "none" for virtual filesystems
+
+mountpoint `rfs:string <#type-string>`__
+   path in the rootfilesystem where the device or virtual filesystem is
+   mounted
+
+fs `rfs:fs <#type-fs>`__
+   filesystem of the device or the virtual filesystem name
+
+options `rfs:string <#type-string>`__
+   options passed to the mount command
+
+.. _fstab:
+
+TYPE: fstab
+===========
+
+container for mounts
+
+.. __example_28:
+
+Example
+-------
+
+.. code:: xml
+
+   <fstab>
+     <bylabel> rfs:bylabel </bylabel>
+     <bydev> rfs:bydev </bydev>
+   </fstab>
+
+.. __element_description_21:
+
+Element description
+-------------------
+
+bylabel `rfs:bylabel <#type-bylabel>`__
+   describes a mount by a volume or partition label
+
+bydev `rfs:bydev <#type-bydev>`__
+   describes a mount based on a device node or a mount of a virtual
+   filesystem like debugfs or tmpfs
+
+.. _package:
+
+TYPE: package
+=============
+
+list of packages, each contains the hole rootfilesystem
+
+.. __example_29:
+
+Example
+-------
+
+.. code:: xml
+
+   <package>
+     <tar> rfs:tar </tar>
+     <cpio> rfs:cpio </cpio>
+     <squashfs> rfs:squashfs </squashfs>
+   </package>
+
+.. __element_description_22:
+
+Element description
+-------------------
+
+tar `rfs:tar <#type-tar>`__ **optional**
+   tar package of the rootfilesystem
+
+cpio `rfs:cpio <#type-cpio>`__ **optional**
+   cpio package of the rootfilesystem
+
+squashfs `rfs:squashfs <#type-squashfs>`__ **optional**
+   squashfs image of the rootfilesystem
+
+.. _tar:
+
+TYPE: tar
+=========
+
+describes a tar package
+
+.. __example_30:
+
+Example
+-------
+
+.. code:: xml
+
+   <tar>
+     <name> rfs:string </name>
+     <options> rfs:string </options>
+   </tar>
+
+.. __element_description_23:
+
+Element description
+-------------------
+
+name `rfs:string <#type-string>`__ **optional**
+   filename of the tar package
+
+options `rfs:string <#type-string>`__ **optional**
+   options passed to the tar command
+
+.. _cpio:
+
+TYPE: cpio
+==========
+
+describes a cpio package
+
+.. __example_31:
+
+Example
+-------
+
+.. code:: xml
+
+   <cpio>
+     <name> rfs:string </name>
+   </cpio>
+
+.. __element_description_24:
+
+Element description
+-------------------
+
+name `rfs:string <#type-string>`__ **optional**
+   filename of the cpio package
+
+.. _squashfs:
+
+TYPE: squashfs
+==============
+
+describes a squashfs image
+
+.. __example_32:
+
+Example
+-------
+
+.. code:: xml
+
+   <squashfs>
+     <name> rfs:string </name>
+   </squashfs>
+
+.. __element_description_25:
+
+Element description
+-------------------
+
+name `rfs:string <#type-string>`__ **optional**
+   filename of the squashfs image
+
+.. _partition:
+
+TYPE: partition
+===============
+
+describes a partition of a harddisk
+
+.. __example_33:
+
+Example
+-------
+
+.. code:: xml
+
+   <partition>
+     <size> rfs:part_size </size>
+     <label> rfs:string </label>
+     <bootable> rfs:string </bootable>
+     <biosgrub> rfs:string </biosgrub>
+   </partition>
+
+.. __element_description_26:
+
+Element description
+-------------------
+
+size `rfs:part_size <#type-part_size>`__
+   size of the partition
+
+label `rfs:string <#type-string>`__
+   human readable label of the partition used for mount by label and as
+   filename for the flashable image
+
+bootable `rfs:string <#type-string>`__ **optional**
+   Whether this partition is marked bootable.
+
+biosgrub `rfs:string <#type-string>`__ **optional**
+   Whether this partition is marked as biosgrub partition.
+
+.. _extended:
+
+TYPE: extended
+==============
+
+describes a extended partition of a harddisk
+
+.. __example_34:
+
+Example
+-------
+
+.. code:: xml
+
+   <extended>
+     <size> rfs:part_size </size>
+     <logical> rfs:partition </logical>
+   </extended>
+
+.. __element_description_27:
+
+Element description
+-------------------
+
+size `rfs:part_size <#type-part_size>`__
+   size of the partition
+
+logical `rfs:partition <#type-partition>`__
+   logical partition of this extended partition
+
+.. _part_size:
+
+TYPE: part_size
+===============
+
+Helper around part_size_restriction to allow XML base attribute
+
+.. __example_35:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _part_size_restriction:
+
+SIMPLE TYPE: part_size_restriction
+==================================
+
+format of the partition size
+
+.. __base_type_5:
+
+Base Type
+---------
+
+*string*
+
+.. __restrictions_5:
+
+Restrictions
+------------
+
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| *pa | (\d | M   | G   | kB  | MB  | GB  | kiB | MiB | GiB | rem |
+| tte | +(k |     |     |     |     |     |     |     | )?  | ain |
+| rn* |     |     |     |     |     |     |     |     |     | )   |
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+
+.. _part_nr:
+
+TYPE: part_nr
+=============
+
+Helper around part_nr_restriction to allow XML base attribute
+
+.. __example_36:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _part_nr_restriction:
+
+SIMPLE TYPE: part_nr_restriction
+================================
+
+allow maximum 4 primary partitions
+
+.. __base_type_6:
+
+Base Type
+---------
+
+*integer*
+
+.. __restrictions_6:
+
+Restrictions
+------------
+
++-----------------------------------+-----------------------------------+
+| *minInclusive*                    | 1                                 |
++-----------------------------------+-----------------------------------+
+| *maxInclusive*                    | 4                                 |
++-----------------------------------+-----------------------------------+
+
+.. _part_type:
+
+TYPE: part_type
+===============
+
+Helper around part_type_restriction to allow XML base attribute
+
+.. __example_37:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _part_type_restriction:
+
+SIMPLE TYPE: part_type_restriction
+==================================
+
+list of supported partition types
+
+.. __base_type_7:
+
+Base Type
+---------
+
+*string*
+
+.. __restrictions_7:
+
+Restrictions
+------------
+
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | linux                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | swap                              |
++-----------------------------------+-----------------------------------+
+
+.. _fs_type:
+
+TYPE: fs_type
+=============
+
+Helper around fs_type_restriction to allow XML base attribute
+
+.. __example_38:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _fs_type_restriction:
+
+SIMPLE TYPE: fs_type_restriction
+================================
+
+list of supported filesystems
+
+.. __base_type_8:
+
+Base Type
+---------
+
+*string*
+
+.. __restrictions_8:
+
+Restrictions
+------------
+
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | ext2                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | ext3                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | ext4                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | xfs                               |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | ubifs                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | tmpfs                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | debugfs                           |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | configfs                          |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | devpts                            |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | proc                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | sysfs                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | vfat                              |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | btrfs                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | devtmpfs                          |
++-----------------------------------+-----------------------------------+
+
+.. _finetuning:
+
+TYPE: finetuning
+================
+
+container for finetuning commands; these commands are executed in
+theroot of the target filesystem after the target filesystem was created
+
+.. __example_39:
+
+Example
+-------
+
+.. code:: xml
+
+   <finetuning>
+   </finetuning>
+
+.. __element_description_28:
+
+Element description
+-------------------
+
+.. _addgroup:
+
+TYPE: addgroup
+==============
+
+describes an additional user group to be created. the following
+parameters areavailable:'gid' - group id.'system = "True" - system
+group.The value of the tag describes the group name namefor the account.
+
+.. __example_40:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _adduser:
+
+TYPE: adduser
+=============
+
+describes an additional user account, the following parameters
+areavailable:'shell' - the login shell for the user.\ *passwd* - the
+(optional) password for the user.\ *groups* - a comma separated list of
+groups the user is member of.\ *uid* - (optional) user of the
+user.\ *gid* - (optional) primary group, may be numeric or a
+name.\ *home* - home directory.\ *system="True"* - system
+user.\ *create_home="False"* - do not create the home
+directory.\ *create_group = "False"* - Do not create the primary
+group.The value of the tag describes the login name for the account.
+
+.. __example_41:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _cpmv:
+
+TYPE: cpmv
+==========
+
+describes a copy or move of an element in the rootfilesystem
+
+.. __example_42:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _rm:
+
+TYPE: rm
+========
+
+describes a removal of a pattern from the rootfilesystem.Including an
+exclude pattern
+
+.. __example_43:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _mknod:
+
+TYPE: mknod
+===========
+
+describes a mknod operaition in finetuning
+
+.. __example_44:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _git_src:
+
+TYPE: git_src
+=============
+
+URI of the git repository, e.g. "git://myhost/myrepo.git"
+
+.. __example_45:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _svn_src:
+
+TYPE: svn_src
+=============
+
+URI of the svn repository, e.g. "svn://myhost/myrepo/tags/my_tag"
+
+.. __example_46:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _pkg:
+
+TYPE: pkg
+=========
+
+describes a debian binary package
+
+.. __example_47:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _pbuilder:
+
+TYPE: pbuilder
+==============
+
+reference to debian source packages
+
+.. __example_48:
+
+Example
+-------
+
+.. code:: xml
+
+   <pbuilder>
+     <git> rfs:git_src </git>
+     <svn> rfs:svn_src </svn>
+   </pbuilder>
+
+.. __element_description_29:
+
+Element description
+-------------------
+
+git `rfs:git_src <#type-git_src>`__
+   reference to a git tree hosting a debian source package. The source
+   will be build with a pbuilder before the image generation. Use the
+   *install* attribute to specify which binary packages should be
+   installed in the target image.
+
+svn `rfs:svn_src <#type-svn_src>`__
+   reference to a svn repository hosting a debian source package. The
+   source will be build with a pbuilder before the image generation. Use
+   the *install* attribute to specify which binary packages should be
+   installed in the target image.
+
+.. _pkg-list:
+
+TYPE: pkg-list
+==============
+
+container of debian packages
+
+.. __example_49:
+
+Example
+-------
+
+.. code:: xml
+
+   <pkg-list>
+     <pkg> rfs:pkg </pkg>
+   </pkg-list>
+
+.. __element_description_30:
+
+Element description
+-------------------
+
+pkg `rfs:pkg <#type-pkg>`__
+   reference to a binary debian package which will be installed from the
+   given mirrors into the target rootfilesystem.
+
+.. _blacklist:
+
+TYPE: blacklist
+===============
+
+blacklists of debian packages
+
+.. __example_50:
+
+Example
+-------
+
+.. code:: xml
+
+   <blacklist>
+     <sysroot> rfs:pkg-list </sysroot>
+   </blacklist>
+
+.. __element_description_31:
+
+Element description
+-------------------
+
+sysroot `rfs:pkg-list <#type-pkg-list>`__
+   avoid installing the specified packages into the sysroot
+
+.. _fullpkg-list:
+
+TYPE: fullpkg-list
+==================
+
+List of packages to be validated against the installed list.
+
+.. __example_51:
+
+Example
+-------
+
+.. code:: xml
+
+   <fullpkg-list>
+     <pkg> rfs:pkg </pkg>
+   </fullpkg-list>
+
+.. __element_description_32:
+
+Element description
+-------------------
+
+pkg `rfs:pkg <#type-pkg>`__
+   Reference to a binary debian package which is supposed to be
+   installed.
+
+.. _conf:
+
+TYPE: conf
+==========
+
+describes a preseeding entry
+
+.. __example_52:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _preseed:
+
+TYPE: preseed
+=============
+
+container of config entries
+
+.. __example_53:
+
+Example
+-------
+
+.. code:: xml
+
+   <preseed>
+     <conf> rfs:conf </conf>
+   </preseed>
+
+.. __element_description_33:
+
+Element description
+-------------------
+
+conf `rfs:conf <#type-conf>`__
+   A config entry
+
+.. _empty:
+
+TYPE: empty
+===========
+
+This element just acts like a flag. It might be there, or not.
+
+.. __example_54:
+
+Example
+-------
+
+::
+
+   no sequence
+
+.. _string:
+
+TYPE: string
+============
+
+E.L.B.E. standard string. Allow XML base attribute.
+
+.. __example_55:
+
+Example
+-------
+
+::
+
+   no sequence

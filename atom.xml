@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="https://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="https://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2021-03-17T19:23:31+00:00</updated>
+  <updated>2021-05-19T18:14:31+02:00</updated>
   <id>https://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -19,9 +19,115 @@
 
   
   <entry>
+    <title>V1303</title>
+    <link href="https://elbe-rfs.org/v1303/"/>
+    <updated>2021-05-19T00:00:00+02:00</updated>
+    <id>https://elbe-rfs.org/v1303</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      
+&lt;hr /&gt;
+&lt;p&gt;layout: article
+category: news
+title: ELBE 13.3 release
+excerpt: consolidation
+author:
+  name: Torben Hohn
+—
+Debian packages for “ELBE 13.3” are available from linutronix.
+Add something like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;arm64-fix-bullseye&quot;&gt;Arm64 fix bullseye&lt;/h2&gt;
+&lt;p&gt;Arm64 and bullseye resulted in a qemu crash in debootstrap.
+Use buster-backports version of qemu in the initvm to fix this.&lt;/p&gt;
+
+&lt;h2 id=&quot;elbe-test-consolidation&quot;&gt;Elbe test consolidation&lt;/h2&gt;
+&lt;p&gt;Consolidation of &lt;code&gt;elbe test&lt;/code&gt; continues:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;test-preproc: initial implementation&lt;/li&gt;
+  &lt;li&gt;fix check-build images in armhf and arm64&lt;/li&gt;
+  &lt;li&gt;consolidate subtest result collection&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;localmachine-proxy-fix&quot;&gt;LOCALMACHINE Proxy Fix&lt;/h2&gt;
+&lt;p&gt;Setting the proxy to &lt;code&gt;LOCALMACHINE&lt;/code&gt; is now fixed.&lt;/p&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>V1302</title>
+    <link href="https://elbe-rfs.org/v1302/"/>
+    <updated>2021-03-18T00:00:00+01:00</updated>
+    <id>https://elbe-rfs.org/v1302</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      
+&lt;hr /&gt;
+&lt;p&gt;layout: article
+category: news
+title: ELBE 13.2 release
+excerpt: consolidation
+author:
+  name: Torben Hohn
+—
+Debian packages for “ELBE 13.2” are available from linutronix.
+Add something like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;elbe-test-consolidation&quot;&gt;Elbe test consolidation&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;elbe test&lt;/code&gt; is improved, with armhf and arm64 tests.
+subtests and error report collection works properly now.&lt;/p&gt;
+
+&lt;h2 id=&quot;sdk-for-amd64-does-not-crash-anymore&quot;&gt;SDK for amd64 does not crash anymore&lt;/h2&gt;
+&lt;p&gt;Non-cross SDK’s did not work properly.&lt;/p&gt;
+
+&lt;h2 id=&quot;hd-image-generation&quot;&gt;HD image generation&lt;/h2&gt;
+&lt;p&gt;Partitions with binary contents and setting of arbitrary partition
+types is now supported. This allows Xilinx bootloaders for example.&lt;/p&gt;
+
+&lt;h2 id=&quot;arm64-validate-bug-fixed&quot;&gt;Arm64 validate bug fixed&lt;/h2&gt;
+&lt;p&gt;Validation of arm64 projects always failed. This is fixed
+and arm64 works fine now.&lt;/p&gt;
+
+&lt;h2 id=&quot;source-cdrom-split&quot;&gt;Source cdrom split&lt;/h2&gt;
+&lt;p&gt;This elbe version now builds more than one Source CDROM.
+It builds:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;src-cdrom-target.iso&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;src-cdrom-main.iso&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;src-cdrom-added.iso&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This scheme might get some changes in the future.
+But the isolation of the target cdrom will remain.&lt;/p&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
     <title>ELBE 13.1 release</title>
     <link href="https://elbe-rfs.org/news/v1301/"/>
-    <updated>2020-10-28T00:00:00+00:00</updated>
+    <updated>2020-10-28T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v1301</id>
     <author>
       <name></name>
@@ -49,7 +155,7 @@ elbe-updated now checks for the correct new package name
   <entry>
     <title>ELBE 13.0 release</title>
     <link href="https://elbe-rfs.org/news/v1300/"/>
-    <updated>2020-10-07T00:00:00+00:00</updated>
+    <updated>2020-10-07T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v1300</id>
     <author>
       <name></name>
@@ -104,7 +210,7 @@ This prepares us for running debian bullseye inside the initvm.&lt;/p&gt;
   <entry>
     <title>ELBE 12.5 release</title>
     <link href="https://elbe-rfs.org/news/v1205/"/>
-    <updated>2020-07-23T00:00:00+00:00</updated>
+    <updated>2020-07-23T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v1205</id>
     <author>
       <name></name>
@@ -174,7 +280,7 @@ python3-spyne)&lt;/li&gt;
   <entry>
     <title>ELBE 12.1 release</title>
     <link href="https://elbe-rfs.org/news/v1201/"/>
-    <updated>2019-10-18T00:00:00+00:00</updated>
+    <updated>2019-10-18T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v1201</id>
     <author>
       <name></name>
@@ -205,7 +311,7 @@ queue, and it was never reseted. This bug is fixed in version 12.1.&lt;/p&gt;
   <entry>
     <title>ELBE 12.0 release</title>
     <link href="https://elbe-rfs.org/news/v1200/"/>
-    <updated>2019-10-02T00:00:00+00:00</updated>
+    <updated>2019-10-02T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v1200</id>
     <author>
       <name></name>
@@ -268,7 +374,7 @@ found at: examples/includes/devel/mirrors.xml&lt;/p&gt;
   <entry>
     <title>ELBE 3 release</title>
     <link href="https://elbe-rfs.org/news/v300/"/>
-    <updated>2019-03-14T00:00:00+00:00</updated>
+    <updated>2019-03-14T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v300</id>
     <author>
       <name></name>
@@ -461,7 +567,7 @@ And a lot of pylint complains have been fixed.&lt;/p&gt;
   <entry>
     <title>elbe v2.0 released</title>
     <link href="https://elbe-rfs.org/news/v200/"/>
-    <updated>2017-08-09T00:00:00+00:00</updated>
+    <updated>2017-08-09T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v200</id>
     <author>
       <name></name>
@@ -566,7 +672,7 @@ deb-src http://debian.linutronix.de/elbe-testing stretch main
   <entry>
     <title>elbe v1.0 released</title>
     <link href="https://elbe-rfs.org/news/v100/"/>
-    <updated>2015-12-24T00:00:00+00:00</updated>
+    <updated>2015-12-24T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v100</id>
     <author>
       <name></name>
@@ -600,7 +706,7 @@ deb-src http://debian.linutronix.de/elbe-testing jessie main
   <entry>
     <title>elbe v0.9.8 released</title>
     <link href="https://elbe-rfs.org/news/v098/"/>
-    <updated>2015-12-14T00:00:00+00:00</updated>
+    <updated>2015-12-14T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/news/v098</id>
     <author>
       <name></name>
@@ -649,7 +755,7 @@ $ elbe pbuilder build --xmlfile /tmp/bbb.xml
   <entry>
     <title>ELBE technical Details</title>
     <link href="https://elbe-rfs.org/internals/"/>
-    <updated>2015-12-14T00:00:00+00:00</updated>
+    <updated>2015-12-14T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/internals</id>
     <author>
       <name></name>
@@ -718,7 +824,7 @@ individual processes and files of the inner environment.&lt;/p&gt;
   <entry>
     <title>ELBE in a nutshell</title>
     <link href="https://elbe-rfs.org/whatiselbe/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/whatiselbe</id>
     <author>
       <name></name>
@@ -803,7 +909,7 @@ reused in a way that will fulfill our needs.&lt;/p&gt;
   <entry>
     <title>Secure</title>
     <link href="https://elbe-rfs.org/feature/secure/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/secure</id>
     <author>
       <name></name>
@@ -821,7 +927,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>Reproducable Images</title>
     <link href="https://elbe-rfs.org/feature/reproducable/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/reproducable</id>
     <author>
       <name></name>
@@ -838,7 +944,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>Based on Debian</title>
     <link href="https://elbe-rfs.org/feature/debianbased/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/debianbased</id>
     <author>
       <name></name>
@@ -855,7 +961,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>ELBE ADK</title>
     <link href="https://elbe-rfs.org/feature/adk/"/>
-    <updated>2015-11-16T00:00:00+00:00</updated>
+    <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/adk</id>
     <author>
       <name></name>
@@ -872,7 +978,7 @@ updates are available.&lt;/p&gt;
   <entry>
     <title>elbe v0.9.7 released</title>
     <link href="https://elbe-rfs.org/news/v097/"/>
-    <updated>2015-10-16T00:00:00+00:00</updated>
+    <updated>2015-10-16T00:00:00+02:00</updated>
     <id>https://elbe-rfs.org/news/v097</id>
     <author>
       <name></name>
