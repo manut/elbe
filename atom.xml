@@ -9,7 +9,7 @@
   <subtitle>ELBE is a Debian based system to generate root-filesystems for embedded devices.</subtitle>
   <link href="https://elbe-rfs.org/atom.xml" rel="self"/>
   <link href="https://elbe-rfs.org/" rel="alternate" type="text/html"/>
-  <updated>2021-06-16T15:11:49+02:00</updated>
+  <updated>2021-06-16T16:17:49+02:00</updated>
   <id>https://elbe-rfs.org/</id>
   <author>
     <name></name>
@@ -17,6 +17,341 @@
     
   </author>
 
+  
+  <entry>
+    <title>ELBE 13.3 release</title>
+    <link href="https://elbe-rfs.org/news/v1303/"/>
+    <updated>2021-05-19T00:00:00+02:00</updated>
+    <id>https://elbe-rfs.org/news/v1303</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Debian packages for “ELBE 13.3” are available from linutronix.
+Add something like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;arm64-fix-bullseye&quot;&gt;Arm64 fix bullseye&lt;/h2&gt;
+&lt;p&gt;Arm64 and bullseye resulted in a qemu crash in debootstrap.
+Use buster-backports version of qemu in the initvm to fix this.&lt;/p&gt;
+
+&lt;h2 id=&quot;elbe-test-consolidation&quot;&gt;Elbe test consolidation&lt;/h2&gt;
+&lt;p&gt;Consolidation of &lt;code&gt;elbe test&lt;/code&gt; continues:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;test-preproc: initial implementation&lt;/li&gt;
+  &lt;li&gt;fix check-build images in armhf and arm64&lt;/li&gt;
+  &lt;li&gt;consolidate subtest result collection&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;localmachine-proxy-fix&quot;&gt;LOCALMACHINE Proxy Fix&lt;/h2&gt;
+&lt;p&gt;Setting the proxy to &lt;code&gt;LOCALMACHINE&lt;/code&gt; is now fixed.&lt;/p&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>ELBE 13.2 release</title>
+    <link href="https://elbe-rfs.org/news/v1302/"/>
+    <updated>2021-03-18T00:00:00+01:00</updated>
+    <id>https://elbe-rfs.org/news/v1302</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Debian packages for “ELBE 13.2” are available from linutronix.
+Add something like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;elbe-test-consolidation&quot;&gt;Elbe test consolidation&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;elbe test&lt;/code&gt; is improved, with armhf and arm64 tests.
+subtests and error report collection works properly now.&lt;/p&gt;
+
+&lt;h2 id=&quot;sdk-for-amd64-does-not-crash-anymore&quot;&gt;SDK for amd64 does not crash anymore&lt;/h2&gt;
+&lt;p&gt;Non-cross SDK’s did not work properly.&lt;/p&gt;
+
+&lt;h2 id=&quot;hd-image-generation&quot;&gt;HD image generation&lt;/h2&gt;
+&lt;p&gt;Partitions with binary contents and setting of arbitrary partition
+types is now supported. This allows Xilinx bootloaders for example.&lt;/p&gt;
+
+&lt;h2 id=&quot;arm64-validate-bug-fixed&quot;&gt;Arm64 validate bug fixed&lt;/h2&gt;
+&lt;p&gt;Validation of arm64 projects always failed. This is fixed
+and arm64 works fine now.&lt;/p&gt;
+
+&lt;h2 id=&quot;source-cdrom-split&quot;&gt;Source cdrom split&lt;/h2&gt;
+&lt;p&gt;This elbe version now builds more than one Source CDROM.
+It builds:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;src-cdrom-target.iso&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;src-cdrom-main.iso&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;src-cdrom-added.iso&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This scheme might get some changes in the future.
+But the isolation of the target cdrom will remain.&lt;/p&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>ELBE 13.1 release</title>
+    <link href="https://elbe-rfs.org/news/v1301/"/>
+    <updated>2020-10-28T00:00:00+01:00</updated>
+    <id>https://elbe-rfs.org/news/v1301</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Debian packages for “ELBE 13.1” are available from linutronix.
+Add sth. like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;python2-conversion-fallout&quot;&gt;Python2 conversion fallout&lt;/h2&gt;
+&lt;p&gt;The python2 conversion produced a little bit of fallout.
+The passwd from the xml file was expanded with &lt;code&gt;b&#39;passwd&#39;&lt;/code&gt;
+elbe-updated now checks for the correct new package name
+&lt;code&gt;python3-elbe-updated&lt;/code&gt;.&lt;/p&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>ELBE 13.0 release</title>
+    <link href="https://elbe-rfs.org/news/v1300/"/>
+    <updated>2020-10-07T00:00:00+02:00</updated>
+    <id>https://elbe-rfs.org/news/v1300</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Debian packages for “ELBE 13.0” are available from linutronix.
+Add sth. like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;python2-removal&quot;&gt;Python2 Removal&lt;/h2&gt;
+&lt;p&gt;The transition to Python3 has completed by removing Python2.
+This prepares us for running debian bullseye inside the initvm.&lt;/p&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+&lt;p&gt;Even more unittesting has been merged.&lt;/p&gt;
+
+&lt;h2 id=&quot;full-changelog&quot;&gt;Full changelog&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;initvm:
+    &lt;ul&gt;
+      &lt;li&gt;fix initvm ensure&lt;/li&gt;
+      &lt;li&gt;fix problems with initvm stop&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;allow specifying mirror options via &lt;options&gt;&lt;/options&gt;&lt;/li&gt;
+  &lt;li&gt;test:
+    &lt;ul&gt;
+      &lt;li&gt;pylint test is now parameterized&lt;/li&gt;
+      &lt;li&gt;test xml builds&lt;/li&gt;
+      &lt;li&gt;test pbuilder&lt;/li&gt;
+      &lt;li&gt;check-build tester&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;finetuning: generate an error if an artifact does not exist&lt;/li&gt;
+  &lt;li&gt;fix problems with losetup&lt;/li&gt;
+  &lt;li&gt;debianize: fix problems with kernel build&lt;/li&gt;
+  &lt;li&gt;examples: add docker related examples&lt;/li&gt;
+  &lt;li&gt;pbuilder: fix adding built packages to internal repo.&lt;/li&gt;
+  &lt;li&gt;python3: remove python2 packages and switch to python3 everywhere&lt;/li&gt;
+&lt;/ul&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>ELBE 12.5 release</title>
+    <link href="https://elbe-rfs.org/news/v1205/"/>
+    <updated>2020-07-23T00:00:00+02:00</updated>
+    <id>https://elbe-rfs.org/news/v1205</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Debian packages for “ELBE 12.5” are available from linutronix.
+Add sth. like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;processing-license-files&quot;&gt;Processing License Files&lt;/h2&gt;
+&lt;p&gt;There are now more than one License File.
+Packages which are not installed on the target will not show up in licence-target.xml.&lt;/p&gt;
+
+&lt;h2 id=&quot;pbuilder-speedup&quot;&gt;pbuilder speedup&lt;/h2&gt;
+&lt;p&gt;Pbuilder now supports cross builds, and ccache.&lt;/p&gt;
+
+&lt;h2 id=&quot;ubuntu&quot;&gt;Ubuntu&lt;/h2&gt;
+&lt;p&gt;Building ubuntu targets is now supported.&lt;/p&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+
+&lt;p&gt;Some parts of the new unittesting are merged.&lt;/p&gt;
+
+&lt;h2 id=&quot;full-changelog&quot;&gt;Full changelog&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fix building sdk for amd64&lt;/li&gt;
+  &lt;li&gt;Add cross build support to pbuilder.&lt;/li&gt;
+  &lt;li&gt;Add ccache support to pbuilder.&lt;/li&gt;
+  &lt;li&gt;Limited finetuning support for initvm.&lt;/li&gt;
+  &lt;li&gt;First part of the elbe test suite
+    &lt;ul&gt;
+      &lt;li&gt;doctests for filesystem&lt;/li&gt;
+      &lt;li&gt;doctests for shellhelper&lt;/li&gt;
+      &lt;li&gt;pylint as unittest&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;schema: Add possibility to add multiple binary blobs&lt;/li&gt;
+  &lt;li&gt;debianize: kernel: Add lzop build dependency&lt;/li&gt;
+  &lt;li&gt;initvmaction: Add sync action&lt;/li&gt;
+  &lt;li&gt;Include Source Packages for Built-Using: Entries into src-cdrom.&lt;/li&gt;
+  &lt;li&gt;src-cdrom now sorts packages in components for sysroot, host-sysroot,
+target, etc.&lt;/li&gt;
+  &lt;li&gt;Source packages only show up in target component if files from the
+package are contained in the target.&lt;/li&gt;
+  &lt;li&gt;Python3 is now used on the host side. (initvm is still waiting for
+python3-spyne)&lt;/li&gt;
+  &lt;li&gt;The preprocessor now handles proxy setup.&lt;/li&gt;
+  &lt;li&gt;initvm: create: Add COW logic for initvm&lt;/li&gt;
+  &lt;li&gt;initvmaction: Fix soap host (Fixes: #271)&lt;/li&gt;
+  &lt;li&gt;finetuning: Add command action in image context&lt;/li&gt;
+  &lt;li&gt;elbeproject: cope with incremental build without initvm node&lt;/li&gt;
+  &lt;li&gt;Fix bin-cdrom.iso signature validation in initvm-create (Fixes: #260)&lt;/li&gt;
+  &lt;li&gt;hdimg: Add support for specifying the first partition offset&lt;/li&gt;
+  &lt;li&gt;Basic Support for building ubuntu targets.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>ELBE 12.1 release</title>
+    <link href="https://elbe-rfs.org/news/v1201/"/>
+    <updated>2019-10-18T00:00:00+02:00</updated>
+    <id>https://elbe-rfs.org/news/v1201</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Debian packages for “ELBE 12.1” are available from linutronix.
+Add sth. like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;processing-license-files&quot;&gt;Processing License Files&lt;/h2&gt;
+&lt;p&gt;Fixed a bug in the license file processing which end up in a build failure is fixed.&lt;/p&gt;
+
+&lt;h2 id=&quot;pbuilder&quot;&gt;pbuilder&lt;/h2&gt;
+&lt;p&gt;If a pbuilder builded a broken package, the error was persisted in the logging
+queue, and it was never reseted. This bug is fixed in version 12.1.&lt;/p&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;examples&lt;/h2&gt;
+&lt;p&gt;The example x86_64-pc-hdimg-gnome3.xml is working again.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>ELBE 12.0 release</title>
+    <link href="https://elbe-rfs.org/news/v1200/"/>
+    <updated>2019-10-02T00:00:00+02:00</updated>
+    <id>https://elbe-rfs.org/news/v1200</id>
+    <author>
+      <name></name>
+      <uri>https://elbe-rfs.org/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;ELBE 12.0 is released. The XML format is compatible.&lt;/p&gt;
+
+&lt;p&gt;Debian packages for “ELBE 12.0” are available from linutronix.
+Add sth. like this to your sources.list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://debian.linutronix.de/elbe buster main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;versioning-schema&quot;&gt;Versioning Schema&lt;/h2&gt;
+&lt;p&gt;The last ELBE versions had a lot of minor bug fixes. As result, the version
+numbers increased very fast. Therefore we switch to a version schema with major
+and minor numbers.&lt;/p&gt;
+
+&lt;h2 id=&quot;new-logging&quot;&gt;New Logging&lt;/h2&gt;
+&lt;p&gt;The logging and error handling code is completely new. The logging output is
+improved and a build failure now results in error return codes, and no files
+will be downloaded. This is especially the case for finetuning errors which
+have been ignored before.&lt;/p&gt;
+
+&lt;h2 id=&quot;initvm-version-buster&quot;&gt;INITVM Version Buster&lt;/h2&gt;
+&lt;p&gt;The initvm is now using Debian 10 (Buster)&lt;/p&gt;
+
+&lt;h2 id=&quot;limit-src-cdrom-size&quot;&gt;Limit src-cdrom size&lt;/h2&gt;
+&lt;p&gt;The src-cdrom can be split up in multiple cd-roms. This can be configured in
+the xml file.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;src-cdrom&amp;gt;
+    &amp;lt;size&amp;gt;640M&amp;lt;/size&amp;gt;
+    &amp;lt;src-opts&amp;gt;
+        &amp;lt;publisher&amp;gt;Linutronix&amp;lt;/publisher&amp;gt;
+    &amp;lt;/src-opts&amp;gt;
+&amp;lt;/src-cdrom&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;customize-src-cdrom&quot;&gt;Customize src-cdrom&lt;/h2&gt;
+&lt;p&gt;It is possible to add custom specific files to the src-cdrom. This can be done
+with ‘archivedir’ tags in the ‘src-cdrom’ section.&lt;/p&gt;
+
+&lt;h2 id=&quot;repository-key-in-xml-file&quot;&gt;Repository Key in xml file&lt;/h2&gt;
+&lt;p&gt;The key of a repository is now stored in the ELBE xml file using the tag ‘raw-key’.
+The old key tags are replaced by the preprocessor now.&lt;/p&gt;
+
+&lt;p&gt;An example of the usage of ‘raw-key’, can be
+found at: examples/includes/devel/mirrors.xml&lt;/p&gt;
+
+
+    </content>
+  </entry>
   
   <entry>
     <title>ELBE 3 release</title>
@@ -572,7 +907,7 @@ updates are available.&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>Reproducable Images</title>
+    <title>Reproducible Images</title>
     <link href="https://elbe-rfs.org/feature/reproducable/"/>
     <updated>2015-11-16T00:00:00+01:00</updated>
     <id>https://elbe-rfs.org/feature/reproducable</id>
