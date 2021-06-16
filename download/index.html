@@ -150,20 +150,32 @@ Linutronix provides a signed repository that can be included in apt.</p>
 <h4>Debian stretch</h4>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
-apt install wget
-wget -O /usr/share/keyrings/elbe-archive-keyring.gpg http://debian.linutronix.de/elbe/elbe-repo.pub.gpg
-<span class="nb">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elbe-archive-keyring.gpg] http://debian.linutronix.de/elbe stretch main&quot;</span> &gt;&gt; /etc/apt/sources.list
+<span class="nb">cd</span> /tmp
+wget http://debian.linutronix.de/elbe/elbe-repo.pub
+apt-key add elbe-repo.pub
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe stretch main&quot;</span> &gt;&gt; /etc/apt/sources.list
 apt update
 apt install elbe</code></pre></div>
 
-<h4>Debian buster (or later)</h4>
+<h4>Debian sid</h4>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
-apt install wget
-wget -O /usr/share/keyrings/elbe-archive-keyring.gpg http://debian.linutronix.de/elbe/elbe-repo.pub.gpg
-<span class="nb">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elbe-archive-keyring.gpg] http://debian.linutronix.de/elbe buster main&quot;</span> &gt;&gt; /etc/apt/sources.list
+<span class="nb">cd</span> /tmp
+wget http://debian.linutronix.de/elbe/elbe-repo.pub
+apt-key add elbe-repo.pub
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe sid main&quot;</span> &gt;&gt; /etc/apt/sources.list
 apt update
 apt install elbe</code></pre></div>
+
+<h4>Debian jessie</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">su -
+<span class="nb">cd</span> /tmp
+wget http://debian.linutronix.de/elbe/elbe-repo.pub
+apt-key add elbe-repo.pub
+<span class="nb">echo</span> <span class="s2">&quot;deb http://debian.linutronix.de/elbe jessie main&quot;</span> &gt;&gt; /etc/apt/sources.list
+apt-get update
+apt-get install elbe</code></pre></div>
 
 
 				<hr />
