@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE docs &mdash; ELBE 13.3 documentation</title>
+  <title>ELBE docs &mdash; ELBE 14.0 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                13.3
+                14.0
               </div>
             
           
@@ -250,8 +250,9 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-forward">TYPE: forward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-portforwarding">TYPE: portforwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-target">TYPE: target</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-debootstrapvarianttype">TYPE: debootstrapvarianttype</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-debootstrapvarianttype-restriction">SIMPLE TYPE: debootstrapvarianttype_restriction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-debootstrap-variant">TYPE: debootstrap_variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-debootstrap-variant-restriction">SIMPLE TYPE: debootstrap_variant_restriction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-debootstrap">TYPE: debootstrap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-ubi-type">TYPE: ubi_type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#simple-type-ubi-type-restriction">SIMPLE TYPE: ubi_type_restriction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-ubi">TYPE: ubi</a></li>
@@ -301,15 +302,15 @@
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#mknod-type-rfs-mknod">mknod type: <em>rfs:mknod</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#purge-type-rfs-string">purge type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#raw-cmd-type-rfs-string">raw_cmd type: <em>rfs:string</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id113">command type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id115">command type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#buildenv-command-type-rfs-string">buildenv_command type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#updated-type-rfs-string">updated type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#artifact-type-rfs-string">artifact type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#rm-apt-source-type-rfs-string">rm_apt_source type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#type-project-finetuning">TYPE: project-finetuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#group-project-action">GROUP : project-action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id116">t2p_mv type: <em>rfs:cpmv</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id117">artifact type: <em>rfs:string</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id118">t2p_mv type: <em>rfs:cpmv</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#id119">artifact type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#rm-artifact-type-rfs-string">rm_artifact type: <em>rfs:string</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#losetup-type-rfs-losetup">losetup type: <em>rfs:losetup</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="article-elbe-schema-reference.html#img-convert-type-rfs-img-convert">img_convert type: <em>rfs:img_convert</em></a></li>
@@ -444,7 +445,7 @@
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v13.3
+        v: releases/v14.0
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -462,6 +463,7 @@
             <dd><a href="v13.1/index.html">v13.1</a></dd>
             <dd><a href="v13.2/index.html">v13.2</a></dd>
             <dd><a href="v13.3/index.html">v13.3</a></dd>
+            <dd><a href="v14.0/index.html">v14.0</a></dd>
             <dd><a href="v2.5/index.html">v2.5</a></dd>
             <dd><a href="v3/index.html">v3</a></dd>
             <dd><a href="v4/index.html">v4</a></dd>
@@ -496,8 +498,10 @@
             <dd><a href="releases_v12.5/index.html">releases/v12.5</a></dd>
             <dd><a href="releases_v13.0/index.html">releases/v13.0</a></dd>
             <dd><a href="releases_v13.1/index.html">releases/v13.1</a></dd>
+            <dd><a href="releases_v13.1.1/index.html">releases/v13.1.1</a></dd>
             <dd><a href="releases_v13.2/index.html">releases/v13.2</a></dd>
             <dd><a href="releases_v13.3/index.html">releases/v13.3</a></dd>
+            <dd><a href="releases_v14.0/index.html">releases/v14.0</a></dd>
             <dd><a href="releases_v2.0/index.html">releases/v2.0</a></dd>
             <dd><a href="releases_v2.1/index.html">releases/v2.1</a></dd>
             <dd><a href="releases_v2.2/index.html">releases/v2.2</a></dd>
@@ -540,7 +544,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'13.3',
+            VERSION:'14.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

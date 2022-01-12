@@ -1085,7 +1085,7 @@ Example
 
      <console> rfs:string </console>
 
-     <debootstrapvariant> rfs:debootstrapvarianttype </debootstrapvariant>
+     <debootstrap> rfs:debootstrap </debootstrap>
 
      <package> rfs:package </package>
 
@@ -1132,15 +1132,8 @@ passwd `rfs:string <#type-string>`__
 console `rfs:string <#type-string>`__
    serial console for getty
 
-debootstrapvariant `rfs:debootstrapvarianttype <#type-debootstrapvarianttype>`__
-   Name of the bootstrap script variant to use. Currently, the variants
-   supported are minbase, which only includes essential packages and
-   apt; buildd, which installs the buildessential packages into TARGET;
-   and fakechroot, which installs the packages without root privileges.
-   The default, with no --variant=X argument, is to create a base Debian
-   installation in TARGET. Some documentation mentioned the variant
-   scratchbox too, but this variant is not supported by the debootstrap
-   used and therefore not allowed.
+debootstrap `rfs:debootstrap <#type-debootstrap>`__
+   Bootstrap configuration
 
 package `rfs:package <#type-package>`__
    package rootfilesystem as a tarball, cpio or a squashfs image
@@ -1191,12 +1184,13 @@ hostsdk-pkg-list `rfs:pkg-list <#type-pkg-list>`__
    install the given packages into the hostsdk. (ignores pin and
    versions, with the current implementation)
 
-.. _debootstrapvarianttype:
+.. _debootstrap_variant:
 
-TYPE: debootstrapvarianttype
-============================
+TYPE: debootstrap_variant
+=========================
 
-Enhanced restriction type specifying debootstrap variants.
+Helper around debootstrap_variant_restriction to allow XML base
+attribute
 
 .. __example_22:
 
@@ -1205,25 +1199,20 @@ Example
 
 .. code:: xml
 
-   <debootstrapvarianttype>
-   </debootstrapvarianttype>
+   <debootstrap_variant>
+   </debootstrap_variant>
 
 .. __elements_description_22:
 
 Elements description
 --------------------
 
-[attr] includepkgs string
-   A comma-separated list of additional packages at debootstrap runtime.
+.. _debootstrap_variant_restriction:
 
-.. _debootstrapvarianttype_restriction:
+SIMPLE TYPE: debootstrap_variant_restriction
+============================================
 
-SIMPLE TYPE: debootstrapvarianttype_restriction
-===============================================
-
-Restriction type specifying debootstrap variants.Supported debootstrap
-variants are minbase, buildd and fakechroot.The variant scratchbox is
-not supported by th used debootstrap.
+Restrict the possible debootstrap variants
 
 .. __base_type_6:
 
@@ -1245,6 +1234,49 @@ Restrictions
 | *enumeration*                     | fakechroot                        |
 +-----------------------------------+-----------------------------------+
 
+.. _debootstrap:
+
+TYPE: debootstrap
+=================
+
+Container for debootstrap configuration.
+
+.. __example_23:
+
+Example
+-------
+
+.. code:: xml
+
+   <debootstrap>
+     <variant> rfs:debootstrap_variant </variant>
+
+     <include> string </include>
+
+     <exclude> string </exclude>
+
+   </debootstrap>
+
+.. __elements_description_23:
+
+Elements description
+--------------------
+
+variant `rfs:debootstrap_variant <#type-debootstrap_variant>`__
+   Name of the bootstrap script variant to use. The following variants
+   are supported: \* minbase: required packages and apt. \* buildd:
+   build-essential packages. \* fakechroot: installs the packages
+   without root privileges.
+
+include string
+   Comma separated list of packages which will be added to download and
+   extract lists.
+
+exclude string
+   Comma separated list of packages which will be removed from download
+   and extract lists. WARNING: you can and probably will exclude
+   essential packages, be careful using this option.
+
 .. _ubi_type:
 
 TYPE: ubi_type
@@ -1252,7 +1284,7 @@ TYPE: ubi_type
 
 Helper around ubi_type_restriction to allow XML base attribute
 
-.. __example_23:
+.. __example_24:
 
 Example
 -------
@@ -1262,7 +1294,7 @@ Example
    <ubi_type>
    </ubi_type>
 
-.. __elements_description_23:
+.. __elements_description_24:
 
 Elements description
 --------------------
@@ -1299,7 +1331,7 @@ TYPE: ubi
 
 describes a ubi volume
 
-.. __example_24:
+.. __example_25:
 
 Example
 -------
@@ -1321,7 +1353,7 @@ Example
 
    </ubi>
 
-.. __elements_description_24:
+.. __elements_description_25:
 
 Elements description
 --------------------
@@ -1355,7 +1387,7 @@ TYPE: ubivg
 
 container for all ubi volumes of a mtd device
 
-.. __example_25:
+.. __example_26:
 
 Example
 -------
@@ -1379,7 +1411,7 @@ Example
 
    </ubivg>
 
-.. __elements_description_25:
+.. __elements_description_26:
 
 Elements description
 --------------------
@@ -1413,7 +1445,7 @@ TYPE: mtd
 
 describes a mtd device
 
-.. __example_26:
+.. __example_27:
 
 Example
 -------
@@ -1433,7 +1465,7 @@ Example
 
    </mtd>
 
-.. __elements_description_26:
+.. __elements_description_27:
 
 Elements description
 --------------------
@@ -1463,7 +1495,7 @@ TYPE: gpthd
 
 describes a harddisk
 
-.. __example_27:
+.. __example_28:
 
 Example
 -------
@@ -1479,11 +1511,13 @@ Example
 
      <grub-install> rfs:string </grub-install>
 
+     <binary> rfs:binaryblob </binary>
+
      <partition> rfs:partition </partition>
 
    </gpthd>
 
-.. __elements_description_27:
+.. __elements_description_28:
 
 Elements description
 --------------------
@@ -1502,6 +1536,9 @@ grub-install `rfs:string <#type-string>`__
    human readable name of the harddisk, this will be used as name for
    the image file
 
+binary `rfs:binaryblob <#type-binaryblob>`__
+   binary blob that is dd’ed to the specified offset
+
 partition `rfs:partition <#type-partition>`__
    Partition Entries of this harddisk
 
@@ -1512,7 +1549,7 @@ TYPE: binaryblob
 
 a binary that is dd’ed to the specified offset
 
-.. __example_28:
+.. __example_29:
 
 Example
 -------
@@ -1522,7 +1559,7 @@ Example
    <binaryblob>
    </binaryblob>
 
-.. __elements_description_28:
+.. __elements_description_29:
 
 Elements description
 --------------------
@@ -1540,7 +1577,7 @@ TYPE: msdoshd
 
 describes a harddisk
 
-.. __example_29:
+.. __example_30:
 
 Example
 -------
@@ -1566,7 +1603,7 @@ Example
 
    </msdoshd>
 
-.. __elements_description_29:
+.. __elements_description_30:
 
 Elements description
 --------------------
@@ -1604,7 +1641,7 @@ TYPE: images
 
 container for all storage devices of the target
 
-.. __example_30:
+.. __example_31:
 
 Example
 -------
@@ -1622,7 +1659,7 @@ Example
 
    </images>
 
-.. __elements_description_30:
+.. __elements_description_31:
 
 Elements description
 --------------------
@@ -1646,7 +1683,7 @@ TYPE: fs
 
 description of a linux filesystem
 
-.. __example_31:
+.. __example_32:
 
 Example
 -------
@@ -1664,7 +1701,7 @@ Example
 
    </fs>
 
-.. __elements_description_31:
+.. __elements_description_32:
 
 Elements description
 --------------------
@@ -1688,7 +1725,7 @@ TYPE: bylabel
 
 mount storage by the label of the partition or volume
 
-.. __example_32:
+.. __example_33:
 
 Example
 -------
@@ -1708,7 +1745,7 @@ Example
 
    </bylabel>
 
-.. __elements_description_32:
+.. __elements_description_33:
 
 Elements description
 --------------------
@@ -1737,7 +1774,7 @@ TYPE: bydev
 
 mount virtual filesystems or other storage devices device-node
 
-.. __example_33:
+.. __example_34:
 
 Example
 -------
@@ -1755,7 +1792,7 @@ Example
 
    </bydev>
 
-.. __elements_description_33:
+.. __elements_description_34:
 
 Elements description
 --------------------
@@ -1780,7 +1817,7 @@ TYPE: fstab
 
 container for mounts
 
-.. __example_34:
+.. __example_35:
 
 Example
 -------
@@ -1794,7 +1831,7 @@ Example
 
    </fstab>
 
-.. __elements_description_34:
+.. __elements_description_35:
 
 Elements description
 --------------------
@@ -1813,7 +1850,7 @@ TYPE: package
 
 list of packages, each contains the hole rootfilesystem
 
-.. __example_35:
+.. __example_36:
 
 Example
 -------
@@ -1829,7 +1866,7 @@ Example
 
    </package>
 
-.. __elements_description_35:
+.. __elements_description_36:
 
 Elements description
 --------------------
@@ -1850,7 +1887,7 @@ TYPE: tar
 
 describes a tar package
 
-.. __example_36:
+.. __example_37:
 
 Example
 -------
@@ -1864,7 +1901,7 @@ Example
 
    </tar>
 
-.. __elements_description_36:
+.. __elements_description_37:
 
 Elements description
 --------------------
@@ -1882,7 +1919,7 @@ TYPE: cpio
 
 describes a cpio package
 
-.. __example_37:
+.. __example_38:
 
 Example
 -------
@@ -1894,7 +1931,7 @@ Example
 
    </cpio>
 
-.. __elements_description_37:
+.. __elements_description_38:
 
 Elements description
 --------------------
@@ -1909,7 +1946,7 @@ TYPE: squashfs
 
 describes a squashfs image
 
-.. __example_38:
+.. __example_39:
 
 Example
 -------
@@ -1921,7 +1958,7 @@ Example
 
    </squashfs>
 
-.. __elements_description_38:
+.. __elements_description_39:
 
 Elements description
 --------------------
@@ -1936,7 +1973,7 @@ TYPE: partition
 
 describes a partition of a harddisk
 
-.. __example_39:
+.. __example_40:
 
 Example
 -------
@@ -1956,7 +1993,7 @@ Example
 
    </partition>
 
-.. __elements_description_39:
+.. __elements_description_40:
 
 Elements description
 --------------------
@@ -1986,7 +2023,7 @@ TYPE: extended
 
 describes a extended partition of a harddisk
 
-.. __example_40:
+.. __example_41:
 
 Example
 -------
@@ -2000,7 +2037,7 @@ Example
 
    </extended>
 
-.. __elements_description_40:
+.. __elements_description_41:
 
 Elements description
 --------------------
@@ -2018,7 +2055,7 @@ TYPE: part_size
 
 Helper around part_size_restriction to allow XML base attribute
 
-.. __example_41:
+.. __example_42:
 
 Example
 -------
@@ -2028,7 +2065,7 @@ Example
    <part_size>
    </part_size>
 
-.. __elements_description_41:
+.. __elements_description_42:
 
 Elements description
 --------------------
@@ -2065,7 +2102,7 @@ TYPE: part_nr
 
 Helper around part_nr_restriction to allow XML base attribute
 
-.. __example_42:
+.. __example_43:
 
 Example
 -------
@@ -2075,7 +2112,7 @@ Example
    <part_nr>
    </part_nr>
 
-.. __elements_description_42:
+.. __elements_description_43:
 
 Elements description
 --------------------
@@ -2112,7 +2149,7 @@ TYPE: part_type
 
 Helper around part_type_restriction to allow XML base attribute
 
-.. __example_43:
+.. __example_44:
 
 Example
 -------
@@ -2122,7 +2159,7 @@ Example
    <part_type>
    </part_type>
 
-.. __elements_description_43:
+.. __elements_description_44:
 
 Elements description
 --------------------
@@ -2159,7 +2196,7 @@ TYPE: fs_type
 
 Helper around fs_type_restriction to allow XML base attribute
 
-.. __example_44:
+.. __example_45:
 
 Example
 -------
@@ -2169,7 +2206,7 @@ Example
    <fs_type>
    </fs_type>
 
-.. __elements_description_44:
+.. __elements_description_45:
 
 Elements description
 --------------------
@@ -2231,7 +2268,7 @@ TYPE: initvm-finetuning
 container for initvm-finetuning actions; these actions areexecuted at
 the end of the init-elbe.sh script in the target.
 
-.. __example_45:
+.. __example_46:
 
 Example
 -------
@@ -2242,7 +2279,7 @@ Example
      <command> rfs:string </command>
    </initvm-finetuning>
 
-.. __elements_description_45:
+.. __elements_description_46:
 
 Elements description
 --------------------
@@ -2269,7 +2306,7 @@ TYPE: finetuning
 container for finetuning commands; these commands are executed in
 theroot of the target filesystem after the target filesystem was created
 
-.. __example_46:
+.. __example_47:
 
 Example
 -------
@@ -2301,7 +2338,7 @@ Example
      <rm_apt_source> rfs:string </rm_apt_source>
    </finetuning>
 
-.. __elements_description_46:
+.. __elements_description_47:
 
 Elements description
 --------------------
@@ -2477,7 +2514,7 @@ TYPE: project-finetuning
 container for project-finetuning commands; these commands are executed
 in theproject directory, after the images have been generated.
 
-.. __example_47:
+.. __example_48:
 
 Example
 -------
@@ -2494,7 +2531,7 @@ Example
      <unit-tests> rfs:unit-tests </unit-tests>
    </project-finetuning>
 
-.. __elements_description_47:
+.. __elements_description_48:
 
 Elements description
 --------------------
@@ -2567,7 +2604,7 @@ Container for image_finetuning commands; these commands are executed in
 theproject directory, while a drive image is setup as a loop device.The
 loop device id is passed to the individual actions.
 
-.. __example_48:
+.. __example_49:
 
 Example
 -------
@@ -2582,7 +2619,7 @@ Example
      <command> rfs:partition-command </command>
    </losetup>
 
-.. __elements_description_48:
+.. __elements_description_49:
 
 Elements description
 --------------------
@@ -2647,7 +2684,7 @@ Describe the partition to be extracted (nr) and the destination
 filename.The value of the tag describes the filename of the generated
 Imagefile.The Image is per default compressed with gzip afterwards.
 
-.. __example_49:
+.. __example_50:
 
 Example
 -------
@@ -2657,7 +2694,7 @@ Example
    <extract_partition>
    </extract_partition>
 
-.. __elements_description_49:
+.. __elements_description_50:
 
 Elements description
 --------------------
@@ -2672,7 +2709,7 @@ TYPE: partition-command
 
 The node’s text should be a valid shell commands
 
-.. __example_50:
+.. __example_51:
 
 Example
 -------
@@ -2682,7 +2719,7 @@ Example
    <partition-command>
    </partition-command>
 
-.. __elements_description_50:
+.. __elements_description_51:
 
 Elements description
 --------------------
@@ -2699,7 +2736,7 @@ Attribute *part* describes the partition to be mounted (nr).The value of
 the tag describes the filename to be copied from theFilesystem, after it
 has been mounted.Attribute *artifact* is the artifact name.
 
-.. __example_51:
+.. __example_52:
 
 Example
 -------
@@ -2709,7 +2746,7 @@ Example
    <copy_from_partition>
    </copy_from_partition>
 
-.. __elements_description_51:
+.. __elements_description_52:
 
 Elements description
 --------------------
@@ -2730,7 +2767,7 @@ the tag describes the filename where the artifact shallbe copied to,
 onto the filesystem, after it has been mounted.Attribute *artifact* is
 the artifact name.
 
-.. __example_52:
+.. __example_53:
 
 Example
 -------
@@ -2740,7 +2777,7 @@ Example
    <copy_to_partition>
    </copy_to_partition>
 
-.. __elements_description_52:
+.. __elements_description_53:
 
 Elements description
 --------------------
@@ -2759,7 +2796,7 @@ TYPE: set_partition_type
 Attribute *part* describes the partition to be modified (nr).Attribute
 *type* is the numerical partition id, as understood byfdisk.
 
-.. __example_53:
+.. __example_54:
 
 Example
 -------
@@ -2769,7 +2806,7 @@ Example
    <set_partition_type>
    </set_partition_type>
 
-.. __elements_description_53:
+.. __elements_description_54:
 
 Elements description
 --------------------
@@ -2789,7 +2826,7 @@ describes an additional user group to be created. the following
 parameters areavailable:'gid' - group id.'system = "True" - system
 group.The value of the tag describes the group name namefor the account.
 
-.. __example_54:
+.. __example_55:
 
 Example
 -------
@@ -2799,7 +2836,7 @@ Example
    <addgroup>
    </addgroup>
 
-.. __elements_description_54:
+.. __elements_description_55:
 
 Elements description
 --------------------
@@ -2821,7 +2858,7 @@ filename, and the fmt attribute isthe format. (See *qemu-img --help* for
 a list of possible formats)The Image is per default compressed with gzip
 afterwards.
 
-.. __example_55:
+.. __example_56:
 
 Example
 -------
@@ -2831,7 +2868,7 @@ Example
    <img_convert>
    </img_convert>
 
-.. __elements_description_55:
+.. __elements_description_56:
 
 Elements description
 --------------------
@@ -2854,7 +2891,7 @@ Set the packer to use for an artifaxct.The value of the tag describes
 the filename of the Imagefile.The packer attribute may take the
 following values:(none, gzip, tar, targz, tarxz)
 
-.. __example_56:
+.. __example_57:
 
 Example
 -------
@@ -2864,7 +2901,7 @@ Example
    <set_packer>
    </set_packer>
 
-.. __elements_description_56:
+.. __elements_description_57:
 
 Elements description
 --------------------
@@ -2916,7 +2953,7 @@ instead of writing’owner' - (optional) set file owner’group' -
 value of the tag is the raw/encoded content towrite/append to the
 destination
 
-.. __example_57:
+.. __example_58:
 
 Example
 -------
@@ -2926,7 +2963,7 @@ Example
    <file>
    </file>
 
-.. __elements_description_57:
+.. __elements_description_58:
 
 Elements description
 --------------------
@@ -2964,7 +3001,7 @@ user.\ *create_home="False"* - do not create the home
 directory.\ *create_group = "False"* - Do not create the primary
 group.The value of the tag describes the login name for the account.
 
-.. __example_58:
+.. __example_59:
 
 Example
 -------
@@ -2974,7 +3011,7 @@ Example
    <adduser>
    </adduser>
 
-.. __elements_description_58:
+.. __elements_description_59:
 
 Elements description
 --------------------
@@ -3013,7 +3050,7 @@ TYPE: cpmv
 
 describes a copy or move of an element in the rootfilesystem
 
-.. __example_59:
+.. __example_60:
 
 Example
 -------
@@ -3023,7 +3060,7 @@ Example
    <cpmv>
    </cpmv>
 
-.. __elements_description_59:
+.. __elements_description_60:
 
 Elements description
 --------------------
@@ -3039,7 +3076,7 @@ TYPE: rm
 describes a removal of a pattern from the rootfilesystem.Including an
 exclude pattern
 
-.. __example_60:
+.. __example_61:
 
 Example
 -------
@@ -3049,7 +3086,7 @@ Example
    <rm>
    </rm>
 
-.. __elements_description_60:
+.. __elements_description_61:
 
 Elements description
 --------------------
@@ -3064,7 +3101,7 @@ TYPE: mknod
 
 describes a mknod operaition in finetuning
 
-.. __example_61:
+.. __example_62:
 
 Example
 -------
@@ -3074,7 +3111,7 @@ Example
    <mknod>
    </mknod>
 
-.. __elements_description_61:
+.. __elements_description_62:
 
 Elements description
 --------------------
@@ -3089,7 +3126,7 @@ TYPE: git_src
 
 URI of the git repository, e.g. "git://myhost/myrepo.git"
 
-.. __example_62:
+.. __example_63:
 
 Example
 -------
@@ -3099,7 +3136,7 @@ Example
    <git_src>
    </git_src>
 
-.. __elements_description_62:
+.. __elements_description_63:
 
 Elements description
 --------------------
@@ -3114,7 +3151,7 @@ TYPE: svn_src
 
 URI of the svn repository, e.g. "svn://myhost/myrepo/tags/my_tag"
 
-.. __example_63:
+.. __example_64:
 
 Example
 -------
@@ -3124,7 +3161,7 @@ Example
    <svn_src>
    </svn_src>
 
-.. __elements_description_63:
+.. __elements_description_64:
 
 Elements description
 --------------------
@@ -3139,7 +3176,7 @@ TYPE: pkg
 
 describes a debian binary package
 
-.. __example_64:
+.. __example_65:
 
 Example
 -------
@@ -3149,7 +3186,7 @@ Example
    <pkg>
    </pkg>
 
-.. __elements_description_64:
+.. __elements_description_65:
 
 Elements description
 --------------------
@@ -3180,7 +3217,7 @@ TYPE: pbuilder
 
 reference to debian source packages
 
-.. __example_65:
+.. __example_66:
 
 Example
 -------
@@ -3196,7 +3233,7 @@ Example
 
    </pbuilder>
 
-.. __elements_description_65:
+.. __elements_description_66:
 
 Elements description
 --------------------
@@ -3220,7 +3257,7 @@ TYPE: pkg-list
 
 container of debian packages
 
-.. __example_66:
+.. __example_67:
 
 Example
 -------
@@ -3232,7 +3269,7 @@ Example
 
    </pkg-list>
 
-.. __elements_description_66:
+.. __elements_description_67:
 
 Elements description
 --------------------
@@ -3248,7 +3285,7 @@ TYPE: blacklist
 
 blacklists of debian packages
 
-.. __example_67:
+.. __example_68:
 
 Example
 -------
@@ -3260,7 +3297,7 @@ Example
 
    </blacklist>
 
-.. __elements_description_67:
+.. __elements_description_68:
 
 Elements description
 --------------------
@@ -3275,7 +3312,7 @@ TYPE: fullpkg-list
 
 List of packages to be validated against the installed list.
 
-.. __example_68:
+.. __example_69:
 
 Example
 -------
@@ -3287,7 +3324,7 @@ Example
 
    </fullpkg-list>
 
-.. __elements_description_68:
+.. __elements_description_69:
 
 Elements description
 --------------------
@@ -3303,7 +3340,7 @@ TYPE: conf
 
 describes a preseeding entry
 
-.. __example_69:
+.. __example_70:
 
 Example
 -------
@@ -3313,7 +3350,7 @@ Example
    <conf>
    </conf>
 
-.. __elements_description_69:
+.. __elements_description_70:
 
 Elements description
 --------------------
@@ -3337,7 +3374,7 @@ TYPE: preseed
 
 container of config entries
 
-.. __example_70:
+.. __example_71:
 
 Example
 -------
@@ -3349,7 +3386,7 @@ Example
 
    </preseed>
 
-.. __elements_description_70:
+.. __elements_description_71:
 
 Elements description
 --------------------
@@ -3364,7 +3401,7 @@ TYPE: empty
 
 This element just acts like a flag. It might be there, or not.
 
-.. __example_71:
+.. __example_72:
 
 Example
 -------
@@ -3374,7 +3411,7 @@ Example
    <empty>
    </empty>
 
-.. __elements_description_71:
+.. __elements_description_72:
 
 Elements description
 --------------------
@@ -3386,7 +3423,7 @@ TYPE: string
 
 E.L.B.E. standard string. Allow XML base attribute.
 
-.. __example_72:
+.. __example_73:
 
 Example
 -------
@@ -3396,7 +3433,7 @@ Example
    <string>
    </string>
 
-.. __elements_description_72:
+.. __elements_description_73:
 
 Elements description
 --------------------
@@ -3410,7 +3447,7 @@ Sequence of test suites. The require attribute *dst* is thename of the
 file where the Junit XML file will be dumprelative to the project
 directory.
 
-.. __example_73:
+.. __example_74:
 
 Example
 -------
@@ -3422,7 +3459,7 @@ Example
 
    </unit-tests>
 
-.. __elements_description_73:
+.. __elements_description_74:
 
 Elements description
 --------------------
@@ -3438,7 +3475,7 @@ TYPE: test-suite
 A test suite is a sequence of test cases. The requiredattribute name is
 the an human readable identifier for thetest suite.
 
-.. __example_74:
+.. __example_75:
 
 Example
 -------
@@ -3449,7 +3486,7 @@ Example
      <file-exists> rfs:string </file-exists>
    </test-suite>
 
-.. __elements_description_74:
+.. __elements_description_75:
 
 Elements description
 --------------------
@@ -3478,7 +3515,7 @@ TYPE: src-cdrom
 
 Configuration of the src-cdrom
 
-.. __example_75:
+.. __example_76:
 
 Example
 -------
@@ -3494,7 +3531,7 @@ Example
 
    </src-cdrom>
 
-.. __elements_description_75:
+.. __elements_description_76:
 
 Elements description
 --------------------
@@ -3517,7 +3554,7 @@ TYPE: src-cdrom-archive
 
 Holds a base64 encoded tar.bz2 file that is added to the src-cdrom.
 
-.. __example_76:
+.. __example_77:
 
 Example
 -------
@@ -3527,7 +3564,7 @@ Example
    <src-cdrom-archive>
    </src-cdrom-archive>
 
-.. __elements_description_76:
+.. __elements_description_77:
 
 Elements description
 --------------------
@@ -3571,7 +3608,7 @@ TYPE: iso-opts
 
 ISO image options passed to genisoimage(1).
 
-.. __example_77:
+.. __example_78:
 
 Example
 -------
@@ -3599,7 +3636,7 @@ Example
 
    </iso-opts>
 
-.. __elements_description_77:
+.. __elements_description_78:
 
 Elements description
 --------------------
