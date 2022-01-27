@@ -1,0 +1,52 @@
+************************
+elbe-validate
+************************
+
+.. __name:
+
+NAME
+====
+
+elbe-validate - validate xml file.
+
+.. __synopsis:
+
+SYNOPSIS
+========
+
+   ::
+
+      elbe validate <xmlfile>
+
+.. __description:
+
+DESCRIPTION
+===========
+
+This command validates the xmlfile provided, and prints out errors.
+
+.. __options:
+
+OPTIONS
+=======
+
+<xmlfile>
+   The xml file to validate.
+
+.. __examples:
+
+EXAMPLES
+========
+
+-  Validate *project.xml*
+
+   ::
+
+      $ elbe validate project.xml
+
+.. __elbe:
+
+ELBE
+====
+
+Part of the elbe1 suite

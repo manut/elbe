@@ -2259,6 +2259,8 @@ Restrictions
 +-----------------------------------+-----------------------------------+
 | *enumeration*                     | devtmpfs                          |
 +-----------------------------------+-----------------------------------+
+| *enumeration*                     | swap                              |
++-----------------------------------+-----------------------------------+
 
 .. _initvm-finetuning:
 
@@ -2725,6 +2727,9 @@ Elements description
 --------------------
 
 [attr] part integer
+   FIXME - I have no documentation
+
+[attr] nomount boolean
    FIXME - I have no documentation
 
 .. _copy_from_partition:

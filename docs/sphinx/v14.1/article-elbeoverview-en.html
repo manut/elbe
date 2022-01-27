@@ -1,0 +1,1156 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ELBE Overview &mdash; ELBE 14.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ELBE Quickstart" href="article-quickstart.html" />
+    <link rel="prev" title="ELBE XML Reference" href="article-elbe-schema-reference.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ELBE
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                14.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="article-quickstart.html">ELBE Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ELBE Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-notes">General Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-initvm-and-build-a-first-xml-file-from-the-examples">Create initvm and build a first xml file from the examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-xml-files">Example XML Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-subset-that-is-extracted-as-the-root-filesystem">Changing the subset that is extracted as the root filesystem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#finetuning">Finetuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-directories-to-trim-with-finetuning">Useful directories to trim with finetuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archive">Archive</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#slimming-the-root-filesystem-with-the-different-modes">Slimming the root filesystem with the different modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-recommends">install-recommends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default">default</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setsel">setsel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diet">diet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tighten">tighten</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cdrom-functionality">CDROM Functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-reports">Install Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xml-reference">XML Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-ubi-images">Building ubi images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-harddisk-sdcard-images">Building harddisk / sdcard images</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#elbe-init-detailed-explanation">Elbe init (detailed Explanation)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="article-elbe-schema-reference.html">ELBE XML Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">man-pages</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="elbe.html">elbe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-add.html">elbe-add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildchroot.html">elbe-buildchroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsdk.html">elbe-buildsdk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-buildsysroot.html">elbe-buildsysroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-check_updates.html">elbe-check_updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chg_archive.html">elbe-chg_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-chroot.html">elbe-chroot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-control.html">elbe-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-daemon.html">elbe-daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-db.html">elbe-db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-debianize.html">elbe-debianize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-diff.html">elbe-diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-fetch_initvm_pkgs.html">elbe-fetch_initvm_pkgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-gen_update.html">elbe-gen_update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-genlicence.html">elbe-genlicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-get_archive.html">elbe-get_archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-hdimg.html">elbe-hdimg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-init.html">elbe-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-initvm.html">elbe-initvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-mkcdrom.html">elbe-mkcdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-parselicence.html">elbe-parselicence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pbuilder.html">elbe-pbuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-pkgdiff.html">elbe-pkgdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-preprocess.html">elbe-preprocess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-prjrepo.html">elbe-prjrepo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-remove_sign.html">elbe-remove_sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-setsel.html">elbe-setsel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-show.html">elbe-show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-sign.html">elbe-sign</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-toolchainextract.html">elbe-toolchainextract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-updated.html">elbe-updated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-validate.html">elbe-validate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elbe-xsdtoasciidoc.html">elbe-xsdtoasciidoc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ELBE</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ELBE Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/article-elbeoverview-en.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elbe-overview">
+<h1>ELBE Overview<a class="headerlink" href="#elbe-overview" title="Permalink to this headline">¶</a></h1>
+<p>Debian based system to generate root-filesystems for embedded devices.</p>
+<div class="section" id="general-notes">
+<h2>General Notes<a class="headerlink" href="#general-notes" title="Permalink to this headline">¶</a></h2>
+<p>Generally root-filesystem creation faces the following requirements:</p>
+<ul class="simple">
+<li>Creation of root-filesystem for a specific architecture.</li>
+<li>Generation of a development environment for the specific
+architecture.</li>
+</ul>
+<p>Trying to solve this via cross-compilation of the required packages, we
+face the following problems:</p>
+<ul class="simple">
+<li>Many packages are not designed and tested for cross-compilation.</li>
+<li>Big projects consume a significant amount of time to cross compile.</li>
+<li>Dependencies are not resolved automatically. The developer is
+required to manually find out which package versions of dependencies
+are required.</li>
+<li>Changes and patches to the packages need to be updated for newer
+versions. This process makes an update a very time consuming process.</li>
+<li>One must make sure that the same toolchain is used in the development
+environment and in the root-filesystem.</li>
+</ul>
+<p>Elbe takes a different approach for solving these problems:</p>
+<ul class="simple">
+<li>Standard packages are not self compiled. Elbe uses the Debian
+distributions binary packages.</li>
+<li>Own applications are not cross compiled. They are built natively on
+the target architecture in a chroot environment using qemu.</li>
+<li>The root-filesystem is a subset of the Debian system inside the
+chroot environment. This implicitly ensures, that the same toolchain
+is used on the development machine and on the target.</li>
+<li>Updating, adding or removing a package is done via Debian’s
+package-management (apt) which also resolves package dependencies.</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Elbe is shipped as Debian package. This package will pull in the
+necessary dependencies.</p>
+<p>Configure <code class="docutils literal"><span class="pre">/etc/apt/sources.list.d</span></code> appropriately:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;deb http://debian.linutronix.de/elbe buster main&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elbe</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>Optionally the public key for the repo can be installed:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">repo</span><span class="o">.</span><span class="n">pub</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="n">elbe</span><span class="o">-</span><span class="n">repo</span><span class="o">.</span><span class="n">pub</span>
+</pre></div>
+</div>
+<p>Update the package list:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">aptitude</span> <span class="n">update</span>
+</pre></div>
+</div>
+<p>and install elbe using the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">aptitude</span> <span class="n">install</span> <span class="n">elbe</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The Elbe system consists of the program <code class="docutils literal"><span class="pre">elbe</span></code> which is implemented in
+Python. Similar to git, it can be called with several sub commands. For
+example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span>
+<span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">example</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">elbe</span> <span class="n">chg_archive</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span> <span class="n">archive</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+</pre></div>
+</div>
+<p>An Elbe project consists of an XML file that describes the project.</p>
+<p>This xml File is processed inside a virtual machine, because we need
+root privileges to create the Rootfilesystem. This virtual machine is
+called <em>initvm</em> in the following text.</p>
+<p>When an xml File is now submitted into the initvm, the following
+happens:</p>
+<ul class="simple">
+<li>Debian’s <em>debootstrap</em> utility is used to setup a Debian base system.</li>
+<li>The packages specified in the package list of the XML file are
+installed to the base system. The result of this is called the build
+environment.</li>
+<li>A copy of the environment is used as the target system. There is a
+set of different modes for this copy.</li>
+<li>If the XML file contains an archive, it will be unpacked into the
+target, so the fine-tuning commands can use the content of the
+archive, too.</li>
+<li>Inside a chroot environment, the fine-tuning commands are applied to
+the target.</li>
+<li>The archive from the XML file is unpacked again. This is to ensure
+the target filesystem contains all files from the archive, even if
+some of them have been deleted by a fine-tuning command.</li>
+<li>According to what is specified in the XML file, the target filesystem
+is then baked into a tar archive and/or a filesystem image.</li>
+</ul>
+<p>This diagram illustrates the complete process:</p>
+<p><img alt="elbe-process.png" src="_images/elbe-process.png" /></p>
+<p>The following figure shows the steps performed inside the build VM
+during the build process of the target. The highlighted steps are
+performed inside a chroot environment:</p>
+<p><img alt="emu-process.png" src="_images/emu-process.png" /></p>
+<p>On regular Debian installations, init scripts installed by packages are
+started automatically during the post-installation step. Please note
+that Elbe <strong>will not start any services during package installation</strong>.</p>
+<p>As a consequence, packages that require a specific service to be running
+will cause problems during installation. This typically includes
+database application packages, which set up a database in their postinst
+script and rely on the database server to be already running.</p>
+</div>
+<div class="section" id="create-initvm-and-build-a-first-xml-file-from-the-examples">
+<h2>Create initvm and build a first xml file from the examples<a class="headerlink" href="#create-initvm-and-build-a-first-xml-file-from-the-examples" title="Permalink to this headline">¶</a></h2>
+<p>In order to use elbe, a user needs to be member of the <code class="docutils literal"><span class="pre">libvirt</span></code>
+system group.</p>
+<p>To create an initvm and make that initvm build a first Rootfilesystem,
+use the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">buster</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+<p>This will take quite a while.</p>
+<p>Only one initvm may run on a single computer. If an initvm is already
+running in the background, this command will exit with a failure notice.</p>
+<p>The initvm will keep on running, after this command. Further xml Files
+may be built using</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">submit</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">x86_32</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">hdimg</span><span class="o">-</span><span class="n">minimal</span><span class="o">-</span><span class="n">grub</span><span class="o">-</span><span class="n">buster</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+<p>The initvm will not be restarted upon a reboot of the machine.</p>
+<p>If you need to start the initvm again, use</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">start</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span>
+</pre></div>
+</div>
+<div class="section" id="example-xml-files">
+<h3>Example XML Files<a class="headerlink" href="#example-xml-files" title="Permalink to this headline">¶</a></h3>
+<p>A root-filesystem-project is described with a XML file.</p>
+<p>Elbe ships with a set of example XML files.</p>
+<p>The following XML file describes a simple system in the default full
+copy mode. The root filesystem is essentially identical to the build
+environment and it will be saved as <code class="docutils literal"><span class="pre">nfsroot.tar.gz</span></code></p>
+<p><strong>example.xml.</strong></p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ns0</span><span class="p">:</span><span class="n">RootFileSystem</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">ns0</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe&quot;</span>
+        <span class="n">xmlns</span><span class="p">:</span><span class="n">xsi</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+        <span class="n">created</span><span class="o">=</span><span class="s2">&quot;2009-05-20T08:50:56&quot;</span> <span class="n">revision</span><span class="o">=</span><span class="s2">&quot;6&quot;</span>
+        <span class="n">xsi</span><span class="p">:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe dbsfed.xsd&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">ARMexample</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">08.15</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="n">full</span> <span class="n">featured</span> <span class="n">debian</span> <span class="n">system</span><span class="o">&lt;/</span><span class="n">description</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">buildtype</span><span class="o">&gt;</span><span class="n">armel</span><span class="o">&lt;/</span><span class="n">buildtype</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">mirror</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">primary_host</span><span class="o">&gt;</span><span class="n">debian</span><span class="o">.</span><span class="n">tu</span><span class="o">-</span><span class="n">bs</span><span class="o">.</span><span class="n">de</span><span class="o">&lt;/</span><span class="n">primary_host</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">primary_path</span><span class="o">&gt;/</span><span class="n">debian</span><span class="o">&lt;/</span><span class="n">primary_path</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">primary_proto</span><span class="o">&gt;</span><span class="n">http</span><span class="o">&lt;/</span><span class="n">primary_proto</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">trusted</span><span class="o">=</span><span class="n">yes</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">mirror</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span><span class="n">buster</span><span class="o">&lt;/</span><span class="n">suite</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span><span class="n">myARM</span><span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="n">tec</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">&lt;/</span><span class="n">domain</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">passwd</span><span class="o">&gt;</span><span class="n">foo</span><span class="o">&lt;/</span><span class="n">passwd</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">console</span><span class="o">&gt;</span><span class="n">ttyS0</span><span class="p">,</span><span class="mi">115200</span><span class="o">&lt;/</span><span class="n">console</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">tar</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">nfsroot</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">tar</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">package</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">finetuning</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">bash</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">openssh</span><span class="o">-</span><span class="n">server</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">target</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">ns0</span><span class="p">:</span><span class="n">RootFileSystem</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>To generate the project directory from the XML file the following
+command is used:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">submit</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+<p>The directory <code class="docutils literal"><span class="pre">~/elbe-initvm</span></code> must contain a running initvm. If an
+initvm has not been created yet, use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">initvm</span> <span class="n">create</span> <span class="o">--</span><span class="n">directory</span> <span class="o">~/</span><span class="n">elbe</span><span class="o">-</span><span class="n">initvm</span> <span class="n">example</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="changing-the-subset-that-is-extracted-as-the-root-filesystem">
+<h2>Changing the subset that is extracted as the root filesystem<a class="headerlink" href="#changing-the-subset-that-is-extracted-as-the-root-filesystem" title="Permalink to this headline">¶</a></h2>
+<p>Elbe has several methods to select the subset that is packaged as the
+root-filesystem.</p>
+<ul class="simple">
+<li>The finetuning section allows to remove, copy or move files before
+the archive will be extracted and the target image is generated.</li>
+<li>The <em>install-recommends</em> tag.</li>
+<li>The initial copy has several modes, which allow to extract very small
+subsets.</li>
+<li>The embedded archive.</li>
+</ul>
+<div class="section" id="finetuning">
+<h3>Finetuning<a class="headerlink" href="#finetuning" title="Permalink to this headline">¶</a></h3>
+<p>The finetuning section allows to copy, move and delete files in the
+root-filesystem. Additionally it is possible to run commands. Here is an
+example finetuning section:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">mkdir</span><span class="o">&gt;/</span><span class="n">mydir</span><span class="o">&lt;/</span><span class="n">mkdir</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">mknod</span> <span class="n">opts</span><span class="o">=</span><span class="s2">&quot;c 1 5&quot;</span><span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">zero</span><span class="o">&lt;/</span><span class="n">mknod</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">buildenv_mkdir</span><span class="o">&gt;/</span><span class="n">mydir</span><span class="o">&lt;/</span><span class="n">buildenv_mkdir</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">cp</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/copy/me&quot;</span><span class="o">&gt;/</span><span class="n">my</span><span class="o">/</span><span class="n">destination</span><span class="o">&lt;/</span><span class="n">cp</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">buildenv_cp</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/copy/me&quot;</span><span class="o">&gt;/</span><span class="n">my</span><span class="o">/</span><span class="n">destination</span><span class="o">&lt;/</span><span class="n">buildenv_cp</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">b2t_cp</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/copy/me&quot;</span><span class="o">&gt;/</span><span class="n">my</span><span class="o">/</span><span class="n">name</span><span class="o">/</span><span class="n">on</span><span class="o">/</span><span class="n">target</span><span class="o">&lt;/</span><span class="n">b2t_cp</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">t2b_cp</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/copy/me&quot;</span><span class="o">&gt;/</span><span class="n">my</span><span class="o">/</span><span class="n">name</span><span class="o">/</span><span class="n">on</span><span class="o">/</span><span class="n">buildenv</span><span class="o">&lt;/</span><span class="n">b2t_cp</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">mv</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/var&quot;</span><span class="o">&gt;/</span><span class="n">var_ro</span><span class="o">&lt;/</span><span class="n">mv</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">buildenv_mv</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/var&quot;</span><span class="o">&gt;/</span><span class="n">var_ro</span><span class="o">&lt;/</span><span class="n">buildenv_mv</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">echo</span> <span class="s2">&quot;T0:23:respawn:/sbin/getty -L ttyO0 115200 vt102&quot;</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">inittab</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">buildenv_command</span><span class="o">&gt;</span><span class="n">some_command</span><span class="o">&lt;/</span><span class="n">buildenv_command</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">purge</span><span class="o">&gt;</span><span class="n">apt</span><span class="o">&lt;/</span><span class="n">purge</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">addgroup</span><span class="o">&gt;</span><span class="n">mygroup</span><span class="o">&lt;/</span><span class="n">addgroup</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">adduser</span> <span class="n">groups</span><span class="o">=</span><span class="s1">&#39;mygroup,audio&#39;</span> <span class="n">passwd</span><span class="o">=</span><span class="s1">&#39;huhu&#39;</span> <span class="n">shell</span><span class="o">=</span><span class="s1">&#39;/bin/zsh&#39;</span><span class="o">&gt;</span><span class="n">manut</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">adduser</span> <span class="n">passwd</span><span class="o">=</span><span class="s1">&#39;test&#39;</span> <span class="n">shell</span><span class="o">=</span><span class="s1">&#39;/bin/bash&#39;</span><span class="o">&gt;</span><span class="n">test</span><span class="o">&lt;/</span><span class="n">adduser</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">finetuning</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Remove the directory <em>/usr/share/doc</em> from the target.</li>
+<li>Create the directory <em>/mydir</em> on the target.</li>
+<li>Create the character device <em>/dev/zero</em> with major number 1 and minor
+number 5 on the target.</li>
+<li>Create the directory <em>/mydir</em> in the build environment.</li>
+<li>Copy <em>/copy/me</em> on the target to <em>/my/destination</em>.</li>
+<li>Copy <em>/copy/me</em> in the build environment to <em>/my/destination</em>.</li>
+<li>Copy <em>/copy/me</em> from the build environment to <em>/my/name/on/target</em> on
+the target.</li>
+<li>Copy <em>/copy/me</em> from the target to <em>/my/name/on/buildenv</em> in the
+build environment.</li>
+<li>Move <em>/var</em> to <em>/var/ro</em> in the target root filesystem.</li>
+<li>Move <em>/var</em> to <em>/var/ro</em> in the build environment.</li>
+<li>Execute the given command in the target root filesystem. In this
+example a line is added to <em>/etc/inittab</em> in order to permit logins
+via the serial console.</li>
+<li>Execute <em>some_command</em> in the build environment.</li>
+<li>Remove the <em>apt</em> package from the target root filesystem using <em>dpkg
+–purge</em>.</li>
+<li>A group with the name <em>mygroup</em> is created.</li>
+<li>Adds the user <em>manut</em> with <em>/bin/zsh</em> as default shell. A group with
+the same name as the user is always created and is the default group.
+manut is additionally added to the groups <em>mygroup</em> and <em>audio</em>.
+manuts login password is <em>huhu</em>. The <em>groups</em> attribute is optional,
+<em>passwd</em> and <em>shell</em> are mandatory.</li>
+</ul>
+<p>The copy, mv, and rm commands operate on full directories.</p>
+</div>
+<div class="section" id="useful-directories-to-trim-with-finetuning">
+<h3>Useful directories to trim with finetuning<a class="headerlink" href="#useful-directories-to-trim-with-finetuning" title="Permalink to this headline">¶</a></h3>
+<p>This section provides some useful directories that can be safely removed
+to get a smaller target image.</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">doc</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/*&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">pkgcache</span><span class="o">.</span><span class="n">bin</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">srcpkgcache</span><span class="o">.</span><span class="n">bin</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">lists</span><span class="o">/*</span><span class="n">_Release</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">lists</span><span class="o">/*</span><span class="n">_Packages</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">lists</span><span class="o">/*</span><span class="n">_Sources</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">boot</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">lib</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">32</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">versatile</span><span class="o">/&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">man</span><span class="o">/*&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">elbe</span><span class="o">&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">rm</span><span class="o">&gt;</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">debconf</span><span class="o">/*&lt;/</span><span class="n">rm</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">finetuning</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The doc files are not necessary on an embedded target.</li>
+<li>The apt cache can be downloaded again if necessary.</li>
+<li>The boot directory contains the kernel used for the VM. On embedded
+targets the kernel is normally loaded by the bootloader.</li>
+<li>The kernel modules for the standard Debian kernel.</li>
+<li>The man page cache</li>
+<li>The full copy mode will also copy elbe onto the root-filesystem.</li>
+<li>debconf cache is also not necessary</li>
+</ul>
+</div>
+<div class="section" id="archive">
+<h3>Archive<a class="headerlink" href="#archive" title="Permalink to this headline">¶</a></h3>
+<p>It’s also possible to include an archive into the XML file, that is
+unpacked into the target root-filesystem after the finetuning step. This
+archive must be a bzip2 compressed tar (.tar.bz2) and the following
+command can be used to embed the archive into the XML file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elbe</span> <span class="n">chg_archive</span> <span class="o">&lt;</span><span class="n">xmlfile</span><span class="o">&gt;</span> <span class="n">archive</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+</pre></div>
+</div>
+<p>This feature is useful to place custom configuration-files into the
+final image.</p>
+</div>
+</div>
+<div class="section" id="slimming-the-root-filesystem-with-the-different-modes">
+<h2>Slimming the root filesystem with the different modes<a class="headerlink" href="#slimming-the-root-filesystem-with-the-different-modes" title="Permalink to this headline">¶</a></h2>
+<p>The copying process has several modes. The mode is configured in the
+<em>target</em> tag. It needs to be the tag before <em>finetuning</em>.</p>
+<p>The following commented example illustrates where the mode is
+configured.</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span><span class="n">example</span><span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">&lt;/</span><span class="n">domain</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">passwd</span><span class="o">&gt;</span><span class="n">foo</span><span class="o">&lt;/</span><span class="n">passwd</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">tar</span><span class="o">&gt;</span><span class="n">nfsroot</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span><span class="o">&lt;/</span><span class="n">tar</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">package</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">diet</span> <span class="o">/&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">install</span><span class="o">-</span><span class="n">recommends</span> <span class="o">/&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">finetuning</span> \<span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">bash</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+
+<span class="o">&lt;/</span><span class="n">target</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The mode is configured at this place, leaving it out, enables the
+default mode.</li>
+<li><em>install-recommends</em> should be placed here.</li>
+</ul>
+<div class="section" id="install-recommends">
+<h3>install-recommends<a class="headerlink" href="#install-recommends" title="Permalink to this headline">¶</a></h3>
+<p><em>install-recommends</em> enables installation of recommended packages. This
+can make the root-filesystem a lot bigger. With the default setting,
+installed programs will still work, but some functionality requiring
+external programs might be disabled.</p>
+<p>This is not strictly a mode as described in the following paragraphs. It
+can be combined with any of them, and the following modes are mutually
+exclusive.</p>
+</div>
+<div class="section" id="default">
+<h3>default<a class="headerlink" href="#default" title="Permalink to this headline">¶</a></h3>
+<p>The default mode generates a full copy of the build image. This mode is
+the easiest to use, but its not possible to generate images which have
+the Debian package management removed.</p>
+</div>
+<div class="section" id="setsel">
+<h3>setsel<a class="headerlink" href="#setsel" title="Permalink to this headline">¶</a></h3>
+<p>The setsel mode can be used to generate images which only contain
+<em>dpkg</em>, and offers a more fine-grained control on which packages are
+installed.</p>
+<p>The recommended usage is as follows:</p>
+<ul class="simple">
+<li>Generate an image in the default mode.</li>
+<li>Run the image and use aptitude to purge unwanted packages.</li>
+<li>Maybe even use dpkg to remove apt and aptitude.</li>
+<li>Then generate the list of selected Packages using
+<code class="docutils literal"><span class="pre">dpkg</span> <span class="pre">--get-selections</span> <span class="pre">&gt;</span> <span class="pre">selections.list</span></code></li>
+<li>Transfer this file to the host System.</li>
+<li>Use <code class="docutils literal"><span class="pre">elbe</span> <span class="pre">setsel</span> <span class="pre">&lt;xmlfile&gt;</span> <span class="pre">selections.list</span></code> to import the pkg-list
+into the XML file.</li>
+<li>Rebuild using setsel mode.</li>
+</ul>
+<p>The setsel mode works by feeding the pkg list to
+<code class="docutils literal"><span class="pre">dpkg</span> <span class="pre">--set-selections</span></code> in the target image copy. It has the advantage
+that there is no need to cope with some unregistered configuration
+files.</p>
+</div>
+<div class="section" id="diet">
+<h3>diet<a class="headerlink" href="#diet" title="Permalink to this headline">¶</a></h3>
+<p>Diet Mode only copies the files that are referenced in the Package
+management. It resolves the dependencies so that one does not need to
+reference library packages.</p>
+<p>Some packages rely on files generated in the post-inst scripts, which
+are not tracked by the package management. Work is in progress to
+execute the post-inst scripts in the target copy, but there are still
+some problems with corner-cases, when dependencies of these scripts get
+removed in the <em>finetuning</em>.</p>
+<p>These Errors are hard to find. And slow down development of an RFS. Diet
+Mode is intended to build small root-filesystems. E.g. to add some
+packages, like openssh-server, to a busybox based system.</p>
+<p>Do not use this for normal filesystems.</p>
+<p>This also holds for the <em>tighten</em> mode.</p>
+</div>
+<div class="section" id="tighten">
+<h3>tighten<a class="headerlink" href="#tighten" title="Permalink to this headline">¶</a></h3>
+<p>Tighten mode only extracts the files referenced by the packages in
+<em>pkg-list</em>. No dependencies are resolved. This mode is intended for
+compatibility with old XML files, do not use in new elbe projects.</p>
+</div>
+</div>
+<div class="section" id="cdrom-functionality">
+<h2>CDROM Functionality<a class="headerlink" href="#cdrom-functionality" title="Permalink to this headline">¶</a></h2>
+<p>Elbe creates a CDROM iso image with all the installed packages. It is
+created in the build directory, and its filename is <code class="docutils literal"><span class="pre">install.iso</span></code> This
+can also serve as an installation source.</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">mirror</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">cdrom</span><span class="o">&gt;/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">elbe</span><span class="o">-</span><span class="n">example</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">iso</span><span class="o">&lt;/</span><span class="n">cdrom</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">mirror</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-reports">
+<h2>Install Reports<a class="headerlink" href="#install-reports" title="Permalink to this headline">¶</a></h2>
+<p>The build process also creates a report file in asciidoc format:
+<code class="docutils literal"><span class="pre">elbe-report.txt</span></code> can be converted to html using the following
+command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">asciidoc</span> <span class="n">elbe</span><span class="o">-</span><span class="n">report</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>This report lists all files in the root-file-system, including the
+origin Debian package.</p>
+</div>
+<div class="section" id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
+<p>After a build the <code class="docutils literal"><span class="pre">source.xml</span></code> file includes information about all
+installed packages and versions. If this information is already present
+in a file used with <code class="docutils literal"><span class="pre">elbe</span> <span class="pre">create</span></code> the installed package versions and
+md5 hashes are validated and a report is printed and saved to
+<code class="docutils literal"><span class="pre">validation.txt</span></code>. This file is also in asciidoc format.</p>
+</div>
+<div class="section" id="xml-reference">
+<h2>XML Reference<a class="headerlink" href="#xml-reference" title="Permalink to this headline">¶</a></h2>
+<p>This section is a step by step explanation of the ARM example.</p>
+<p>The XML file starts with the following header, which should always be
+the same:</p>
+<div class="code XML highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ns0</span><span class="p">:</span><span class="n">RootFileSystem</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">ns0</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe&quot;</span>
+     <span class="n">xmlns</span><span class="p">:</span><span class="n">xsi</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+     <span class="n">created</span><span class="o">=</span><span class="s2">&quot;2009-05-20T08:50:56&quot;</span> <span class="n">revision</span><span class="o">=</span><span class="s2">&quot;6&quot;</span>
+     <span class="n">xsi</span><span class="p">:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s2">&quot;https://www.linutronix.de/projects/Elbe dbsfed.xsd&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>After this header follows the project description.</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">ARMexample</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">08.15</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">mirror</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">primary_host</span><span class="o">&gt;</span><span class="n">debian</span><span class="o">.</span><span class="n">tu</span><span class="o">-</span><span class="n">bs</span><span class="o">.</span><span class="n">de</span><span class="o">&lt;/</span><span class="n">primary_host</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">primary_path</span><span class="o">&gt;/</span><span class="n">debian</span><span class="o">&lt;/</span><span class="n">primary_path</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">primary_proto</span><span class="o">&gt;</span><span class="n">http</span><span class="o">&lt;/</span><span class="n">primary_proto</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">trusted</span><span class="o">=</span><span class="n">yes</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">check</span><span class="o">-</span><span class="n">valid</span><span class="o">-</span><span class="n">until</span><span class="o">=</span><span class="n">no</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">buster</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">debian</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">elbe</span> <span class="n">buster</span> <span class="n">main</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">trusted</span><span class="o">=</span><span class="n">yes</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+                                <span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">url</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;/</span><span class="n">mirror</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span><span class="n">buster</span><span class="o">&lt;/</span><span class="n">suite</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The <em>mirror</em> tag contains <em>primary_host</em>, <em>primary_path</em>,
+<em>primary_proto</em> and <em>host</em> <em>host</em> is optional, used in case of a
+primary mirror different for the sdk architecture. It describes the
+Debian mirror used.</li>
+<li>The <em>options</em> tags can be used to set a list of <em>option</em> tag. Each
+‘option tag can contain an option of the form NAME=VALUE.</li>
+<li>The <em>url-list</em> can contain additional package sources.</li>
+<li>The <em>suite</em> selects the distribution codename used from the primary
+mirror.</li>
+</ul>
+<p>the <em>project</em> tag isn’t closed yet.</p>
+<p>The following section describes the virtual machine in which the
+debian-installer is executed and custom packages can be built.</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="n">buildimage</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">arch</span><span class="o">&gt;</span><span class="n">armel</span><span class="o">&lt;/</span><span class="n">arch</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">20</span><span class="n">G</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">mem</span><span class="o">&gt;</span><span class="mi">256</span><span class="o">&lt;/</span><span class="n">mem</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">interpreter</span><span class="o">&gt;</span><span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">arm</span><span class="o">&lt;/</span><span class="n">interpreter</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">console</span><span class="o">&gt;</span><span class="n">ttyAMA0</span><span class="p">,</span><span class="mi">115200</span><span class="n">n1</span><span class="o">&lt;/</span><span class="n">console</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">machine</span><span class="o">&gt;</span><span class="n">versatilepb</span><span class="o">&lt;/</span><span class="n">machine</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">NIC</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">model</span><span class="o">&gt;</span><span class="n">smc91c111</span><span class="o">&lt;/</span><span class="n">model</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">MAC</span><span class="o">&gt;</span><span class="n">de</span><span class="p">:</span><span class="n">ad</span><span class="p">:</span><span class="n">be</span><span class="p">:</span><span class="n">ef</span><span class="p">:</span><span class="n">be</span><span class="p">:</span><span class="mi">05</span><span class="o">&lt;/</span><span class="n">MAC</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">NIC</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">portforwarding</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">forward</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">proto</span><span class="o">&gt;</span><span class="n">tcp</span><span class="o">&lt;/</span><span class="n">proto</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">buildenv</span><span class="o">&gt;</span><span class="mi">22</span><span class="o">&lt;/</span><span class="n">buildenv</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">host</span><span class="o">&gt;</span><span class="mi">5022</span><span class="o">&lt;/</span><span class="n">host</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">forward</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">portforwarding</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">buildd</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">buildimage</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><em>arch</em> is the Debian architecture of the target. (optional)</li>
+<li><em>size</em> is the size of the hard-disk image. (optional)</li>
+<li><em>mem</em> controls the amount of RAM that is allocated to the virtual
+machine. (optional)</li>
+<li>The <em>interpreter</em> is either <em>qemu-system-&lt;arch&gt;</em> or <em>qemu-kvm</em>. Usage
+of kvm is usually only possible, when the target is <em>x86</em>. (optional)</li>
+<li>The <em>console</em> line needs special attention because it is different on
+different emulation targets. (optional)</li>
+<li>The <em>machine</em> tag contains the <em>-machine</em> parameter, that is provided
+to qemu. (optional)</li>
+<li><em>portforwarding</em> of network server ports from the virtual machine to
+the host. This example forwards the ssh port to port 5022 on the
+host. (optional)</li>
+<li>This is the list of packages that are only installed to the
+buildimage. (The packages listed in the target sections pkg-list are
+installed to the target image and the buildimage.) It can be used for
+example to install the debian build server into the buildenvironment.
+(optional)</li>
+</ul>
+<p>The optional parameters are normally set to defaults by the buildtype
+tag. The tags can be used for advanced use of elbe; to override the
+defaults.</p>
+<p>If the optional parameters are not set, the buildtype can even be
+overridden by the flag –buildtype at <em>elbe create</em> to build the same
+configuration for a different architecture</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span><span class="n">myARM</span><span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="n">tec</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">&lt;/</span><span class="n">domain</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">passwd</span><span class="o">&gt;</span><span class="n">foo</span><span class="o">&lt;/</span><span class="n">passwd</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">console</span><span class="o">&gt;</span><span class="n">ttyS0</span><span class="p">,</span><span class="mi">115200</span><span class="o">&lt;/</span><span class="n">console</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">tar</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">nfsroot</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">tar</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">package</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">finetuning</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">build</span><span class="o">-</span><span class="n">essential</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">bash</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">less</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">git</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">debhelper</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">nfs</span><span class="o">-</span><span class="n">common</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">openssh</span><span class="o">-</span><span class="n">server</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">target</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The hostname</li>
+<li>and domainname</li>
+<li>This is the root password of the machine.</li>
+<li>This describes, that the resulting rootfilesystem, shall be generated
+as <em>nfsroot.tar.gz</em></li>
+<li>finetuning section can be empty. If you need finetuning it can be
+defined here. The format of this tag is explained above.</li>
+<li>The package list resides here.</li>
+</ul>
+<div class="section" id="building-ubi-images">
+<h3>Building ubi images<a class="headerlink" href="#building-ubi-images" title="Permalink to this headline">¶</a></h3>
+<p>Elbe also has the ability to generate ubi images, including different
+partitions and mountpoints. Lets look at an example <em>target</em> section.</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span><span class="n">myARM</span><span class="o">&lt;/</span><span class="n">hostname</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="n">tec</span><span class="o">.</span><span class="n">linutronix</span><span class="o">.</span><span class="n">de</span><span class="o">&lt;/</span><span class="n">domain</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">passwd</span><span class="o">&gt;</span><span class="n">foo</span><span class="o">&lt;/</span><span class="n">passwd</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">console</span><span class="o">&gt;</span><span class="n">ttyS0</span><span class="p">,</span><span class="mi">115200</span><span class="o">&lt;/</span><span class="n">console</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="n">images</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">mtd</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">linux</span><span class="o">.</span><span class="n">img</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">nr</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">nr</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">60</span><span class="n">MB</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">ubivg</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">nand</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">miniosize</span><span class="o">&gt;</span><span class="mi">2048</span><span class="o">&lt;/</span><span class="n">miniosize</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">maxlogicaleraseblockcount</span><span class="o">&gt;</span><span class="mi">1533</span><span class="o">&lt;/</span><span class="n">maxlogicaleraseblockcount</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">logicaleraseblocksize</span><span class="o">&gt;</span><span class="mi">126976</span><span class="o">&lt;/</span><span class="n">logicaleraseblocksize</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">physicaleraseblocksize</span><span class="o">&gt;</span><span class="mi">128</span><span class="n">KiB</span><span class="o">&lt;/</span><span class="n">physicaleraseblocksize</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">ubi</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">static</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">kernel</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">4</span><span class="n">MiB</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;/</span><span class="n">boot</span><span class="o">/</span><span class="n">vmlinuz</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mf">33.9</span><span class="o">-</span><span class="n">rt31</span><span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
+                                <span class="o">&lt;/</span><span class="n">ubi</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">ubi</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">dynamic</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">rfs</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">26</span><span class="n">MiB</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+                                <span class="o">&lt;/</span><span class="n">ubi</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">ubi</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">dynamic</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">data</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+                                        <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">30</span><span class="n">MiB</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+                                <span class="o">&lt;/</span><span class="n">ubi</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">ubivg</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">mtd</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">images</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="n">fstab</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">bylabel</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">data</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/</span><span class="n">opt</span><span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">ubifs</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">mkfs</span><span class="o">&gt;-</span><span class="n">x</span> <span class="n">lzo</span><span class="o">&lt;/</span><span class="n">mkfs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span><span class="n">rw</span><span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">bylabel</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">bylabel</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">rfs</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">ubifs</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">mkfs</span><span class="o">&gt;-</span><span class="n">x</span> <span class="n">lzo</span><span class="o">&lt;/</span><span class="n">mkfs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span><span class="n">ro</span><span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">bylabel</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">bydev</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">proc</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/</span><span class="n">proc</span><span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">proc</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">bydev</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">bydev</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">sysfs</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/</span><span class="n">sys</span><span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">sysfs</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">bydev</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">bydev</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">tmpfs</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/</span><span class="n">tmp</span><span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">tmpfs</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span><span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span><span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">bydev</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">bydev</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">tmpfs</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">tmpfs</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="n">M</span><span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">bydev</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">bydev</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">tmpfs</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">tmpfs</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span><span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span><span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">bydev</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">fstab</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="n">finetuning</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">finetuning</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">pkg</span><span class="o">&gt;</span><span class="n">dash</span><span class="o">&lt;/</span><span class="n">pkg</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">pkg</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">target</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>This specifies an mtd image with 60MB size whose filename is
+linux.img</li>
+<li>Parameters for the ubi tools, describing the NAND geometry.</li>
+<li>Specification of ubi volumes.</li>
+<li>specifies the fstab, so that everything can be copied to the right
+image.</li>
+<li>Normal partition entries are by label.</li>
+<li>The target /etc/fstab file is created with the entries defined in
+this section. Entries for <em>/proc</em>, <em>/sys</em> etc. can be generated with
+<em>bydev</em> nodes.</li>
+</ul>
+</div>
+<div class="section" id="building-harddisk-sdcard-images">
+<h3>Building harddisk / sdcard images<a class="headerlink" href="#building-harddisk-sdcard-images" title="Permalink to this headline">¶</a></h3>
+<p>Elbe also has the ability to generate ubi images, including different
+partitions and mountpoints. Lets look at an example <em>target</em> section.</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">images</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">hd</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">sda</span><span class="o">.</span><span class="n">img</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">1900</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">partitions</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">primary</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">part</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">part</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="n">remain</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">rfs</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">parttype</span><span class="o">&gt;</span><span class="n">linux</span><span class="o">&lt;/</span><span class="n">parttype</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">primary</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">partitions</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">hd</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">hd</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">sdb</span><span class="o">.</span><span class="n">img</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">400</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">partitions</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">primary</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">part</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">part</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="n">remain</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">config</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                                <span class="o">&lt;</span><span class="n">parttype</span><span class="o">&gt;</span><span class="n">linux</span><span class="o">&lt;/</span><span class="n">parttype</span><span class="o">&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">primary</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">partitions</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">hd</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">images</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">fstab</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">bylabel</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">rfs</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">ext4</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">bylabel</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">bylabel</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">config</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/</span><span class="n">mnt</span><span class="o">/</span><span class="n">config</span><span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">ext4</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span><span class="n">ro</span><span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">bylabel</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">bydev</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="n">none</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;/</span><span class="n">sys</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">debug</span><span class="o">&lt;/</span><span class="n">mountpoint</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="n">debug</span><span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">fs</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">bydev</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">fstab</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>this specifies an hd image</li>
+<li>size of a hd image</li>
+<li>Specification of ubi volumes.</li>
+<li>labels are used to assign mountpoints to partitions</li>
+<li>The target /etc/fstab file is created with the entries defined in
+this section. Entries for <em>/proc</em>, <em>/sys</em> etc. can be generated with
+<em>bydev</em> nodes.</li>
+</ul>
+<p>A complete reference that is automatically generated from the schema
+file is also available.</p>
+</div>
+</div>
+<div class="section" id="elbe-init-detailed-explanation">
+<h2>Elbe init (detailed Explanation)<a class="headerlink" href="#elbe-init-detailed-explanation" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">elbe</span> <span class="pre">init</span></code> is now considered a low-level command for advanced Users.
+Under normal circumstances <code class="docutils literal"><span class="pre">elbe</span> <span class="pre">initvm</span></code> should be used. This
+paragraph is kept for reference.</p>
+<p>The <em>elbe init</em> command generates a project directory, which contains a
+hard disk image for a virtual build machine and a <em>Makefile</em> to install
+the build VM and to work with it.</p>
+<p>During this process, <em>elbe init</em> will download a linux kernel and
+initrd.gz from the debian mirror. In case of a local mirror, be sure,
+that <code class="docutils literal"><span class="pre">dists/&lt;codename&gt;/main/installer-amd64/</span></code> is also mirrored.</p>
+<p>After <em>elbe init</em> has generated the project directory, change to the
+project directory and run <em>make</em>. This will start the installation of
+the build VM.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="article-quickstart.html" class="btn btn-neutral float-right" title="ELBE Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="article-elbe-schema-reference.html" class="btn btn-neutral" title="ELBE XML Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Linutronix GmbH.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: v14.1
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../v10/article-elbeoverview-en.html">v10</a></dd>
+            <dd><a href="../v11/article-elbeoverview-en.html">v11</a></dd>
+            <dd><a href="../v12.0/article-elbeoverview-en.html">v12.0</a></dd>
+            <dd><a href="../v12.1/article-elbeoverview-en.html">v12.1</a></dd>
+            <dd><a href="../v12.2/article-elbeoverview-en.html">v12.2</a></dd>
+            <dd><a href="../v12.3/article-elbeoverview-en.html">v12.3</a></dd>
+            <dd><a href="../v12.4/article-elbeoverview-en.html">v12.4</a></dd>
+            <dd><a href="../v12.5/article-elbeoverview-en.html">v12.5</a></dd>
+            <dd><a href="../v13.0/article-elbeoverview-en.html">v13.0</a></dd>
+            <dd><a href="../v13.1/article-elbeoverview-en.html">v13.1</a></dd>
+            <dd><a href="../v13.2/article-elbeoverview-en.html">v13.2</a></dd>
+            <dd><a href="../v13.3/article-elbeoverview-en.html">v13.3</a></dd>
+            <dd><a href="../v14.0/article-elbeoverview-en.html">v14.0</a></dd>
+            <dd><a href="article-elbeoverview-en.html">v14.1</a></dd>
+            <dd><a href="../v2.5/article-elbeoverview-en.html">v2.5</a></dd>
+            <dd><a href="../v3/article-elbeoverview-en.html">v3</a></dd>
+            <dd><a href="../v4/article-elbeoverview-en.html">v4</a></dd>
+            <dd><a href="../v5/article-elbeoverview-en.html">v5</a></dd>
+            <dd><a href="../v6/article-elbeoverview-en.html">v6</a></dd>
+            <dd><a href="../v7/article-elbeoverview-en.html">v7</a></dd>
+            <dd><a href="../v8/article-elbeoverview-en.html">v8</a></dd>
+            <dd><a href="../v9/article-elbeoverview-en.html">v9</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../devel_elbe-1.0/article-elbeoverview-en.html">devel/elbe-1.0</a></dd>
+            <dd><a href="../devel_elbe-2.0/article-elbeoverview-en.html">devel/elbe-2.0</a></dd>
+            <dd><a href="../devel_elbe-3.0/article-elbeoverview-en.html">devel/elbe-3.0</a></dd>
+            <dd><a href="../master/article-elbeoverview-en.html">master</a></dd>
+            <dd><a href="../releases_v0.5.8/article-elbeoverview-en.html">releases/v0.5.8</a></dd>
+            <dd><a href="../releases_v1.0/article-elbeoverview-en.html">releases/v1.0</a></dd>
+            <dd><a href="../releases_v1.1/article-elbeoverview-en.html">releases/v1.1</a></dd>
+            <dd><a href="../releases_v1.2/article-elbeoverview-en.html">releases/v1.2</a></dd>
+            <dd><a href="../releases_v1.9.21/article-elbeoverview-en.html">releases/v1.9.21</a></dd>
+            <dd><a href="../releases_v1.9.22/article-elbeoverview-en.html">releases/v1.9.22</a></dd>
+            <dd><a href="../releases_v1.9.23/article-elbeoverview-en.html">releases/v1.9.23</a></dd>
+            <dd><a href="../releases_v1.9.24/article-elbeoverview-en.html">releases/v1.9.24</a></dd>
+            <dd><a href="../releases_v1.9.25/article-elbeoverview-en.html">releases/v1.9.25</a></dd>
+            <dd><a href="../releases_v10/article-elbeoverview-en.html">releases/v10</a></dd>
+            <dd><a href="../releases_v11/article-elbeoverview-en.html">releases/v11</a></dd>
+            <dd><a href="../releases_v12.0/article-elbeoverview-en.html">releases/v12.0</a></dd>
+            <dd><a href="../releases_v12.1/article-elbeoverview-en.html">releases/v12.1</a></dd>
+            <dd><a href="../releases_v12.2/article-elbeoverview-en.html">releases/v12.2</a></dd>
+            <dd><a href="../releases_v12.3/article-elbeoverview-en.html">releases/v12.3</a></dd>
+            <dd><a href="../releases_v12.4/article-elbeoverview-en.html">releases/v12.4</a></dd>
+            <dd><a href="../releases_v12.5/article-elbeoverview-en.html">releases/v12.5</a></dd>
+            <dd><a href="../releases_v13.0/article-elbeoverview-en.html">releases/v13.0</a></dd>
+            <dd><a href="../releases_v13.1/article-elbeoverview-en.html">releases/v13.1</a></dd>
+            <dd><a href="../releases_v13.1.1/article-elbeoverview-en.html">releases/v13.1.1</a></dd>
+            <dd><a href="../releases_v13.2/article-elbeoverview-en.html">releases/v13.2</a></dd>
+            <dd><a href="../releases_v13.3/article-elbeoverview-en.html">releases/v13.3</a></dd>
+            <dd><a href="../releases_v14.0/article-elbeoverview-en.html">releases/v14.0</a></dd>
+            <dd><a href="../releases_v14.1/article-elbeoverview-en.html">releases/v14.1</a></dd>
+            <dd><a href="../releases_v2.0/article-elbeoverview-en.html">releases/v2.0</a></dd>
+            <dd><a href="../releases_v2.1/article-elbeoverview-en.html">releases/v2.1</a></dd>
+            <dd><a href="../releases_v2.2/article-elbeoverview-en.html">releases/v2.2</a></dd>
+            <dd><a href="../releases_v2.3/article-elbeoverview-en.html">releases/v2.3</a></dd>
+            <dd><a href="../releases_v2.4/article-elbeoverview-en.html">releases/v2.4</a></dd>
+            <dd><a href="../releases_v2.5/article-elbeoverview-en.html">releases/v2.5</a></dd>
+            <dd><a href="../releases_v2.9.1/article-elbeoverview-en.html">releases/v2.9.1</a></dd>
+            <dd><a href="../releases_v2.9.10/article-elbeoverview-en.html">releases/v2.9.10</a></dd>
+            <dd><a href="../releases_v2.9.10.1/article-elbeoverview-en.html">releases/v2.9.10.1</a></dd>
+            <dd><a href="../releases_v2.9.11/article-elbeoverview-en.html">releases/v2.9.11</a></dd>
+            <dd><a href="../releases_v2.9.12/article-elbeoverview-en.html">releases/v2.9.12</a></dd>
+            <dd><a href="../releases_v2.9.13/article-elbeoverview-en.html">releases/v2.9.13</a></dd>
+            <dd><a href="../releases_v2.9.14/article-elbeoverview-en.html">releases/v2.9.14</a></dd>
+            <dd><a href="../releases_v2.9.15/article-elbeoverview-en.html">releases/v2.9.15</a></dd>
+            <dd><a href="../releases_v2.9.16/article-elbeoverview-en.html">releases/v2.9.16</a></dd>
+            <dd><a href="../releases_v2.9.17/article-elbeoverview-en.html">releases/v2.9.17</a></dd>
+            <dd><a href="../releases_v2.9.18/article-elbeoverview-en.html">releases/v2.9.18</a></dd>
+            <dd><a href="../releases_v2.9.2/article-elbeoverview-en.html">releases/v2.9.2</a></dd>
+            <dd><a href="../releases_v2.9.3/article-elbeoverview-en.html">releases/v2.9.3</a></dd>
+            <dd><a href="../releases_v2.9.4/article-elbeoverview-en.html">releases/v2.9.4</a></dd>
+            <dd><a href="../releases_v2.9.5/article-elbeoverview-en.html">releases/v2.9.5</a></dd>
+            <dd><a href="../releases_v2.9.6/article-elbeoverview-en.html">releases/v2.9.6</a></dd>
+            <dd><a href="../releases_v2.9.7/article-elbeoverview-en.html">releases/v2.9.7</a></dd>
+            <dd><a href="../releases_v2.9.8/article-elbeoverview-en.html">releases/v2.9.8</a></dd>
+            <dd><a href="../releases_v2.9.9/article-elbeoverview-en.html">releases/v2.9.9</a></dd>
+            <dd><a href="../releases_v3/article-elbeoverview-en.html">releases/v3</a></dd>
+            <dd><a href="../releases_v4/article-elbeoverview-en.html">releases/v4</a></dd>
+            <dd><a href="../releases_v5/article-elbeoverview-en.html">releases/v5</a></dd>
+            <dd><a href="../releases_v6/article-elbeoverview-en.html">releases/v6</a></dd>
+            <dd><a href="../releases_v7/article-elbeoverview-en.html">releases/v7</a></dd>
+            <dd><a href="../releases_v8/article-elbeoverview-en.html">releases/v8</a></dd>
+            <dd><a href="../releases_v9/article-elbeoverview-en.html">releases/v9</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'14.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
