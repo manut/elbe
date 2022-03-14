@@ -719,6 +719,8 @@ Restrictions
 ------------
 
 +-----------------------------------+-----------------------------------+
+| *enumeration*                     | bookworm                          |
++-----------------------------------+-----------------------------------+
 | *enumeration*                     | bullseye                          |
 +-----------------------------------+-----------------------------------+
 | *enumeration*                     | buster                            |
@@ -1929,6 +1931,8 @@ Example
    <cpio>
      <name> rfs:string </name>
 
+     <options> rfs:string </options>
+
    </cpio>
 
 .. __elements_description_38:
@@ -1938,6 +1942,9 @@ Elements description
 
 name `rfs:string <#type-string>`__ **optional**
    filename of the cpio package
+
+options `rfs:string <#type-string>`__ **optional**
+   options passed to the mksquashfs command
 
 .. _squashfs:
 
@@ -1985,6 +1992,8 @@ Example
 
      <label> rfs:string </label>
 
+     <name> rfs:string </name>
+
      <binary> rfs:string </binary>
 
      <bootable> rfs:string </bootable>
@@ -2004,6 +2013,9 @@ size `rfs:part_size <#type-part_size>`__
 label `rfs:string <#type-string>`__
    human readable label of the partition used for mount by label and as
    filename for the flashable image
+
+name `rfs:string <#type-string>`__
+   human readable name of the partition used for naming a gpt partition
 
 binary `rfs:string <#type-string>`__ **optional**
    path and filename of a binary image which will be used as a source
@@ -2894,7 +2906,7 @@ TYPE: set_packer
 
 Set the packer to use for an artifaxct.The value of the tag describes
 the filename of the Imagefile.The packer attribute may take the
-following values:(none, gzip, tar, targz, tarxz)
+following values:(none, gzip, zstd, tar, targz, tarxz, tarzstd)
 
 .. __example_57:
 
@@ -2938,11 +2950,15 @@ Restrictions
 +-----------------------------------+-----------------------------------+
 | *enumeration*                     | gzip                              |
 +-----------------------------------+-----------------------------------+
+| *enumeration*                     | zstd                              |
++-----------------------------------+-----------------------------------+
 | *enumeration*                     | tar                               |
 +-----------------------------------+-----------------------------------+
 | *enumeration*                     | tarxz                             |
 +-----------------------------------+-----------------------------------+
 | *enumeration*                     | targz                             |
++-----------------------------------+-----------------------------------+
+| *enumeration*                     | tarzstd                           |
 +-----------------------------------+-----------------------------------+
 
 .. _file:
@@ -3207,6 +3223,9 @@ Elements description
 
 [attr] md5 string
    md5 sum of the package.
+
+[attr] sha256 string
+   sha256 sum of the package.
 
 [attr] prio string
    priority of the package in the original repository.

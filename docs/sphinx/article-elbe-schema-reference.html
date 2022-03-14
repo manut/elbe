@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ELBE XML Reference &mdash; ELBE 14.1 documentation</title>
+  <title>ELBE XML Reference &mdash; ELBE 14.2 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                14.1
+                14.2
               </div>
             
           
@@ -1256,30 +1256,33 @@ the sequence.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><em>enumeration</em></td>
+<td>bookworm</td>
+</tr>
+<tr class="row-even"><td><em>enumeration</em></td>
 <td>bullseye</td>
 </tr>
-<tr class="row-even"><td><em>enumeration</em></td>
+<tr class="row-odd"><td><em>enumeration</em></td>
 <td>buster</td>
 </tr>
-<tr class="row-odd"><td><em>enumeration</em></td>
+<tr class="row-even"><td><em>enumeration</em></td>
 <td>sid</td>
 </tr>
-<tr class="row-even"><td><em>enumeration</em></td>
+<tr class="row-odd"><td><em>enumeration</em></td>
 <td>stretch</td>
 </tr>
-<tr class="row-odd"><td><em>enumeration</em></td>
+<tr class="row-even"><td><em>enumeration</em></td>
 <td>bionic</td>
 </tr>
-<tr class="row-even"><td><em>enumeration</em></td>
+<tr class="row-odd"><td><em>enumeration</em></td>
 <td>focal</td>
 </tr>
-<tr class="row-odd"><td><em>enumeration</em></td>
+<tr class="row-even"><td><em>enumeration</em></td>
 <td>groovy</td>
 </tr>
-<tr class="row-even"><td><em>enumeration</em></td>
+<tr class="row-odd"><td><em>enumeration</em></td>
 <td>xenial</td>
 </tr>
-<tr class="row-odd"><td><em>enumeration</em></td>
+<tr class="row-even"><td><em>enumeration</em></td>
 <td>trusty</td>
 </tr>
 </tbody>
@@ -2228,6 +2231,8 @@ filesystem like debugfs or tmpfs</dd>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">cpio</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
 
+  <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">options</span><span class="o">&gt;</span>
+
 <span class="o">&lt;/</span><span class="n">cpio</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -2237,6 +2242,8 @@ filesystem like debugfs or tmpfs</dd>
 <dl class="docutils">
 <dt>name <a class="reference external" href="#type-string">rfs:string</a> <strong>optional</strong></dt>
 <dd>filename of the cpio package</dd>
+<dt>options <a class="reference external" href="#type-string">rfs:string</a> <strong>optional</strong></dt>
+<dd>options passed to the mksquashfs command</dd>
 </dl>
 </div>
 </div>
@@ -2270,6 +2277,8 @@ filesystem like debugfs or tmpfs</dd>
 
   <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
 
+  <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+
   <span class="o">&lt;</span><span class="n">binary</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">binary</span><span class="o">&gt;</span>
 
   <span class="o">&lt;</span><span class="n">bootable</span><span class="o">&gt;</span> <span class="n">rfs</span><span class="p">:</span><span class="n">string</span> <span class="o">&lt;/</span><span class="n">bootable</span><span class="o">&gt;</span>
@@ -2288,6 +2297,8 @@ filesystem like debugfs or tmpfs</dd>
 <dt>label <a class="reference external" href="#type-string">rfs:string</a></dt>
 <dd>human readable label of the partition used for mount by label and as
 filename for the flashable image</dd>
+<dt>name <a class="reference external" href="#type-string">rfs:string</a></dt>
+<dd>human readable name of the partition used for naming a gpt partition</dd>
 <dt>binary <a class="reference external" href="#type-string">rfs:string</a> <strong>optional</strong></dt>
 <dd>path and filename of a binary image which will be used as a source
 for this volume; this can be used for example to store a bootloader
@@ -2964,7 +2975,7 @@ afterwards.</p>
 <span id="set-packer"></span><h2>TYPE: set_packer<a class="headerlink" href="#type-set-packer" title="Permalink to this headline">¶</a></h2>
 <p>Set the packer to use for an artifaxct.The value of the tag describes
 the filename of the Imagefile.The packer attribute may take the
-following values:(none, gzip, tar, targz, tarxz)</p>
+following values:(none, gzip, zstd, tar, targz, tarxz, tarzstd)</p>
 <div class="section" id="id136">
 <h3>Example<a class="headerlink" href="#id136" title="Permalink to this headline">¶</a></h3>
 <div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">set_packer</span><span class="o">&gt;</span>
@@ -3002,13 +3013,19 @@ following values:(none, gzip, tar, targz, tarxz)</p>
 <td>gzip</td>
 </tr>
 <tr class="row-odd"><td><em>enumeration</em></td>
-<td>tar</td>
+<td>zstd</td>
 </tr>
 <tr class="row-even"><td><em>enumeration</em></td>
-<td>tarxz</td>
+<td>tar</td>
 </tr>
 <tr class="row-odd"><td><em>enumeration</em></td>
+<td>tarxz</td>
+</tr>
+<tr class="row-even"><td><em>enumeration</em></td>
 <td>targz</td>
+</tr>
+<tr class="row-odd"><td><em>enumeration</em></td>
+<td>tarzstd</td>
 </tr>
 </tbody>
 </table>
@@ -3202,6 +3219,8 @@ exclude pattern</p>
 <dd>installed automatically as a dependency</dd>
 <dt>[attr] md5 string</dt>
 <dd>md5 sum of the package.</dd>
+<dt>[attr] sha256 string</dt>
+<dd>sha256 sum of the package.</dd>
 <dt>[attr] prio string</dt>
 <dd>priority of the package in the original repository.</dd>
 <dt>[attr] on_src_cd string</dt>
@@ -3598,7 +3617,7 @@ respect ISO-9660. The default is “false”.</dd>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: releases/v14.1
+        v: releases/v14.2
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -3618,6 +3637,7 @@ respect ISO-9660. The default is “false”.</dd>
             <dd><a href="v13.3/article-elbe-schema-reference.html">v13.3</a></dd>
             <dd><a href="v14.0/article-elbe-schema-reference.html">v14.0</a></dd>
             <dd><a href="v14.1/article-elbe-schema-reference.html">v14.1</a></dd>
+            <dd><a href="v14.2/article-elbe-schema-reference.html">v14.2</a></dd>
             <dd><a href="v2.5/index.html">v2.5</a></dd>
             <dd><a href="v3/article-elbe-schema-reference.html">v3</a></dd>
             <dd><a href="v4/article-elbe-schema-reference.html">v4</a></dd>
@@ -3657,6 +3677,7 @@ respect ISO-9660. The default is “false”.</dd>
             <dd><a href="releases_v13.3/article-elbe-schema-reference.html">releases/v13.3</a></dd>
             <dd><a href="releases_v14.0/article-elbe-schema-reference.html">releases/v14.0</a></dd>
             <dd><a href="releases_v14.1/article-elbe-schema-reference.html">releases/v14.1</a></dd>
+            <dd><a href="releases_v14.2/article-elbe-schema-reference.html">releases/v14.2</a></dd>
             <dd><a href="releases_v2.0/index.html">releases/v2.0</a></dd>
             <dd><a href="releases_v2.1/index.html">releases/v2.1</a></dd>
             <dd><a href="releases_v2.2/index.html">releases/v2.2</a></dd>
@@ -3699,7 +3720,7 @@ respect ISO-9660. The default is “false”.</dd>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'14.1',
+            VERSION:'14.2',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
