@@ -1,6 +1,6 @@
 # ELBE - Debian Based Embedded Rootfilesystem Builder
 # Copyright (c) 2014-2017 Torben Hohn <torben.hohn@linutronix.de>
-# Copyright (c) 2014-2017 Manuel Traut <manut@linutronix.de>
+# Copyright (c) 2014-2022 Manuel Traut <manut@mecka.net>
 # Copyright (c) 2017 Philipp Arras <philipp.arras@linutronix.de>
 # Copyright (c) 2017 Kurt Kanzenbach <kurt@linutronix.de>
 #
@@ -24,6 +24,7 @@ from elbepack.packers import default_packer, packers
 from elbepack.egpg import unlock_key
 from elbepack.junit import TestSuite, TestException
 from elbepack.shellhelper import chroot, do, get_command_out
+from elbepack.templates import write_template
 
 
 class FinetuningException(Exception):
@@ -60,6 +61,9 @@ class FinetuningAction:
     def execute_prj(self, buildenv, target, _builddir):
         self.execute(buildenv, target)
 
+    def execute_sdk(self, buildenv, sdk, _builddir):
+        self.execute(buildenv, sdk)
+
 
 @FinetuningAction.register('image_finetuning', False)
 class ImageFinetuningAction(FinetuningAction):
@@ -72,6 +76,9 @@ class ImageFinetuningAction(FinetuningAction):
                                   "used in <image-finetuning>" % self.tag)
 
     def execute_img(self, _buildenv, _target, _builddir, _loop_dev):
+        raise NotImplementedError('execute_img() not implemented')
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
         raise NotImplementedError('execute_img() not implemented')
 
 
@@ -127,6 +134,9 @@ class BuildenvMkdirAction(FinetuningAction):
     def execute(self, buildenv, _target):
         do("mkdir -p %s" % buildenv.rfs.fname(self.node.et.text))
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('cp')
 class CpAction(FinetuningAction):
@@ -153,6 +163,9 @@ class BuildenvCpAction(FinetuningAction):
         for f in src:
             do(cmd % f)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('b2t_cp')
 class B2TCpAction(FinetuningAction):
@@ -166,6 +179,9 @@ class B2TCpAction(FinetuningAction):
         for f in src:
             do(cmd % f)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('t2b_cp')
 class T2BCpAction(FinetuningAction):
@@ -178,6 +194,9 @@ class T2BCpAction(FinetuningAction):
         cmd = "cp -av %s {}".format(buildenv.rfs.fname(self.node.et.text))
         for f in src:
             do(cmd % f)
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register('t2p_mv')
@@ -197,6 +216,9 @@ class T2PMvAction(FinetuningAction):
         cmd = "mv -v %s {}".format(dest)
         for f in src:
             do(cmd % f)
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register('mv')
@@ -226,6 +248,15 @@ class LnAction(FinetuningAction):
                    """/bin/sh -c 'ln -sf %s "%s"' """ %
                    (target_name, link_name))
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        target_name = self.node.et.attrib['path']
+        link_name = self.node.et.text
+        returnpath = os.getcwd()
+        os.chdir(_sdk.path)
+        try:
+            do('ln -sf %s "%s"' % (target_name, link_name))
+        finally:
+            os.chdir(returnpath)
 
 @FinetuningAction.register('buildenv_mv')
 class BuildenvMvAction(FinetuningAction):
@@ -238,6 +269,9 @@ class BuildenvMvAction(FinetuningAction):
         cmd = "mv -v %s {}".format(buildenv.rfs.fname(self.node.et.text))
         for f in src:
             do(cmd % f)
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register('adduser')
@@ -280,6 +314,9 @@ class AddUserAction(FinetuningAction):
                 stdin = "%s\n%s\n" % (att["passwd"], att["passwd"])
                 chroot(target.path, cmd, stdin=stdin)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('addgroup')
 class AddGroupAction(FinetuningAction):
@@ -299,6 +336,9 @@ class AddGroupAction(FinetuningAction):
             cmd = '/usr/sbin/groupadd %s "%s"' % (options,
                                                   self.node.et.text)
             chroot(target.path, cmd)
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register('file')
@@ -372,6 +412,9 @@ class RawCmdAction(FinetuningAction):
         with target:
             chroot(target.path, self.node.et.text)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('command')
 class CmdAction(ImageFinetuningAction):
@@ -400,6 +443,9 @@ class CmdAction(ImageFinetuningAction):
         with target:
             chroot(target.path, "/bin/sh", stdin=self.node.et.text)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('buildenv_command')
 class BuildenvCmdAction(FinetuningAction):
@@ -411,6 +457,9 @@ class BuildenvCmdAction(FinetuningAction):
         with buildenv:
             chroot(buildenv.path, "/bin/sh", stdin=self.node.et.text)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('purge')
 class PurgeAction(FinetuningAction):
@@ -421,6 +470,9 @@ class PurgeAction(FinetuningAction):
     def execute(self, _buildenv, target):
         with target:
             chroot(target.path, "dpkg --purge %s" % (self.node.et.text))
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register('updated')
@@ -501,6 +553,9 @@ class UpdatedAction(FinetuningAction):
         # allow downgrades by default
         target.touch_file('/var/cache/elbe/.downgrade_allowed')
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('artifact')
 class ArtifactAction(FinetuningAction):
@@ -522,6 +577,45 @@ class ArtifactAction(FinetuningAction):
             logging.error("The specified artifact: '%s' doesn't exist",
                            self.node.et.text)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
+
+@FinetuningAction.register('rauc_bundle')
+class RaucBundleAction(FinetuningAction):
+
+    def __init__(self, node):
+        FinetuningAction.__init__(self, node)
+
+    def execute_prj(self, _buildenv, target, _builddir):
+        # prepare directory to bundle
+        do("mkdir -p ../bundle")
+        elbe_project = _buildenv.xml.prj.text('name')
+        elbe_version = _buildenv.xml.prj.text('version')
+        with open('../bundle/manifest.raucm', 'w') as manifest:
+            manifest.write("[update]\ncompatible=%s\nversion=%s\n\n" % (elbe_project, elbe_version))
+            for f in self.node.node('inputs'):
+                if os.path.isfile('../' + f.et.text):
+                    do("cp ../%s ../bundle/" % f.et.text)
+                    manifest.write("[%s]\nfilename=%s\n\n" % (f.et.attrib['slot'], f.et.text))
+                else:
+                    logging.error("The specified artifact: '%s' doesn't exist - so cannot create a rauc bundle" % f.et.text)
+        # extract cert and key
+        with open('../rauc-key.pem', 'w') as key:
+            key.write("\n".join(line.strip(" \t") for line in self.node.text('raw-key').splitlines()[1:-1]))
+        with open('../rauc-cert.pem', 'w') as cert:
+            cert.write("\n".join(line.strip(" \t") for line in self.node.text('raw-cert').splitlines()[1:-1]))
+
+        # remove maybe existing bundle and create a new rauc bundle
+        bundle = '../' + self.node.et.attrib['name'] + '.raucb'
+        do("rm -f %s" % bundle)
+        do("rauc bundle --key=../rauc-key.pem --cert=../rauc-cert.pem ../bundle %s" % bundle)
+        do("rm -rf ../bundle")
+        target.images.append(bundle)
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('rm_artifact')
 class RmArtifactAction(FinetuningAction):
@@ -539,6 +633,9 @@ class RmArtifactAction(FinetuningAction):
         except ValueError:
             raise FinetuningException("Artifact %s doesn't exist" %
                                       self.node.et.text)
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register('losetup')
@@ -564,6 +661,9 @@ class LosetupAction(FinetuningAction):
         finally:
             cmd = 'losetup --detach "%s"' % loop_dev
             do(cmd)
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register('img_convert')
@@ -602,6 +702,9 @@ class ImgConvertAction(FinetuningAction):
             target.images.remove(src)
             del target.image_packers[src]
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('set_packer')
 class SetPackerAction(FinetuningAction):
@@ -618,6 +721,9 @@ class SetPackerAction(FinetuningAction):
         packer = self.node.et.attrib['packer']
 
         target.image_packers[img] = packers[packer]
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register('extract_partition')
@@ -640,6 +746,9 @@ class ExtractPartitionAction(ImageFinetuningAction):
 
         target.images.append(self.node.et.text)
         target.image_packers[self.node.et.text] = default_packer
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register('copy_from_partition')
@@ -677,6 +786,9 @@ class CopyFromPartition(ImageFinetuningAction):
 
             target.images.append(aname)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register('copy_to_partition')
 class CopyToPartition(ImageFinetuningAction):
@@ -700,6 +812,10 @@ class CopyToPartition(ImageFinetuningAction):
             cmd = 'cp -av "%s" "%s"' % (os.path.join(builddir, aname), fname)
             do(cmd)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
+
 @FinetuningAction.register('set_partition_type')
 class SetPartitionTypeAction(ImageFinetuningAction):
 
@@ -718,6 +834,9 @@ class SetPartitionTypeAction(ImageFinetuningAction):
         inp = f't\n{part_nr}\n{part_type}\nw\n'
 
         do(cmd, stdin=inp)
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 @FinetuningAction.register("unit-tests")
@@ -744,6 +863,9 @@ class TestSuites(FinetuningAction):
 
         TestSuite.to_file(output, tss)
 
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
+
 
 @FinetuningAction.register("rm_apt_source")
 class RmAptSource(FinetuningAction):
@@ -760,6 +882,9 @@ class RmAptSource(FinetuningAction):
 
         with open(src_path, "w") as f:
             f.write("\n".join(src_lst))
+
+    def execute_sdk(self, _buildenv, _sdk, _builddir):
+        raise NotImplementedError('execute_sdk() not implemented')
 
 
 def do_finetuning(xml, buildenv, target):
@@ -800,6 +925,29 @@ def do_prj_finetuning(xml, buildenv, target, builddir):
                               "trying to continue anyways")
         except FinetuningException:
             logging.exception("Finetuning Error\n"
+                              "Trying to continue anyways")
+        except Exception as e:
+            logging.exception(str(e))
+            raise
+
+
+def do_sdk_finetuning(xml, buildenv, sdk, builddir):
+
+    if not xml.has('target/sdk-finetuning'):
+        return
+
+    for i in xml.node('target/sdk-finetuning'):
+        try:
+            action = FinetuningAction(i)
+            action.execute_sdk(buildenv, sdk, builddir)
+        except KeyError:
+            logging.exception("Unimplemented sdk-finetuning action '%s'",
+                              i.et.tag)
+        except CommandError:
+            logging.exception("SDKFinetuning Error, "
+                              "trying to continue anyways")
+        except FinetuningException:
+            logging.exception("SDKFinetuning Error\n"
                               "Trying to continue anyways")
         except Exception as e:
             logging.exception(str(e))

@@ -1,5 +1,5 @@
 # ELBE - Debian Based Embedded Rootfilesystem Builder
-# Copyright (c) 2015-2017 Manuel Traut <manut@linutronix.de>
+# Copyright (c) 2015-2022 Manuel Traut <manut@mecka.net>
 # Copyright (c) 2016-2017 Torben Hohn <torben.hohn@linutronix.de>
 # Copyright (c) 2017 Philipp Arras <philipp.arras@linutronix.de>
 # Copyright (c) 2018 Martin Kaistra <martin.kaistra@linutronix.de>
@@ -19,7 +19,7 @@ from elbepack.version import elbe_version
 from elbepack.hdimg import do_hdimg
 from elbepack.fstab import fstabentry
 from elbepack.licencexml import copyright_xml
-from elbepack.packers import default_packer
+from elbepack.packers import default_packer, packers, DebPacker
 from elbepack.shellhelper import (system,
                                   CommandError,
                                   do,
@@ -190,7 +190,9 @@ class ElbeFilesystem(Filesystem):
         version_file.close()
 
         elbe_base = self.open("etc/elbe_base.xml", "wb")
-        xml.xml.write(elbe_base)
+        # project-finetuning is not useful on the target and may contain private keys
+        xml.dump_without_node(elbe_base, 'target/project-finetuning')
+        elbe_base.close()
         self.chmod("etc/elbe_base.xml", stat.S_IREAD)
 
     def write_licenses(self, f, pkglist, xml_fname=None):
@@ -400,6 +402,7 @@ class TargetFs(ChRootFilesystem):
         self.xml = xml
         self.images = []
         self.image_packers = {}
+        packers['deb'] = DebPacker(xml.defs['arch'], xml.text('/project/version'))
 
     def write_fstab(self, xml):
         if not self.exists("etc"):
@@ -408,8 +411,8 @@ class TargetFs(ChRootFilesystem):
             else:
                 self.mkdir("etc")
 
-        f = self.open("etc/fstab", "w")
         if xml.tgt.has("fstab"):
+            f = self.open("etc/fstab", "w")
             for fs in xml.tgt.node("fstab"):
                 if not fs.has("nofstab"):
                     fstab = fstabentry(xml, fs)

@@ -26,7 +26,7 @@ from elbepack.rfs import BuildEnv
 from elbepack.rpcaptcache import get_rpcaptcache
 from elbepack.efilesystem import TargetFs
 from elbepack.efilesystem import extract_target
-from elbepack.filesystem import size_to_int
+from elbepack.filesystem import size_to_int, Filesystem
 
 from elbepack.aptpkgutils import XMLPackage
 
@@ -43,7 +43,7 @@ from elbepack.pbuilder import (pbuilder_write_config, pbuilder_write_repo_hook,
 from elbepack.repomanager import ProjectRepo
 from elbepack.config import cfg
 from elbepack.templates import write_pack_template
-from elbepack.finetuning import do_prj_finetuning
+from elbepack.finetuning import do_prj_finetuning, do_sdk_finetuning
 
 
 validation = logging.getLogger("validation")
@@ -271,6 +271,11 @@ class ElbeProject:
             ignore_dev_pkgs = [p.et.text for p in self.xml.node(
                 "target/pkg-blacklist/sysroot")]
 
+        sysroot_pkgs = []
+        if self.xml.tgt.has('sdk-pkg-list'):
+            sysroot_pkgs = [p.et.text for p in self.xml.node(
+                "target/sdk-pkg-list")]
+
         with self.sysrootenv:
             try:
                 cache = self.get_rpcaptcache(env=self.sysrootenv)
@@ -280,7 +285,8 @@ class ElbeProject:
 
             try:
                 cache.mark_install_devpkgs(set(ignore_pkgs),
-                                           set(ignore_dev_pkgs))
+                                           set(ignore_dev_pkgs),
+                                           set(sysroot_pkgs))
             except SystemError as e:
                 logging.exception("Mark install devpkgs failed")
             try:
@@ -402,6 +408,11 @@ class ElbeProject:
         hostsysrootpath = os.path.join(self.sdkpath, 'sysroots', 'host')
 
         self.build_host_sysroot(host_pkglist, hostsysrootpath)
+
+        do_sdk_finetuning(self.xml,
+                          self.buildenv,
+                          Filesystem(self.sdkpath),
+                          self.builddir)
 
         n = gen_sdk_scripts(triplet,
                             elfcode,
@@ -701,7 +712,8 @@ class ElbeProject:
 
         self.targetfs.pack_images(self.builddir)
 
-        system('cat "%s"' % self.validationpath)
+        if os.path.exists(self.validationpath):
+          system('cat "%s"' % self.validationpath)
 
     def pdebuild_init(self):
         # Remove pdebuilder directory, containing last build results
